@@ -231,20 +231,7 @@
    }
    
    function mostrarImagenes() {
-    
       getPage(0);
-
-      //$.ajax({
-      //url: baseurl+'/galeria/mostrarImagenes',  
-      //type: 'POST',
-      //data: {},
-      //success:function(response){
-      //      $('.imagenes').html(response);
-      //},
-      //error: function(e){
-      //   alert(e);
-      //}
-      //});
    }
 
    

@@ -5,13 +5,10 @@ Luciano
 -enlazar el boton de mensaje al chat de montoto
 -arreglar el css del buscador
 -modificar el buscador para que solo permita 2 personas
-
-
 -arreglar boton de mas posts en muro
 -agregar mas opciones o datos dentro de la cabecera
--mejorar el css de la cabecera
 -agregar eliminacion de imagen y ampliacion
--terminar la modificacion de perfil
+
 
 Si se llega con el tiempo
 -crear una tabla para imagenes del muro
@@ -20,12 +17,13 @@ Si se llega con el tiempo
 
 trabajando en :
 
--poner el menu burguer  26/01/2016
+-poner el menu burguer  <-- falta agregar todos los links y linkear en todas las pantallas de usuario
+-terminar la modificacion de perfil <--comenzado
+-mejorar el css de la cabecera <--comenzado
 
 Terminado
 
 paginacion de imagenes
-
 
 
 Damian

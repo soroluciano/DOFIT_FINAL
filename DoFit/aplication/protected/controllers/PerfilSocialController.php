@@ -39,24 +39,23 @@ class PerfilSocialController extends Controller
 
   public function actionIndex(){
 		
-		$Us = Usuario::model()->findByPk(Yii::app()->user->id);
-		$model = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
-		$fichaUsuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
-		$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$fichaUsuario->id_localidad));
+		$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+		$fichaUsuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
 
-		if($model == null){ // se crea un nuevo perfil social si el usuario es nuevo
-			$model = new PerfilSocial();
-			$model->id_usuario=$Us->id_usuario;
-			$model->fhcreacion= new CDbExpression('NOW()');
-			$model->cusuario=$Us->id_usuario;
-			$model->save();
+
+		if($perfil == null){ // se crea un nuevo perfil social si el usuario es nuevo
+			$pefil = new PerfilSocial();
+			$pefil->id_usuario=$usuario->id_usuario;
+			$pefil->fhcreacion= new CDbExpression('NOW()');
+			$pefil->cusuario=$usuario->id_usuario;
+			$pefil->save();
 		}
 	
 		$this->render('index',array(
-			'model'=>$model,
-			'Us'=>$Us,
+			'perfil'=>$perfil,
+			'Us'=>$usuario,
 			'fichaUsuario'=>$fichaUsuario,
-			'localidad'=>$localidad,
 		));	
     }
 	

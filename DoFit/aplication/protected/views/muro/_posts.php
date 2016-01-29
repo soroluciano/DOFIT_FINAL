@@ -13,7 +13,7 @@
         
             <div class='post-heading'>
               <div class='pull-left image'>
-			  <img src='".Yii::app()->request->baseUrl."/uploads/".$row['fotoPerfil']."' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>
+              <img src='".Yii::app()->request->baseUrl."/uploads/".$row['fotoPerfil']."' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>
               </div>
               <div class='pull-left meta'>
                 <div class='title h5'>
@@ -21,7 +21,7 @@
                 </div>
                 <!--<h6 class='text-muted time'>1 minute ago</h6>-->
               </div>
-			  <div class='pull-left edicion'>";
+			  <div class='pull-left edicion e_size'>";
         if($usuario==$row["id_usuario"]){
           echo "<div class='dropdown'>
             <button class='btn-edit-post' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>...</button>
@@ -31,9 +31,9 @@
             </ul>
           </div>";
         }
-			 echo "</div>			
-			
-            </div>
+			 echo "
+       </div>
+  </div>
 
 			<div class='post-description' id='post-description-".$row['id_posteo']."'> 
 			  <p class='details'>".$row['posteo']."</p>

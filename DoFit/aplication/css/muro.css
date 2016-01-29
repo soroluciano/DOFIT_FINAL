@@ -56,6 +56,7 @@ body{
 }
 .post .post-description p {
   font-size: 14px;
+  word-wrap:break-word;
 }
 .post .post-description .stats {
   margin-top: 20px;
@@ -277,37 +278,83 @@ background: none repeat scroll 0 0 #606060;
 color: #fff;
 }
 .status-upload form button {
-border: medium none;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
--ms-border-radius: 4px;
--o-border-radius: 4px;
-border-radius: 4px;
-color: #fff;
-float: right;
-font-family: Lato;
-font-size: 14px;
-letter-spacing: 0.3px;
-margin-right: 9px;
-margin-top: 9px;
-padding: 6px 15px;
+  border: medium none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  color: #fff;
+  float: right;
+  font-family: Lato;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  margin-right: 9px;
+  margin-top: 9px;
+  padding: 6px 15px;
 }
 .dropdown > a > span.green:before {
-border-left-color: #2dcb73;
+  border-left-color: #2dcb73;
 }
 .status-upload form button > i {
-margin-right: 7px;
+  margin-right: 7px;
 }
 
 @media screen and (max-width: 1600px) {
-.contenedor-espaciado{
-  margin-bottom: 30px;
-  width:100%;
-  margin-left: 2px;
+  .e_size{
+    padding-right: 1px;
+    padding-left: 10px;
+    width: 55%;
+  }
+  .contenedor-espaciado{
+    margin-bottom: 15px;
+    width:100%;
+    margin-left: 2px;
+    }
+}
+@media screen and (max-width: 1500px) {
+  .e_size{
+     padding-right: 1px;
+    padding-left: 10px;
+     width: 55%;
   }
 }
 
+
+@media screen and (max-width: 1200px) {
+  .e_size{
+     padding-right: 1px;
+    padding-left: 10px;
+     width: 45%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .e_size{
+    padding-right: 1px;
+    padding-left: 10px;
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .e_size{
+    padding-right: 1px;
+    padding-left: 10px;
+    width: 10%;
+  }
+}
+
+
+
+
+
 @media screen and (max-width: 800px) {
+  .e_size{
+    padding-right: 5px;
+    padding-left: 1px;
+    width: 18%;
+}
 .contenedor-espaciado{
   margin-bottom: 10px;
   width:70%;
@@ -316,6 +363,11 @@ margin-right: 7px;
 
 
 @media screen and (max-width: 700px) {
+.e_size{
+    padding-right: 1px;
+    padding-left: 10px;
+    width: 30%;
+}
 .contenedor-espaciado{
   margin-bottom: 10px;
   width:80%;
@@ -323,15 +375,16 @@ margin-right: 7px;
 }
 
 @media screen and (max-width: 500px) {
+.e_size{
+   padding-right: 1px;
+   padding-left: 10px;
+   width: 35%;
+ }
 .contenedor-espaciado{
   margin-bottom: 10px;
   width:80%;
   }
 }
-
-
-
-
 
 
 .btn-comment{
@@ -369,15 +422,10 @@ margin-right: 7px;
 }
 
 .edicion{
-  padding-right: 5px;
-  padding-left: 10px;
-  width: 100%;
   text-align: right;
   height: 30px !important;
-  position: absolute;
-  z-index: 1;
-  right: 22px;
-  top: 25px;
+  position: relative;
+
 }
 
 .btn-edit-post{
@@ -389,10 +437,17 @@ margin-right: 7px;
   font-weight:bolder;
   background-color:transparent;
   line-height: 20px;
+  width: 30px;
 }
 
 .dropdown-menu{
-  margin-left: 68%;
+/*  margin-right: 10%;*/
+  border: 1px;
+  border-style: solid;
+  border-color:black;
+  position:   relative;
+  top:28px;
+  left: 48%;
   
 }
 
@@ -462,3 +517,8 @@ margin-right: 7px;
 .espacio-paneles{
   margin-bottom: 10px;
 }
+
+#input_mensaje{
+  resize: none;
+}
+

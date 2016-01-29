@@ -27,7 +27,6 @@
       canal : $('#canal').val(),
       socket_id : pusher.connection.socket_id
       },function(respuesta){
-        debugger;
           getMensajesFromBase();
     });
     
@@ -56,7 +55,6 @@
   function insertarRespuesta(a) {  //insertar las respuestas en los comentarios
     var _a = a;
     var comment = $("#txt_post_"+_a).val();
-    debugger;
     //var pusher = new Pusher('c48d59c4cb61c7183954');    
     //var canalnom = $('#canal').val();
     //var canal  = pusher.subscribe(canalnom);
@@ -70,7 +68,6 @@
       type: 'POST',
       data: 'respuesta='+comment+'&id_posteo='+_a,
       success:function(response){
-          debugger;
            window.$isNewMsg.value='true';
            alert( "Data Saved: " + response );
            getComentsByPost(_a);
@@ -104,7 +101,6 @@
 
       getQuantityPosts();
       getCanales();
-      debugger;
       var canal;
       var canalNom;
       var canales = new Array();
@@ -147,7 +143,6 @@
       socket_id : pusher.connection.socket_id
     }
     ,function(respuesta){
-      debugger;
       getMensajesFromBase();
     });
       pusher.disconnect();
@@ -185,7 +180,6 @@
   }
   
   function getMoreMsgs(){//utilizar solo en el boton de + posts
-    debugger;
     var size = window.$sizeMsgs.value;
     var actualsize = window.$actualSizeMsgs.value;
 
@@ -203,7 +197,6 @@
   
   function editComment(idcoment) //funcion de la seleccion de edicion de comentario
   {
-    debugger;
     $("#post-description-"+idcoment+" .edit-details-textarea").css("display","block");
     $("#post-description-"+idcoment+" .details").css("display","none");
     $("#post-description-"+idcoment+" .btn-ed-fin").css("display","block");
@@ -230,7 +223,6 @@
   
   function updateComent(idposteo)
   {
-    debugger;
     alert($("#post-description-"+idposteo+" .edit-details-textarea").val());
     $.ajax({
       url:  baseurl+'/muro/updateComentarioProfesor',
@@ -249,7 +241,6 @@
   }
   
   function  indicateIdPost(args) {
-    debugger;
     $postValue.valor=args;
     appendModal();
   }
@@ -257,7 +248,6 @@
   
   
   function deleteComent(){
-    debugger;
     $idposteo = $postValue.valor;
       $.ajax({
         url:  baseurl+'/muro/deleteComentarioProfesor',
@@ -313,6 +303,7 @@
    }
    
   function ocultarEdicion(){
+    debugger;
     $(".div-ed-comment").hide();
     $(".edit-details-textarea").hide();
     $(".btn-ed-fin").hide();
@@ -327,6 +318,7 @@
   }
   
     function ocultarEdicionInicial(){
+      debugger;
       $(".div-ed-comment").hide();
       $(".edit-details-textarea").hide();
       $(".btn-ed-fin").hide();
@@ -339,13 +331,11 @@
   }
   
   function getQuantityPosts(){
-    debugger;
      $.ajax({
         url:  baseurl+'/muro/quantityOfPosts',
         type: 'POST',
         data: {},
         success:function(response){
-          debugger;
           window.$sizeMsgs.value=response;
         },
         error: function(e){
