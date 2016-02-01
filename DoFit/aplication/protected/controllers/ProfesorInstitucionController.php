@@ -12,6 +12,8 @@ class ProfesorInstitucionController extends Controller
 	public function actionMostrarInstituciones()
 	{
 		$localidadsel = $_POST['localidad'];
+		$cantins = 0; // cantador para cantidad de instituciones disponibles según el criterio de búsqueda.
+		$cantveces = 0;
 		$id_usuario = Yii::app()->user->id;
 		$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$localidadsel));
 		$id_provincia = $localidad->id_provincia;
@@ -25,33 +27,29 @@ class ProfesorInstitucionController extends Controller
 			echo "<table id='mosinstituciones' class='display' cellspacing='0' width='100%'>
                      <thead class='fuente'>
                      <tr>
-				     <th>Nombre</th><th>Cuit</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Estado</th></tr></thead>
-			         <tbody class='fuente'>";
+				     <th>Nombre</th><th>Cuit</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Enviar Solicitud</th></tr></thead>";
 			foreach($ficinstituciones as $ficins){
+				$cantins++;
 				$profins = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$ficins->id_institucion));
-				echo  "<tr>";
-				echo  "<td id='nombre'>" . $ficins->nombre . "</td>";
-				echo  "<td id='cuit'>" . $ficins->cuit . "</td>";
-				echo  "<td id='direccion'>" . $ficins->direccion ."</td>";
-				echo  "<td id='telfijo'>" . $ficins->telfijo . "</td>";
-				echo  "<td id='celular'>" . $ficins->celular . "</td>";
-				echo  "<td id='depto'>" . $ficins->depto . "</td>";
-				echo  "<td id='piso'>" .  $ficins->piso . "</td>";
-				if($profins != NULL){
-					if($profins->id_estado == 0){
-						echo "<td id='solenv'> Solicitud enviada. </td>";
-					}
-					if($profins->id_estado == 1){
-						echo "<td id='solenv'> Estas registrado. </td>";
-					}
-				}
-				else{
+				if($profins == NULL){
+					echo  "<tbody class='fuente'>";
+					echo  "<tr>";
+					echo  "<td id='nombre'>" . $ficins->nombre . "</td>";
+					echo  "<td id='cuit'>" . $ficins->cuit . "</td>";
+					echo  "<td id='direccion'>" . $ficins->direccion ."</td>";
+					echo  "<td id='telfijo'>" . $ficins->telfijo . "</td>";
+					echo  "<td id='celular'>" . $ficins->celular . "</td>";
+					echo  "<td id='depto'>" . $ficins->depto . "</td>";
+					echo  "<td id='piso'>" .  $ficins->piso . "</td>";
 					echo  "<td id='ad'><input type='button' class='btn btn-primary' onclick='javascript:Enviarsolicitud($ficins->id_institucion)' value='Enviar solicitud!'></input></td>";
+					$cantveces++;  // Contador para ver si el profesor ya le envio una solicitud a esa institucion
 				}
 			}
+			echo "</tbody>
+			           </table>";
 			echo "<script type='text/javascript'>
-	             $('#mosinstituciones').DataTable( {
-		            'language' : {
+	                $('#mosinstituciones').DataTable( {
+		             'language' : {
 			            'sProcessing':     'Procesando...',
 			            'sLengthMenu':     'Mostrar _MENU_ registros',
 			            'sZeroRecords':    'No se encontraron resultados',
@@ -78,8 +76,7 @@ class ProfesorInstitucionController extends Controller
 			            }
 		            }
 	            } );
-            </script>";
-
+              </script>";
 		}
 		else {
 			echo "errorbusqueda";
@@ -226,7 +223,7 @@ class ProfesorInstitucionController extends Controller
 	{
 		$id_usuario = Yii::app()->user->id;
 		$criteria = new CDbCriteria;
-		$instituciones = Yii::app()->db->createCommand('select id_institucion,nombre FROM ficha_institucion WHERE id_institucion IN(SELECT id_institucion FROM profesor_institucion WHERE id_usuario = '.$id_usuario.' AND id_estado = 1)')->queryAll();
+		$instituciones = Yii::app()->db->createCommand('select id_institucion,nombre FROM ficha_institucion WHERE id_institucion IN(SELECT id_institucion FROM profesor_institucion WHERE id_institucion IN(select id_institucion FROM actividad WHERE id_usuario = '.$id_usuario.' AND id_estado = 1))')->queryAll();
 		if($instituciones != NULL){
 			$this->render('ListadoActividadesProfesor',array('instituciones'=>$instituciones));
 		}
