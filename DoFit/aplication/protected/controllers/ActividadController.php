@@ -155,6 +155,38 @@ class ActividadController extends Controller
         return $model;
     }
 
+    public function actionObtenerActividad()
+    {
+        if(isset($_POST['actividad'])){
+            $query="select concat('<center><b>Gimnasio: </b>',ficha_institucion.nombre,' ','<br><b>Deporte: </b>',deporte,' ','<br><b>Profesor: </b>',' ',ficha_usuario.nombre,' ',ficha_usuario.apellido, ' ') as desc1 from ficha_institucion, deporte, ficha_usuario, actividad where ficha_institucion.id_institucion = actividad.id_institucion and deporte.id_deporte = actividad.id_deporte and actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_actividad = ".$_POST['actividad'];
+            $list = Yii::app()->db->createCommand($query)->queryAll();
+            if($list){
+                foreach ($list as $d) {
+                    $descripcion = '<center>¿Estás seguro que deseas anotarte? <br></center>'.$d['desc1'];
+                    $query_horario = "select CASE id_dia WHEN 1 THEN 'Lu' WHEN 2 THEN 'Ma' WHEN 3 THEN 'Mi' WHEN 4 THEN 'Ju' WHEN 5 THEN 'Vi' WHEN 6 THEN 'Sa' WHEN 7 THEN 'Do' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = " . $_POST['actividad'];
+                    $listado = Yii::app()->db->createCommand($query_horario)->queryAll();
+                    $hora = "";
+                    foreach ($listado as $h) {
+                        if ($hora == "") {
+                            $hora = '<br><b>Horario: ' . $h['dia'] . '</b> ' . $h['horario'];
+                        } else {
+                            $hora = $hora . ' <b>' . $h['dia'] . '</b> ' . $h['horario'];
+                        }
+
+                    }
+                }
+                echo  $descripcion = $descripcion . $hora;
+
+            }
+            else{
+                echo "error";
+            }
+        }
+        else{
+            echo "error";
+        }
+    }
+
     /**
      * Performs the AJAX validation.
      * @param Actividad $model the model to be validated
@@ -194,25 +226,55 @@ class ActividadController extends Controller
 
                 if ($list) {
                     if ($locations == "") {
-                        $locations = $locations . '["<u><center><b>' . $gim->nombre . '</center></b></u><br>' .
-                            ' <b>Dirección: </b>' . $gim->direccion . '<br>' .
-                            ' <b>Teléfono: </b>' . $gim->telfijo . '<br>' .
-                            '<b> Mercado Pago: </b>' . $gim->acepta_mp . '"' . ',
-                                                  ' . $gim->coordenada_x . ',' . $gim->coordenada_y . ',
-                                                  ' . $i++ . ']';
-                    }
-                    /* $locations = $locations . '["<u><center><b>' . $gim->nombre . '</center></b></u><br>'.
-                                                 ' <b>Dirección: </b>' . $gim->direccion . '<br>'.
-                                                 ' <b>Teléfono: </b>' . $gim->telfijo . '<br>'.
-                                                 '<b> Mercado Pago: </b>' . $gim->acepta_mp. '"'; */
-                    /* $criteria = new CDbCriteria;
-                     $criteria->condition = '';
-                     $criteria->params = array(':localidad' => $_POST['localidad'], ':deporte' => $_POST['deporte']);
-                     $gimnasio = FichaInstitucion:: model()->findAll($criteria); */
+                        $locations = $locations . '["<center><b>' . $gim->nombre . '</center></b><br>' .
+                            ' <b>►Dirección: </b>' . $gim->direccion . '<br>' .
+                            ' <b>►Teléfono: </b>' . $gim->telfijo . '<br>' .
+                            '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>▲Actividades: </b><br><br>';
 
+                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion;
+                        $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
+                        foreach ($listaActividades as $act) {
+                            $query_horario = "select CASE id_dia WHEN 1 THEN 'Lu' WHEN 2 THEN 'Ma' WHEN 3 THEN 'Mi' WHEN 4 THEN 'Ju' WHEN 5 THEN 'Vi' WHEN 6 THEN 'Sa' WHEN 7 THEN 'Do' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = " . $act['id_actividad'];
+                            $horario = Yii::app()->db->createCommand($query_horario)->queryAll();
+                            $hora = "";
+                            foreach ($horario as $h) {
+                                if($hora == ""){
+                                    $hora = '<b>' . $h['dia'] . '</b> ' . $h['horario'];
+                                }
+                                else{
+                                    $hora = $hora . ' <b>' . $h['dia'] . '</b> ' . $h['horario'];
+                                }
+                            }
+                            $locations = $locations . '<b>►Profesor: </b>' . $act['profesor'] . ' <b>Horario: </b>' . $hora . '   <br><b><a href='.$act['id_actividad'].'>¡Hacé click acá para anotarte! </a></b><br><br>';
+
+                        }
+                        $locations = $locations . '",' . $gim->coordenada_x . ',' . $gim->coordenada_y . ',' . $i++ . ']';
+                    }
 
                     else {
-                        $locations = $locations . ',["<u><center><b>' . $gim->nombre . '</center></b></u><br>' . ' <b>Dirección: </b> ' . $gim->direccion . '<br>' . ' <b>Teléfono: </b>' . $gim->telfijo . '<br>' . '<b> Mercado Pago: </b>' . $gim->acepta_mp . '"' . ',' . $gim->coordenada_x . ',' . $gim->coordenada_y . ',' . $i++ . ']';
+                        $locations = $locations . ',["<center><b>' . $gim->nombre . '</center></b><br>' .
+                            ' <b>►Dirección: </b>' . $gim->direccion . '<br>' .
+                            ' <b>►Teléfono: </b>' . $gim->telfijo . '<br>' .
+                            '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>▲Actividades: </b><br><br>';
+
+                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion;
+                        $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
+                        foreach ($listaActividades as $act) {
+                            $query_horario = "select CASE id_dia WHEN 1 THEN 'Lu' WHEN 2 THEN 'Ma' WHEN 3 THEN 'Mi' WHEN 4 THEN 'Ju' WHEN 5 THEN 'Vi' WHEN 6 THEN 'Sa' WHEN 7 THEN 'Do' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = " . $act['id_actividad'];
+                            $horario = Yii::app()->db->createCommand($query_horario)->queryAll();
+                            $hora = "";
+                            foreach ($horario as $h) {
+                                if($hora == ""){
+                                    $hora = '<b>' . $h['dia'] . '</b> ' . $h['horario'];
+                                }
+                                else{
+                                    $hora = $hora . ' <b>' . $h['dia'] . '</b> ' . $h['horario'];
+                                }
+                            }
+                            $locations = $locations . '<b>►Profesor: </b>' . $act['profesor'] . ' <b>Horario: </b>' . $hora . '   <br><b><a href='.$act['id_actividad'].'>¡Hacé click acá para anotarte! </a></b><br><br>';
+
+                        }
+                        $locations = $locations . '",' . $gim->coordenada_x . ',' . $gim->coordenada_y . ',' . $i++ . ']';
                     }
                 }
             }
