@@ -74,7 +74,7 @@
 
 <div class="container">
     <?php
-    echo  "<div><h3>Profesores que se quieren unir a tu gimnasio</h3></div>";
+    echo  "<div><h3>Profesores que se quieren unir a $fichains->nombre</h3></div>";
     if($profesor_pen != null){
         echo    "<table id='profegim' class='display' cellspacing='0' width='100%'>
                         <thead>
@@ -88,22 +88,22 @@
 								<th>Aceptar</th>
 								<th>Cancelar</th>
                             </tr>
-                        </thead>";
+                        </thead>
+						<tbody>";
         foreach($profesor_pen as $f){
             $fu = FichaUsuario::model()->findAll('id_usuario=:id_usuario',array(':id_usuario'=>$f->id_usuario));
             foreach($fu as $p){
-                echo "<tbody>
-                        <tr>
-                            <td>$p->nombre</td>
-                            <td>$p->apellido</td>
-					        <td>$p->dni</td>";
+                echo "<tr>
+                           <td>$p->nombre</td>
+                           <td>$p->apellido</td>
+					       <td>$p->dni</td>";
                 $usuario = Usuario::model()->findByAttributes(array('id_usuario'=>$f->id_usuario));
                 echo "<td>$usuario->email</td>
-                             <td>$p->telfijo</td>
-                             <td>$p->celular</td>							 
-						     <td><a href='../institucion/aceptar/$p->id_usuario' class='btn btn-primary'>Aceptar</a></td>
-                             <td><a href='../institucion/cancelar/$p->id_usuario' class='btn btn-primary'>Cancelar</a></td>
-                        </tr>";
+                           <td>$p->telfijo</td>
+                           <td>$p->celular</td>							 
+						   <td><a href='../institucion/aceptar/$p->id_usuario' class='btn btn-primary'>Aceptar</a></td>
+                           <td><a href='../institucion/cancelar/$p->id_usuario' class='btn btn-primary'>Cancelar</a></td>
+                       </tr>";
             }
         }
         echo "</tbody>";
@@ -124,7 +124,7 @@
     <?php
     echo  "<div><h3>Alumnos que se anotaron en actividades</h3></div>";
     if($actividades_pen != null){
-        echo    "<table class='alumgim' class='display' cellspacing='0' width='100%'>
+        echo    "<table id='alumgim' class='display' cellspacing='0' width='100%'>
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -137,7 +137,8 @@
 								<th>Aceptar</th>
 								<th>Cancelar</th>
                             </tr>
-                        </thead>";
+                        </thead>
+						<tbody>";
         foreach($actividades_pen as $a){
             $fua = FichaUsuario::model()->findAll('id_usuario=:id_usuario',array(':id_usuario'=>$a->id_usuario));
             $actividad = Actividad::model()->findByPk($a->id_actividad);
@@ -160,19 +161,18 @@
             }
 
             foreach($fua as $t){
-                echo "<tbody>
-                        <tr>
-                          <td>$t->nombre</td>
-                          <td>$t->apellido</td>
-					      <td>$t->dni</td>";
+                echo "<tr>
+                         <td>$t->nombre</td>
+                         <td>$t->apellido</td>
+					     <td>$t->dni</td>";
                 $usuario = Usuario::model()->findByAttributes(array('id_usuario'=>$a->id_usuario));
                 echo "<td>$usuario->email</td>
-					        <td>$t->telfijo</td>
-							<td>$t->celular</td>
-							<td>$var</td>
-                            <td><a href='../actividadAlumno/AceptarAlumno/$t->id_usuario' class='btn btn-primary'>Aceptar</a></td>
-                            <td><a href='../actividadAlumno/CancelarAlumno/$t->id_usuario' class='btn btn-primary'>Cancelar</a></td>
-                        </tr>";
+					     <td>$t->telfijo</td>
+					     <td>$t->celular</td>
+					     <td>$var</td>
+                         <td><a href='../actividadAlumno/AceptarAlumno/$t->id_usuario' class='btn btn-primary'>Aceptar</a></td>
+                         <td><a href='../actividadAlumno/CancelarAlumno/$t->id_usuario' class='btn btn-primary'>Cancelar</a></td>
+                      </tr>";
             }
         }
         echo "</tbody>";
@@ -221,9 +221,6 @@
 
         } );
     } );
-</script>
-
-<script type="text/javascript">
     $(document).ready(function() {
         $('#alumgim').DataTable( {
             "language" : {

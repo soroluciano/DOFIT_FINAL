@@ -142,11 +142,12 @@
             <div class='modal-content'>
                 <div class='modal-header'>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                    <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
+                    <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                 </div>
                 <div class='modal-body'>
-                 Se enviaron solicitudes a todas las instituciones registradas, para la provincia y localidad seleccionada.
-                </div>
+                 Se enviaron solicitudes a todas las instituciones para la provincia y localidad seleccionada.
+                 Consulte la opción <b>"Estado de las instituciones"</b> para mayor información. 
+				</div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="Resetarprovloc();">Cerrar</button>
                 </div>
@@ -184,7 +185,11 @@ $this->endWidget();?>
                 if(response == "errorbusqueda"){
                     $("#errorbusqueda").modal('show');
                 }
-                else {
+                if(response == "solcompletas"){
+                    $("#solcompletas").modal('show');
+                }
+                if(response != "errorbusqueda" && response != "solcompletas")
+                {
                     $('#mostrargimnasios').append(response);
                 }
             }

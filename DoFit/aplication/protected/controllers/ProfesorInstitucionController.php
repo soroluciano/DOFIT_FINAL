@@ -12,7 +12,6 @@ class ProfesorInstitucionController extends Controller
 	public function actionMostrarInstituciones()
 	{
 		$localidadsel = $_POST['localidad'];
-		$cantins = 0; // cantador para cantidad de instituciones disponibles según el criterio de búsqueda.
 		$cantveces = 0;
 		$id_usuario = Yii::app()->user->id;
 		$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$localidadsel));
@@ -22,14 +21,24 @@ class ProfesorInstitucionController extends Controller
 		$criteria->select = 't.id_institucion,t.nombre,t.cuit,t.direccion,t.id_localidad,t.telfijo,t.celular,t.depto,t.piso';
 		$criteria->condition = 't.id_localidad = ' . $localidadsel;
 		$ficinstituciones = FichaInstitucion::model()->findAll($criteria);
-
+		$cantinstituciones = count($ficinstituciones);
 		if($ficinstituciones != NULL){
+			foreach($ficinstituciones as $fi){
+				$profinstituciones = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$fi->id_institucion));
+				if($profinstituciones != NULL){
+					$cantveces++;  // Contador para ver si el profesor ya le envio una solicitud a esa institucion
+				}
+			}
+			if($cantveces == $cantinstituciones){
+				echo "solcompletas";
+			}
+		}
+		if($ficinstituciones != NULL && $cantveces < $cantinstituciones){
 			echo "<table id='mosinstituciones' class='display' cellspacing='0' width='100%'>
                      <thead class='fuente'>
                      <tr>
 				     <th>Nombre</th><th>Cuit</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Enviar Solicitud</th></tr></thead>";
 			foreach($ficinstituciones as $ficins){
-				$cantins++;
 				$profins = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$ficins->id_institucion));
 				if($profins == NULL){
 					echo  "<tbody class='fuente'>";
@@ -42,7 +51,6 @@ class ProfesorInstitucionController extends Controller
 					echo  "<td id='depto'>" . $ficins->depto . "</td>";
 					echo  "<td id='piso'>" .  $ficins->piso . "</td>";
 					echo  "<td id='ad'><input type='button' class='btn btn-primary' onclick='javascript:Enviarsolicitud($ficins->id_institucion)' value='Enviar solicitud!'></input></td>";
-					$cantveces++;  // Contador para ver si el profesor ya le envio una solicitud a esa institucion
 				}
 			}
 			echo "</tbody>
@@ -78,7 +86,9 @@ class ProfesorInstitucionController extends Controller
 	            } );
               </script>";
 		}
-		else {
+
+		if($ficinstituciones == NULL)
+		{
 			echo "errorbusqueda";
 		}
 	}
