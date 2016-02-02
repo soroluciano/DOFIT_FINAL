@@ -45,7 +45,8 @@ if(!Yii::app()->user->isGuest){
 
 
 
-<input type="hidden" id="actividad" name="sitio" value="<?php echo $model->id_actividad; ?>">
+<input type="hidden" id="actividad" value="<?php echo $model->id_actividad; ?>">
+<input type="hidden" id="usuario" value="<?php echo Yii::app()->user->id; ?>">
 
 <div class='modal fade' id='confirmacion' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
     <div class='modal-dialog' role='document'>
@@ -57,7 +58,8 @@ if(!Yii::app()->user->isGuest){
             <div class='modal-body' id="modal-confirmacion">
             </div>
             <div class='modal-footer'>
-                <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="Inscripcion()">Aceptar</button>
+                <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="Volver()">Cancelar</button>
             </div>
         </div>
     </div>
@@ -84,4 +86,34 @@ if(!Yii::app()->user->isGuest){
             }
         })
     })
+</script>
+
+<script type="text/javascript">
+    function Volver(){
+        location.href='InscripcionActividad';
+    }
+</script>
+
+<script type="text/javascript">
+    function Inscripcion(){
+        actividad = $('#actividad').val();
+        usuario = $('#usuario').val();
+        var data = {'actividad': actividad, 'usuario': usuario};
+        $.ajax({
+            url: '../actividad/Inscripcion',
+            type: 'POST',
+            data: data,
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                if (response == "ok") {
+                    location.href='../actividadalumno/ListadoActividades';
+                }
+                else{
+                    alert(response);
+                }
+            }
+
+        })
+    }
 </script>

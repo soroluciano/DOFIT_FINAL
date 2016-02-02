@@ -155,6 +155,27 @@ class ActividadController extends Controller
         return $model;
     }
 
+    public function actionInscripcion()
+    {
+        if(isset($_POST['usuario']) && isset($_POST['actividad'])){
+            $act_alum = new actividadAlumno();
+            $act_alum->id_usuario = $_POST['usuario'];
+            $act_alum->id_estado = 0;
+            $act_alum -> id_actividad =  $_POST['actividad'];
+            $act_alum->fhcreacion = new CDbExpression('NOW()');
+            $act_alum->fhultmod = new CDbExpression('NOW()');
+            $act_alum->cusuario = 'sysadmin';
+            if ($act_alum->save()){
+                echo "ok";
+            }
+            else {
+                echo "error";
+            }
+
+        }
+
+    }
+
     public function actionObtenerActividad()
     {
         if(isset($_POST['actividad'])){
@@ -231,7 +252,7 @@ class ActividadController extends Controller
                             ' <b>►Teléfono: </b>' . $gim->telfijo . '<br>' .
                             '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>▲Actividades: </b><br><br>';
 
-                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion;
+                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion . " and actividad.id_actividad not in (select id_actividad from actividad_alumno where id_usuario = ". $id_usuario .")";
                         $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
                         foreach ($listaActividades as $act) {
                             $query_horario = "select CASE id_dia WHEN 1 THEN 'Lu' WHEN 2 THEN 'Ma' WHEN 3 THEN 'Mi' WHEN 4 THEN 'Ju' WHEN 5 THEN 'Vi' WHEN 6 THEN 'Sa' WHEN 7 THEN 'Do' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = " . $act['id_actividad'];
