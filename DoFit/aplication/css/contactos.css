@@ -112,14 +112,14 @@ ul.c-controls li a:hover {
 
 @media screen and (max-width: 1600px) {
 .propaganda-muro-3{
-    width: 432px;
-    height: 600px;
+    width: 400px;
+    height: 500px;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15),-1px 0 0 rgba(0,0,0,0.03),1px 0 0 rgba(0,0,0,0.03),0 1px 0 rgba(0,0,0,0.12);
     background-color: white;
     position:absolute;
     z-index: 1;
-    right: 17%;
-    top: 34%;
+    right:15.5%;
+    top: 28.5%;
 }
 
 @media screen and (max-width: 1200px) {

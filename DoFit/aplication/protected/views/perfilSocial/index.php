@@ -35,7 +35,7 @@ if(!Yii::app()->user->isGuest){
 
 
 	<div id="respuesta_ajax">
-
+    <div class='misdatos red'>Mis datos</div>
 		<?php $this->renderPartial('infoNew');?>
 	
 	</div>
