@@ -360,5 +360,13 @@ class ProfesorInstitucionController extends Controller
             </script>";
 		}
 	}
+
+	// Funcion para consultar si las instutuciones aceptaron o no la solicitud de adhesion
+	public function actionConsultarEstadosInstituciones()
+	{
+		$id_profesor = Yii::app()->user->id;
+		$profesor_institucion = ProfesorInstitucion::model()->findAllByAttributes(array('id_usuario'=>$id_profesor));
+		$this->render('MostrarEstadosInstituciones',array('profesor_institucion'=>$profesor_institucion));
+	}
 }
 ?>
