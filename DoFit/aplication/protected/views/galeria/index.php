@@ -88,12 +88,12 @@ function getActividades($id){
 
 
 
-<?php $this->renderPartial('_menu');?>
+<?php $this->renderPartial('../menu/_menu');?>
 
 <div class="container marketing">
 
     <div class="row">
-		<?php $this->renderPartial('_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
+		<?php $this->renderPartial('../menu/_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
 	</div>
     
     <input type="hidden" id="canal" value="<?php echo $canal->nombre;?>"/>

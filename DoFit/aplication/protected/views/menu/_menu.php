@@ -158,16 +158,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-bottom: 10%;
 }
 
-.notificaciones{
-    color:white;
-        border: 1px dashed;
-    border-color:white;
-    float:left;
-}
-.notificaciones li a{
-    color:white;
 
-}
 .logo{
     float:left;
 }
@@ -204,10 +195,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
                     <a href="../" class="navbar-brand"></a>
                     <li></li>
                 </div>
-                <div class="notificaciones">
-                    <li><a onclick="getMensajesFromBase();resetAlertas();" style="cursor:pointer;" alt="notificaciones"><span class="glyphicon glyphicon-globe"></span><span class="alerta_new" id="notificacion"></span></a></li>
-                    <li><a href="">Bienvenidoe!</a></li>
-                </div> 
+
         </div>
     </div>   
 </header>

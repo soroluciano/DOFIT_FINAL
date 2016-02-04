@@ -32,12 +32,12 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 
 ?>
 
-<?php $this->renderPartial('_menu');?>
+<?php $this->renderPartial('../menu/_menu');?>
 
 <div class="container marketing">
 
     <div class="row">
-		<?php $this->renderPartial('_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
+		<?php $this->renderPartial('../menu/_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
 	</div>
     
 		
@@ -66,11 +66,7 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 			</div>
 		
     
-	<div id="respuesta_ajax">
-
-
-			
-	</div>
+	<div id="respuesta_ajax"></div>
 
 
 	</div>

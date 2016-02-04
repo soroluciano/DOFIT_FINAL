@@ -132,7 +132,7 @@ div.profile_friends_fotos ul{
 }
 
 div.profile_publicaciones{
-    width:30%;
+    width:50%;
     float:left;
     padding-top:1%;
     height: 100%;
@@ -410,6 +410,13 @@ div.newposts{
 .light-blue{
     
 }
+
+.contorno {
+    border-style: solid;
+    border-width: 1px;
+    border-color:#3C39FF;
+}
+
 
 /*}*/
 /*  @media screen and (max-width: 1600px) {
