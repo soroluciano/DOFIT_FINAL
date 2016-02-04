@@ -47,7 +47,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"><b>Adhirete a un gimnasio como profesor!</b></h4>
+                    <h4 class="modal-title"><b>Adhirete a una institución como profesor!</b></h4>
                 </div>
                 <div class="container">
                     <div class="form">
