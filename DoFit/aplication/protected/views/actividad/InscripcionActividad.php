@@ -19,9 +19,9 @@ $this->pageTitle=Yii::app()->name;
         height:0px;
     }
 </style>
+<?php $this->renderPartial('../menu/_menu');?>
 
-
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<!--<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner"> solo comentado borrar todo si quedo bien
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
@@ -30,7 +30,7 @@ $this->pageTitle=Yii::app()->name;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
+            <a href="../"><img class="navbar-brand-img" src="<?php //echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
             <a href="../" class="navbar-brand"></a>
         </div>
         <nav id="bs-navbar" class="collapse navbar-collapse">
@@ -38,7 +38,7 @@ $this->pageTitle=Yii::app()->name;
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="">Bienvenido! Rabufeti</a></li>
-                <li><?php echo CHtml::link('Salir', array('site/logout')); ?></li>
+                <li><?php //echo CHtml::link('Salir', array('site/logout')); ?></li>
             </ul>
         </nav>
     </div>
@@ -46,6 +46,12 @@ $this->pageTitle=Yii::app()->name;
 <div id="map"  style="width: 100%; height: 740px; z-index:-1; position:absolute;">
 </div>
 <br>
+<br>
+<br>
+<br>
+<br>-->
+<div id="map"  style="width: 100%; height: 740px; z-index:-1; position:absolute;">
+</div>
 <br>
 <br>
 <br>

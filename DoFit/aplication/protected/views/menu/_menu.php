@@ -108,6 +108,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+    width:1px;
 }
 .menu span {
   display: block;
@@ -116,12 +117,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px 20px;
   box-sizing: border-box;
   position: relative;
-  right: -120px;
+  right: -220px;
   background: rgba(100, 100, 100, 0.7);
   margin-bottom: 5px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+
 }
 .menu span:nth-of-type(1) {
   -moz-transition: all 0.2s ease;
@@ -144,14 +146,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .menu span:hover {
   font-size: 1.5em;
   background: #646464;
+  color:white;
   cursor: pointer;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
+.menu.open {
+  width: 200px;
+}
 .menu.open span {
   right: 0px;
+}
+
+.menu a:link {
+    text-decoration: none;
+    
+}
+.menu a {
+    color:white;
+    font-weight:bolder;
+    
 }
 
 #top{
@@ -176,30 +193,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 </script>
 
+<?php $usuario = Usuario::model()->findByPk(Yii::app()->user->id); ?>
 
 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         
         <div class="navbar-header">
-
-  
             <div class="hamburgerMenu"><span></span></div>
             <div class="menu">
-                <span>Home</span>
-                <span><a href="">añgo</a></span>
-                <span><?php echo CHtml::link('Salir', array('site/logout')); ?>></span>
+                <span><a href="../site/index">Home</a></span>
+                <span><a href="../actividad/InscripcionActividad">Inscribirme</a></span>
+                <span><a href="../actividadalumno/ListadoActividades">Mis clases</a></span>
+                <?php if($usuario->id_perfil==2){ ?>
+                <span><a href="../ProfesorInstitucion/Adhesiongimnasio">Unirme a un gim(profesor)</a></span>
+                <span><a href="../ProfesorInstitucion/ListadoActividades">Mis clases(profesor)</a></span>
+                <?php } ?>
+                <span><a href="../red/">Mi red</a></span> 
+                <span><?php echo CHtml::link('Salir', array('site/logout')); ?></span>
+            </div>  
+            <div class="logo">
+                <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
+                <a href="../" class="navbar-brand"></a>
+                <li></li>
             </div>
-            
-                <div class="logo">
-                    <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
-                    <a href="../" class="navbar-brand"></a>
-                    <li></li>
-                </div>
-
         </div>
     </div>   
-</header>
-<br>
+</header> 
 <br>
 <br>
 <br>          

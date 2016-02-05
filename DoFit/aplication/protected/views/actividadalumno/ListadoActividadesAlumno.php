@@ -5,7 +5,8 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
 </head>
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<?php $this->renderPartial('../menu/_menu');?>
+<!--<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
@@ -28,11 +29,11 @@
                             $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
                             echo $ficha->nombre."&nbsp".$ficha->apellido;
                         } ?></a></li>
-                <li><?php echo CHtml::link('Salir', array('site/logout')); ?></li>
+                <li><?php //echo CHtml::link('Salir', array('site/logout')); ?></li>
             </ul>
         </nav>
     </div>
-</header>
+</header>-->
 <style type="text/css">
     body {
         background: url(../img/26.jpg) no-repeat center center fixed;

@@ -24,33 +24,33 @@ class GaleriaController extends Controller
       $this->render('_amigo',array('id'=>$id));
     } 
 
-      public function actionMostrarImagenes(){
+    public function actionMostrarImagenes(){
         $this->render('_imagenes');	
     }
     
 	public function actionGetPage(){
 		$page = $_POST['page'];
 		$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
-    $limita = "";
-    $limitb = "";
+		$limita = "";
+		$limitb = "";
    
-   if($page!=0){
-    $limita = ($limita+1)*8; 
-    $limitb = $limita*2;
-   }else{
-    $limita = $page;
-    $limitb = 8;
-   }
+		if($page!=0){
+		 $limita = ($limita+1)*8; 
+		 $limitb = $limita*2;
+		}else{
+		 $limita = $page;
+		 $limitb = 8;
+		}
    
    
-    $imagenes = Yii::app()->db->createCommand("select * from imagen where id_usuario = ".$usuario->id_usuario." limit ".$limita.",".$limitb."")->queryAll(); 
+		$imagenes = Yii::app()->db->createCommand("select * from imagen where id_usuario = ".$usuario->id_usuario." limit ".$limita.",".$limitb."")->queryAll(); 
 		$mensaje="";
    
-    foreach($imagenes as $img){
-				$mensaje.= "<div class='col-md-3 col-sm-4 col-xs-6 img_class' ><img class='img-responsive' style='overflow:hidden;' src='".Yii::app()->request->baseUrl."/uploads/".$img["nombre"]."' /></div>";
-          }
-		  echo $mensaje;
-	}
+		foreach($imagenes as $img){
+					$mensaje.= "<div class='col-md-3 col-sm-4 col-xs-6 img_class' ><img class='img-responsive' style='overflow:hidden;' src='".Yii::app()->request->baseUrl."/uploads/".$img["nombre"]."' /></div>";
+			  }
+			  echo $mensaje;
+		}
 		
 	public function actionGetLinks(){
 		$page = $_POST['page'];

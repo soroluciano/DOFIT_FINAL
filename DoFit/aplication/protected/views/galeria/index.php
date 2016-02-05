@@ -94,23 +94,23 @@ function getActividades($id){
 
     <div class="row">
 		<?php $this->renderPartial('../menu/_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
-	</div>
-    
-    <input type="hidden" id="canal" value="<?php echo $canal->nombre;?>"/>
-    <input type="hidden" id="id_canal" value="<?php echo $canal->id_canal;?>"/>
-    <input type="hidden" id="id_actividad_selected" value=""/>
-    
-	<div id="respuesta_ajax">
-
-		<?php	if($usuario->id_perfil==1){ ?>
-    <div class='propaganda-muro-2'>Publicite aqui</div>
-    <?php	}?>
-		<div id="comentarios" class="row">
-						<?php $this->renderPartial('galeria',array('perfil'=>$perfil)); ?>
-    </div>
-    
-	</div>
 	
+    
+		<input type="hidden" id="canal" value="<?php echo $canal->nombre;?>"/>
+		<input type="hidden" id="id_canal" value="<?php echo $canal->id_canal;?>"/>
+		<input type="hidden" id="id_actividad_selected" value=""/>
+		
+		<div id="respuesta_ajax">
+	
+			<?php	if($usuario->id_perfil==1){ ?>
+			<div class='propaganda-muro-2'>Publicite aqui</div>
+		<?php	}?>
+			<div id="comentarios" class="row">
+							<?php $this->renderPartial('galeria',array('perfil'=>$perfil)); ?>
+			</div>
+		
+		</div>
+	</div>
 </div>
 
 

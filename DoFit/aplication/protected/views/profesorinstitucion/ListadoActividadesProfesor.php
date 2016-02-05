@@ -5,7 +5,7 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
 </head>
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<!--<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
@@ -33,7 +33,8 @@
             </ul>
         </nav>
     </div>
-</header>
+</header>-->
+<?php $this->renderPartial('../menu/_menu');?>
 <style type="text/css">
     body {
         background: url(../img/futbol.jpg) no-repeat center center fixed;

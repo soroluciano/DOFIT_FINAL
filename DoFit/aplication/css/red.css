@@ -37,7 +37,7 @@ div.cabecera-perfil{
 
 
 @media screen and (max-width: 700px) {
-.cabecera-perfil{ width:80%;padding-bottom: 10px;}
+.cabecera-perfil{ width:100%;padding-bottom: 10px;}
 .panel-sized{
   width:85% !important;
   float:left;
@@ -45,7 +45,7 @@ div.cabecera-perfil{
 }
 
 @media screen and (max-width: 500px) {
-.cabecera-perfil{ width:90%;padding-bottom: 10px;height: 130px;}
+.cabecera-perfil{ width:100%;padding-bottom: 10px;height: 130px;}
 .panel-sized{
   width:95% !important;
 
@@ -78,7 +78,11 @@ div.cabecera-perfil{
     height:55px;
     
  }
-
+.bord{
+  border: 1px;
+  border-style:solid;
+  border-color: red;
+}
 
 div.profile_img {
     padding-bottom:4px;
@@ -89,59 +93,50 @@ div.profile_img {
     width:auto;
     float: left;
 }
-div.profile_img:hover{}
-
-
 
 
 div.profile_info{
- /*   border-right:1px solid #ddd;*/
-    width:25%;
+    width:auto;
     float:left;
     padding-top: 1%;
     margin-left:1px;
-/*    padding-bottom: 15px;
-    padding-left:5px;*/
     height: 100%;
 }
-
-.bord{
-  border: 1px;
-  border-style:solid;
-  border-color: red;
-}
-
 div.profile_info ul{
   width: 100%;
   height: 100%;
   padding-left: 2%;
 }
 
-
-
-div.profile_friends_fotos{
-    width:30%;
-    float:left;
-    padding-top:1%;
-    height: 100%;
-}
-
-div.profile_friends_fotos ul{
-    width: 120px;
-    float: right;
-}
-
 div.profile_publicaciones{
-    width:50%;
+    width:150px;
     float:left;
     padding-top:1%;
     height: 100%;
 }
 
 div.profile_publicaciones ul{
-    width: 120px;
-    float: right;
+    width: 100%;
+    height: 100%;
+    padding-left:3%;
 }
+
+
+div.profile_friends_fotos{
+    width:150px;
+    float:left;
+    padding-top:1%;
+    height: 100%;
+}
+
+div.profile_friends_fotos ul{
+    width: 100%;
+    height: 100%;
+    padding-left:3%;
+    padding-right: 3%;
+}
+
+
 
 
 
@@ -377,13 +372,11 @@ div.newposts{
 /*@media screen and (max-width: 1600px) {*/
 #seccion_imagenes{
     background-color: white;
-    padding-left:1px;
-    padding-right:1px;
+    margin-top:0.5%;
+    margin-left:2.5%;
+    margin-right:2.5%;
     padding-top:1px;
-    margin-top:5px;
-/*    width:1052px;*/
-    margin-left:30px;
-    height: auto;
+    height: 900px;
 }
 
 .red{

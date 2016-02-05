@@ -31,7 +31,7 @@ if(!Yii::app()->user->isGuest){
 
  ?>
 
-<?php $this->renderPartial('../menu/_menuPerfil');?>
+<?php $this->renderPartial('../menu/_menu');?>
 
 
 	<div id="respuesta_ajax">
