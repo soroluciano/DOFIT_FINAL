@@ -1,0 +1,128 @@
+2016/02/06 23:18:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:18:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-icons_888888_256x240.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-icons_888888_256x240.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:18:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:25:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ConsultarEstadosActividades".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CController.php(270): CController->missingAction('ConsultarEstado...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(282): CController->run('ConsultarEstado...')
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('profesorinstitu...')
+#3 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/profesorinstitucion/ConsultarEstadosActividades
+---
+2016/02/06 23:25:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "ConsultarEstadosActividades".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CController.php(270): CController->missingAction('ConsultarEstado...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(282): CController->run('ConsultarEstado...')
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('ProfesorInstitu...')
+#3 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/ProfesorInstitucion/ConsultarEstadosActividades
+---
+2016/02/06 23:26:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-icons_888888_256x240.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-icons_888888_256x240.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:26:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:26:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:30:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:30:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-icons_888888_256x240.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-icons_888888_256x240.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:30:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_highlight-soft_75_cccccc_1x100.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-icons_888888_256x240.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-icons_888888_256x240.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
+2016/02/06 23:32:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png".' in C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\web\CWebApplication.php(141): CWebApplication->runController('datatable/css/i...')
+#1 C:\xampp\htdocs\DOFIT_FINAL\DoFit\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DOFIT_FINAL\DoFit\aplication\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/datatable/css/images/ui-bg_glass_75_e6e6e6_1x400.png
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/datatable/css/dataTables.smoothness.css
+---
