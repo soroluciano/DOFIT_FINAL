@@ -75,7 +75,6 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
-
         $('#insadherido').DataTable( {
             'language' : {
                 'sProcessing':     'Procesando...',

@@ -132,7 +132,7 @@ $this->pageTitle=Yii::app()->name;
                                 <div class="input-group-addon">$</div>
                                 <?php $idinstitucion = Yii::app()->user->id;
                                 ?>
-                                <?php echo $form->dropDownList($actividad,'valor_actividad',CHtml::listData(Actividad::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion,'id_actividad)),'id_actividad','valor_actividad'),array('class'=>"form-control",'placeholder'=>"Monto"));?>
+                                <?php echo $form->dropDownList($actividad,'valor_actividad',CHtml::listData(Actividad::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion)),'id_actividad','valor_actividad'),array('class'=>"form-control",'placeholder'=>"Monto"));?>
                             </div>
                             <br>
                             <?php echo $form->error($actividad,'valor_actividad')?>
