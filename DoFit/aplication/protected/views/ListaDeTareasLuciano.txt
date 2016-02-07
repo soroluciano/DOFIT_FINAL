@@ -7,7 +7,7 @@ Luciano
 -modificar el buscador para que solo permita 2 personas
 -arreglar boton de mas posts en muro
 -agregar mas opciones o datos dentro de la cabecera
--agregar eliminacion de imagen y ampliacion
+
 
 
 Si se llega con el tiempo
@@ -17,13 +17,20 @@ Si se llega con el tiempo
 
 trabajando en :
 
--poner el menu burguer  <-- falta agregar todos los links y linkear en todas las pantallas de usuario
+
 -terminar la modificacion de perfil <--comenzado
 -mejorar el css de la cabecera <--comenzado
+-agregar eliminacion de imagen y ampliacion
 
 Terminado
 
 paginacion de imagenes
+-poner el menu burguer  <-- falta agregar todos los links y linkear en todas las pantallas de usuario
+
+
+
+
+
 
 
 Damian

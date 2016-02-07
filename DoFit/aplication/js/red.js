@@ -213,22 +213,22 @@
      
    }
    
-   function deleteImagen(id) {
-      debugger;
-  
-      $.ajax({
-      url: baseurl+'/red/deleteImagen',  
-      type: 'POST',
-      data: 'id='+id,
-      success:function(response){
-         debugger;
-        var respuesta = mostrarImagenes();
-         $('.imagenes').html(respuesta);
-      },
-      error: function(e){        
-      }
-      });
-   }
+   //function deleteImagen(id) {
+   //   debugger;
+   //
+   //   $.ajax({
+   //   url: baseurl+'/red/deleteImagen',  
+   //   type: 'POST',
+   //   data: 'id='+id,
+   //   success:function(response){
+   //      debugger;
+   //     var respuesta = mostrarImagenes();
+   //      $('.imagenes').html(respuesta);
+   //   },
+   //   error: function(e){        
+   //   }
+   //   });
+   //}
    
    function mostrarImagenes() {
       getPage(0);

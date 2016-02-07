@@ -38,4 +38,23 @@
         });
     }
     
+    function deleteImagen(id) {
+        debugger;
+        $.ajax({
+          url: baseurl+'/galeria/deleteImagen', 
+          type: 'POST',
+          data: 'id='+id,
+          success:function(response){
+             if (response == "deleted") {
+                 getPage(0); 
+             }else{
+              alert("error borrando imagen")
+             }
+          },
+          error: function(e){
+             alert(e);
+          }
+        });
+    }
+    
     
