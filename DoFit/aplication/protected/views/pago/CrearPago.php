@@ -74,7 +74,7 @@ $this->pageTitle=Yii::app()->name;
                         <?php echo CHtml::beginForm('InscripcionActividad','post'); ?>
                         <div class="form-group">
                             <?php   $criteria = new CDbCriteria;
-                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ))';
+                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN (select id_actividad from actividad where id_institucion = :institucion ))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id  );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
                             <?php   echo $form->labelEx($ficha_usuario,'Alumno'); ?>

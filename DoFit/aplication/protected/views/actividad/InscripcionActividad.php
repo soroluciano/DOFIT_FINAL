@@ -133,7 +133,6 @@ $this->pageTitle=Yii::app()->name;
         var deporte = $("#ListaDeporte").val();
         var localidad = $("#Localidad_id_localidad").val();
         var provincia = $("#Localidad_id_provincia").val();
-        $("#boton").hide();
         if(deporte != ""){
             if(provincia != ""){
                 if(localidad != ""){
@@ -151,8 +150,6 @@ $this->pageTitle=Yii::app()->name;
                             else {
                                 debugger;
                                 $("#map").show();
-                                alert(response);
-
                                 //var locations = JSON.stringify( "[" + response + "]" );
                                 locations = JSON.parse("["+response+"]");
                                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -182,7 +179,6 @@ $this->pageTitle=Yii::app()->name;
                                     })(marker, i));
 
                                 }
-                                $("#boton").show();
                             }
 
                         },

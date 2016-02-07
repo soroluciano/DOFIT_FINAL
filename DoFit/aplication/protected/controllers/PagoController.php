@@ -39,11 +39,11 @@ class PagoController extends Controller
     {
         $var = "";
         $dia = "";
-        IF(isset($_POST['valor'])){
+        if(isset($_POST['valor'])){
             $actividad = Actividad::model()->findByPk($_POST['valor']);
             $id_deporte = $actividad->id_deporte;
             $deporte = Deporte::model()->findByPk($id_deporte);
-            $actividad_horario = ActividadHorario::model()->findAll('id_actividad = :id',array(':id'=>126));
+            $actividad_horario = ActividadHorario::model()->findAll('id_actividad = :id_actividad',array(':id_actividad'=>$actividad->id_actividad));
             $var = 'Deporte: '.$deporte->deporte.' ';
             foreach($actividad_horario as $ah){
                 if($ah->id_dia == 1){$dia = "Lunes";};
@@ -179,9 +179,7 @@ class PagoController extends Controller
                 $actividades = Actividad::model()->findAllByAttributes(array('id_institucion'=>$id_institucion,'id_actividad'=>$act->id_actividad));
                 $actividades = CHtml::listData($actividades, 'id_actividad', 'id_actividad');
 
-
                 foreach ($actividades as $valor => $act) {
-
                     echo CHtml::tag('option', array('value' => $valor), 'Actividad número: '.CHtml::encode($act), true);
                 }
             }

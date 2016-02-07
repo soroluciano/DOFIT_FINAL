@@ -243,9 +243,10 @@ class ActividadController extends Controller
                 if ($gim->acepta_mp == 'N') {
                     $gim->acepta_mp = 'No';
                 }
-                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ')  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . ')) > 0 ')->queryRow();
-
+                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ')  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . ')) > 0 ')->queryAll();
+                $flag = 0;
                 if ($list) {
+                    $flag = 1;
                     if ($locations == "") {
                         $locations = $locations . '["<center><b>' . $gim->nombre . '</center></b><br>' .
                             ' <b>►Dirección: </b>' . $gim->direccion . '<br>' .
@@ -298,9 +299,10 @@ class ActividadController extends Controller
                         $locations = $locations . '",' . $gim->coordenada_x . ',' . $gim->coordenada_y . ',' . $i++ . ']';
                     }
                 }
+
             }
 
-            if ($gimnasio == null) {
+            if ($gimnasio == null || $flag == 0) {
                 echo "error";
             } else {
                 echo $locations;

@@ -5,34 +5,6 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
 </head>
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide">
-            <a href="../" class="navbar-brand"></a>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Bienvenido! <?php
-                        if(isset(Yii::app()->session['id_usuario'])){
-                            //Es un usuario logueado.
-                            $Us = Usuario::model()->findByPk(Yii::app()->user->id);
-                            $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
-                            echo $ficha->nombre."&nbsp".$ficha->apellido;
-                        } ?></a></li>
-                <li><?php echo CHtml::link('Salir', array('site/logout')); ?></li>
-            </ul>
-        </nav>
-    </div>
-</header>
 <style type="text/css">
     body {
         background: url(../img/27.jpg) no-repeat center center fixed;
@@ -42,10 +14,12 @@
         background-size: cover;
     }
 </style>
+<body>
 <?php if(isset(Yii::app()->session['id_usuario'])){
     if($profesor_institucion != NULL){
         ?>
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modalsolicitudes" aria-labelledby="myLargeModalLabel">
+            <?php $this->renderPartial('../menu/_menu');?>
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -97,39 +71,39 @@
     }
 }
 ?>
-
+</body>
+</html>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#modalsolicitudes').modal('show');
-    });
+        $('#insadherido').DataTable( {
+            'language' : {
+                'sProcessing':     'Procesando...',
+                'sLengthMenu':     'Mostrar _MENU_ registros',
+                'sZeroRecords':    'No se encontraron resultados',
+                'sEmptyTable':     'Ningún dato disponible en esta tabla',
+                'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
+                'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
+                'sInfoPostFix':    '',
+                'sSearch':         'Buscar:',
+                'sUrl':            '',
+                'sInfoThousands':  ',',
+                'sLoadingRecords': 'Cargando...',
 
-    $('#insadherido').DataTable( {
-        'language' : {
-            'sProcessing':     'Procesando...',
-            'sLengthMenu':     'Mostrar _MENU_ registros',
-            'sZeroRecords':    'No se encontraron resultados',
-            'sEmptyTable':     'Ningún dato disponible en esta tabla',
-            'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
-            'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
-            'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
-            'sInfoPostFix':    '',
-            'sSearch':         'Buscar:',
-            'sUrl':            '',
-            'sInfoThousands':  ',',
-            'sLoadingRecords': 'Cargando...',
+                'oPaginate': {
+                    'sFirst':    'Primero',
+                    'sLast':     'Ultimo',
+                    'sNext':     'Siguiente',
+                    'sPrevious': 'Anterior'
+                },
 
-            'oPaginate': {
-                'sFirst':    'Primero',
-                'sLast':     'Ultimo',
-                'sNext':     'Siguiente',
-                'sPrevious': 'Anterior'
-            },
-
-            'oAria': {
-                'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
-                'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+                'oAria': {
+                    'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
+                    'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+                }
             }
-        }
-    } );
-</script>	
-  		
+        });
+    });
+    $('#modalsolicitudes').modal('show');
+</script>
+

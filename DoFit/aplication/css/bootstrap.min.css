@@ -6,9 +6,9 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 html {
-font-family: 'Roboto';
--webkit-text-size-adjust: 100%;
--ms-text-size-adjust: 100%
+    font-family: 'Roboto';
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%
 }
 body {
     margin: 0;
@@ -5095,4 +5095,13 @@ button.close {
     width: 100%;
 }
 
+.fuentemenu {
+    float: left;
+    margin-top: 5%;
+    height: 50px;
+    color: white;
+    padding: 15px 15px;
+    font-size: 15px;
+    line-height: 20px;
+}
    
