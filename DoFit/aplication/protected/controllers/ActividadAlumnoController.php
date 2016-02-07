@@ -54,7 +54,7 @@ class ActividadAlumnoController extends Controller
         $id_usuario = Yii::app()->user->id;
         $criteria = new CDbCriteria;
         if(isset(Yii::app()->session['id_usuario'])){
-            $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' AND id_estado = 1 ))')->queryAll();
+            $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' ))')->queryAll();
             $this->render('ListadoActividadesAlumno',array('instituciones'=>$instituciones));
         }
         else{
@@ -68,14 +68,14 @@ class ActividadAlumnoController extends Controller
         $id_institucion = $_POST['idinstitucion'];
         $ficha_institucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$id_institucion));
         $id_usuario = Yii::app()->user->id;
-        $actividadesalumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$id_usuario,'id_estado'=>1));
+        $actividadesalumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$id_usuario));
         if($actividadesalumno != NULL){
             echo "<br/>";
             echo "<br/>";
             echo "<table id='conactividades' class='display'  cellspacing='0' width='100%'>
 			       <thead class='fuente'>
 				     <tr>
-					 <th>Deporte</th><th>Días y Horarios</th><th>Profesor</th><th>Valor Mensual</th><th>Mercado Pago</th>
+					 <th>Deporte</th><th>Días y Horarios</th><th>Profesor</th><th>Estado</th><th>Valor Mensual</th><th>Mercado Pago</th>
 					 </tr>
 				   </thead>
 			      <tbody class='fuente'>";
@@ -100,21 +100,34 @@ class ActividadAlumnoController extends Controller
                     }
                     echo "</td>";
                     echo "<td id='prof'>".$fichausuario->nombre ." ".$fichausuario->apellido ."</td>";
-                    echo "<td id='valoract'>". $act->valor_actividad ."</td>";
+                    echo "<td id='esta'>";
+					      if($actalum->id_estado == 1){
+							  echo "Estas inscripto";
+						    }
+                          if($actalum->id_estado == 0){
+							   echo "Inscripción pendiente";
+                        	} 							
+					echo "</td>";		
+					echo "<td id='valoract'>". $act->valor_actividad ."</td>";
                     $deporte = $ficha_institucion->nombre . "&nbsp-&nbsp" . $deporte->deporte . " (". $diashorariosact . ")";
-                    $datosactividadmp = array(
-                        "items" => array(
-                            array(
-                                "title" =>$deporte,
-                                "quantity" => 1,
-                                "currency_id" => "ARS",
-                                "unit_price" =>intval($act->valor_actividad)
-                            )
-                        )
-                    );
-                    $botonactividadmp = $mp->create_preference($datosactividadmp);
-                    echo "<td><a href=". $botonactividadmp['response']['init_point']." class='btn btn-primary'>Pagar con Mercado Pago </a></td>";
-                    echo "</tr>";
+				    if($actalum->id_estado == 1){
+					   $datosactividadmp = array(
+                            "items" => array(
+                                            array(
+                                                  "title" =>$deporte,
+                                                  "quantity" => 1,
+                                                  "currency_id" => "ARS",
+                                                  "unit_price" =>intval($act->valor_actividad)
+                                            )
+                                        )
+                        );
+                        $botonactividadmp = $mp->create_preference($datosactividadmp);
+                        echo "<td><a href=". $botonactividadmp['response']['init_point']." class='btn btn-primary'>Pagar con Mercado Pago </a></td>";
+                    }
+					if($actalum->id_estado == 0){
+						echo "<td id='mp'>No se encuentra habilitado.</td>";
+                    } 						
+					echo "</tr>";
                 }
             }
             echo "</tbody>
