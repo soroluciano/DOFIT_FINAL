@@ -20,45 +20,11 @@ if(!Yii::app()->user->isGuest){
 </style>
 
 
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../site/LoginInstitucion"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
-            <a href="../" class="navbar-brand"></a>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a>
-                </li>
-                <li>
-                    <a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a>
-                </li>
-                <li>
-                    <a href="../actividad/CrearActividad">Crear Actividades</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Bienvenido! re puto!</a></li>
-                <li><?php echo CHtml::link('Salir', array('site/logout')); ?></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+    <?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -74,15 +40,15 @@ if(!Yii::app()->user->isGuest){
                             $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
                             $respuesta=" <select class='form-control' style='margin-top:5px;' id='actividades' name='options'>
                                          <option id='0'>Selecciona actividad</option>";
-                                         foreach($listaActividades as $act ){
-                                             $query_horario = "select CASE id_dia WHEN 1 THEN 'Lunes' WHEN 2 THEN 'Martes' WHEN 3 THEN 'Miercoles' WHEN 4 THEN 'Jueves' WHEN 5 THEN 'Viernes' WHEN 6 THEN 'Sabado' WHEN 7 THEN 'Domingo' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = ".$act['id_actividad'];
-                                             $horario = Yii::app()->db->createCommand($query_horario)->queryAll();
-                                             $hora = "";
-                                             foreach($horario as $h) {
-                                                 $hora = $hora . ' - '.$h['dia'].' - '.$h['horario'];
-                                             }
-                                             $respuesta.="<option id='".$act['id_actividad']."'><a href='#'>".$act['profesor']." - ".$act['deporte'].$hora."</a></option>";
-                                         }
+                            foreach($listaActividades as $act ){
+                                $query_horario = "select CASE id_dia WHEN 1 THEN 'Lunes' WHEN 2 THEN 'Martes' WHEN 3 THEN 'Miercoles' WHEN 4 THEN 'Jueves' WHEN 5 THEN 'Viernes' WHEN 6 THEN 'Sabado' WHEN 7 THEN 'Domingo' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = ".$act['id_actividad'];
+                                $horario = Yii::app()->db->createCommand($query_horario)->queryAll();
+                                $hora = "";
+                                foreach($horario as $h) {
+                                    $hora = $hora . ' - '.$h['dia'].' - '.$h['horario'];
+                                }
+                                $respuesta.="<option id='".$act['id_actividad']."'><a href='#'>".$act['profesor']." - ".$act['deporte'].$hora."</a></option>";
+                            }
                             $respuesta.="</select>";
                             echo $respuesta;
                             ?>
@@ -161,21 +127,21 @@ if(!Yii::app()->user->isGuest){
         if(actividad != 0){
             var data = {'actividad': actividad};
             $.ajax({
-                    url: '../actividad/Eliminar',
-                    type: 'POST',
-                    data: data,
-                    dataType: "html",
-                    cache: false,
-                    success: function (response) {
-                        if (response == "ok") {
-                            $("#actividades").find('option:selected').removeAttr("selected");
-                            $('#Ok').modal('show');
+                url: '../actividad/Eliminar',
+                type: 'POST',
+                data: data,
+                dataType: "html",
+                cache: false,
+                success: function (response) {
+                    if (response == "ok") {
+                        $("#actividades").find('option:selected').removeAttr("selected");
+                        $('#Ok').modal('show');
 
-                        }
-                        else {
-                            $('#Error').modal('show');
-                        }
-        }})}
+                    }
+                    else {
+                        $('#Error').modal('show');
+                    }
+                }})}
         else{
             $('#modal-error').html("¡Debe seleccionar al menos una actividad!");
             $('#error').modal('show');

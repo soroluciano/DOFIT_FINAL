@@ -41,10 +41,8 @@ class PagoController extends Controller
         $dia = "";
         if(isset($_POST['valor'])){
             $actividad = Actividad::model()->findByPk($_POST['valor']);
-            $id_deporte = $actividad->id_deporte;
-            $deporte = Deporte::model()->findByPk($id_deporte);
             $actividad_horario = ActividadHorario::model()->findAll('id_actividad = :id_actividad',array(':id_actividad'=>$actividad->id_actividad));
-            $var = 'Deporte: '.$deporte->deporte.' ';
+            $var = '';
             foreach($actividad_horario as $ah){
                 if($ah->id_dia == 1){$dia = "Lunes";};
                 if($ah->id_dia == 2){$dia = "Martes";};
@@ -54,9 +52,11 @@ class PagoController extends Controller
                 if($ah->id_dia == 6){$dia = "Sabado";};
                 if($ah->id_dia == 7){$dia = "Domingo";};
 
-                $var = $var . ' Dia: '.$dia. ' Horario: '.str_pad($ah->hora,2,'0',STR_PAD_LEFT).':'.str_pad($ah->minutos,2,'0',STR_PAD_LEFT);
+                $var = $var . '<b>Dia:</b>'.$dia.'&nbsp'.'<b>Horario:</b>'.str_pad($ah->hora,2,'0',STR_PAD_LEFT).':'.str_pad($ah->minutos,2,'0',STR_PAD_LEFT).'&nbsp';
             }
-            echo $var;
+             $var = $var . '|' . $actividad->valor_actividad;
+			
+			echo $var;
 
         }
 
@@ -172,15 +172,15 @@ class PagoController extends Controller
 
         $id_usuario = $_POST['FichaUsuario']['id_usuario'];
         $id_institucion = Yii::app()->user->id;
-        $acti = ActividadAlumno::model()->findAll('id_usuario= :id_usuario', array(':id_usuario' => $id_usuario));
-        echo CHtml::tag('option', array('value' => ''), 'Seleccione una actividad', true);
+        $acti = ActividadAlumno::model()->findAll('id_usuario= :id_usuario', array(':id_usuario' => $id_usuario));   
+		echo CHtml::tag('option', array('value' => ''), 'Seleccione una actividad', true);
         foreach($acti as $act){
             if($acti != null){
                 $actividades = Actividad::model()->findAllByAttributes(array('id_institucion'=>$id_institucion,'id_actividad'=>$act->id_actividad));
-                $actividades = CHtml::listData($actividades, 'id_actividad', 'id_actividad');
-
-                foreach ($actividades as $valor => $act) {
-                    echo CHtml::tag('option', array('value' => $valor), 'Actividad número: '.CHtml::encode($act), true);
+                //$actividadeselec = CHtml::listData($actividades, 'id_actividad', 'id_actividad');
+                foreach ($actividades as $act) {
+					$deporte = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));	
+					echo CHtml::tag('option', array('value' => $act->id_actividad), CHtml::encode($deporte->deporte), true);
                 }
             }
         }
@@ -224,8 +224,6 @@ class PagoController extends Controller
 
 
     }
-
-
 
 }
 

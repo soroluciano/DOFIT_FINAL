@@ -5,50 +5,14 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
 </head>
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../site/LoginInstitucion"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
-            <a href="../" class="navbar-brand"></a>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a>
-                </li>
-                <li>
-                    <a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a>
-                </li>
-                <li>
-                    <a href="../actividad/CrearActividad">Crear Actividades</a>
-                </li>
-                <li>
-                    <a href="../javascript/"></a>
-                </li>
-                <li>
-                    <a href="../customize/"></a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Bienvenido!
-                        <?php
-                        if(isset(Yii::app()->session['id_institucion'])){
-                            //Es un usuario logueado.
-                            $ins = Institucion::model()->findByPk(Yii::app()->user->id);
-                            $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
-                            echo $fichains->nombre."&nbsp";
-                        } ?></a></li>
-                <li><a href="../site/LoginInstitucion">Salir</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<?php
+if(isset(Yii::app()->session['id_institucion'])){
+    //Es un usuario logueado.
+    $ins = Institucion::model()->findByPk(Yii::app()->user->id);
+    $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
+}
+$this->renderPartial('../menu/_menuInstitucion');
+?>
 <style type="text/css">
     body {
         background: url(../img/fondo1.jpg) no-repeat center center fixed;
@@ -69,7 +33,7 @@
             $idinstitucion = Yii::app()->user->id;
             $profesores = ProfesorInstitucion::model()->findAll('id_institucion=:id_institucion',array(':id_institucion'=>$idinstitucion));
             if($profesores !=null){
-                echo "<div><h2>Profesores inscriptos en la instituci&oacute;n</h2></div>";
+                echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
                 echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
                  <thead class='fuente'>

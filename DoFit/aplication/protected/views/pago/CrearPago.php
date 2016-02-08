@@ -11,6 +11,7 @@ $this->pageTitle=Yii::app()->name;
 }
 ?>
 
+
 <style type="text/css">
     body {
         background: url(../img/20.jpg) no-repeat center center fixed;
@@ -21,46 +22,11 @@ $this->pageTitle=Yii::app()->name;
     }
 </style>
 
-
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../site/LoginInstitucion"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
-            <a href="../" class="navbar-brand"></a>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a>
-                </li>
-                <li>
-                    <a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a>
-                </li>
-                <li>
-                    <a href="../actividad/CrearActividad">Crear Actividades</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Bienvenido! <?php echo $fichains->nombre; ?></a></li>
-                <li><?php echo CHtml::link('Salir', array('site/logout')); ?></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+    <?php $this->renderPartial('../menu/_menuInstitucion');?>
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -126,13 +92,10 @@ $this->pageTitle=Yii::app()->name;
                                 "12"=>"Diciembre",),array('class'=>"form-control",'name'=>'meses[]'));?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->labelEx($actividad,'Monto Abonado'); ?>
+                            <?php echo $form->labelEx($actividad,'Monto'); ?>
                             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">$</div>
-                                <?php $idinstitucion = Yii::app()->user->id;
-                                ?>
-                                <?php echo $form->dropDownList($actividad,'valor_actividad',CHtml::listData(Actividad::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion)),'id_actividad','valor_actividad'),array('class'=>"form-control",'placeholder'=>"Monto"));?>
+                            <div class="monto"><b>$
+                                    <p style="display:inline;" id="valoractividad"></p></b>
                             </div>
                             <br>
                             <?php echo $form->error($actividad,'valor_actividad')?>
@@ -192,39 +155,6 @@ $this->pageTitle=Yii::app()->name;
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal Correcto -->
-                        <div class='modal fade' id='incorrecto' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-                            <div class='modal-dialog' role='document'>
-                                <div class='modal-content'>
-                                    <div class='modal-header'>
-                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                                        <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
-                                    </div>
-                                    <div class='modal-body'>
-                                        Ingrese el importe correcto para esa actividad.
-                                    </div>
-                                    <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Error -->
-                        <div class='modal fade' id='error' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-                            <div class='modal-dialog' role='document'>
-                                <div class='modal-content'>
-                                    <div class='modal-header'>
-                                        <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                                        <h4 class='modal-title' id='myModalLabel'>¡Oops!</h4>
-                                    </div>
-                                    <div class='modal-body' id="modal-error">
-                                    </div>
-                                    <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <?php echo CHtml::endForm(); ?>
                         <?php $this->endWidget(); ?>
                     </div>
@@ -242,6 +172,7 @@ $this->pageTitle=Yii::app()->name;
     <script type="text/javascript">
         function BuscoDetalle(){
             $('#Detalle').empty();
+            $('#valoractividad').empty();
             var valor = $('#Actividad_id_actividad').val();
             if(valor != ""){
                 var data = {'valor':valor};
@@ -252,9 +183,11 @@ $this->pageTitle=Yii::app()->name;
                     dataType: "html",
                     cache: false,
                     success: function (response) {
-                        deporte = response.split(":");
-                        deporte[1] = deporte[1].replace(/\s/g, ''); // quito los espcios en Blanco del deporte
-                        $('#Detalle').append("<p>"+response+"</p>");
+                        actividad = response.split("|");
+                        $('#Detalle').append("<p>"+actividad[0]+"</p>");
+                        //$('#valoractividad').addClass("input-group-addon");
+                        $('#valoractividad').append(actividad[1]);
+
                     }
 
                 })
@@ -268,7 +201,7 @@ $this->pageTitle=Yii::app()->name;
             var actividad  = $('#Actividad_id_actividad').val();
             var anio  = $('#anio').val();
             var meses = $('#meses').val();
-            var monto = $('#Actividad_valor_actividad').val();
+            var monto = $('#valoractividad').text();
             if(id_usuario != ""){
                 if(actividad!= ""){
                     if(anio != ""){
