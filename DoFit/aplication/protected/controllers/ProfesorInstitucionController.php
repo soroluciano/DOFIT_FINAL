@@ -126,6 +126,7 @@ class ProfesorInstitucionController extends Controller
 	{
 		$idusuario = $_POST['idusuario'];
 		$fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
+		echo "<center><b>Datos tel&eacute;fonicos de&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</b></center>|";
 		echo "<center>";	   
 		echo "<br><b>Tel&eacute;fono Fijo: </b>" . substr($fichausuario->telfijo,0,4)."-".substr($fichausuario->telfijo,0,4);
 		echo "<br><b>Celular: </b>" . $fichausuario->celular;
@@ -138,6 +139,7 @@ class ProfesorInstitucionController extends Controller
 	{
 		$idusuario = $_POST['idusuario'];
 		$fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
+		echo "<center><b>Datos domiciliarios de&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</b></center>|";
 		echo "<center>";
 		echo "<br><b>Direcci&oacute;n: </b>" . $fichausuario->direccion;
 		echo "<br><b>Piso: </b>". $fichausuario->piso;

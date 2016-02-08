@@ -113,7 +113,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                             <div class='modal-content'>
 							   <div class='modal-header'>
                                   <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
-                                  <h4 class='modal-title' id='myModalLabel'><center><b>Datos Tel&eacute;fonicos de&nbsp;" .$profesor->nombre."&nbsp".$profesor->apellido."</b></center></h4>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulostel'></div></h4>
                                </div>
                                 <div class='modal-body'>
                                     <div id='datostele'></div>
@@ -130,7 +130,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                             <div class='modal-content'>
 							   <div class='modal-header'>
                                   <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
-                                  <h4 class='modal-title' id='myModalLabel'><center><b>Datos domiciliarios de&nbsp;" .$profesor->nombre."&nbsp".$profesor->apellido."</b></center></h4>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulosdire'></div></h4>
                                </div>
                                 <div class='modal-body'>
                                     <div id='datosdire'></div>
@@ -246,7 +246,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-                $('#datostele').append(response);
+              var telefonos = response.split("|");
+                $('#titulostel').append(telefonos[0]);				
+				$('#datostele').append(telefonos[1]);
                 $('#datostelefonos').modal('show');
             }
         });
@@ -266,7 +268,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-                $('#datosdire').append(response);
+              var direcciones = response.split("|");
+				$('#titulosdire').append(direcciones[0]);
+				$('#datosdire').append(direcciones[1]);
                 $('#datosdireccion').modal('show');
             }
         });
