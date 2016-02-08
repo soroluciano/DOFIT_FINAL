@@ -108,37 +108,39 @@ $this->renderPartial('../menu/_menuInstitucion');
 					    </div>
 				    </div>";
                     // Modal telefonos
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myLargeModalLabel'>
-                    <div class='modal-dialog modal-lg'>
-                        <div class='modal-content'>
-                            <div class='container'>
-                                <div class='col-md-8'>
-                                    <div class='form-group'>
-                                        <div id='datostele'>
-                                        </div>
-                                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Volver</a>
-                                    </div>
+              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><center><b>Datos Tel&eacute;fonicos de&nbsp;" .$profesor->nombre."&nbsp".$profesor->apellido."</b></center></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datostele'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>";
+                    </div>";
                     // Modal Direccion
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myLargeModalLabel'>
-                    <div class='modal-dialog modal-lg'>
-                        <div class='modal-content'>
-                            <div class='container'>
-                                <div class='col-md-8'>
-                                    <div class='form-group'>
-                                        <div id='datosdire'>
-                                        </div>
-                                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Volver</a>
-                                    </div>
+             echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><center><b>Datos domiciliarios de&nbsp;" .$profesor->nombre."&nbsp".$profesor->apellido."</b></center></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datosdire'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>";
+                    </div>";
 
                     // Modal Actividades
                     echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosactividades' aria-labelledby='myLargeModalLabel'>
@@ -149,7 +151,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     <div class='form-group'>
                                         <div id='datosacti'>
                                         </div>
-                                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Volver</a>
+                                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
                                     </div>
                                 </div>
                             </div>
