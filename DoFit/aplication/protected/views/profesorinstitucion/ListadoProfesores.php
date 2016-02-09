@@ -31,6 +31,7 @@ $this->renderPartial('../menu/_menuInstitucion');
         <?php
         if(isset(Yii::app()->session['id_institucion'])){
             $idinstitucion = Yii::app()->user->id;
+            $ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$idinstitucion));
             $profesores = ProfesorInstitucion::model()->findAll('id_institucion=:id_institucion',array(':id_institucion'=>$idinstitucion));
             if($profesores !=null){
                 echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
@@ -96,19 +97,19 @@ $this->renderPartial('../menu/_menuInstitucion');
 					        <div class='modal-content'>
 						      <div class='modal-header'>
 						          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-							      <h4 class='modal-title' id='myModalLabel'>Recuperar contraseña</h4>
+							      <h4 class='modal-title' id='myModalLabel'>Eliminar Profesor</h4>
 						       </div>
 						    <div class='modal-body'>
 						       Hubo un error al eliminar el profesor de la instituci&oacute;n.
 						    </div>
 						    <div class='modal-footer'>
-							   <button type='button' class='btn btn-primary' data-dismiss='modal'>Aceptar</button>
+							   <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
 						    </div>
 					      </div>
 					    </div>
 				    </div>";
                     // Modal telefonos
-              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
+                    echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
                         <div class='modal-dialog' role='document'>
                             <div class='modal-content'>
 							   <div class='modal-header'>
@@ -125,7 +126,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                         </div>
                     </div>";
                     // Modal Direccion
-             echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
+                    echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
                         <div class='modal-dialog' role='document'>
                             <div class='modal-content'>
 							   <div class='modal-header'>
@@ -141,23 +142,46 @@ $this->renderPartial('../menu/_menuInstitucion');
                             </div>
                         </div>
                     </div>";
-
-                    // Modal Actividades
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosactividades' aria-labelledby='myLargeModalLabel'>
-                    <div class='modal-dialog modal-lg'>
-                        <div class='modal-content'>
-                            <div class='container'>
-                                <div class='col-md-8'>
-                                    <div class='form-group'>
-                                        <div id='datosacti'>
-                                        </div>
-                                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
-                                    </div>
+                    echo "<div class='modal fade' tabindex='-1' role='dialog' id='erracti' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                               </div>
+                                <div class='modal-body'>
+                                  <div id='daterracti'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
                                 </div>
                             </div>
                         </div>
+                    </div>";
+
+                    // Modal Actividades
+                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosactividades' aria-labelledby='myLargeModalLabel'>
+                <div class='modal-dialog modal-lg'>
+                    <div class='modal-content'> 
+						<div class='modal-header'> 
+						    <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                            <h4 class='modal-title' id='myModalLabel'><div id='titulosacti'></div></h4>
+                        </div>
+					        <div class='container'>
+                                <div class='col-md-8'> 
+                                    <div class='form-group'>
+                                        <div id='datosacti'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+				    <div class='modal-footer'>     								
+                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
                     </div>
-                </div>";
+					</div>
+                </div>
+             </div>";
+
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -236,6 +260,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 
 <script type="text/javascript">
     function Mostrartelefonos(idusuario){
+        $('#titulostel').empty();
         $('#datostele').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
@@ -246,9 +271,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-              var telefonos = response.split("|");
-                $('#titulostel').append(telefonos[0]);				
-				$('#datostele').append(telefonos[1]);
+                var telefonos = response.split("|");
+                $('#titulostel').append(telefonos[0]);
+                $('#datostele').append(telefonos[1]);
                 $('#datostelefonos').modal('show');
             }
         });
@@ -258,6 +283,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 
 <script type="text/javascript">
     function Mostrardireccion(idusuario){
+        $('#titulosdire').empty();
         $('#datosdire').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
@@ -268,9 +294,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-              var direcciones = response.split("|");
-				$('#titulosdire').append(direcciones[0]);
-				$('#datosdire').append(direcciones[1]);
+                var direcciones = response.split("|");
+                $('#titulosdire').append(direcciones[0]);
+                $('#datosdire').append(direcciones[1]);
                 $('#datosdireccion').modal('show');
             }
         });
@@ -279,6 +305,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 
 <script type="text/javascript">
     function Mostraractividades(idusuario){
+        $('#titulosacti').empty();
         $('#datosacti').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
@@ -289,8 +316,16 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-                $('#datosacti').append(response);
-                $('#datosactividades').modal('show');
+                var actividades = response.split("|");
+                if(actividades[0] == "erracti"){
+                    $('#daterracti').append(actividades[1]);
+                    $("#erracti").modal('show');
+                }
+                else{
+                    $('#titulosacti').append(actividades[0]);
+                    $('#datosacti').append(actividades[1]);
+                    $('#datosactividades').modal('show');
+                }
             }
         });
     }

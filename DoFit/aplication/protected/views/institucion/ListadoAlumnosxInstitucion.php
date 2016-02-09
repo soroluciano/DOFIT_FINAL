@@ -88,38 +88,40 @@ $this->renderPartial('../menu/_menuInstitucion');
                             }
                         }
                     }
-                    // Modal telefonos
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myLargeModalLabel'>
-                                   <div class='modal-dialog modal-lg'>
-                                       <div class='modal-content'>
-                                           <div class='container'>
-                                                <div class='col-md-8'>
-                                                    <div class='form-group'>
-                                                      <div id='datostele'>
-                                                      </div>
-                                                      <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Volver</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>";
-                    // Modal Direccion
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myLargeModalLabel'>
-                               <div class='modal-dialog modal-lg'>
-                                    <div class='modal-content'>
-                                       <div class='container'>
-                                            <div class='col-md-8'>
-                                              <div class='form-group'>
-                                                <div id='datosdire'>
-                                                </div>
-                                                <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Volver</a>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                           // Modal telefonos
+              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulostel'></div></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datostele'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
                                 </div>
-                            </div>";
+                            </div>
+                        </div>
+                    </div>";
+                    // Modal Direccion
+              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulosdire'></div></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datosdire'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>";
                 }
                 echo"</tbody>";
                 echo "</table>";
@@ -181,7 +183,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 </script>
 <script type="text/javascript">
     function Mostrartelefonosalumno(idusuario){
-        $('#datostele').empty();
+        $('#titulostel').empty();
+		$('#datostele').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -191,7 +194,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-                $('#datostele').append(response);
+             var telefonos = response.split("|");
+                $('#titulostel').append(telefonos[0]);				
+				$('#datostele').append(telefonos[1]); 
                 $('#datostelefonos').modal('show');
             }
         });
@@ -200,7 +205,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 
 <script type="text/javascript">
     function Mostrardireccionalumno(idusuario){
-        $('#datosdire').empty();
+        $('#titulosdire').empty();
+		$('#datosdire').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -210,7 +216,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-                $('#datosdire').append(response);
+              var direcciones = response.split("|");
+				$('#titulosdire').append(direcciones[0]);
+				$('#datosdire').append(direcciones[1]); 
                 $('#datosdireccion').modal('show');
             }
         });

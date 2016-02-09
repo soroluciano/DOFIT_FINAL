@@ -127,11 +127,11 @@ class ProfesorInstitucionController extends Controller
 		$idusuario = $_POST['idusuario'];
 		$fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
 		echo "<center><b>Datos tel&eacute;fonicos de&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</b></center>|";
-		echo "<center>";	   
+		echo "<center>";
 		echo "<br><b>Tel&eacute;fono Fijo: </b>" . substr($fichausuario->telfijo,0,4)."-".substr($fichausuario->telfijo,0,4);
 		echo "<br><b>Celular: </b>" . $fichausuario->celular;
 		echo "<br><b>Contacto Emergencia: </b>" . $fichausuario->conemer;
-		echo "<br><b>Tel&eacute; Emergencia: </b>" . substr($fichausuario->telemer,0,4)."-".substr($fichausuario->telemer,-4);
+		echo "<br><b>Tel&eacute;fono Emergencia: </b>" . substr($fichausuario->telemer,0,4)."-".substr($fichausuario->telemer,-4);
 		echo "</center>";
 	}
 
@@ -157,32 +157,68 @@ class ProfesorInstitucionController extends Controller
 	{
 		$idusuario = $_POST['idusuario'];
 		$idinstitucion = Yii::app()->user->id;
+		$fichainstitucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$idinstitucion));
 		$fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
-		echo "<h3>Actividades que enseña&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</h3></div><br/>";
-		echo "<table class='table table-hover'>
-				<thead>
-				<tr><th>Deporte</th><th>Día</th><th>Hora</th><th>Valor actividad</th></tr>
-				</thead>
-				<tbody>";
 		// busco la actividad para luego encnotrar el Deporte, día y horario que las dicta el profesor.
 		$queryact = Yii::app()->db->createCommand('SELECT id_actividad,valor_actividad FROM actividad where id_institucion= '.$idinstitucion.' and id_usuario = '.$idusuario)->queryAll();
-		foreach($queryact as $act){
-			echo "<tr>
-				  <td id='depo'>";
-			$dep = Yii::app()->db->createCommand('SELECT deporte FROM deporte where id_deporte IN(SELECT id_deporte FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
-			echo $dep['deporte'];
-			echo "</td>";
-			$dia = Yii::app()->db->createCommand('SELECT id_dia,hora,minutos FROM actividad_horario WHERE id_actividad IN(SELECT id_actividad FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
-			$dias = array('Lunes','Martes','Miercoles','Jueves', 'Viernes','Sábado', 'Domingo');
-			$diasel = $dia['id_dia']-1;
-			echo	"<td id='dia'>" .$dias["$diasel"] . "</td>";
-			echo "<td id='hora'>" . $dia['hora'].':'.($dia['minutos'] == '0' ? '0'.$dia['minutos'] : $dia['minutos']) . "</td>";
-			$valoract = Yii::app()->db->createCommand('SELECT valor_actividad  FROM  actividad WHERE id_actividad='.$act['id_actividad'])->queryRow();
-			echo  "<td id='valor'>" . $valoract['valor_actividad'] . "</td>";
-			echo "</tr>";
+		if($queryact != NULL){
+			echo "<h4><b>Actividades que dicta " .$fichausuario->nombre."&nbsp".$fichausuario->apellido."&nbspen&nbsp".$fichainstitucion->nombre."<b></h4>|";
+			echo "<br/><table class='table table-hover' id='actiprof' class='display' cellspacing='0' width='100%'>
+				    <thead>
+				        <tr><th>Deporte</th><th>Día</th><th>Hora</th><th>Valor actividad</th></tr>
+				    </thead>
+				    <tbody>";
+			foreach($queryact as $act){
+				echo "<tr>
+				      <td id='depo'>";
+				$dep = Yii::app()->db->createCommand('SELECT deporte FROM deporte where id_deporte IN(SELECT id_deporte FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
+				echo $dep['deporte'];
+				echo "</td>";
+				$dia = Yii::app()->db->createCommand('SELECT id_dia,hora,minutos FROM actividad_horario WHERE id_actividad IN(SELECT id_actividad FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
+				$dias = array('Lunes','Martes','Miercoles','Jueves', 'Viernes','Sábado', 'Domingo');
+				$diasel = $dia['id_dia']-1;
+				echo "<td id='dia'>" .$dias["$diasel"] . "</td>";
+				echo "<td id='hora'>" . $dia['hora'].':'.($dia['minutos'] == '0' ? '0'.$dia['minutos'] : $dia['minutos']) . "</td>";
+				$valoract = Yii::app()->db->createCommand('SELECT valor_actividad  FROM  actividad WHERE id_actividad='.$act['id_actividad'])->queryRow();
+				echo  "<td id='valor'>" . $valoract['valor_actividad'] . "</td>";
+				echo "</tr>";
+			}
+			echo"</tbody>
+			     </table>";
+			echo "<script type='text/javascript'>
+                $('#actiprof').DataTable( {
+		            'language' : {
+			            'sProcessing':     'Procesando...',
+			            'sLengthMenu':     'Mostrar _MENU_ registros',
+			            'sZeroRecords':    'No se encontraron resultados',
+			            'sEmptyTable':     'Ningún dato disponible en esta tabla',
+			            'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+			            'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
+			            'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
+			            'sInfoPostFix':    '',
+			            'sSearch':         'Buscar:',
+			            'sUrl':            '',
+			            'sInfoThousands':  ',',
+			            'sLoadingRecords': 'Cargando...',
+
+			            'oPaginate': {
+				            'sFirst':    'Primero',
+				            'sLast':     'Ultimo',
+				            'sNext':     'Siguiente',
+				            'sPrevious': 'Anterior'
+			            },
+			                
+			            'oAria': {
+				            'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
+				            'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+			            }
+		            }
+	            } );
+            </script>";
 		}
-		echo"</tbody>
-			</table>";
+		else {
+			echo "erracti|<h5><b>$fichausuario->nombre $fichausuario->apellido no dicta ninguna actividad en $fichainstitucion->nombre.</b></h5>";
+		}
 	}
 
 	public function actionBorrarProfesor()
