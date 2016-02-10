@@ -41,11 +41,9 @@ $this->renderPartial('../menu/_menuInstitucion');
                  <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th><th>Eliminar Profesor</th></thead>
                  <tbody class='fuente'>";
                 foreach($profesores as $prof){
-                    $profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
+					$profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
                     ?>
                     <tr>
-                        <input type="hidden" value="<?php echo $prof->id_usuario?>" name="idprofesor" id="idprofesor">
-                        </input>
                         <input type="hidden" name="valor" id="valor"></input>
                         <td id="nombre"><?php echo $profesor->nombre;?></td>
                         <td id="apellido"><?php echo $profesor->apellido;?></td>
@@ -72,21 +70,24 @@ $this->renderPartial('../menu/_menuInstitucion');
                         <td><a id="dir"  href="#" onClick="javascript:Mostrardireccion(<?php echo $prof->id_usuario;?>);")>Ver Direcci&oacute;n</a></td>
                         <td><a id="act"  href="#" onClick="javascript:Mostraractividades(<?php echo $prof->id_usuario;?>);")>Ver Actividades</td>
                         <td><a href="#" data-toggle="modal" data-target="#borrarprofemodal">Eliminar de la Institución</a></td>
-                    </tr>
-
-                    <?php
+                    </tr>  						
+                   
+					<?php
                     echo "<div class='modal fade' id='borrarprofemodal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
                            <div class='modal-dialog' role='document'>
                               <div class='modal-content'>
                                 <div class='modal-header'>
                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                                  <h4 class='modal-title' id='myModalLabel'>Inscripción</h4>
+                                  <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                                 </div>
                                 <div class='modal-body'>
-                                ¿Estas seguro que desea elimnar al profesor de la instituci&oacute;n?
+                                 <input type='hidden' value='$prof->id_usuario' name='idprofesor' id='idprofesor'>
+						         </input>
+								<b>¿Estas seguro que desea elimnar al profesor de $ficins->nombre?</b>
+								 <br><i><b>(Se borraran todos los alumnos y actividades asociadas a ese profesor).</b></i>
                                  </div>
                                 <div class='modal-footer'>
-                                  <button type='button' class='btn btn-primary' onclick='javascript:Borrarprofesor($prof->id_usuario);'>Si</button>
+                                  <button type='button' class='btn btn-primary' onclick='javascript:Borrarprofesor();'>Si</button>
                                   <button type='button' class='btn btn-default' data-dismiss='modal'>No</button>
                                 </div>
                             </div>
@@ -181,7 +182,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 					</div>
                 </div>
              </div>";
-
+               
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -189,7 +190,7 @@ $this->renderPartial('../menu/_menuInstitucion');
             else{
                 echo "<div class='row'>
                         <div class='.col-md-6 .col-md-offset-3'>
-                            <h2 class='text-center'>No hay Profesores asociados a la instituci&oacute;n</h2>
+                            <h2 class='text-center'>No hay Profesores asociados a $ficins->nombre</h2>
                         </div>
                     </div>";
             }
@@ -232,9 +233,10 @@ $this->renderPartial('../menu/_menuInstitucion');
     } );
 </script>
 <script type="text/javascript">
-    function Borrarprofesor(idprofesor)
+    function Borrarprofesor()
     {
-        var idprofesor = $('#idprofesor').val();
+		var idprofesor = $("#idprofesor").val();
+		alert(idprofesor);
         var data = {"idprofesor":idprofesor};
         $.ajax({
             url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
