@@ -6,49 +6,14 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
     <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/modal.css"></link>
 </head>
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="../site/LoginInstitucion"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
-            <a href="../" class="navbar-brand"></a>
-        </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a>
-                </li>
-                <li>
-                    <a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a>
-                </li>
-                <li>
-                    <a href="../actividad/CrearActividad">Crear Actividades</a>
-                </li>
-                <li>
-                    <a href="../javascript/"></a>
-                </li>
-                <li>
-                    <a href="../customize/"></a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="">Bienvenido! <?php
-                        if(isset(Yii::app()->session['id_institucion'])){
-                            //Es un usuario logueado.
-                            $ins = Institucion::model()->findByPk(Yii::app()->user->id);
-                            $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
-                            echo $fichains->nombre."&nbsp";
-                        }  ?></a></li>
-                <li><a href="../site/LoginInstitucion">Salir</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<?php
+if(isset(Yii::app()->session['id_institucion'])){
+    //Es un usuario logueado.
+    $ins = Institucion::model()->findByPk(Yii::app()->user->id);
+    $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
+}
+$this->renderPartial('../menu/_menuInstitucion');
+?>
 <style type="text/css">
     body {
         background: url(../img/fondo1.jpg) no-repeat center center fixed;
@@ -71,7 +36,7 @@
             $cant_alumnos = 0;
             $actividades = Actividad::model()->findAll('id_institucion=:id_institucion',array(':id_institucion'=>$idinstitucion));
             if($actividades !=null){
-                echo "<div><h2>Alumnos inscriptos en la instituci&oacute;n</h2></div>";
+                echo "<div><h3>Alumnos inscriptos en $fichains->nombre</h3></div>";
                 echo "<br/>";
                 echo "<table id='lisalumnos' class='display' cellspacing='0' width='100%'>
                       <thead>
@@ -123,38 +88,40 @@
                             }
                         }
                     }
-                    // Modal telefonos
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myLargeModalLabel'>
-                                   <div class='modal-dialog modal-lg'>
-                                       <div class='modal-content'>
-                                           <div class='container'>
-                                                <div class='col-md-8'>
-                                                    <div class='form-group'>
-                                                      <div id='datostele'>
-                                                      </div>
-                                                      <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Volver</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>";
-                    // Modal Direccion
-                    echo "<div class='modal fade bs-example-modal-lg' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myLargeModalLabel'>
-                               <div class='modal-dialog modal-lg'>
-                                    <div class='modal-content'>
-                                       <div class='container'>
-                                            <div class='col-md-8'>
-                                              <div class='form-group'>
-                                                <div id='datosdire'>
-                                                </div>
-                                                <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Volver</a>
-                                              </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                           // Modal telefonos
+              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulostel'></div></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datostele'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
                                 </div>
-                            </div>";
+                            </div>
+                        </div>
+                    </div>";
+                    // Modal Direccion
+              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+							   <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                                  <h4 class='modal-title' id='myModalLabel'><div id='titulosdire'></div></h4>
+                               </div>
+                                <div class='modal-body'>
+                                    <div id='datosdire'></div>
+								</div>
+                                <div class='modal-footer'>     								
+                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>";
                 }
                 echo"</tbody>";
                 echo "</table>";
@@ -216,7 +183,8 @@
 </script>
 <script type="text/javascript">
     function Mostrartelefonosalumno(idusuario){
-        $('#datostele').empty();
+        $('#titulostel').empty();
+		$('#datostele').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -226,7 +194,9 @@
             data : data,
             cache: false,
             success: function (response){
-                $('#datostele').append(response);
+             var telefonos = response.split("|");
+                $('#titulostel').append(telefonos[0]);				
+				$('#datostele').append(telefonos[1]); 
                 $('#datostelefonos').modal('show');
             }
         });
@@ -235,7 +205,8 @@
 
 <script type="text/javascript">
     function Mostrardireccionalumno(idusuario){
-        $('#datosdire').empty();
+        $('#titulosdire').empty();
+		$('#datosdire').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -245,7 +216,9 @@
             data : data,
             cache: false,
             success: function (response){
-                $('#datosdire').append(response);
+              var direcciones = response.split("|");
+				$('#titulosdire').append(direcciones[0]);
+				$('#datosdire').append(direcciones[1]); 
                 $('#datosdireccion').modal('show');
             }
         });

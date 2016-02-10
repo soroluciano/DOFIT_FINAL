@@ -225,20 +225,13 @@ class InstitucionController extends Controller
     {
         $idusuario = $_POST['idusuario'];
         $fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
-        echo "<h3>Datos Tel&eacute;fonicos de&nbsp" . $fichausuario->nombre."&nbsp".$fichausuario->apellido."</h3><br/>";
-        echo "<table class='table table-hover'>
-				<thead>
-				<tr><th>Tel&eacute;fono Fijo</th><th>Celular</th><th>Contacto Emergencia</th><th>Tel&eacute;fono Emergencia</th></tr>
-				</thead>
-				<tbody>
-				<tr>";
-        echo "<td id='telfijo'>" . substr($fichausuario->telfijo,0,4)."-".substr($fichausuario->telfijo,0,4) . "</td>";
-        echo "<td id='celular'>" . $fichausuario->celular . "</td>";
-        echo "<td id='conemer'>" . $fichausuario->conemer . "</td>";
-        echo "<td id='telemer'>" . substr($fichausuario->telemer,0,4)."-".substr($fichausuario->telemer,-4) . "</td>";
-        echo "</tr>
-				</tbody>
-			</table>";
+        echo "<center><b>Datos tel&eacute;fonicos de&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</b></center>|";
+        echo "<center>";
+        echo "<br><b>Tel&eacute;fono Fijo: </b>" . substr($fichausuario->telfijo,0,4)."-".substr($fichausuario->telfijo,0,4);
+        echo "<br><b>Celular: </b>" . $fichausuario->celular;
+        echo "<br><b>Contacto Emergencia: </b>" . $fichausuario->conemer;
+        echo "<br><b>Tel&eacute;fono Emergencia: </b>" . substr($fichausuario->telemer,0,4)."-".substr($fichausuario->telemer,-4);
+        echo "</center>";
 
     }
 
@@ -246,24 +239,17 @@ class InstitucionController extends Controller
     {
         $idusuario = $_POST['idusuario'];
         $fichausuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$idusuario));
-        echo "<h3>Datos de domiciliarios de&nbsp;". $fichausuario->nombre."&nbsp".$fichausuario->apellido."</h3><br/>";
-        echo "<table class='table table-hover'>
-				<thead>
-				<tr><th>Direcci&oacute;n</th><th>Piso</th><th>Departamento</th><th>Localidad</th><th>Provincia</th></tr>
-				</thead>
-				<tbody>
-				<tr>";
-        echo	"<td id='direccion'>" .  $fichausuario->direccion . "</td>";
-        echo	"<td id='piso'>".  $fichausuario->piso . "</td>";
-        echo	"<td id='depto'>" . $fichausuario->depto . "</td>";
-        echo	"<td id='loca'>";
+        echo "<center><b>Datos domiciliarios de&nbsp;" .$fichausuario->nombre."&nbsp".$fichausuario->apellido."</b></center>|";
+        echo "<center>";
+        echo "<br><b>Direcci&oacute;n: </b>" . $fichausuario->direccion;
+        echo "<br><b>Piso: </b>". $fichausuario->piso;
+        echo "<br><b>Departamento: </b>" . $fichausuario->depto;
+        echo "<br><b>Localidad: </b>";
         $localidad = Localidad::model()->findByAttributes(array('id_localidad'=>$fichausuario->id_localidad));
-        echo $localidad->localidad . "</td>";
-        echo	"<td id='prov'>";
+        echo  $localidad->localidad;
+        echo "<br><b>Provincia: </b>";
         $provincia = Provincia::model()->findByAttributes(array('id_provincia'=>$localidad->id_provincia));
-        echo $provincia->provincia . "</td>";
-        echo "</tr>
-				</tbody>
-			</table>";
+        echo $provincia->provincia;
+        echo "</center>";
     }
 }

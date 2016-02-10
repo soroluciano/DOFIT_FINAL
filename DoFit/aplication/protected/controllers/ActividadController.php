@@ -344,8 +344,9 @@ class ActividadController extends Controller
 
         if(isset($_POST['actividad'])){
 
-            $act_alum = new actividadAlumno();
-            $act_alum->id_usuario = 1;
+            $id_usuario = Yii::app()->user->id;
+			$act_alum = new actividadAlumno();
+            $act_alum->id_usuario = $id_usuario;
             $act_alum->id_estado = 0;
             $act_alum -> id_actividad =  $_POST['actividad'];
             $act_alum->fhcreacion = new CDbExpression('NOW()');
