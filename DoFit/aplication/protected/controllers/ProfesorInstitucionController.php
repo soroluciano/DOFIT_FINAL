@@ -165,7 +165,7 @@ class ProfesorInstitucionController extends Controller
 			echo "<h4><b>Actividades que dicta " .$fichausuario->nombre."&nbsp".$fichausuario->apellido."&nbspen&nbsp".$fichainstitucion->nombre."<b></h4>|";
 			echo "<br/><table class='table table-hover' id='actiprof' class='display' cellspacing='0' width='100%'>
 				    <thead>
-				        <tr><th>Deporte</th><th>Día</th><th>Hora</th><th>Valor actividad</th></tr>
+				        <tr><th>Deporte</th><th>Días y Horarios</th><th>Valor actividad</th></tr>
 				    </thead>
 				    <tbody>";
 			foreach($queryact as $act){
@@ -174,11 +174,14 @@ class ProfesorInstitucionController extends Controller
 				$dep = Yii::app()->db->createCommand('SELECT deporte FROM deporte where id_deporte IN(SELECT id_deporte FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
 				echo $dep['deporte'];
 				echo "</td>";
-				$dia = Yii::app()->db->createCommand('SELECT id_dia,hora,minutos FROM actividad_horario WHERE id_actividad IN(SELECT id_actividad FROM actividad where id_actividad= '.$act['id_actividad'].')')->queryRow();
-				$dias = array('Lunes','Martes','Miercoles','Jueves', 'Viernes','Sábado', 'Domingo');
-				$diasel = $dia['id_dia']-1;
-				echo "<td id='dia'>" .$dias["$diasel"] . "</td>";
-				echo "<td id='hora'>" . $dia['hora'].':'.($dia['minutos'] == '0' ? '0'.$dia['minutos'] : $dia['minutos']) . "</td>";
+				$diashorarios = ActividadHorario::model()->findAllByAttributes(array('id_actividad'=>$act['id_actividad']));
+				echo "<td id='diahor'>";
+				foreach($diashorarios as $diashor){
+					$dias = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+					$id_dia = $diashor->id_dia-1;
+					echo $dias[$id_dia]."&nbsp;".$diashor->hora .':'.($diashor->minutos == '0' ? '0'.$diashor->minutos : $diashor->minutos)."&nbsp&nbsp";
+				}
+		        echo "</td>"; 
 				$valoract = Yii::app()->db->createCommand('SELECT valor_actividad  FROM  actividad WHERE id_actividad='.$act['id_actividad'])->queryRow();
 				echo  "<td id='valor'>" . $valoract['valor_actividad'] . "</td>";
 				echo "</tr>";
@@ -226,21 +229,12 @@ class ProfesorInstitucionController extends Controller
 		$idprofesor = $_POST['idprofesor'];
 		$idinstitucion = Yii::app()->user->id;
 		$del_act_hor = Yii::app()->db->createCommand('DELETE from actividad_horario where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
-		if($del_act_hor or $del_act_hor == 0){
-			$del_act_pago = Yii::app()->db->createCommand('DELETE from pago where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
-			if($del_act_pago or $del_act_pago == 0){
-				$del_resp = Yii::app()->db->createCommand('DELETE from respuesta where id_posteo IN (SELECT id_posteo from perfil_muro_profesor where id_actividad IN (SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.'))')->execute();
-				if($del_resp or $del_resp == 0){
-					$del_per_muro = Yii::app()->db->createCommand('DELETE from perfil_muro_profesor where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
-					if($del_per_muro or $del_per_muro == 0){
-						$del_act_alumn = Yii::app()->db->createCommand('DELETE from actividad_alumno where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
-						if($del_act_alumn or $del_act_alumn == 0){
-							$del_act = Yii::app()->db->createCommand('DELETE from actividad where id_institucion='.$idinstitucion.' and id_usuario='.$idprofesor)->execute();
-						}
-					}
-				}
-			}
-		}
+		$del_act_pago = Yii::app()->db->createCommand('DELETE from pago where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
+	    $del_resp = Yii::app()->db->createCommand('DELETE from respuesta where id_posteo IN (SELECT id_posteo from perfil_muro_profesor where id_actividad IN (SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.'))')->execute();
+		$del_per_muro = Yii::app()->db->createCommand('DELETE from perfil_muro_profesor where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
+		$del_act_alumn = Yii::app()->db->createCommand('DELETE from actividad_alumno where id_actividad IN(SELECT id_actividad from actividad where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion.')')->execute();
+	    $del_act = Yii::app()->db->createCommand('DELETE from actividad where id_institucion='.$idinstitucion.' and id_usuario='.$idprofesor)->execute();
+		
 		$del_ins_prof = Yii::app()->db->createCommand('DELETE from profesor_institucion where id_usuario='.$idprofesor.' and id_institucion='.$idinstitucion)->execute();
 		if($del_ins_prof){
 			echo "ok";
