@@ -3,7 +3,25 @@
         debugger;
          getPage(0);
          getLinks(0);
+         
     });
+
+
+    function openFancy(id){
+         $.ajax({
+          url: baseurl+'/galeria/getImg', 
+          type: 'POST',
+          data: 'id='+id,
+          success:function(response){
+            debugger;
+              $.fancybox.open(baseurl+"/uploads/"+response);
+          },
+          error: function(e){
+             alert(e);
+          }
+        });
+    }
+
 
     function getLinks(page) {
          $.ajax({

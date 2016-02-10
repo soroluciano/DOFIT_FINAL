@@ -1,11 +1,13 @@
 <div id="seccion_imagenes">
 			<div id="img-seccion">
-				<h1>Mis Im&aacute;genes</h1>
+				<span class='title'>Imagenes</span>
 				
+				<div class="div-button">
 				<?php
-					echo "<button type='button' id='btnNuevo' title='Para subir una nueva imagen borre alguna de las existentes' class='btn btn-primary right btn-lg' data-toggle='modal' data-target='#FORMULARIO-REGISTRO' data-whatever'@getbootstrap'>Nueva Foto</button>";
+					echo "<button type='button' id='btnNuevo' title='Subir nueva imagen' class='btn btn-primary right' data-toggle='modal' data-target='#FORMULARIO-REGISTRO' data-whatever'@getbootstrap'>Nueva Foto</button>";
 				?>
-	
+				</div>
+				
 			</div>
 			
 			<div class="imagenes">

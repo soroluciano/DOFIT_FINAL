@@ -1,5 +1,5 @@
 @media screen and (max-width: 1600px) {
-.cabecera-perfil{ width:97.5%;padding-bottom: 10px;}
+.cabecera-perfil{ width: 96.1%;padding-bottom: 10px;}
 .panel-sized{
   width:53.5%;
   margin:1px;
@@ -57,13 +57,13 @@
     display:none;
 }
 .img_class:hover button.ver {
-    top:0;
-    left:50%;
+    top:50%;
+    left:40%;
 }
 
 .img_class:hover button.borrar {
-    top:0;
-    left:79%;
+    top:50%;
+    left:55%;
 }
 .border{
   border-style: solid;
@@ -74,34 +74,26 @@
   width: 100%;
   float: left;
 }
-
-.title {
-    display: inline-block;
-    font-size: 1.7em;
-    font-weight: bold;
+.div-button{
+  float: left;
+  width: 100%;
+  margin-top:10px;
+  margin-bottom:25px;
+}
+#img-seccion{
+  padding-left: 15px;
+  background-color: white;
+}
+#seccion_imagenes {
+    background-color: white;
+    margin-top: 0.5%;
+    margin-left: 3.8%;
+    margin-right: 2.5%;
+    padding-top: 1px;
+    height: 100%;
+}
+#imagenes{
+  height: 100%;
 }
 
-/*div.show-image {
-    position: relative;
-    float:left;
-    margin:5px;
-}
-div.show-image:hover img{
-    opacity:0.5;
-}
-div.show-image:hover input {
-    display: block;
-}
-div.show-image input {
-    position:absolute;
-    display:none;
-}
-div.show-image input.update {
-    top:0;
-    left:0;
-}
-div.show-image input.delete {
-    top:0;
-    left:79%;
-}*/
 

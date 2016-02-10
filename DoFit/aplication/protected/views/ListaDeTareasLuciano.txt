@@ -1,35 +1,32 @@
 Luciano 
 
--tkm amigo ♥
--crear un perfil que pueda verse desde la lista de compañeros.
+
 -enlazar el boton de mensaje al chat de montoto
--arreglar el css del buscador
--modificar el buscador para que solo permita 2 personas
--arreglar boton de mas posts en muro
--agregar mas opciones o datos dentro de la cabecera
-
-
 
 Si se llega con el tiempo
--crear una tabla para imagenes del muro
+-usar la misma tabla de imagenes y agregarle una columna para saber si viene del muro y que se grabe en otro lado
+-agregar en las imagenes un nombre aleatorio
+-agregar la eliminacion de la imagen en disco al borrar
+-agregar mas opciones o datos dentro de la cabecera
 -crear un script para reconocer videos de youtube para poder postearlos en el muro
-
 
 trabajando en :
 
 
+-mostrar en la lista de compañeros las imagenes con una galeria y los datos ->1
 -terminar la modificacion de perfil <--comenzado
--mejorar el css de la cabecera <--comenzado
--agregar eliminacion de imagen y ampliacion
+
+
 
 Terminado
-
-paginacion de imagenes
--poner el menu burguer  <-- falta agregar todos los links y linkear en todas las pantallas de usuario
-
-
-
-
+-agregar eliminacion de imagen y ampliacion
+-agregar imagenes a los botones de ver y eliminar en la galeria
+-paginacion de imagenes
+-poner el menu burguer  
+-mejorar el css de la cabecera
+-arreglar el css del buscador
+-modificar el buscador para que solo permita 1 personas
+-arreglar boton de mas posts en muro
 
 
 

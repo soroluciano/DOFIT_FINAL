@@ -95,7 +95,7 @@
     
     
    $(document).ready(function(){
-      //queremos que esta variable sea global
+      //queremos que esta variable sea global 
       var fileExtension = "";
       var saved = false;
       //función que observa los cambios del campo file y obtiene información
@@ -178,14 +178,7 @@
       $(".showImage").html("");
       
     }
-    
-    function op1() {
-      debugger;
-         $.fancybox({
-           type: 'inline',
-           content: '#imagen1'
-       });
-    }
+
 
    function showModal(){
       debugger;
@@ -213,22 +206,7 @@
      
    }
    
-   //function deleteImagen(id) {
-   //   debugger;
-   //
-   //   $.ajax({
-   //   url: baseurl+'/red/deleteImagen',  
-   //   type: 'POST',
-   //   data: 'id='+id,
-   //   success:function(response){
-   //      debugger;
-   //     var respuesta = mostrarImagenes();
-   //      $('.imagenes').html(respuesta);
-   //   },
-   //   error: function(e){        
-   //   }
-   //   });
-   //}
+
    
    function mostrarImagenes() {
       getPage(0);
@@ -260,4 +238,20 @@
             }
         });
    }
+  
+  function addImage(args) {
+        //code
+  }
+  function addVideo(args) {
+      
+  }
+  
+  function addTagVideo(){
+        debugger;
+        res = "[youtube]"+$("#video").val()+"[/youtube]";      
+        $('#input_mensaje').append(res);
+  }
+  
+  
+  
   

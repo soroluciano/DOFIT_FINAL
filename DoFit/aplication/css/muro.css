@@ -316,7 +316,7 @@ color: #fff;
   .e_size{
      padding-right: 1px;
     padding-left: 10px;
-     width: 55%;
+     width: 52%;
   }
 }
 
@@ -444,10 +444,10 @@ color: #fff;
 /*  margin-right: 10%;*/
   border: 1px;
   border-style: solid;
-  border-color:black;
+  border-color:#eee;
   position:   relative;
-  top:28px;
-  left: 48%;
+  top:26px;
+  left: 44%;
   
 }
 

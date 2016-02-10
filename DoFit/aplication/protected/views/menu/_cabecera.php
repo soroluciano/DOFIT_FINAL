@@ -15,18 +15,23 @@
 						<li><span><a href='<?php echo Yii::app()->request->baseUrl;?>/perfilSocial/index' style="cursor:pointer;">Edita tu perfil</a></span></li>		
 				</ul>
 		</div>
-		<div class='profile_publicaciones'>
+		<div id="secciones" class="">
+			<a href='<?php echo Yii::app()->request->baseUrl;?>/contact/index' style="cursor:pointer;"><span class="glyphicon glyphicon-user" style="padding-right:2px;"></span>Contactos</a>
+			<a href='<?php echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture" style="padding-right:2px;"></span>Imagenes</a>
+			<a href='<?php echo Yii::app()->request->baseUrl;?>/red/index' style="cursor:pointer;"><span class="glyphicon glyphicon-globe"></span><span class="alerta_new" id="notificacion"></span>Notificaciones</a>	
+		</div>
+<!--		<div class='profile_publicaciones'>
 				<ul>
-						<li><a href='<?php echo Yii::app()->request->baseUrl;?>/contact/index' style="cursor:pointer;"><span class="glyphicon glyphicon-user" style="padding-right:2px;"></span>Contactos</a></li>		
-						<li><a href='<?php echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture" style="padding-right:2px;"></span>Imagenes</a></li>	
+						<li><a href='<?php// echo Yii::app()->request->baseUrl;?>/contact/index' style="cursor:pointer;"><span class="glyphicon glyphicon-user" style="padding-right:2px;"></span>Contactos</a></li>		
+						<li><a href='<?php// echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture" style="padding-right:2px;"></span>Imagenes</a></li>	
 				</ul>
 		</div>		
 		<div class='profile_friends_fotos'>
 				<ul>
-						<li><a href='<?php echo Yii::app()->request->baseUrl;?>/red/index' style="cursor:pointer;"><span class="glyphicon glyphicon-globe"></span><span class="alerta_new" id="notificacion"></span>Notificaciones</a></li>		
-						<li><a href='<?php echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture"></span>Imagenes</a></li>
+						<li><a href='<?php// echo Yii::app()->request->baseUrl;?>/red/index' style="cursor:pointer;"><span class="glyphicon glyphicon-globe"></span><span class="alerta_new" id="notificacion"></span>Notificaciones</a></li>		
+						<li><a href='<?php// echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture"></span>Imagenes</a></li>
 				</ul>
-		</div>
+		</div>-->
 
 </div>	<!-- fin cabecera perfil -->	
 <!--       </div>

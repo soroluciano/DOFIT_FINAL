@@ -43,7 +43,8 @@ class GaleriaController extends Controller
 				$mensaje="";
 		
 				foreach($imagenes as $img){
-						$mensaje.= "<div class='col-md-3 col-sm-4 col-xs-6 img_class' ><img class='img-responsive' style='overflow:hidden;' src='".Yii::app()->request->baseUrl."/uploads/".$img["nombre"]."' /><button class='borrar' onclick='deleteImagen(".$img['id_imagen'].")'>X</button><button class='ver' onclick='ampliar();'>\O-O\</button></div>";
+						$url = Yii::app()->request->baseUrl."/uploads/".$img["nombre"];
+						$mensaje.= "<div class='col-md-3 col-sm-4 col-xs-6 img_class' ><img class='img-responsive' style='overflow:hidden;' src='".$url."' /><button class='borrar' onclick='deleteImagen(".$img['id_imagen'].");'><span class='glyphicon glyphicon-trash'></span></button><button class='ver' onclick='openFancy(".$img['id_imagen'].")'><span class='glyphicon glyphicon-search'></span></button></div>";
 				}
 				echo $mensaje;
 		}
@@ -83,6 +84,12 @@ class GaleriaController extends Controller
 						echo "error eliminando imagen";
 				}
 	
+		}
+		
+		public function actionGetImg(){
+				$id = $_POST['id'];
+				$imagen = Imagen::model()->find('id_imagen=:id',array(':id'=>$id));
+				echo $imagen["nombre"];
 		}
 		
 }	

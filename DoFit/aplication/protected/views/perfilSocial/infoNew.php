@@ -24,15 +24,15 @@
     function getValue($val,$name){
         $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
         $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-        if($val=="a_1"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->nombre."'></div>";} 
-        if($val=="a_2"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->apellido."'></div>";}
-        if($val=="a_3"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->dni."'></div>"; }
-        if($val=="a_4"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->sexo."'></div>";}
-        if($val=="a_5"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->fechanac."'></div>";}
-        if($val=="a_6"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telfijo."'></div>"; }
-        if($val=="a_7"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->celular."'></div>";}
-        if($val=="a_8"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->conemer."'></div>"; }
-        if($val=="a_9"){echo  "<div class='form-group'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telemer."'></div>"; }
+        if($val=="a_1"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;' class=''>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->nombre."'></div>";} 
+        if($val=="a_2"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->apellido."'></div>";}
+        if($val=="a_3"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->dni."'></div>"; }
+        if($val=="a_4"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->sexo."'></div>";}
+        if($val=="a_5"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->fechanac."'></div>";}
+        if($val=="a_6"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telfijo."'></div>"; }
+        if($val=="a_7"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->celular."'></div>";}
+        if($val=="a_8"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->conemer."'></div>"; }
+        if($val=="a_9"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telemer."'></div>"; }
         //$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha->id_localidad));
         //$provincia = Provincia::model()->find('id_provincia=:id_provincia',array(':id_provincia'=>$ficha->id_provincia));
         //if($val=="b_1"){echo $provincia->provincia;}
@@ -61,28 +61,29 @@
 <div class="contenido row">
    
    <!-- <div id='datos'>-->
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-		<form role="form">
-        <?php
-            columna("input","Nombre","a_1");
-            columna("input","Apellido","a_2");
-            columna("input","Dni","a_3");
-            columna("input","Sexo","a_4");            
-            columna("input","Fecha de nacimiento","a_5");            
-            columna("input","Telefono fijo","a_6");            
-            columna("input","Celular","a_7");            
-            columna("input","Contacto de emergencia","a_8");            
-            columna("input","Telefono de emergencia","a_9");            
-            //columna("input","Provincia","b_1");        
-            //columna("input","Localidad","b_2");            
-            //columna("input","Direcci&oacute;n","b_3");            
-            //columna("input","Piso","b_4");
-            //columna("input","Depto","b_5");
-        ?>
-        </form>
-        
+<!--        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">-->
+	<div style="width:100%;">
+			<div style="width:50%; padding-left:10px;">
+				<form role="form">
+				<?php
+					columna("input","Nombre","a_1");
+					columna("input","Apellido","a_2");
+					columna("input","Dni","a_3");
+					columna("input","Sexo","a_4");            
+					columna("input","Fecha de nacimiento","a_5");            
+					columna("input","Telefono fijo","a_6");            
+					columna("input","Celular","a_7");            
+					columna("input","Contacto de emergencia","a_8");            
+					columna("input","Telefono de emergencia","a_9");            
+					//columna("input","Provincia","b_1");        
+					//columna("input","Localidad","b_2");            
+					//columna("input","Direcci&oacute;n","b_3");            
+					//columna("input","Piso","b_4");
+					//columna("input","Depto","b_5");
+				?>
+				</form>
+			</div>
     </div>
-    
     
     
 <!--    <div id='foto-profile' class='col-xs-12 col-sm-4 col-md-4 red' >

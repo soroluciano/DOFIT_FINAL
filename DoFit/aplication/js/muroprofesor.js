@@ -127,7 +127,7 @@
       $.ajax({
         url:  baseurl+'/muro/insertarComentarioProfesor',
         type: 'POST',
-        data: 'mensaje='+$('#input_mensaje').val()+'&id_actividad='+$('#id_actividad_selected').val(),
+        data: 'mensaje='+addVideo($('#input_mensaje').val())+'&id_actividad='+$('#id_actividad_selected').val(),
         success:function(response){
         alert( "Data Saved: " + response );
         window.$isNewMsg.value='true';
@@ -379,29 +379,5 @@
   }
 
    
-    //function rechargeTimePusher(){
-    //    debugger;
-    //    alert("recargando...")
-    //    var pusher = new Pusher('c48d59c4cb61c7183954');    
-    //    var canalnom = $('#canal').val();
-    //    var canal  = pusher.subscribe(canalnom);
-    //    
-    //    canal.bind('nuevo_comentario', function(respuesta){
-    //      debugger;
-    //     getMensajesFromBase();
-    //  });
-    //    pusher.disconnect();
-    //}   
-      
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        
+    
         

@@ -109,6 +109,35 @@ function getActividades($id){
     <input type="hidden" id="id_canal" value="<?php echo $canal->id_canal;?>"/>
     <input type="hidden" id="id_actividad_selected" value=""/>
     
+
+	
+	<div class="modal fade" id="uploadvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Ingresar video</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="video" class="control-label">Ingrese la url del video de youtube</label>
+            <input type="text" class="form-control" id="video"/>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="addTagVideo();">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+
+
+	
 	<div id="respuesta_ajax">
 	<?php	if($usuario->id_perfil==2){ ?>
         <div class=" col-lg-8 col-md-8 col-sm-5 contenedor-espaciado row">
@@ -117,11 +146,11 @@ function getActividades($id){
 				<div class="status-upload panel-shadow">
 					<form action="" method="post">
 						<textarea placeholder="¿Qué estas pensando?" id="input_mensaje"></textarea>
-						<ul>					
+						<ul>
 <!--					<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>-->
-						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+						<li><button id="btn-video" type="button" data-original-title="Video" data-toggle="modal" data-target="#uploadvideo"><i class="fa fa-video-camera"></i></button></li>
 		<!--				<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>-->
-						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture" onclick="addImage()"><i class="fa fa-picture-o"></i></a></li>
 						</ul>
 
 						<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Publicar</button>
@@ -129,7 +158,7 @@ function getActividades($id){
 					
 					</form>
 					
-				</div><!-- Status Upload  -->
+		</div><!-- Status Upload  -->
 				<div class='propaganda-muro-1'>Publicite aqui</div>
 			</div><!-- Widget Area -->
 

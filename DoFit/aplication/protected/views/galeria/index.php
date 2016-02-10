@@ -3,6 +3,7 @@
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/contactos.css" rel="stylesheet">
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/muro.css" rel="stylesheet">
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/imagenes.css" rel="stylesheet">
+<link href="<?php echo Yii::app()->request->baseUrl; ?>/js/fancybox/jquery.fancybox.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <?php
@@ -25,6 +26,7 @@ $cs->registerScriptFile($baseUrl.'/js/muroprofesor.js');
 $cs->registerScriptFile($baseUrl.'/js/red.js');
 //$cs->registerScriptFile($baseUrl.'/js/contactos.js');
 $cs->registerScriptFile($baseUrl.'/js/galeria.js');
+$cs->registerScriptFile($baseUrl.'/js/fancybox/jquery.fancybox.js');
 $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 
 
@@ -104,7 +106,7 @@ function getActividades($id){
 	
 			<?php	if($usuario->id_perfil==1){ ?>
 			<div class='propaganda-muro-2'>Publicite aqui</div>
-		<?php	}?>
+			<?php	}?>
 			<div id="comentarios" class="row">
 							<?php $this->renderPartial('galeria',array('perfil'=>$perfil)); ?>
 			</div>
