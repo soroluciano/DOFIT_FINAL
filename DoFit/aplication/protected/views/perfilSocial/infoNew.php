@@ -33,10 +33,10 @@
         if($val=="a_1"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' readonly id='".$val."' value='".$ficha->nombre."'></div>";} 
         if($val=="a_2"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' readonly id='".$val."' value='".$ficha->apellido."'></div>";}
         if($val=="a_3"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' readonly id='".$val."' value='".$ficha->dni."'></div>"; }
-		$sexo = $ficha->sexo=="M"?"Masculino":"Femenino";
+    $sexo = $ficha->sexo=="M"?"Masculino":"Femenino";
         if($val=="a_4"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' readonly id='".$val."' value='".$sexo."'></div>";}
         if($val=="a_5"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' readonly id='".$val."' value='".$ficha->fechanac."'></div>";}
-        if($val=="a_6"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telfijo."'></div>"; }
+        if($val=="a_6"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' required='' data-parsley-trigger='change' id='".$val."' value='".$ficha->telfijo."'></div>"; }
         if($val=="a_7"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->celular."'></div>";}
         if($val=="a_8"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->conemer."'></div>"; }
         if($val=="a_9"){echo  "<div  style='float:left;padding-right:10px;margin-botton:10px;height:100px;width:30%;font-weight:bold;'>".$name."<input type='text' class='form-control input-sm' aria-describedby='basic-addon1' id='".$val."' value='".$ficha->telemer."'></div>"; }
@@ -125,7 +125,7 @@
 			</div>
 			<div id="columnas-inputs">
 				
-				<form role="form">
+				<form role="form" id='form'>
 				<?php
 					columna("input","Nombre","a_1");
 					columna("input","Apellido","a_2");
@@ -142,6 +142,7 @@
 					//columna("input","Piso","b_4");
 					//columna("input","Depto","b_5");
 				?>
+        <input type='submit' value='guardar' />
 				</form>
 			</div>
 		
