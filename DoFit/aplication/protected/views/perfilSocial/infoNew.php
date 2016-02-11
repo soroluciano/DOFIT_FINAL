@@ -108,7 +108,7 @@
 <!--        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">-->
 	<div style="width:100%;">
 		
-			<div id='foto-profile' class='borde' >
+			<div id='foto-profile' >
 				<div id='img-profile'>
 					<?php
 					if($perfil->fotoperfil == "profile_defect_picture.png"){
@@ -123,7 +123,7 @@
 					<button onclick=''>borrar</button>    
 				</div>-->
 			</div>
-			<div id="columnas-inputs" class="borde">
+			<div id="columnas-inputs">
 				
 				<form role="form">
 				<?php
