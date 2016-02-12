@@ -19,6 +19,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <br/>
 <br/>
 <br/>
+<?php if(isset(Yii::app()->session['id_institucion'])){ ?>
 <div class="container marketing">
     <!-- Three columns of text below the carousel -->
     <div class="row">
@@ -43,8 +44,11 @@ $this->renderPartial('../menu/_menuInstitucion');
 <br>
 
 <div class="container">
+
+    <div><h3>Profesores que se quieren unir a <?php if(isset(Yii::app()->session['id_institucion'])) {
+                echo $fichains->nombre;
+            } ?> </h3></div>
     <?php
-    echo  "<div><h3>Profesores que se quieren unir a $fichains->nombre</h3></div>";
     if($profesor_pen != null){
         echo    "<table id='profegim' class='display' cellspacing='0' width='100%'>
                         <thead>
@@ -156,69 +160,72 @@ $this->renderPartial('../menu/_menuInstitucion');
                         </div>
                     </div>";
     }
+    echo "</div>";
+    }
+    else {
+        $this->redirect(array('../aplication/site/LoginInstitucion'));
+    }
     ?>
-</div>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#profegim').DataTable( {
+                "language" : {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#profegim').DataTable( {
-            "language" : {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Ultimo",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Ultimo",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
                 }
-            }
 
+            } );
         } );
-    } );
-    $(document).ready(function() {
-        $('#alumgim').DataTable( {
-            "language" : {
-                "sProcessing":     "Procesando...",
-                "sLengthMenu":     "Mostrar _MENU_ registros",
-                "sZeroRecords":    "No se encontraron resultados",
-                "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":    "",
-                "sSearch":         "Buscar:",
-                "sUrl":            "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
+        $(document).ready(function() {
+            $('#alumgim').DataTable( {
+                "language" : {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
 
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":     "Ultimo",
-                    "sNext":     "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Ultimo",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
                 }
-            }
 
+            } );
         } );
-    } );
-</script>
+    </script>

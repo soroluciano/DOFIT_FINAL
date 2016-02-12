@@ -32,7 +32,7 @@ $this->renderPartial('../menu/_menuInstitucion');
         if(isset(Yii::app()->session['id_institucion'])){
             $idinstitucion = Yii::app()->user->id;
             $ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$idinstitucion));
-            $profesores = ProfesorInstitucion::model()->findAll('id_institucion=:id_institucion',array(':id_institucion'=>$idinstitucion));
+            $profesores = ProfesorInstitucion::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion,'id_estado'=>1));
             if($profesores !=null){
                 echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
@@ -41,7 +41,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                  <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th><th>Eliminar Profesor</th></thead>
                  <tbody class='fuente'>";
                 foreach($profesores as $prof){
-					$profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
+                    $profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
                     ?>
                     <tr>
                         <input type="hidden" name="valor" id="valor"></input>
@@ -69,10 +69,10 @@ $this->renderPartial('../menu/_menuInstitucion');
                         <td><a id="tel"  href="#" onClick="javascript:Mostrartelefonos(<?php echo $prof->id_usuario;?>);">Ver Tel&eacute;fonos</a></td>
                         <td><a id="dir"  href="#" onClick="javascript:Mostrardireccion(<?php echo $prof->id_usuario;?>);")>Ver Direcci&oacute;n</a></td>
                         <td><a id="act"  href="#" onClick="javascript:Mostraractividades(<?php echo $prof->id_usuario;?>);")>Ver Actividades</td>
-                        <td><a href="#" data-toggle="modal" data-target="#borrarprofemodal">Eliminar de la Institución</a></td>
-                    </tr>  						
-                   
-					<?php
+                        <td><a id="eli"  href="#" onClick="javascript:Borrarprofesor(<?php echo $prof->id_usuario;?>);">Eliminar de la Institución</a></td>
+                    </tr>
+
+                    <?php
                     echo "<div class='modal fade' id='borrarprofemodal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
                            <div class='modal-dialog' role='document'>
                               <div class='modal-content'>
@@ -81,14 +81,12 @@ $this->renderPartial('../menu/_menuInstitucion');
                                   <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                                 </div>
                                 <div class='modal-body'>
-                                 <input type='hidden' value='$prof->id_usuario' name='idprofesor' id='idprofesor'>
-						         </input>
 								<b>¿Estas seguro que desea elimnar al profesor de $ficins->nombre?</b>
 								 <br><i><b>(Se borraran todos los alumnos y actividades asociadas a ese profesor).</b></i>
                                  </div>
                                 <div class='modal-footer'>
-                                  <button type='button' class='btn btn-primary' onclick='javascript:Borrarprofesor();'>Si</button>
-                                  <button type='button' class='btn btn-default' data-dismiss='modal'>No</button>
+                                  <button type='button' id='si' class='btn btn-primary'>Si</button>
+                                  <button type='button' id='no' class='btn btn-default' data-dismiss='modal'>No</button>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +180,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 					</div>
                 </div>
              </div>";
-               
+
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -190,7 +188,7 @@ $this->renderPartial('../menu/_menuInstitucion');
             else{
                 echo "<div class='row'>
                         <div class='.col-md-6 .col-md-offset-3'>
-                            <h2 class='text-center'>No hay Profesores asociados a $ficins->nombre</h2>
+                            <h2 class='text-center'>No hay profesores asociados a $ficins->nombre</h2>
                         </div>
                     </div>";
             }
@@ -233,30 +231,31 @@ $this->renderPartial('../menu/_menuInstitucion');
     } );
 </script>
 <script type="text/javascript">
-    function Borrarprofesor()
+    function Borrarprofesor(idusuario)
     {
-		var idprofesor = $("#idprofesor").val();
-		alert(idprofesor);
-        var data = {"idprofesor":idprofesor};
-        $.ajax({
-            url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
-            type: "POST",
-            dataType : "html",
-            data : data,
-            cache: false,
-            success: function (response){
-                if(response == "ok"){
-                    location.reload();
+        var idprofesor = idusuario;
+        $("#borrarprofemodal").modal('show');
+        $("#si").click(function(){
+            var data = {"idprofesor":idprofesor};
+            $.ajax({
+                url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
+                type: "POST",
+                dataType : "html",
+                data : data,
+                cache: false,
+                success: function (response){
+                    if(response == "ok"){
+                        location.reload();
+                    }
+                    if (response == "error"){
+                        $('#mensajeerror').modal('show');
+                    }
+                }	,
+                error: function (e) {
+                    console.log(e);
                 }
-                if (response == "error"){
-                    $('#mensajeerror').modal('show');
-                }
-            }	,
-            error: function (e) {
-                console.log(e);
-            }
-        });
-
+            })
+        })
     }
 </script>
 
