@@ -106,8 +106,34 @@
    
    <!-- <div id='datos'>-->
 <!--        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">-->
+
+
+<!-- prueba -->
+<!--	<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+  </ul>-->
+
+
+<!-- prueba -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div style="width:100%;">
-		
+
 			<div id='foto-profile' >
 				<div id='img-profile'>
 					<?php
@@ -123,28 +149,41 @@
 					<button onclick=''>borrar</button>    
 				</div>-->
 			</div>
-			<div id="columnas-inputs">
-				
-				<form role="form" id='form'>
-				<?php
-					columna("input","Nombre","a_1");
-					columna("input","Apellido","a_2");
-					columna("input","Dni","a_3");
-					columna("input","Sexo","a_4");            
-					columna("input","Fecha de nacimiento","a_5");            
-					columna("input","Telefono fijo","a_6");            
-					columna("input","Celular","a_7");            
-					columna("input","Contacto de emergencia","a_8");            
-					columna("input","Telefono de emergencia","a_9");            
-					columna("input","Provincia","b_1");        
-					columna("input","Localidad","b_2");            
-					//columna("input","Direcci&oacute;n","b_3");            
-					//columna("input","Piso","b_4");
-					//columna("input","Depto","b_5");
-				?>
-        <input type='submit' value='guardar' />
-				</form>
-			</div>
+      
+      <ul class="nav nav-tabs" style='padding-left:10%;'>
+        <li class="active"><a data-toggle="tab" href="#columnas-inputs">Informacion</a></li>
+        <li><a data-toggle="tab" href="#info-publica">Info publica</a></li>
+      </ul>
+		  <div class="tab-content">
+        <div id="columnas-inputs" class="tab-pane fade in active">
+          
+          <form role="form" id='form'>
+          <?php
+            columna("input","Nombre","a_1");
+            columna("input","Apellido","a_2");
+            columna("input","Dni","a_3");
+            columna("input","Sexo","a_4");            
+            columna("input","Fecha de nacimiento","a_5");            
+            columna("input","Telefono fijo","a_6");            
+            columna("input","Celular","a_7");            
+            columna("input","Contacto de emergencia","a_8");            
+            columna("input","Telefono de emergencia","a_9");            
+            columna("input","Provincia","b_1");        
+            columna("input","Localidad","b_2");            
+            //columna("input","Direcci&oacute;n","b_3");            
+            //columna("input","Piso","b_4");
+            //columna("input","Depto","b_5");
+          ?>
+          <input type='submit' value='guardar' />
+          </form>
+        </div>
+        
+        <div id="info-publica" class="tab-pane fade">
+          asdas
+        </div>
+      
+      </div>
+      
 		
     </div>
 </div>

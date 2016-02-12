@@ -43,11 +43,6 @@ if(!Yii::app()->user->isGuest){
 	
 
 <script type="text/javascript">
-	//   $(document).ready(function(){
-	//			$('#form').parsley();
-	//			$('#a_6').attr('data-parsley-maxlength', 4);
-	//	 });
-	//	 
 		window.Parsley.setLocale('es');
 		$(function () {
 		$('#form').parsley().on('field:validated', function() {
