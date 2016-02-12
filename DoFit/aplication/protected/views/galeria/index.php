@@ -104,11 +104,8 @@ function getActividades($id){
 		
 		<div id="respuesta_ajax">
 	
-			<?php	if($usuario->id_perfil==1){ ?>
-			<div class='propaganda-muro-2'>Publicite aqui</div>
-			<?php	}?>
 			<div id="comentarios" class="row">
-							<?php $this->renderPartial('galeria',array('perfil'=>$perfil)); ?>
+				<?php $this->renderPartial('galeria',array('perfil'=>$perfil)); ?>
 			</div>
 		
 		</div>

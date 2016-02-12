@@ -159,7 +159,7 @@ function getActividades($id){
 					</form>
 					
 		</div><!-- Status Upload  -->
-				<div class='propaganda-muro-1'>Publicite aqui</div>
+				<div class='propaganda-muro-profesor'>Publicite aqui</div>
 			</div><!-- Widget Area -->
 
 		</div><!--fin contenedor espaciado -->

@@ -1,6 +1,6 @@
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/carrousel.css" rel="stylesheet">
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/perfil.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/parsley.css" rel="stylesheet">
+<!--<link href="<?php /*echo Yii::app()->request->baseUrl;*/ ?>/css/parsley.css" rel="stylesheet">-->
 
 
 <?php
