@@ -88,8 +88,8 @@ $this->renderPartial('../menu/_menuInstitucion');
                             }
                         }
                     }
-                           // Modal telefonos
-              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
+                    // Modal telefonos
+                    echo "<div class='modal fade' tabindex='-1' role='dialog' id='datostelefonos' aria-labelledby='myModalLabel'>
                         <div class='modal-dialog' role='document'>
                             <div class='modal-content'>
 							   <div class='modal-header'>
@@ -106,7 +106,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                         </div>
                     </div>";
                     // Modal Direccion
-              echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
+                    echo "<div class='modal fade' tabindex='-1' role='dialog' id='datosdireccion' aria-labelledby='myModalLabel'>
                         <div class='modal-dialog' role='document'>
                             <div class='modal-content'>
 							   <div class='modal-header'>
@@ -136,7 +136,7 @@ $this->renderPartial('../menu/_menuInstitucion');
             if($cant_alumnos == 0){
                 echo"<div class='row'>
                         <div class='.col-md-6 .col-md-offset-3'>
-                            <h2 class='text-center'>No hay alumnos inscriptos en la instituci&oacute;n </h2>
+                            <h2 class='text-center'>No hay alumnos inscriptos en $fichains->nombre</h2>
                         </div>
                     </div>";
             }
@@ -184,7 +184,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <script type="text/javascript">
     function Mostrartelefonosalumno(idusuario){
         $('#titulostel').empty();
-		$('#datostele').empty();
+        $('#datostele').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -194,9 +194,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-             var telefonos = response.split("|");
-                $('#titulostel').append(telefonos[0]);				
-				$('#datostele').append(telefonos[1]); 
+                var telefonos = response.split("|");
+                $('#titulostel').append(telefonos[0]);
+                $('#datostele').append(telefonos[1]);
                 $('#datostelefonos').modal('show');
             }
         });
@@ -206,7 +206,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <script type="text/javascript">
     function Mostrardireccionalumno(idusuario){
         $('#titulosdire').empty();
-		$('#datosdire').empty();
+        $('#datosdire').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
         $.ajax({
@@ -216,9 +216,9 @@ $this->renderPartial('../menu/_menuInstitucion');
             data : data,
             cache: false,
             success: function (response){
-              var direcciones = response.split("|");
-				$('#titulosdire').append(direcciones[0]);
-				$('#datosdire').append(direcciones[1]); 
+                var direcciones = response.split("|");
+                $('#titulosdire').append(direcciones[0]);
+                $('#datosdire').append(direcciones[1]);
                 $('#datosdireccion').modal('show');
             }
         });
