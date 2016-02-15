@@ -161,7 +161,9 @@ else
 <script type="text/javascript">
     function AlumnosInscriptos(idactividad)
     {
-        $('#actaluminsc').empty();
+        $('#actividad').empty();
+		$('#institucion').empty();
+		$('#actaluminsc').empty();
         var id_actividad = idactividad;
         var data = {'idactividad':id_actividad};
         $.ajax({
