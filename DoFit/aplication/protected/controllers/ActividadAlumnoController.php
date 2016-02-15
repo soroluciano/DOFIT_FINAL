@@ -29,7 +29,7 @@ class ActividadAlumnoController extends Controller
         $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario' => $id_usuario,'id_estado'=>1));
         if ($actividades_alumno != null) {
             $this->render('Veractividades', array('actividades_alumno' => $actividades_alumno));
-        }
+        }	
     }
 
     public function actionDesafectarActividad()

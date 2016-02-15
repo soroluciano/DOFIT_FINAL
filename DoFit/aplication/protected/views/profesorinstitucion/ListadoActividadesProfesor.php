@@ -72,14 +72,12 @@ if(isset(Yii::app()->session['id_usuario'])){
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../profesorinstitucion/ListadoActividades">&times;</a></span></button>
-                        <h4 class="modal-title"><b>Alumnos Inscriptos en la actividad</b></h4>
+                        <h4 class="modal-title"><b>Alumnos inscriptos en <p id="actividad"></p> en <p id="institucion"></p></b></h4>
                     </div>
-                    <br/>
                     <div class='modal-body'>
                         <div id="actaluminsc">
                         </div>
                     </div>
-                    <br/>
                     <div class='modal-footer'>
                         <a href="../profesorinstitucion/ListadoActividades" class="btn btn-primary">Cerrar</a>
                     </div>
@@ -173,8 +171,13 @@ else
             dataType: "html",
             cache : false,
             success : function(response){
-                $('#actaluminsc').append(response);
-                $('#aluminsc').modal('show');
+                aluminscriptos = response.split("|");
+			    $("#actividad").css("display","inline");
+				$("#institucion").css("display","inline");
+				$("#actividad").append(aluminscriptos[1]);
+			    $("#institucion").append(aluminscriptos[2]);
+                $('#actaluminsc').append(aluminscriptos[0]);
+				$('#aluminsc').modal('show');
             }
         })
     }

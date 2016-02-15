@@ -322,6 +322,9 @@ class ProfesorInstitucionController extends Controller
 	public function actionAlumnosInscriptosActividad()
 	{
 		$idactividad = $_POST['idactividad'];
+        $actividad = Actividad::model()->findByAttributes(array('id_actividad'=>$idactividad));
+		$deporte = Deporte::model()->findByAttributes(array('id_deporte'=>$actividad->id_deporte));
+		$fichainstitucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$actividad->id_institucion));
 		$actividadalumno = ActividadAlumno::model()->findAllByAttributes(array('id_actividad'=>$idactividad,'id_estado'=>1));
 		if($actividadalumno != NULL){
 			echo "<table id='lisinscriptos'  class='display' cellspacing='0' width='100%'>
@@ -374,6 +377,7 @@ class ProfesorInstitucionController extends Controller
 		            }
 	            } );
             </script>";
+			echo "|$deporte->deporte|$fichainstitucion->nombre";
 		}
 	}
 
