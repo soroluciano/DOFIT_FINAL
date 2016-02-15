@@ -54,7 +54,6 @@ if(!Yii::app()->user->isGuest){
 		return false; // Don't submit form for this demo
 		});
 		});
-
 </script>
 		
 		

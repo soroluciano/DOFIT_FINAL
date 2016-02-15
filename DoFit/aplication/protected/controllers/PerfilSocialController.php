@@ -143,5 +143,151 @@ class PerfilSocialController extends Controller
             $this->redirect(Yii::app()->homeUrl);
     }
 
+    
+    public function actionFillProvincia(){
+      	$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+       	$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha->id_localidad));
+		$provincia = Provincia::model()->find('id_provincia=:id_provincia',array(':id_provincia'=>$localidad->id_provincia));
+		
+		$localidades = Localidad::model()->findAll();
+		$provincias = Provincia::model()->findAll();
+        $result="";
+      
+        foreach($provincias as  $prov){
+				if($prov['provincia']==$provincia->provincia){
+					$result.="<option selected id='".$prov['id_provincia']."'>".$prov['provincia']."</option>";
+				}else{
+					$result.="<option  id='".$prov['id_provincia']."'>".$prov['provincia']."</option>";
+				}
+				
+		  }
+          echo $result;
+    }
+ 
+   public function actionFillLocalidad(){
+    //llena la localidad de acuerdo a cada provincia
+        if($_POST['id'] != 0){
+          $id = $_POST['id'];
+        }else{
+          $id = null;
+        }
+        $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+       	$localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha->id_localidad));
+		$provincia = Provincia::model()->find('id_provincia=:id_provincia',array(':id_provincia'=>$localidad->id_provincia));
+        $result="";
+        $localidades="";
+        
+        if($id != null){
+          $localidades = Localidad::model()->findAll(
+                        array(
+                      'condition' => 'id_provincia = :id_provincia',
+                      'params'    => array(':id_provincia' => $id)
+                    )
+          ); 
+        }
+        else{
+          $localidades = Localidad::model()->findAll(
+                        array(
+                      'condition' => 'id_provincia = :id_provincia',
+                      'params'    => array(':id_provincia' => $provincia->id_provincia)
+                    )
+        );
+        }
+        foreach($localidades as  $loc){
+            if($loc['localidad']==$localidad->localidad){
+                $result.="<option selected id='".$loc['id_localidad']."'>".$loc['localidad']."</option>";
+            }else{
+                $result.="<option id='".$loc['id_localidad']."'>".$loc['localidad']."</option>";
+            }
+            
+        }
+        echo $result;
+    }
+   
+     public function actionUpdateDatos(){
+      	$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$model = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+		$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+        $fichaService = new FichaUsuarioService;
+        $tel="";
+        $cel="";
+        $cont="";
+        $telem="";
+        $dir="";
+        $pis="";
+        $dep="";
 
+        if(empty($_POST['telfijo'])){
+          $tel = "Ingrese un valor";
+        }else{
+           $tel = $fichaService->telfijo($_POST['telfijo']);
+        }
+        if(empty($_POST['celular'])){
+          $cel = "Ingrese un valor";
+        }else{
+           $cel = $fichaService->cel($_POST['celular']);
+        }
+        if(empty($_POST['conemer'])){
+          $cont = "Ingrese un valor";
+        }else{
+           $cont = $fichaService->contemer($_POST['conemer']);
+        }
+        if(empty($_POST['telemer'])){
+          $telem = "Ingrese un valor";
+        }else{
+           $telem = $fichaService->telemer($_POST['telemer']);
+        }
+        if(empty($_POST['direccion'])){
+         $dir = "Ingrese un valor";
+        }else{
+          $dir = $fichaService->direccion($_POST['direccion']);
+         
+        }
+        if(empty($_POST['piso'])){
+          $pis = "Ingrese un valor";
+        }else{
+           $pis = $fichaService->piso($_POST['piso']);
+           
+        }
+        if(empty($_POST['depto'])){
+          $dep = "Ingrese un valor";
+        }else{
+           $dep = $fichaService->depto($_POST['depto']);
+        }
+        $array="";
+        $saved="";
+        if($tel == "ok" && $cel=="ok" && $cont=="ok" && $telem=="ok" && $dir=="ok" && $pis=="ok" && $dep=="ok"){
+          $saved="si";
+          $ficha->telfijo = $_POST['telfijo'];
+          $ficha->conemer = $_POST['conemer'];
+          $ficha->telemer = $_POST['telemer'];
+          $ficha->direccion = $_POST['direccion'];
+          $ficha->piso = $_POST['piso'] ;
+          $ficha->depto = $_POST['depto'];
+          $ficha->celular = $_POST['celular'];
+          $ficha->update();
+          $array = Array('saved'=>$saved);
+          echo CJSON::encode($array);
+
+        }else{
+          $saved="no";
+          $array = Array('telefono'=>$tel,'celular'=>$cel,'conemer'=>$cont,'telemer'=>$telem,'direccion'=>$dir,'piso'=>$pis,'depto'=>$dep,'saved'=>$saved);
+           echo CJSON::encode($array);
+        }
+        
+       
+//       			array('dni, conemer, direccion, cusuario', 'length', 'max'=>60),
+//			array('sexo', 'length', 'max'=>1),
+//			array('telfijo, celular, telemer', 'length', 'max'=>30),
+//			array('piso, depto', 'length', 'max'=>10),
+//			array('fhultmod', 'safe'),
+       
+      
+                        
+      
+     }
+   
+   
 }

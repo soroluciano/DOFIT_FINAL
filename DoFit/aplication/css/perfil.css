@@ -7,7 +7,7 @@ body {
 
 #respuesta_ajax{
   width: 100%;
-  height: 600px;
+  height: 800px;
 }
 
 .left-column{
@@ -25,13 +25,13 @@ body {
   
 .contenido{
     width: 80%;
-    height: 900px;
+    height: 1400px;
     float: left;
     background-color:white !important;
-/*    padding-top:50px;*/
     margin-top: 20px;
 
 }
+
   
 /*estructura*/  
   
@@ -107,4 +107,38 @@ body {
     margin-top:30px;
 }
 
-  
+.input-class{
+    float:left;
+    padding-right:10px;
+    margin-botton:10px;
+    height:100px;
+    width:30%;
+    font-weight:bold;
+}  
+.select-div{
+    float:left;
+    padding-right:10px;
+    margin-botton:10px;
+    height:100px;
+    width:30%;
+    font-weight:bold;
+}
+
+.form{
+    margin-top:150px;
+    padding-top:100px;
+}
+#save-button{
+    float:left;
+    width: 100%;
+    text-align: right;
+    padding-right: 50px;
+}
+#foto{
+    height: 600px;
+    
+}
+
+.redspan{
+    color:red !important;
+}

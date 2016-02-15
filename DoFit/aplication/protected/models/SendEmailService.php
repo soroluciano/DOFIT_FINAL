@@ -34,7 +34,7 @@ class SendEmailService
         $mailer->Body = $message;
         $mailer->Send();
     }
-	
+
 	public function Reestablecerpassword($email){
         $message = '<html>
                     <body >
