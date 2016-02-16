@@ -144,8 +144,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 					     <td>$t->telfijo</td>
 					     <td>$t->celular</td>
 					     <td>$var</td>
-                         <td><a href='../actividadAlumno/AceptarAlumno/$t->id_usuario' class='btn btn-primary'>Aceptar</a></td>
-                         <td><a href='../actividadAlumno/CancelarAlumno/$t->id_usuario' class='btn btn-primary'>Cancelar</a></td>
+                         <td><a href='../Institucion/AceptarAlumno?usu=$t->id_usuario&act=$a->id_actividad' class='btn btn-primary'>Aceptar</a></td>
+                         <td><a href='../Institucion/CancelarAlumno?usu=$t->id_usuario&act=$a->id_actividad' class='btn btn-primary'>Cancelar</a></td>
                       </tr>";
             }
         }
