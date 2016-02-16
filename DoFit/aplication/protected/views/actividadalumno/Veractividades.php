@@ -12,8 +12,229 @@
     $ins = Institucion::model()->findByPk(Yii::app()->user->id);
     $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
 }
-$this->renderPartial('../menu/_menuInstitucion');
 ?>
+<style type="text/css">
+    ol, ul {
+        list-style: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        vertical-align: middle;
+    }
+
+    q, blockquote {
+        quotes: none;
+    }
+    q:before, q:after, blockquote:before, blockquote:after {
+        content: "";
+        content: none;
+    }
+
+    a img {
+        border: none;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+        display: block;
+    }
+
+    .hamburgerMenu span, .hamburgerMenu::before, .hamburgerMenu::after {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background: #fff;
+        position: absolute;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+
+    .hamburgerMenu {
+        height: 30px;
+        width: 30px;
+        margin: 20px;
+        position: absolute;
+        right: 0;
+        z-index: 99;
+    }
+    .hamburgerMenu span {
+        top: 13px;
+        right: 0;
+    }
+    .hamburgerMenu::before, .hamburgerMenu::after {
+        content: "";
+    }
+    .hamburgerMenu::before {
+        top: 4px;
+        margin-bottom: 4px;
+    }
+    .hamburgerMenu::after {
+        bottom: 4px;
+        margin-top: 4px;
+    }
+    .hamburgerMenu:hover {
+        cursor: pointer;
+    }
+    .hamburgerMenu.open span {
+        opacity: 0;
+    }
+    .hamburgerMenu.open::before {
+        width: 38px;
+        top: 50%;
+        margin-left: -4px;
+        margin-top: -2px;
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .hamburgerMenu.open::after {
+        width: 38px;
+        bottom: 50%;
+        margin-left: -4px;
+        margin-bottom: -2px;
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .menu {
+        position: absolute;
+        right: 0px;
+        top: 70px;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        width:1px;
+    }
+    .menu span {
+        display: block;
+        color: #fff;
+        text-align: right;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        position: relative;
+        right: -220px;
+        background: rgba(100, 100, 100, 0.7);
+        margin-bottom: 5px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+
+    }
+    .menu span:nth-of-type(1) {
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    .menu span:nth-of-type(2) {
+        -moz-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+    }
+    .menu span:nth-of-type(3) {
+        -moz-transition: all 0.6s ease;
+        -o-transition: all 0.6s ease;
+        -webkit-transition: all 0.6s ease;
+        transition: all 0.6s ease;
+    }
+    .menu span:hover {
+        font-size: 1.5em;
+        background: #646464;
+        color:white;
+        cursor: pointer;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+    .menu.open {
+        width: 200px;
+    }
+    .menu.open span {
+        right: 0px;
+    }
+
+    .menu a:link {
+        text-decoration: none;
+
+    }
+    .menu a {
+        color:white;
+        font-weight:bolder;
+
+    }
+
+    #top{
+        margin-bottom: 10%;
+    }
+
+
+    .logo{
+        float:left;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.hamburgerMenu').click(function(){
+            $(this).toggleClass('open');
+            $('.menu').toggleClass('open');
+        });
+    });
+
+</script>
+
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="hamburgerMenu"><span></span></div>
+            <div class="menu">
+                <span><a href="../../../aplication/institucion/home">Home</a></span>
+                <span><a href="../../../aplication/ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a></span>
+                <span><a href="../../../aplication/institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a></span>
+                <span><a href="../../../aplication/actividad/index">Actividades</a></span>
+                <span><a href="../../../aplicationpago/index">Pagos</a></span>
+                <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
+            </div>
+            <div class="logo">
+                <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
+                <a href="../" class="navbar-brand"></a>
+                <li></li>
+            </div>
+        </div>
+        <nav id="bs-navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="fuentemenu">
+                    <?php
+                    if(isset(Yii::app()->session['id_institucion'])){
+                        //Es un usuario logueado.
+                        $ins = Institucion::model()->findByPk(Yii::app()->user->id);
+                        $fichains = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$ins->id_institucion));
+                        echo $fichains->nombre."&nbsp";
+                    }
+                    ?>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
 <div class="container">
     <div class='row'>
@@ -22,9 +243,9 @@ $this->renderPartial('../menu/_menuInstitucion');
         <br>
         <br>
         <br>
-        <br>
-        <br>";
-        if($actividades_alumno != null) {
+		<div><h3>Actividades de $ficha_usuario->nombre $ficha_usuario->apellido en $ficha_institucion->nombre</h3></div><br/>";?>
+		<?php
+		if($actividades_alumno != null) {
             echo "<table id='veractividades' class='display' cellspacing='0' width='100%'>
 	            <thead class='fuente'>
 		          <tr><th>Deporte</th><th>Días y Horarios</th><th>Valor actividad</th><th>Desafectar actividad</th></tr>
@@ -46,22 +267,21 @@ $this->renderPartial('../menu/_menuInstitucion');
                         echo $dias[$id_dia]."&nbsp;".$act_hor->hora .':'.($act_hor->minutos == '0' ? '0'.$act_hor->minutos : $act_hor->minutos)." - ";
                     }
                     echo "</td>";
-				
-                    ?>
+					?>
                     <td id='valor'><?php echo  $act->valor_actividad;?></td>
-                    <td id='elim'><a href="" data-toggle="modal" data-target="#myModal">Desafectar actividad</a></td>
+                    <td id='elim'><input type="button" value="Desafectar actividad" class="btn btn-primary"data-toggle="modal" data-target="#myModal"></input></td>
                     </tr>
 					<?php
-                    echo "
+					echo "
                      <div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
 						<div class='modal-dialog' role='document'>
 						 <div class='modal-content'>
                     <div class='modal-header'>
                       <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                      <h4 class='modal-title' id='myModalLabel'>Inscripción</h4>
+                      <h4 class='modal-title' id='myModalLabel'>Desafectar actividad</h4>
                   </div>
                   <div class='modal-body'>
-                   ¿Estas seguro que desea desafectar al alumno de la actividad?
+                   ¿Estas seguro que desea desafectar a $ficha_usuario->nombre $ficha_usuario->apellido de la actividad?
                   </div>
                  <div class='modal-footer'>
                   <button type='button' class='btn btn-primary' onclick='javascript:desafectaractividad();'>Si</button>
@@ -70,11 +290,14 @@ $this->renderPartial('../menu/_menuInstitucion');
               </div>
             </div>
          </div>";
-                }
+				}
             }
             echo "</tbody>
-	           </table>";
-        }
+	           </table>";?>
+			   <br/>
+			   <input id='volver' onClick="location.href='../../../aplication/institucion/ListadoAlumnosxInstitucion'" class='btn btn-primary' type='button' value='Volver al listado de alumnos'></input>
+        <?php
+		}
         else
         {
             echo "<h3>El usuario no se inscribio en ninguna actividad</h3><br/>";
@@ -84,10 +307,15 @@ $this->renderPartial('../menu/_menuInstitucion');
 </div>
 </html>
 <script type="text/javascript">
+    $(document).ready(function(){
+	  $("#volver").css("float","right");
+	});   
+</script>	
+<script type="text/javascript">
     function desafectaractividad()
     {
         var idactividad = $('#idactividad').val();
-        var idalumno = $('#idalumno').val();
+		var idalumno = $('#idalumno').val();
         var data = {"idactividad":idactividad,"idalumno":idalumno};
         $.ajax({
             url :  baseurl + "/actividadalumno/DesafectarActividad",

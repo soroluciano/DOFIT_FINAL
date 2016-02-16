@@ -37,14 +37,13 @@ class ProfesorInstitucionController extends Controller
 			echo "<table id='mosinstituciones' class='display' cellspacing='0' width='100%'>
                      <thead class='fuente'>
                      <tr>
-				     <th>Nombre</th><th>Cuit</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Enviar Solicitud</th></tr></thead>";
+				     <th>Nombre</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Enviar Solicitud</th></tr></thead>";
 			foreach($ficinstituciones as $ficins){
 				$profins = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$ficins->id_institucion));
 				if($profins == NULL){
 					echo  "<tbody class='fuente'>";
 					echo  "<tr>";
 					echo  "<td id='nombre'>" . $ficins->nombre . "</td>";
-					echo  "<td id='cuit'>" . $ficins->cuit . "</td>";
 					echo  "<td id='direccion'>" . $ficins->direccion ."</td>";
 					echo  "<td id='telfijo'>" . $ficins->telfijo . "</td>";
 					echo  "<td id='celular'>" . $ficins->celular . "</td>";
@@ -322,7 +321,7 @@ class ProfesorInstitucionController extends Controller
 	public function actionAlumnosInscriptosActividad()
 	{
 		$idactividad = $_POST['idactividad'];
-        $actividad = Actividad::model()->findByAttributes(array('id_actividad'=>$idactividad));
+		$actividad = Actividad::model()->findByAttributes(array('id_actividad'=>$idactividad));
 		$deporte = Deporte::model()->findByAttributes(array('id_deporte'=>$actividad->id_deporte));
 		$fichainstitucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$actividad->id_institucion));
 		$actividadalumno = ActividadAlumno::model()->findAllByAttributes(array('id_actividad'=>$idactividad,'id_estado'=>1));

@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="inner cover">
-                <h1 class="cover-heading">Acceso Gimnasios</h1>
+                <h1 class="cover-heading">Acceso Instituciones</h1>
                 <p class="lead"><a>
                         <?php $form=$this->beginWidget('CActiveForm', array(
                             'id'=>'loginforminstitucion',

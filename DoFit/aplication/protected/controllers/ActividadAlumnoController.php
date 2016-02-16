@@ -27,8 +27,10 @@ class ActividadAlumnoController extends Controller
         $id_usuario = $id;
         $id_institucion = Yii::app()->user->id;
         $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario' => $id_usuario,'id_estado'=>1));
-        if ($actividades_alumno != null) {
-            $this->render('Veractividades', array('actividades_alumno' => $actividades_alumno));
+        $ficha_usuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$id_usuario));
+		$ficha_institucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$id_institucion));
+		if ($actividades_alumno != null) {
+            $this->render('Veractividades', array('actividades_alumno' => $actividades_alumno,'ficha_usuario'=>$ficha_usuario,'ficha_institucion'=>$ficha_institucion));
         }	
     }
 

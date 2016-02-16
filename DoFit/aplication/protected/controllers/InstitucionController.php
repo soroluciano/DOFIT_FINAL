@@ -141,10 +141,11 @@ class InstitucionController extends Controller
                 $this->redirect('../site/index');
             }
             else{
-                $this->redirect('../site/loginadmin');
+                $this->redirect('../site/LoginInstitucion');
             }
         }
-        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$id));
+        $idinstitucion = Yii::app()->user->id;
+        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
         $pi->id_estado = 1;
         $pi->update();
         $this->redirect('../home');
@@ -153,18 +154,37 @@ class InstitucionController extends Controller
     public function actionCancelar($id)
     {
 
-        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$id));
+        $idinstitucion = Yii::app()->user->id;
+		$pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
         $pi->delete();
         $this->redirect('../home');
     }
 
-    public function actionAceptarAlumno($id)
+    public function actionAceptarAlumno()
     {
+        if(!isset(Yii::app()->session['id_institucion'])){
+            if (isset(Yii::app()->session['id_usuario'])) {
+                $this->redirect('../site/index');
+            }
+            else{
+                $this->redirect('../site/LoginInstitucion');
+            }
+        }
+        $id = $_GET['usu'];
+        $idactividad = $_GET['act'];
+        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
+        $al->id_estado = 1;
+        $al->update();
+        $this->redirect('../../aplication/institucion/home');
+    }
 
-        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$id));
-        $pi->id_estado = 1;
-        $pi->update();
-        $this->redirect('../home');
+    public function actionCancelarAlumno()
+    {
+        $id = $_GET['usu'];
+        $idactividad = $_GET['act'];
+		$al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
+        $al->delete();
+        $this->redirect('../../aplication/institucion/home');
     }
 
     public function actionHome()

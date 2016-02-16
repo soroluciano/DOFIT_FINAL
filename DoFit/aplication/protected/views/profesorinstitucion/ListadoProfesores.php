@@ -21,6 +21,12 @@ $this->renderPartial('../menu/_menuInstitucion');
         -o-background-size: cover;
         background-size: cover;
     }
+	.lisprofesores{
+	  width: 100%;
+	  overflow-y: auto;
+	  _overflow: auto;
+	  margin: 0 0 1em;
+    }
 </style>
 <div class="container">
     <br/>
@@ -40,9 +46,12 @@ $this->renderPartial('../menu/_menuInstitucion');
                  <thead class='fuente'>
                  <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th><th>Eliminar Profesor</th></thead>
                  <tbody class='fuente'>";
+				 $cont = 0;
+				 $profe = array();
                 foreach($profesores as $prof){
                     $profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
-                    ?>
+                    $profe[$cont] = $prof->id_usuario;
+					?>
                     <tr>
                         <input type="hidden" name="valor" id="valor"></input>
                         <td id="nombre"><?php echo $profesor->nombre;?></td>
@@ -66,10 +75,10 @@ $this->renderPartial('../menu/_menuInstitucion');
                             <?php $fechanac = date("d-m-Y",strtotime($profesor->fechanac));
                             echo $fechanac;?>
                         </td>
-                        <td><a id="tel"  href="#" onClick="javascript:Mostrartelefonos(<?php echo $prof->id_usuario;?>);">Ver Tel&eacute;fonos</a></td>
-                        <td><a id="dir"  href="#" onClick="javascript:Mostrardireccion(<?php echo $prof->id_usuario;?>);")>Ver Direcci&oacute;n</a></td>
-                        <td><a id="act"  href="#" onClick="javascript:Mostraractividades(<?php echo $prof->id_usuario;?>);")>Ver Actividades</td>
-                        <td><a id="eli"  href="#" onClick="javascript:Borrarprofesor(<?php echo $prof->id_usuario;?>);">Eliminar de la Institución</a></td>
+                        <td><input type="button" id="tel" value="Ver tel&eacute;fonos" class="btn btn-primary" onClick="javascript:Mostrartelefonos(<?php echo $prof->id_usuario;?>);"></input></td>
+                        <td><input type="button" id="dir" value="Ver direcci&oacute;n" class="btn btn-primary" onClick="javascript:Mostrardireccion(<?php echo $prof->id_usuario;?>);")></input></td>
+                        <td><input type="button" id="act" value="Ver actividades" class="btn btn-primary" value="Ver actividades" onClick="javascript:Mostraractividades(<?php echo $prof->id_usuario;?>);")></input></td>
+                        <td><input type="button" class="btn btn-primary" value="Eliminar" onClick="javascript:Borrar(<?php echo $prof->id_usuario;?>);"></input></td>
                     </tr>
 
                     <?php
@@ -81,7 +90,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                   <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                                 </div>
                                 <div class='modal-body'>
-								<b>¿Estas seguro que desea elimnar al profesor de $ficins->nombre?</b>
+								<b>¿Estás seguro que desea eliminar al profesor de $ficins->nombre?</b>
 								 <br><i><b>(Se borraran todos los alumnos y actividades asociadas a ese profesor).</b></i>
                                  </div>
                                 <div class='modal-footer'>
@@ -100,6 +109,23 @@ $this->renderPartial('../menu/_menuInstitucion');
 						       </div>
 						    <div class='modal-body'>
 						       Hubo un error al eliminar el profesor de la instituci&oacute;n.
+						    </div>
+						    <div class='modal-footer'>
+							   <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+						    </div>
+					      </div>
+					    </div>
+				    </div>";
+					// Modal ok
+					 echo "<div class='modal fade'  id='elimexito' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+				           <div class='modal-dialog' role='document'>
+					        <div class='modal-content'>
+						      <div class='modal-header'>
+						          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+							      <h4 class='modal-title' id='myModalLabel'>Eliminar Profesor</h4>
+						       </div>
+						    <div class='modal-body'>
+						       Se elimino el profesor de $ficins->nombre con éxito.
 						    </div>
 						    <div class='modal-footer'>
 							   <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
@@ -180,7 +206,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 					</div>
                 </div>
              </div>";
-
+                $cont++;
                 }
                 echo "</tbody>";
                 echo "</table>";
@@ -203,7 +229,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <script type="text/javascript">
     $(document).ready(function() {
         $('#lisprofesores').DataTable( {
-            "language" : {
+			"language" : {
                 "sProcessing":     "Procesando...",
                 "sLengthMenu":     "Mostrar _MENU_ registros",
                 "sZeroRecords":    "No se encontraron resultados",
@@ -231,13 +257,22 @@ $this->renderPartial('../menu/_menuInstitucion');
     } );
 </script>
 <script type="text/javascript">
-    function Borrarprofesor(idusuario)
-    {
-        var idprofesor = idusuario;
-        $("#borrarprofemodal").modal('show');
-        $("#si").click(function(){
-            var data = {"idprofesor":idprofesor};
-            $.ajax({
+    function Borrar(idusuario){	
+	   $("#borrarprofemodal").modal('show');
+	   $("#si").click(function(){
+   		  var idprofesor;
+		  idprofesor = idusuario;
+		  Borrarprofesor(idprofesor);
+	   });
+       $("#no").click(function(){
+          location.reload();		   
+	   });   
+   	}
+</script>
+<script type="text/javascript">	
+	function Borrarprofesor(idprofesor){  
+	   var data = {"idprofesor":idprofesor};
+			$.ajax({
                 url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
                 type: "POST",
                 dataType : "html",
@@ -245,7 +280,8 @@ $this->renderPartial('../menu/_menuInstitucion');
                 cache: false,
                 success: function (response){
                     if(response == "ok"){
-                        location.reload();
+                        $("#elimexito").modal('show');
+						delete idprofesor;
                     }
                     if (response == "error"){
                         $('#mensajeerror').modal('show');
@@ -255,8 +291,8 @@ $this->renderPartial('../menu/_menuInstitucion');
                     console.log(e);
                 }
             })
-        })
-    }
+        }
+  
 </script>
 
 <script type="text/javascript">

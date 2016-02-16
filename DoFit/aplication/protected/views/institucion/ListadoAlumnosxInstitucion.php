@@ -80,9 +80,9 @@ $this->renderPartial('../menu/_menuInstitucion');
                                         <?php $fechanac = date("d-m-Y",strtotime($ficha_usuario->fechanac));
                                         echo $fechanac;?>
                                     </td>
-                                    <td><a id="tel" href="#" onClick="javascript:Mostrartelefonosalumno(<?php echo $id_usuario;?>);">Ver tel&eacute;fonos</a></td>
-                                    <td><a id="dir" href="#" onClick="javascript:Mostrardireccionalumno(<?php echo $id_usuario;?>);")>Ver direcci&oacute;n</a></td>
-                                    <td id="act"><a href="../actividadalumno/Veractividades/<?php echo $id_usuario?>">Ver actividades</a></td>
+                                    <td><input type="button" id="tel" value="Ver tel&eacute;fonos" class="btn btn-primary" onClick="javascript:Mostrartelefonosalumno(<?php echo $id_usuario;?>);"></input></td>
+                                    <td><input type="button" id="dir" value="Ver direcci&oacute;n" class="btn btn-primary" onClick="javascript:Mostrardireccionalumno(<?php echo $id_usuario;?>);")></input></td>
+                                    <td><a id="act" class="btn btn-primary" href="../actividadalumno/Veractividades/<?php echo $id_usuario?>">Ver actividades</a></td>
                                 </tr>
                                 <?php
                             }
