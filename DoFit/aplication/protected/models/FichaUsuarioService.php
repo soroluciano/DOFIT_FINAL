@@ -120,6 +120,7 @@ class FichaUsuarioService
             return $this->sincaracteres($val);
         }
     }
+    
 
 }
 

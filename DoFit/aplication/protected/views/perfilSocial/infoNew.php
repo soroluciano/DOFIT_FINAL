@@ -64,7 +64,7 @@
     }
 	$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
 	$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-	
+	$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
 ?>
 
 <div class='left-column'>
@@ -77,22 +77,20 @@
 				<div id='img-profile'>
 					<?php
 					if($perfil->fotoperfil == "profile_defect_picture.png"){
-						echo "<img src=".Yii::app()->request->baseUrl."/images/profile_defect_picture.png>";	
+						echo "<img src=".Yii::app()->request->baseUrl."/images/profile_defect_picture.png><span class='update'>Cambiar foto</span>";	
 					}else{
-						echo "<img src=".Yii::app()->request->baseUrl."/uploads/".$perfil->fotoperfil.">";		
+						echo "<img src=".Yii::app()->request->baseUrl."/uploads/".$perfil->fotoperfil."><span class='update'>Cambiar foto</span>";		
 					}
 					?>
 				</div>
+				<div id="descripcion_personal" class="red"><p id='nombre'><?php echo $ficha->nombre." ".$ficha->apellido;?></p><p class="desc" onclick="addDescription();"><?php if($perfil->descripcion !=null ){echo $perfil->descripcion; }else{ echo "Cuentanos algo tuyo! Cuentale al mundo quien eres!<span class='glyphicon glyphicon-pencil'></span></p></div>"; } ?>
 			</div>
       
-      <ul class="nav nav-tabs" style='padding-left:10%;'>
-        <li class="active"><a data-toggle="tab" href="#columnas-inputs">Informacion</a></li>
-<!--        <li><a data-toggle="tab" href="#info-publica">Info publica</a></li>-->
-      </ul>
-		  <div class="tab-content">
-			<div id="columnas-inputs" class="tab-pane fade in active borde">
-			  <p>Informacion</p>
-			  <p>Esta informacion solo sera compartida con aquellos gimnasios a los que se ha adherido</p>
+
+
+			<div id="columnas-inputs">
+			  <p class="title">Informacion</p>
+			  <p id="inf">Esta informacion solo sera compartida con aquellos gimnasios a los que se ha adherido</p>
 			  <form role="form" id='form'>
 			  <?php
 				columna("input","Nombre","a_1");
@@ -110,13 +108,12 @@
 				columna("input","Provincia","b_1");        
 				columna("input","Localidad","b_2");  
 			  ?>
-			  <div id="save-button" class="borde"><input type='button' class="btn btn-success" value='guardar' onclick='validateData();' /></div>
+			  <div id="save-button"><input type='button' class="btn btn-success" value='guardar' onclick='validateData();' /></div>
+			  
 			  </form>
 			</div>
-      
-      </div>
-
-		
+			<div id="back-button"><a href='../red/index' class='btn btn-primary'>Volver</a></div>
+			
     </div>
 </div>
 

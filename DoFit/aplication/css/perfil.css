@@ -25,10 +25,11 @@ body {
   
 .contenido{
     width: 80%;
-    height: 1400px;
+    height: 900px;
     float: left;
     background-color:white !important;
     margin-top: 20px;
+    margin-bottom:80px;
 
 }
 
@@ -79,8 +80,8 @@ body {
 /*    background-image: url("../images/pasto.jpg");*/
     background-color: #8dbf41;
 
-}  
-  
+}
+
 #img-profile{
     width:150px;
     height:150px;
@@ -89,7 +90,9 @@ body {
     border-style:solid; 
     border-color:black;
     border-width:1px;
-}  
+    float: left;
+}
+
  
 #img-profile img{
     width:100%;
@@ -97,6 +100,32 @@ body {
     border-style:solid; 
     border-color:white;
     border-width:6px;
+    position: relative;
+}
+#img-profile img:hover{
+     border-color:black;
+     
+}
+#img-profile span{
+    position:absolute;
+   /* display:none;*/
+}
+#img-profile span:hover{
+     
+     display: block;
+}
+#img-profile span.update{ 
+    top:0;
+    left:0;
+}
+
+/*https://jsfiddle.net/taditdash/72XyL/*/
+textarea{
+ resize: none;
+ color:black;
+ width: 95%;
+ height:50%;
+
 }  
   
   
@@ -134,6 +163,17 @@ body {
     text-align: right;
     padding-right: 50px;
 }
+#back-button{
+    border-top:1px;
+    border-top-style:solid;
+    border-top-color:grey;
+    float:left;
+    width: 100%;
+    text-align: right;
+    padding-right: 50px;
+    margin-top:20px;
+    padding-top: 5px;
+}
 #foto{
     height: 600px;
     
@@ -142,3 +182,41 @@ body {
 .redspan{
     color:red !important;
 }
+
+.alert-size{
+ width: 90%;
+}
+.title{
+    font-weight: bold;
+}
+#inf{
+    margin-bottom: 20px;
+}
+
+#descripcion_personal{
+    float:left;
+    width:50%;
+    height:160px;
+    margin-top: 27px;
+    padding: 5px;
+    padding-left:10px;
+    color:white;
+    
+    
+}
+
+p .desc{
+    
+}
+ p.desc:hover{
+     color:black;
+}
+
+
+
+#nombre{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: left;
+}
+

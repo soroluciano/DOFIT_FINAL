@@ -268,7 +268,7 @@ class PerfilSocialController extends Controller
           $ficha->depto = $_POST['depto'];
           $ficha->celular = $_POST['celular'];
           $ficha->update();
-          $array = Array('saved'=>$saved);
+          $array = Array('saved'=>$saved); 
           echo CJSON::encode($array);
 
         }else{
@@ -277,16 +277,6 @@ class PerfilSocialController extends Controller
            echo CJSON::encode($array);
         }
         
-       
-//       			array('dni, conemer, direccion, cusuario', 'length', 'max'=>60),
-//			array('sexo', 'length', 'max'=>1),
-//			array('telfijo, celular, telemer', 'length', 'max'=>30),
-//			array('piso, depto', 'length', 'max'=>10),
-//			array('fhultmod', 'safe'),
-       
-      
-                        
-      
      }
    
    
