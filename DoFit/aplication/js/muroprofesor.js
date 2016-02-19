@@ -55,14 +55,7 @@
   function insertarRespuesta(a) {  //insertar las respuestas en los comentarios
     var _a = a;
     var comment = $("#txt_post_"+_a).val();
-    //var pusher = new Pusher('c48d59c4cb61c7183954');    
-    //var canalnom = $('#canal').val();
-    //var canal  = pusher.subscribe(canalnom);
- 
-    //canal.bind(comment, function(respuesta){
-    //});
-    //
-    //
+
     $.ajax({
       url:  baseurl+'/muro/insertarRespuesta',
       type: 'POST',
@@ -76,15 +69,7 @@
         $('#logger').html(e.responseText);
       }
     });
-    //
-    //$.post(baseurl+'/php/ajax.php', {
-    //  msj : this.comment,
-    //  canal : $('#canal').val(),
-    //  socket_id : pusher.connection.socket_id
-    //},function(respuesta){
-    //  showComents(this._a);
-    //});
-    //  pusher.disconnect();
+
     }
 
   

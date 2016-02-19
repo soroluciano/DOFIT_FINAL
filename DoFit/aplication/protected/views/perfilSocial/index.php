@@ -13,6 +13,7 @@ $cs->registerScriptFile($baseUrl.'/js/es.js');
 ?>
 
 
+
 <?php 
 
 if(!Yii::app()->user->isGuest){
@@ -21,6 +22,13 @@ if(!Yii::app()->user->isGuest){
      $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
   }
   ?>
+  
+</script>
+
+  
+  
+  
+  
 <html>
 <body>
 
@@ -40,24 +48,6 @@ if(!Yii::app()->user->isGuest){
 		<?php $this->renderPartial('infoNew');?>
 	
 	</div>
-	
-
-<script type="text/javascript">
-		window.Parsley.setLocale('es');
-		$(function () {
-		$('#form').parsley().on('field:validated', function() {
-		var ok = $('.parsley-error').length === 0;
-		$('.bs-callout-info').toggleClass('hidden', !ok);
-		$('.bs-callout-warning').toggleClass('hidden', ok);
-		})
-		.on('form:submit', function() {
-		return false; // Don't submit form for this demo
-		});
-		});
-</script>
-		
-		
-
 
 </body>
 

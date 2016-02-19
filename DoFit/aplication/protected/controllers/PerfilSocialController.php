@@ -279,5 +279,31 @@ class PerfilSocialController extends Controller
         
      }
    
+      public function actionSaveImagen(){
+          $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+          $perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));     
+            if(empty($_POST['name'])){
+              echo "error 1";
+            }else{
+              $perfil->fotoperfil = $_POST['name'];
+              if($perfil->update()){echo "save";
+                }else{
+                  echo "error 2";
+                }
+            }
+          
+      }
+      
+      public function actionGetImage(){
+          $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+          $perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario)); 				
+          if($perfil->fotoperfil == "profile_defect_picture.png"){
+              echo "<img id='iprofile' src=".Yii::app()->request->baseUrl."/images/profile_defect_picture.png'>";	
+          }else{
+              echo "<img id='iprofile' src=".Yii::app()->request->baseUrl."/uploads/".$perfil->fotoperfil.">";		
+          }
+
+      }
+      
    
 }
