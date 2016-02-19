@@ -197,4 +197,15 @@ $this->endWidget();?>
         $('#Localidad_id_provincia').val("");
         $('#Localidad_id_localidad').val("");
     }
-</script> 
+</script>
+
+<script type="text/javascript">
+    function Mostrarubicacion(nombre, direccion, localidad, provincia)
+    {
+        var nombre = nombre;
+        var direccion = direccion;
+        var localidad = localidad;
+        var provincia = provincia;
+        window.open("../fichaInstitucion/googlemaps?nombre="+nombre+"&direccion="+direccion+"&localidad="+localidad+"&provincia="+provincia+"",'','width=600, height=590');
+    }
+</script>   

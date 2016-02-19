@@ -37,7 +37,7 @@ class ProfesorInstitucionController extends Controller
 			echo "<table id='mosinstituciones' class='display' cellspacing='0' width='100%'>
                      <thead class='fuente'>
                      <tr>
-				     <th>Nombre</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Depto.</th><th>Piso</th><th>Enviar Solicitud</th></tr></thead>";
+				     <th>Nombre</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Google maps</th><th>Enviar Solicitud</th></tr></thead>";
 			foreach($ficinstituciones as $ficins){
 				$profins = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$ficins->id_institucion));
 				if($profins == NULL){
@@ -47,8 +47,7 @@ class ProfesorInstitucionController extends Controller
 					echo  "<td id='direccion'>" . $ficins->direccion ."</td>";
 					echo  "<td id='telfijo'>" . $ficins->telfijo . "</td>";
 					echo  "<td id='celular'>" . $ficins->celular . "</td>";
-					echo  "<td id='depto'>" . $ficins->depto . "</td>";
-					echo  "<td id='piso'>" .  $ficins->piso . "</td>";
+					echo  "<td id='google'><input type='button' class='btn btn-primary' onclick='Mostrarubicacion(\"".$ficins->nombre."\",\"".$ficins->direccion."\",\"".$localidad->localidad."\",\"".$provincia->provincia."\");' value='Ver mapa'></input></td>";
 					echo  "<td id='ad'><input type='button' class='btn btn-primary' onclick='javascript:Enviarsolicitud($ficins->id_institucion)' value='Enviar solicitud!'></input></td>";
 				}
 			}
