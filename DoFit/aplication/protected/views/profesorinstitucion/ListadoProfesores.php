@@ -21,12 +21,12 @@ $this->renderPartial('../menu/_menuInstitucion');
         -o-background-size: cover;
         background-size: cover;
     }
-	.lisprofesores{
-	  width: 100%;
-	  overflow-y: auto;
-	  _overflow: auto;
-	  margin: 0 0 1em;
-    }
+    @media screen and (max-width: 640px) {
+	table {
+		overflow-x: auto;
+		display: block;
+	}
+    
 </style>
 <div class="container">
     <br/>
@@ -42,7 +42,8 @@ $this->renderPartial('../menu/_menuInstitucion');
             if($profesores !=null){
                 echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
-                echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
+                echo "<div class='table-responsive'>";
+				echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
                  <thead class='fuente'>
                  <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th><th>Eliminar Profesor</th></thead>
                  <tbody class='fuente'>";
@@ -210,6 +211,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                 }
                 echo "</tbody>";
                 echo "</table>";
+				echo "</div>";
             }
             else{
                 echo "<div class='row'>

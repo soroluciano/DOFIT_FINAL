@@ -13,6 +13,11 @@
         -o-background-size: cover;
         background-size: cover;
     }
+	@media screen and (max-width: 640px) {
+	table {
+		overflow-x: auto;
+		display: block;
+	}
 </style>
 <?php if(isset(Yii::app()->session['id_usuario'])){?>
 <?php if($instituciones != NULL){  ?>
