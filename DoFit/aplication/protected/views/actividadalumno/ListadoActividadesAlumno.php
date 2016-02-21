@@ -26,7 +26,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><b>Actividades de
+                 <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
+				<h4 class="modal-title"><b>Actividades de
                         <?php
                         if(isset(Yii::app()->session['id_usuario'])){
                             //Es un usuario logueado.
@@ -92,10 +93,13 @@
             $this->redirect("../aplication/");
         }
         ?>
-        ?>
 </html>
 <script type="text/javascript">
     $(document).ready(function() {
+		$('#principal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});   
         $('#principal').modal('show');
     })
 </script>

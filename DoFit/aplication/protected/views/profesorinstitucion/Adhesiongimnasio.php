@@ -20,6 +20,7 @@
 		<div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
+				    <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
                     <h4 class="modal-title"><b>¡Adhirete a una institución como profesor!</b></h4>
 				</div>
                 <div class="container">
@@ -114,7 +115,6 @@
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                     <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                 </div>
                 <div class='modal-body'>
@@ -138,7 +138,11 @@ $this->endWidget();?>
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#principal').modal('show');
+        $('#principal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#principal').modal('show');
     });
 </script>
 

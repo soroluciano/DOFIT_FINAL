@@ -104,6 +104,10 @@
             }
         });
     });
+	$('#modalsolicitudes').modal({
+           backdrop: 'static',
+           keyboard: false
+	});
     $('#modalsolicitudes').modal('show');
 </script>
 

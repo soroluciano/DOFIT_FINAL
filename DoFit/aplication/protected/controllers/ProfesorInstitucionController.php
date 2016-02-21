@@ -377,6 +377,9 @@ class ProfesorInstitucionController extends Controller
             </script>";
 			echo "|$deporte->deporte|$fichainstitucion->nombre";
 		}
+		if($actividadalumno == null){
+			echo "sinalumnos|$deporte->deporte|$fichainstitucion->nombre";
+		}	
 	}
 
 	// Funcion para consultar si las instutuciones aceptaron o no la solicitud de adhesion
