@@ -472,7 +472,7 @@ INSERT INTO DoFit.profesor_institucion(id_usuario, id_institucion, id_estado, fh
                                       (5         , 4             , 1        , now()     ,  now()  , 'sysadmin'),
                                       (6         , 3             , 1        , now()     ,  now()  , 'sysadmin'),
                                       (5         , 2             , 1        , now()     ,  now()  , 'sysadmin'),
-                                      (6         , 4             , 0        , now()     ,  now()  , 'sysadmin'),
+                                      (6         , 4             , 1        , now()     ,  now()  , 'sysadmin'),
                                       (7         , 1             , 0        , now()     ,  now()  , 'sysadmin'),
                                       (7         , 5             , 1        , now()     ,  now()  , 'sysadmin'),
                                       (6         , 1             , 1        , now()     ,  now()  , 'sysadmin');
@@ -485,7 +485,7 @@ INSERT INTO DoFit.`actividad`(id_deporte, id_institucion, id_usuario, valor_acti
                       	     (3         ,   2           ,   5 	    ,  390.00        , now()     ,  now()  , 'sysadmin'),
                              (12        ,   2           ,   5 	    ,  450.00        , now()     ,  now()  , 'sysadmin'),	
                              (2         ,   5           ,   7       ,  550.00        , now()     ,  now()  , 'sysadmin'),
-                             (16        ,   1           ,   7       ,  400.00        , now()     ,  now()  , 'sysadmin'),
+                             (16        ,   1           ,   5       ,  400.00        , now()     ,  now()  , 'sysadmin'),
                              (17        ,   4           ,   6       ,  450.00        , now()     ,  now()  , 'sysadmin'),
                              (21        ,   5           ,   7       ,  250.00        , now()     ,  now()  , 'sysadmin');
 
