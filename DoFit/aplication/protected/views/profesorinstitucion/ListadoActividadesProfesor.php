@@ -102,11 +102,11 @@ if(isset(Yii::app()->session['id_usuario'])){
                 </div>
             </div>
         </div>
-		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
+		<div class="modal fade" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../profesorinstitucion/ListadoActividades">&times;</a></span></button>
+                        <button type="button" class="close" data-dismiss='modal' aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title"><b>¡Atención!</p></b></h4>
                     </div>
                     <div class='modal-body'>

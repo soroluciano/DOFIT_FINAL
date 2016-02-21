@@ -61,7 +61,7 @@
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                   <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="location.reload();"><span aria-hidden='true'>&times;</span></button>
                     <h4 class='modal-title' id='myModalLabel'>¡Felicidades!</h4>
                 </div>
                 <div class='modal-body'>
@@ -97,8 +97,8 @@
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                    <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="Resetarprovloc();"><span aria-hidden='true'>&times;</span></button>
+					<h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
                 </div>
                 <div class='modal-body'>
                     No se encontro ninguna institución para la provincia y localidad solicitada.
@@ -115,7 +115,8 @@
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
                 <div class='modal-header'>
-                    <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="Resetarprovloc();"><span aria-hidden='true'>&times;</span></button>
+					<h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                 </div>
                 <div class='modal-body'>
                  Se enviaron solicitudes a todas las instituciones para la provincia y localidad seleccionada.
