@@ -22,11 +22,11 @@ $this->renderPartial('../menu/_menuInstitucion');
         background-size: cover;
     }
     @media screen and (max-width: 640px) {
-	table {
-		overflow-x: auto;
-		display: block;
-	}
-    
+        table {
+            overflow-x: auto;
+            display: block;
+        }
+
 </style>
 <div class="container">
     <br/>
@@ -43,16 +43,16 @@ $this->renderPartial('../menu/_menuInstitucion');
                 echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
                 echo "<div class='table-responsive'>";
-				echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
+                echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
                  <thead class='fuente'>
                  <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th><th>Eliminar Profesor</th></thead>
                  <tbody class='fuente'>";
-				 $cont = 0;
-				 $profe = array();
+                $cont = 0;
+                $profe = array();
                 foreach($profesores as $prof){
                     $profesor = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$prof->id_usuario));
                     $profe[$cont] = $prof->id_usuario;
-					?>
+                    ?>
                     <tr>
                         <input type="hidden" name="valor" id="valor"></input>
                         <td id="nombre"><?php echo $profesor->nombre;?></td>
@@ -117,8 +117,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 					      </div>
 					    </div>
 				    </div>";
-					// Modal ok
-					 echo "<div class='modal fade'  id='elimexito' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+                    // Modal ok
+                    echo "<div class='modal fade'  id='elimexito' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
 				           <div class='modal-dialog' role='document'>
 					        <div class='modal-content'>
 						      <div class='modal-header'>
@@ -129,7 +129,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 						       Se elimino el profesor de $ficins->nombre con éxito.
 						    </div>
 						    <div class='modal-footer'>
-							   <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+							    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
 						    </div>
 					      </div>
 					    </div>
@@ -146,7 +146,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     <div id='datostele'></div>
 								</div>
                                 <div class='modal-footer'>     								
-                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+                                    <input type='button' value='Cerrar' id='cerrarmodaltel' class='btn btn-primary'></input>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     <div id='datosdire'></div>
 								</div>
                                 <div class='modal-footer'>     								
-                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+                                    <input type='button' value='Cerrar' id='cerrarmodaldir' class='btn btn-primary'></input>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +179,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                   <div id='daterracti'></div>
 								</div>
                                 <div class='modal-footer'>     								
-                                    <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+                                    <input type='button' value='Cerrar' id='cerrarmodalsinact' class='btn btn-primary'></input>
                                 </div>
                             </div>
                         </div>
@@ -202,16 +202,16 @@ $this->renderPartial('../menu/_menuInstitucion');
                                 </div>
                             </div>
 				    <div class='modal-footer'>     								
-                        <a href='../profesorinstitucion/ListadoProfesores' class='btn btn-primary'>Cerrar</a>
+                        <input type='button' value='Cerrar' id='cerrarmodalact' class='btn btn-primary'></input>
                     </div>
 					</div>
                 </div>
              </div>";
-                $cont++;
+                    $cont++;
                 }
                 echo "</tbody>";
                 echo "</table>";
-				echo "</div>";
+                echo "</div>";
             }
             else{
                 echo "<div class='row'>
@@ -231,7 +231,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <script type="text/javascript">
     $(document).ready(function() {
         $('#lisprofesores').DataTable( {
-			"language" : {
+            "language" : {
                 "sProcessing":     "Procesando...",
                 "sLengthMenu":     "Mostrar _MENU_ registros",
                 "sZeroRecords":    "No se encontraron resultados",
@@ -256,45 +256,61 @@ $this->renderPartial('../menu/_menuInstitucion');
                 }
             }
         } );
+
+        $("#cerrarmodaltel").click(function(){
+            $("#datostelefonos").modal('hide');
+        });
+
+        $("#cerrarmodaldir").click(function(){
+            $("#datosdireccion").modal('hide');
+        });
+
+        $("#cerrarmodalact").click(function(){
+            $("#datosactividades").modal('hide');
+        });
+
+        $("#cerrarmodalsinact").click(function(){
+            $("#erracti").modal('hide');
+        });
     } );
 </script>
 <script type="text/javascript">
-    function Borrar(idusuario){	
-	   $("#borrarprofemodal").modal('show');
-	   $("#si").click(function(){
-   		  var idprofesor;
-		  idprofesor = idusuario;
-		  Borrarprofesor(idprofesor);
-	   });
-       $("#no").click(function(){
-          location.reload();		   
-	   });   
-   	}
+    function Borrar(idusuario){
+        $("#borrarprofemodal").modal('show');
+        $("#si").click(function(){
+            var idprofesor;
+            idprofesor = idusuario;
+            Borrarprofesor(idprofesor);
+        });
+        $("#no").click(function(){
+            location.reload();
+        });
+    }
 </script>
-<script type="text/javascript">	
-	function Borrarprofesor(idprofesor){  
-	   var data = {"idprofesor":idprofesor};
-			$.ajax({
-                url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
-                type: "POST",
-                dataType : "html",
-                data : data,
-                cache: false,
-                success: function (response){
-                    if(response == "ok"){
-                        $("#elimexito").modal('show');
-						delete idprofesor;
-                    }
-                    if (response == "error"){
-                        $('#mensajeerror').modal('show');
-                    }
-                }	,
-                error: function (e) {
-                    console.log(e);
+<script type="text/javascript">
+    function Borrarprofesor(idprofesor){
+        var data = {"idprofesor":idprofesor};
+        $.ajax({
+            url :  baseurl + "/ProfesorInstitucion/BorrarProfesor",
+            type: "POST",
+            dataType : "html",
+            data : data,
+            cache: false,
+            success: function (response){
+                if(response == "ok"){
+                    $("#elimexito").modal('show');
+                    delete idprofesor;
                 }
-            })
-        }
-  
+                if (response == "error"){
+                    $('#mensajeerror').modal('show');
+                }
+            }	,
+            error: function (e) {
+                console.log(e);
+            }
+        })
+    }
+
 </script>
 
 <script type="text/javascript">

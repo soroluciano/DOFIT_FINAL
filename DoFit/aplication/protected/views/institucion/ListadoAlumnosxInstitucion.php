@@ -22,79 +22,79 @@ $this->renderPartial('../menu/_menuInstitucion');
         -o-background-size: cover;
         background-size: cover;
     }
-    
-	/* 
-	Max width before this PARTICULAR table gets nasty
-	This query will take effect for any screen smaller than 760px
-	and also iPads specifically.
-	*/
-	@media 
-	only screen and (max-width: 760px),
-	(min-device-width: 768px) and (max-device-width: 1024px)  {
-	
-		/* Force table to not be like tables anymore */
-		table, thead, tbody, th, td, tr { 
-			display: block; 
-		}
-		
-		/* Hide table headers (but not display: none;, for accessibility) */
-		thead tr { 
-			position: absolute;
-			top: -9999px;
-			left: -9999px;
-		}
-		
-		tr { border: 1px solid #ccc; }
-		
-		td { 
-			/* Behave  like a "row" */
-			border: none;
-			border-bottom: 1px solid #eee; 
-			position: relative;
-			padding-left: 50%; 
-		}
 
-		td:before { 
-			/* Now like a table header */
-			position: absolute;
-			/* Top/left values mimic padding */
-			top: 6px;
-			right: 6px;
-			width: 45%; 
-			padding-right: 10px; 
-			white-space: pre-wrap;
-		}
-		
-		/*
-		Label the data
-		*/
-		td:nth-of-type(1):before { content: "Nombre"; }
-		td:nth-of-type(2):before { content: "Apellido"; }
-		td:nth-of-type(3):before { content: "Dni"; }
-		td:nth-of-type(4):before { content: "Email"; }
-		td:nth-of-type(5):before { content: "Sexo"; }
-		td:nth-of-type(6):before { content: "Fecha Nacimiento"; }
-		td:nth-of-type(7):before { content: "Teléfonos"; }
-		td:nth-of-type(8):before { content: "Dirección"; }
-		td:nth-of-type(9):before { content: "Actividades"; }
-	}
-	
-	/* Smartphones (portrait and landscape) ----------- */
-	@media only screen
-	and (min-device-width : 320px)
-	and (max-device-width : 480px) {
-		body { 
-			padding: 0; 
-			margin: 0; 
-			width: 320px; }
-		}
-	
-	/* iPads (portrait and landscape) ----------- */
-	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-		body { 
-			width: 495px; 
-		}
-	}
+    /*
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    @media
+    only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr { border: 1px solid #ccc; }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            right: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: pre-wrap;
+        }
+
+        /*
+        Label the data
+        */
+        td:nth-of-type(1):before { content: "Nombre"; }
+        td:nth-of-type(2):before { content: "Apellido"; }
+        td:nth-of-type(3):before { content: "Dni"; }
+        td:nth-of-type(4):before { content: "Email"; }
+        td:nth-of-type(5):before { content: "Sexo"; }
+        td:nth-of-type(6):before { content: "Fecha Nacimiento"; }
+        td:nth-of-type(7):before { content: "Teléfonos"; }
+        td:nth-of-type(8):before { content: "Dirección"; }
+        td:nth-of-type(9):before { content: "Actividades"; }
+    }
+
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        body {
+            padding: 0;
+            margin: 0;
+            width: 320px; }
+    }
+
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        body {
+            width: 495px;
+        }
+    }
 </style>
 <div class="container">
     <div class='row'>
@@ -106,19 +106,25 @@ $this->renderPartial('../menu/_menuInstitucion');
         if(isset(Yii::app()->session['id_institucion'])){
             $id_usuarios_array = array();
             $idinstitucion = Yii::app()->user->id;
-            $cant_alumnos = 0;
+            $cont_act_alum = 0;
             $actividades = Actividad::model()->findAll('id_institucion=:id_institucion',array(':id_institucion'=>$idinstitucion));
-            if($actividades !=null){
+            foreach($actividades as $acti){
+                $actividades_alumno = ActividadAlumno::model()->find('id_actividad=:id_actividad',array(':id_actividad'=>$acti->id_actividad));
+                if($actividades_alumno != null){
+                    $cont_act_alum++;
+                }
+            }
+            if($actividades !=null  && $cont_act_alum > 0){
                 echo "<div><h3>Alumnos inscriptos en $fichains->nombre</h3></div>";
                 echo "<br/>";
-				echo "<table id='lisalumnos' class='display' cellspacing='0' width='100%'>
+                echo "<table id='lisalumnos' class='display' cellspacing='0' width='100%'>
                       <thead>
                       <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Sexo</th><th>Fecha Nacimiento</th><th>Tel&eacute;fonos</th><th>Direcci&oacute;n</th><th>Actividades</th></thead>
                       <tbody>";
                 foreach($actividades as $acti){
                     $actividades_alumnos = ActividadAlumno::model()->findAll('id_actividad=:id_actividad AND id_estado=:id_estado',array(':id_actividad'=>$acti->id_actividad,'id_estado'=>1));
                     if($actividades_alumnos != null){
-                        $cant_alumnos++;
+
                         foreach ($actividades_alumnos as $act_alum){
                             $id_usuario = $act_alum->id_usuario;
                             $contador_veces = 0; // cuanta veces aparece el id_usuario en el array
@@ -155,7 +161,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     </td>
                                     <td><input type="button" id="tel" value="Ver tel&eacute;fonos" class="btn btn-primary" onClick="javascript:Mostrartelefonosalumno(<?php echo $id_usuario;?>);"></input></td>
                                     <td><input type="button" id="dir" value="Ver direcci&oacute;n" class="btn btn-primary" onClick="javascript:Mostrardireccionalumno(<?php echo $id_usuario;?>);")></input></td>
-                                    <td><a id="act" class="btn btn-primary" href="../actividadalumno/Veractividades/<?php echo $id_usuario?>">Ver actividades</a></td>
+                                    <td><a id='act' class='btn btn-primary' href='../actividadalumno/Veractividades/<?php echo $id_usuario;?>'>Ver actividades</a></td>
                                 </tr>
                                 <?php
                             }
@@ -173,7 +179,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     <div id='datostele'></div>
 								</div>
                                 <div class='modal-footer'>     								
-                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
+                                    <input type='button' value='Cerrar' id='cerrarmodaltel' class='btn btn-primary'></input>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +196,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                                     <div id='datosdire'></div>
 								</div>
                                 <div class='modal-footer'>     								
-                                    <a href='../institucion/ListadoAlumnosxInstitucion' class='btn btn-primary'>Cerrar</a>
+                                    <input type='button' value='Cerrar' id='cerrarmodaldir' class='btn btn-primary'></input>
                                 </div>
                             </div>
                         </div>
@@ -199,14 +205,15 @@ $this->renderPartial('../menu/_menuInstitucion');
                 echo"</tbody>";
                 echo "</table>";
             }
-            else{
+            if($actividades == null)
+            {
                 "<div class='row'>
                         <div class='.col-md-6 .col-md-offset-3'>
                             <h2 class='text-center'>No se crearon actividades para la instituci&oacute;n </h2>
                         </div>
                     </div>";
             }
-            if($cant_alumnos == 0){
+            if($cont_act_alum == 0){
                 echo"<div class='row'>
                         <div class='.col-md-6 .col-md-offset-3'>
                             <h2 class='text-center'>No hay alumnos inscriptos en $fichains->nombre</h2>
@@ -252,6 +259,14 @@ $this->renderPartial('../menu/_menuInstitucion');
             }
 
         } );
+
+        $("#cerrarmodaltel").click(function(){
+            $("#datostelefonos").modal('hide');
+        });
+
+        $("#cerrarmodaldir").click(function(){
+            $("#datosdireccion").modal('hide');
+        });
     } );
 </script>
 <script type="text/javascript">
