@@ -77,7 +77,7 @@
 						<div class="input-group">
 							<input id="mensaje" name="mensaje" type="text" class="form-control input-sm chat_input" placeholder="Escribe tu mensaje aquí..." />
                         <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="enviar" name="enviar">Enviar</button>
+                        <button class="btn btn-primary btn-sm" id="enviar" name="enviar" onclick="registerMessages();">Enviar</button>
                         </span>
 						</div>
 					</div>

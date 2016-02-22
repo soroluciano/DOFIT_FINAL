@@ -70,6 +70,7 @@
             type: 'POST',
             data: 'data='+imgName,
             success:function(response){
+                mostrarImagenes(0);
             },
             error: function(e){
               

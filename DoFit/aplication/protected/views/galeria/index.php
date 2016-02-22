@@ -1,7 +1,7 @@
 
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/red.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/contactos.css" rel="stylesheet">
-<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/muro.css" rel="stylesheet">
+<!--<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/contactos.css" rel="stylesheet">-->
+<!--<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/muro.css" rel="stylesheet">-->
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/imagenes.css" rel="stylesheet">
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/js/fancybox/jquery.fancybox.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

@@ -4,6 +4,7 @@
 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/muro.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
+
 <?php
 //archivos javascript
 
@@ -20,13 +21,13 @@ if(!Yii::app()->user->isGuest){
 
 
 
-
 $baseUrl = Yii::app()->baseUrl; 
 $cs = Yii::app()->getClientScript();
 $cs->registerScriptFile($baseUrl.'/js/perfil.js');
 $cs->registerScriptFile($baseUrl.'/js/muroprofesor.js');
 $cs->registerScriptFile($baseUrl.'/js/red.js');
 $cs->registerScriptFile($baseUrl.'/js/contactos.js');
+$cs->registerScriptFile($baseUrl.'/js/chat.js');
 $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 
 
@@ -41,13 +42,11 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 	</div>
     
 		
-				<div id='content-contacts'>
+		<div id='content-contacts'>
 		<div class="contacto-filter">
 			<span class="title">Contactos</span>
 			<div class="filter">
-				
-				<?php
-				
+				<?php				
 					$this->widget('application.extensions.autocomplete.AutoComplete', array(
 						'theme' => 'facebook',
 						'name' => 'searchqueryid',
@@ -67,12 +66,13 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 		
     
 	<div id="respuesta_ajax"></div>
-
+	
 
 	</div>
-			<div class='propaganda-muro-3'>Publicite aqui</div>
+	
+		<div class='propaganda-muro-3'>Publicite aqui</div>
 		
-
+<div id='friend-chat'></div>
 </div>
 
 
