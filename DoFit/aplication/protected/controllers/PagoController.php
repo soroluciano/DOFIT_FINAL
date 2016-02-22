@@ -13,8 +13,10 @@ class PagoController extends Controller
 
     public function actionFactura(){
         $mPDF1 = Yii::app()->ePdf->mpdf();
-        $mPDF1->WriteHTML($this->render('factura', array(), true));
-        $mPDF1->Output();
+
+
+        //$mPDF1->WriteHTML($this->render('factura', array(), true));
+        //$mPDF1->Output();
         //  $this->render('factura');
 
     }
