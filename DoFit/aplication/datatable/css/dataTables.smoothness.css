@@ -285,7 +285,6 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker th {
 	padding: .7em .3em;
 	text-align: center;
-	font-weight: bold;
 	border: 0;
 }
 .ui-datepicker td {
@@ -617,7 +616,6 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
 	font-size: 1em;
-	font-weight: bold;
 	line-height: 1.5;
 	padding: 2px 0.4em;
 	margin: 0.5em 0 0 0;
@@ -830,7 +828,7 @@ body .ui-tooltip {
 /* Component containers
 ----------------------------------*/
 .ui-widget {
-	font-family: Verdana,Arial,sans-serif;
+	font-family: Roboto;
 	font-size: 1.1em;
 }
 .ui-widget .ui-widget {
@@ -840,7 +838,7 @@ body .ui-tooltip {
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: Verdana,Arial,sans-serif;
+	font-family: Roboto;
 	font-size: 1em;
 }
 .ui-widget-content {
@@ -853,9 +851,8 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	border: 1px solid #aaaaaa;
-	background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
+	background: #B4D172 url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
 	color: #222222;
-	font-weight: bold;
 }
 .ui-widget-header a {
 	color: #222222;
@@ -948,7 +945,6 @@ body .ui-tooltip {
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-	font-weight: bold;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,

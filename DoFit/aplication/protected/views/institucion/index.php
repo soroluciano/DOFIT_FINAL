@@ -61,7 +61,6 @@
                                     <td>$d->id_institucion</td>
                                     <td>$d->email</td>
                                     <td><a href='../institucion/update/$d->id_institucion' class='btn btn-default'>Modificar<a/></td>
-                                    <td><a href='../institucion/delete/$d->id_institucion' class='btn btn-default'>Borrar<a/></td>
                                   <tr>";
                         }
                     }
