@@ -214,12 +214,33 @@ $this->renderPartial('../menu/_menuInstitucion');
                     </div>";
             }
             if($cont_act_alum == 0){
-                echo"<div class='row'>
-                        <div class='.col-md-6 .col-md-offset-3'>
-                            <h2 class='text-center'>No hay alumnos inscriptos en $fichains->nombre</h2>
+                echo"<div class='modal fade' tabindex='-1' role='dialog' id='sinalumnos' aria-labelledby='myModalLabel'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'> 
+						<div class='modal-header'> 
+						    <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                            <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                         </div>
-                    </div>";
+					        <div class='container'>
+                                <div class='col-md-8'> 
+                                    <br/>
+									<div class='form-group'>
+                                       <b>No hay alumnos inscriptos a $fichains->nombre</b>
+                                    </div>
+                                </div>
+                            </div>
+				    <div class='modal-footer'>     								
+                        <input type='button' value='Cerrar' id='cerrarmodalalum' class='btn btn-primary'></input>
+                    </div>
+					</div>
+                </div>
+             </div>";
             }
+			?>
+			<script type="text/javascript">
+			  $("#sinalumnos").modal('show');
+			</script> 
+		<?php	
         }
         else {
             $this->redirect(array('../aplication/site/LoginInstitucion'));
@@ -267,6 +288,10 @@ $this->renderPartial('../menu/_menuInstitucion');
         $("#cerrarmodaldir").click(function(){
             $("#datosdireccion").modal('hide');
         });
+		
+		$("#cerrarmodalalum").click(function(){
+		  location.href = '../institucion/home';
+        });		  
     } );
 </script>
 <script type="text/javascript">
