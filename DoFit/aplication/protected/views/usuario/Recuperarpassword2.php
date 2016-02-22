@@ -123,7 +123,11 @@ echo "<div class='modal fade'  id='mensajepassok' tabindex='-1' role='dialog' ar
 </html>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myModal').modal('show');
+        $('#myModal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#myModal').modal('show');
     });
 </script>
 

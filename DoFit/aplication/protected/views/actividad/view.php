@@ -41,10 +41,15 @@ if(!Yii::app()->user->isGuest){
         </div>
     </div>
 </div>
-
+}
 <script type="text/javascript">
     $(document).ready(function() {
-        actividad = $('#actividad').val();
+        $('#confirmacion').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#confirmacion').modal('show'); 
+		actividad = $('#actividad').val();
         var data = {'actividad': actividad};
         $.ajax({
             url: '../actividad/ObtenerActividad',

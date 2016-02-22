@@ -15,17 +15,85 @@ $this->renderPartial('../menu/_menuInstitucion');
 ?>
 <style type="text/css">
     body {
-        background: url(../img/fondo1.jpg) no-repeat center center fixed;
+        background: url(../img/31.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
     }
-    @media screen and (max-width: 640px) {
-        table {
-            overflow-x: auto;
+    /*
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    @media
+    only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
             display: block;
         }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr { border: 1px solid #ccc; }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            right: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: pre-wrap;
+        }
+
+        /*
+        Label the data
+        */
+        td:nth-of-type(1):before { content: "Nombre"; }
+        td:nth-of-type(2):before { content: "Apellido"; }
+        td:nth-of-type(3):before { content: "Dni"; }
+        td:nth-of-type(4):before { content: "Email"; }
+        td:nth-of-type(5):before { content: "Sexo"; }
+        td:nth-of-type(6):before { content: "Fecha Nacimiento"; }
+        td:nth-of-type(7):before { content: "Teléfonos"; }
+        td:nth-of-type(8):before { content: "Dirección"; }
+        td:nth-of-type(9):before { content: "Actividades"; }
+		td:nth-of-type(10):before { content: "Eliminar Profesor"; }
+    }
+
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        body {
+            padding: 0;
+            margin: 0;
+            width: 320px; }
+    }
+
+    /* iPads (portrait and landscape) ----------- */
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        body {
+            width: 495px;
+        }
+    }
 
 </style>
 <div class="container">
@@ -40,7 +108,7 @@ $this->renderPartial('../menu/_menuInstitucion');
             $ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$idinstitucion));
             $profesores = ProfesorInstitucion::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion,'id_estado'=>1));
             if($profesores !=null){
-                echo "<div><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
+                echo "<div style='color: #FDFCFE;'><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
                 echo "<div class='table-responsive'>";
                 echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
@@ -296,10 +364,10 @@ $this->renderPartial('../menu/_menuInstitucion');
             dataType : "html",
             data : data,
             cache: false,
-            success: function (response){
-                if(response == "ok"){
-                    $("#elimexito").modal('show');
-                    delete idprofesor;
+            success: function (response){               
+				if(response == "ok"){
+                    $("#borrarprofemodal").modal('hide');
+					$("#elimexito").modal('show');
                 }
                 if (response == "error"){
                     $('#mensajeerror').modal('show');

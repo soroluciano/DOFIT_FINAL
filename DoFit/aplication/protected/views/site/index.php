@@ -27,7 +27,7 @@
 
             <?php if($Us->id_perfil == 2){ ?>
                 <div class="col-lg-4">
-                    <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/1.jpg" alt="Generic placeholder image" width="140" height="140">
+                    <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/3.jpg" alt="Generic placeholder image" width="140" height="140">
                     <h2><a href="../ProfesorInstitucion/Adhesiongimnasio" class="btn btn-primary">Asociate a una Institución</a></h2>
                     <p>Anotate como profesor a una Institución para dictar clases.</a></p>
                 </div>
@@ -36,19 +36,20 @@
                     <h2><a href="../ProfesorInstitucion/ListadoActividades" class="btn btn-primary">Clases que dicto</a></h2>
                     <p>Consulta las actividades en las que dictas clases y el detalle de los alumnos inscriptos.</a></p>
                 </div>
+				<div class="col-lg-4">
+                   <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/2.jpg" alt="Generic placeholder image" width="140" height="140">
+                   <h2><a href="../ProfesorInstitucion/ConsultarEstadosInstituciones" class="btn btn-primary">Estado de las instituciones</a></h2>
+                   <p>Consulta las instituciones a las que enviaste solicitud para asociarte.</a></p>
+                </div>
             <?php } ?>
             <div class="col-lg-4">
-                <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/1.jpg" alt="Generic placeholder image" width="140" height="140">
+                <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/3.jpg" alt="Generic placeholder image" width="140" height="140">
                 <h2><a href="../red/" class="btn btn-primary">Red Social de DoFit.</a></h2>
                 <p>Ir a la red social de DoFit!</a></p>
             </div>
             <div class="col-lg-4">
             </div>
-            <div class="col-lg-4">
-                <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/1.jpg" alt="Generic placeholder image" width="140" height="140">
-                <h2><a href="<?php echo Yii::app()->request->baseUrl; ?>/chat/index" class="btn btn-primary">Chat</a></h2>
-                <p>Chatea con tus compañeros de clases o con tus profesores y/o alumnos.</a></p>
-            </div>
+            
         </div>
     </div>
     <br/>

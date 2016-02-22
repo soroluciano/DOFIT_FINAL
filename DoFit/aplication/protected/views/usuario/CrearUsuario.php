@@ -201,7 +201,11 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myModal').modal('show');
+        $('#myModal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#myModal').modal('show');
         $('#err_mail_vacio').hide();
         $('#err_mail_exprreg').hide();
         $('#err_mail_dup').hide();

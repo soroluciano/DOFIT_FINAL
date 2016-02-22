@@ -402,7 +402,11 @@ if(!Yii::app()->user->isGuest){
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#principal').modal('show');
+        $('#principal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#principal').modal('show');
     })
 </script>
 

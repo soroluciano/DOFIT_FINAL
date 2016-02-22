@@ -40,6 +40,10 @@
         </div>
  </div>
 <script type="text/javascript">
+    $('#usuarioactivo').modal({
+        backdrop: 'static',
+        keyboard: false
+	});
     $("#usuarioactivo").modal('show');
 </script>       		 
   <?php 

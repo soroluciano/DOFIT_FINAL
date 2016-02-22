@@ -98,7 +98,11 @@ echo "<div class='modal fade'  id='mensajemailexitoso' tabindex='-1' role='dialo
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myModal').modal('show');
+        $('#myModal').modal({
+           backdrop: 'static',
+           keyboard: false
+		});
+		$('#myModal').modal('show');
     });
 </script>
 

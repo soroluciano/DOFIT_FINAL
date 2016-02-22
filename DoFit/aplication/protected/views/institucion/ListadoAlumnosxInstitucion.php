@@ -16,7 +16,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 ?>
 <style type="text/css">
     body {
-        background: url(../img/fondo1.jpg) no-repeat center center fixed;
+        background: url(../img/33.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -115,7 +115,7 @@ $this->renderPartial('../menu/_menuInstitucion');
                 }
             }
             if($actividades !=null  && $cont_act_alum > 0){
-                echo "<div><h3>Alumnos inscriptos en $fichains->nombre</h3></div>";
+                echo "<div style='color:#222222;'><h3>Alumnos inscriptos en $fichains->nombre</h3></div>";
                 echo "<br/>";
                 echo "<table id='lisalumnos' class='display' cellspacing='0' width='100%'>
                       <thead>

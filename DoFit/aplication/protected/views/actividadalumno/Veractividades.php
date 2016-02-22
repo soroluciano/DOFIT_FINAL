@@ -14,7 +14,7 @@
 }
 ?>
 <style type="text/css">
-    ol, ul {
+	ol, ul {
         list-style: none;
     }
 
@@ -236,7 +236,7 @@
     </div>
 </header>
 
-<div class="container">
+<div class="container" id="fondo">
     <div class='row'>
         <?php
         echo"<br>
@@ -313,10 +313,11 @@
                <br/>
                <input id='volver' onClick="location.href='../../../aplication/institucion/ListadoAlumnosxInstitucion'" class='btn btn-primary' type='button' value='Volver al listado de alumnos'></input>
         <?php
-        }
+        }	
         ?>
     </div>
 </div>
+</body>
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -324,7 +325,7 @@
 
         $("#cerrarelimact").click(function(){
             $("#elimactexito").modal('hide');
-            location.href= '../../../aplication/institucion/ListadoAlumnosxInstitucion';
+            location.reload();
         });
 
     });
@@ -346,7 +347,8 @@
                 cache: false,
                 success: function (response){
                     if(response == "ok"){
-                        $("#elimactexito").modal('show');
+						$("#myModal").modal('hide');
+						$("#elimactexito").modal('show');
                     }
                     if (response == "error"){
                         $('#mensajeerror').modal('show');

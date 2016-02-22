@@ -37,7 +37,7 @@ class ProfesorInstitucionController extends Controller
 			echo "<table id='mosinstituciones' class='display' cellspacing='0' width='100%'>
                      <thead class='fuente'>
                      <tr>
-				     <th>Nombre</th><th>Direccion</th><th>Tel. Fijo</th><th>Celular</th><th>Google maps</th><th>Enviar Solicitud</th></tr></thead>";
+				     <th>Nombre</th><th>Dirección</th><th>Tel. fijo</th><th>Celular</th><th>Google maps</th><th>Enviar solicitud</th></tr></thead>";
 			foreach($ficinstituciones as $ficins){
 				$profins = ProfesorInstitucion::model()->findByAttributes(array('id_usuario'=>$id_usuario,'id_institucion'=>$ficins->id_institucion));
 				if($profins == NULL){

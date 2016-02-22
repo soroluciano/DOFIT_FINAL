@@ -31,22 +31,27 @@ class ActividadAlumnoController extends Controller
 		$ficha_institucion = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$id_institucion));
 		if ($actividades_alumno != null) {
             $this->render('Veractividades', array('actividades_alumno' => $actividades_alumno,'ficha_usuario'=>$ficha_usuario,'ficha_institucion'=>$ficha_institucion));
-        }	
+        }
+        if($actividades_alumno == null){
+            header('Location:../../../aplication/institucion/ListadoAlumnosxInstitucion');	
+		}	
     }
 
     public function actionDesafectarActividad()
     {
-
-        $idactividad = $_POST['idactividad'];
-        $idusuario = $_POST['idalumno'];
-        $pago = Pago::model()->findByAttributes(array('id_actividad'=>$idactividad, 'id_usuario'=>$idusuario));
-        $act_alum = ActividadAlumno::model()->findByAttributes(array('id_actividad'=>$idactividad, 'id_usuario'=>$idusuario));
+      $idactividad = $_POST['idactividad'];
+      $idusuario = $_POST['idalumno'];
+      $pago = Pago::model()->findAllByAttributes(array('id_actividad'=>$idactividad, 'id_usuario'=>$idusuario));
+      $act_alum = ActividadAlumno::model()->findByAttributes(array('id_actividad'=>$idactividad, 'id_usuario'=>$idusuario));
         if($act_alum != null){
-            if($pago != null){
-                $pago->delete();
-            }
-            $act_alum->delete();
-            echo "ok";
+			if($pago != null){	
+				foreach($pago as $pa){                     
+					$pa->delete();
+                }
+			}	
+			if($act_alum->delete()){
+               echo "ok";
+			}
         }
     }
 
