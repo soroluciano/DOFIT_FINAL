@@ -244,18 +244,17 @@
         <br>
         <br>
 		<div><h3>Actividades de $ficha_usuario->nombre $ficha_usuario->apellido en $ficha_institucion->nombre</h3></div><br/>";?>
-		<?php
-		if($actividades_alumno != null) {
+        <?php
+        if($actividades_alumno != null) {
             echo "<table id='veractividades' class='display' cellspacing='0' width='100%'>
-	            <thead class='fuente'>
-		          <tr><th>Deporte</th><th>Días y Horarios</th><th>Valor actividad</th><th>Desafectar actividad</th></tr>
-		        </thead>
-		        <tbody class='fuente'>";
+                <thead class='fuente'>
+                  <tr><th>Deporte</th><th>Días y Horarios</th><th>Valor actividad</th><th>Desafectar actividad</th></tr>
+                </thead>
+                <tbody class='fuente'>";
             foreach ($actividades_alumno as $act_alum) {
                 $act = Actividad::model()->findByAttributes(array('id_institucion' => $ins->id_institucion, 'id_actividad' => $act_alum->id_actividad));
                 if ($act != null) {
-					echo "<tr>";
-                    echo "<input type='hidden' value='$act->id_actividad' id='idactividad'></input>";
+                    echo "<tr>";
                     echo "<input type='hidden' value='$act_alum->id_usuario' id='idalumno'></input>";
                     $deporte = Deporte::model()->findByAttributes(array('id_deporte' =>$act->id_deporte));
                     echo "<td id='depo'>$deporte->deporte</td>";
@@ -267,15 +266,15 @@
                         echo $dias[$id_dia]."&nbsp;".$act_hor->hora .':'.($act_hor->minutos == '0' ? '0'.$act_hor->minutos : $act_hor->minutos)." - ";
                     }
                     echo "</td>";
-					?>
+                    ?>
                     <td id='valor'><?php echo  $act->valor_actividad;?></td>
-                    <td id='elim'><input type="button" value="Desafectar actividad" class="btn btn-primary"data-toggle="modal" data-target="#myModal"></input></td>
+                    <td id='elim'><input type="button" value="Desafectar actividad" class="btn btn-primary" onClick="Javascript:desafectaractividad(<?php echo $act->id_actividad;?>);"></input></td>
                     </tr>
-					<?php
-					echo "
+                    <?php
+                    echo "
                      <div class='modal fade' id='myModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-						<div class='modal-dialog' role='document'>
-						 <div class='modal-content'>
+                        <div class='modal-dialog' role='document'>
+                         <div class='modal-content'>
                     <div class='modal-header'>
                       <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                       <h4 class='modal-title' id='myModalLabel'>Desafectar actividad</h4>
@@ -284,23 +283,36 @@
                    ¿Estas seguro que desea desafectar a $ficha_usuario->nombre $ficha_usuario->apellido de la actividad?
                   </div>
                  <div class='modal-footer'>
-                  <button type='button' class='btn btn-primary' onclick='javascript:desafectaractividad();'>Si</button>
-                  <button type='button' class='btn btn-default' data-dismiss='modal'>No</button>
+                  <button type='button' class='btn btn-primary' id='si'>Si</button>
+                  <button type='button' class='btn btn-default' id='no'>No</button>
                 </div>
               </div>
-            </div>
-         </div>";
-				}
+                  </div>
+                 </div>";
+                // Modal ok
+              echo "<div class='modal fade'  id='elimactexito' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+                        <div class='modal-dialog' role='document'>
+                            <div class='modal-content'>
+                              <div class='modal-header'>
+                                  <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                                  <h4 class='modal-title' id='myModalLabel'>Eliminar Profesor</h4>
+                               </div>
+                            <div class='modal-body'>
+                               Se elimino a $ficha_usuario->nombre $ficha_usuario->apellido de la actividad con éxito.
+                            </div>
+                            <div class='modal-footer'>
+                                <input type='button' value='Cerrar' id='cerrarelimact' class='btn btn-primary'></input>
+                            </div>
+                          </div>
+                        </div>
+                    </div>";
+                }
             }
             echo "</tbody>
-	           </table>";?>
-			   <br/>
-			   <input id='volver' onClick="location.href='../../../aplication/institucion/ListadoAlumnosxInstitucion'" class='btn btn-primary' type='button' value='Volver al listado de alumnos'></input>
+               </table>";?>
+               <br/>
+               <input id='volver' onClick="location.href='../../../aplication/institucion/ListadoAlumnosxInstitucion'" class='btn btn-primary' type='button' value='Volver al listado de alumnos'></input>
         <?php
-		}
-        else
-        {
-            echo "<h3>El usuario no se inscribio en ninguna actividad</h3><br/>";
         }
         ?>
     </div>
@@ -308,32 +320,45 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
-	  $("#volver").css("float","right");
-	});   
-</script>	
+        $("#volver").css("float","right");
+
+        $("#cerrarelimact").click(function(){
+            $("#elimactexito").modal('hide');
+            location.href= '../../../aplication/institucion/ListadoAlumnosxInstitucion';
+        });
+
+    });
+</script>
 <script type="text/javascript">
-    function desafectaractividad()
+    function desafectaractividad(idact)
     {
-        var idactividad = $('#idactividad').val();
-		var idalumno = $('#idalumno').val();
-        var data = {"idactividad":idactividad,"idalumno":idalumno};
-        $.ajax({
-            url :  baseurl + "/actividadalumno/DesafectarActividad",
-            type: "POST",
-            dataType : "html",
-            data : data,
-            cache: false,
-            success: function (response){
-                if(response == "ok"){
-                    location.reload();
+        $("#myModal").modal('show');
+        $("#si").click(function(){
+            var idactividad;
+            idactividad = idact;
+            var idalumno = $('#idalumno').val();
+            var data = {"idactividad":idactividad,"idalumno":idalumno};
+            $.ajax({
+                url :  baseurl + "/actividadalumno/DesafectarActividad",
+                type: "POST",
+                dataType : "html",
+                data : data,
+                cache: false,
+                success: function (response){
+                    if(response == "ok"){
+                        $("#elimactexito").modal('show');
+                    }
+                    if (response == "error"){
+                        $('#mensajeerror').modal('show');
+                    }
+                }	,
+                error: function (e) {
+                    console.log(e);
                 }
-                if (response == "error"){
-                    $('#mensajeerror').modal('show');
-                }
-            }	,
-            error: function (e) {
-                console.log(e);
-            }
+            });
+        });
+        $("#no").click(function(){
+            location.reload();
         });
 
     }
