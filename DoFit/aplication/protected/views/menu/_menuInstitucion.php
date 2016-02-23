@@ -194,8 +194,9 @@
                 <span><a href="../institucion/home">Home</a></span>
                 <span><a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a></span>
                 <span><a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a></span>
-                <span><a href="../actividad/index">Actividades</a></span>
+				<span><a href="../actividad/index">Actividades</a></span>
                 <span><a href="../pago/index">Pagos</a></span>
+				 <span><a href="../institucion/ModificardatosInstitucion">Mis datos</a></span>
                 <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
             </div>
             <div class="logo">

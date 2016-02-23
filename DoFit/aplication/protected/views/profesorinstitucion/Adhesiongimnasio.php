@@ -190,7 +190,7 @@
 					<h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                 </div>
                 <div class='modal-body'>
-                 Se enviaron solicitudes a todas las instituciones para la provincia y localidad seleccionada.
+                 Se enviaron solicitudes a todas las instituciones de <b><p id='loca'></p></b><br/>
                  Consulte la opción <b>"Estado de las instituciones"</b> para mayor información. 
 				</div>
                 <div class='modal-footer'>
@@ -231,16 +231,17 @@ $this->endWidget();?>
             dataType: "html",
             cache : false,
             success : function(response){
-                if(response == "errorbusqueda"){
+				respuesta = response.split("|");				
+				if(respuesta[0] == "errorbusqueda"){
                     $("#errorbusqueda").modal('show');
                 }
-                if(response == "solcompletas"){
-                    $("#principal").css('opacity','11');
+				if(respuesta[0] == "solcompletas"){
+					$("#loca").append(respuesta[1]);
+					$("#loca").css('display','inline');
 					$("#solcompletas").modal('show');
                 }
-                if(response != "errorbusqueda" && response != "solcompletas")
-                {
-                    $('#mostrargimnasios').append(response);
+                if(respuesta[0] != "errorbusqueda" && respuesta[0] != "solcompletas"){
+                    $('#mostrargimnasios').append(respuesta[0]);
                 }
             }
         })

@@ -322,7 +322,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#volver").css("float","right");
-
         $("#cerrarelimact").click(function(){
             $("#elimactexito").modal('hide');
             location.reload();

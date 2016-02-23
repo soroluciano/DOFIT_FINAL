@@ -30,7 +30,7 @@ class ProfesorInstitucionController extends Controller
 				}
 			}
 			if($cantveces == $cantinstituciones){
-				echo "solcompletas";
+				echo "solcompletas|$localidad->localidad";
 			}
 		}
 		if($ficinstituciones != NULL && $cantveces < $cantinstituciones){
@@ -83,11 +83,12 @@ class ProfesorInstitucionController extends Controller
 		            }
 	            } );
               </script>";
+			echo "|tabla";  
 		}
 
 		if($ficinstituciones == NULL)
 		{
-			echo "errorbusqueda";
+			echo "errorbusqueda|error";
 		}
 	}
 

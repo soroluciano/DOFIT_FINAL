@@ -83,20 +83,20 @@ class InstitucionController extends Controller
      */
     public function actionUpdate($id)
     {
-
-        $model=$this->loadModel($id);
+  
+		$model=$this->loadModel($id);
         $ficha_institucion = new FichaInstitucion;
         $ficha_institucion = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$id));
         $localidad = new Localidad;
         $localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha_institucion->id_localidad));
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-        if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
+		if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
         {
-            $model->attributes = $_POST['Institucion'];
-            $ficha_institucion->attributes = $_POST['FichaInstitucion'];
-            if($model->save()){
-                if($ficha_institucion->save()){
+			$model->attributes = $_POST['Institucion'];
+			$ficha_institucion->attributes = $_POST['FichaInstitucion'];
+			if($model->save(false)){
+                if($ficha_institucion->save(false)){
                     $this->redirect('../index');
                 }
             }
@@ -271,5 +271,31 @@ class InstitucionController extends Controller
         $provincia = Provincia::model()->findByAttributes(array('id_provincia'=>$localidad->id_provincia));
         echo $provincia->provincia;
         echo "</center>";
+    }
+	
+	 public function actionModificardatosInstitucion()
+    {
+        $idins = Yii::app()->user->id;
+	    $model = $this->loadModel($idins);
+		$ficha_institucion = new FichaInstitucion;
+        $ficha_institucion = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$idins));
+        $localidad = new Localidad;
+        $localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha_institucion->id_localidad));
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($model);
+		if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
+        {
+			$model->attributes = $_POST['Institucion'];
+			$ficha_institucion->attributes = $_POST['FichaInstitucion'];
+			if($model->save(false)){
+                if($ficha_institucion->save(false)){
+                    $this->redirect('../index');
+                }
+            }
+        }
+
+        $this->render('Modificardatos',array(
+            'model'=>$model,'ficha_institucion'=>$ficha_institucion,'localidad'=>$localidad
+        ));
     }
 }

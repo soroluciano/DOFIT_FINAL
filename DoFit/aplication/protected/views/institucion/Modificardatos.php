@@ -1,53 +1,23 @@
-<div class="navbar-wrapper">
-    <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide">
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <div class="navbar-form navbar-right">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="../../site/indexAdmin">Index</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-
-<!-- Carousel
-================================================== -->
-<div id="myCarousel" class="carousel_min slide" data-ride="carousel">
-    <div class="carousel-inner_min" role="listbox">
-        <div class="item active">
-            <img class="first-slide_min" src="<?php echo Yii::app()->request->baseUrl; ?>/img/10.jpg" alt="First slide">
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div>
-        <h1>Modificar <?php echo $ficha_institucion->nombre; ?></h1>
-    </div>
-    <br>
-    <div class="form">
-        <?php $form=$this->beginWidget('CActiveForm', array('id'=>'InstitucionForm', 'enableAjaxValidation'=>true, 'enableClientValidation'=>false, 'clientOptions'=>array('validateOnSubmit'=>true,),));?>
-        <div class="col-md-8">
-            <div class="form-group">
-                <?php echo $form->labelEx($model,'email',array('for'=>"exampleInputEmail1")); ?>
-                <?php echo $form->textField($model,'email',array('class'=>"form-control",'placeholder'=>"Email",'id'=>"exampleInputEmail1")); ?>
-                <?php echo $form->error($model,'email'); ?>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="principal" aria-labelledby="myLargeModalLabel">
+<?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+ <div class="modal-dialog modal-lg">
+       <div class="modal-content">
+            <div class="modal-header">
+			   <h4 class="modal-title"><b><?php echo $ficha_institucion->nombre; ?></b></h4>
+            </div> 			   
+            <div class="modal-body">
+               <div class="container">
+                 <br>
+                 <div class="form">
+                   <?php $form=$this->beginWidget('CActiveForm', array('id'=>'InstitucionForm', 'enableAjaxValidation'=>true, 'enableClientValidation'=>false, 'clientOptions'=>array('validateOnSubmit'=>true,),));?>
+                   <div class="col-md-8">
+                      <div class="form-group">
+                         <?php echo $form->labelEx($model,'password'); ?>
+                <?php echo $form->passwordField($model,'password',array('class'=>"form-control",'placeholder'=>"Password"));?>
+                <?php echo $form->error($model,'password',array("class"=>"error_pw")); ?>
             </div>
             <div class="form-group">
-                <?php echo $form->hiddenField($model,'password',array('type'=>"hidden",'class'=>"form-control",'placeholder'=>"Password"));?>
+                <?php echo $form->hiddenField($model,'email',array('type'=>"hidden",'class'=>"form-control",'placeholder'=>"Email"));?>
             </div>
             <div class="form-group">
                 <?php echo $form->labelEx($ficha_institucion,'nombre'); ?>
@@ -110,5 +80,13 @@
         </div>
     </form>
 </div>
+</div>
 
 <?php $this->endWidget(); ?>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+ $("#principal").modal('show');
+</script> 
