@@ -217,7 +217,7 @@
                 <span><a href="../../../aplication/ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a></span>
                 <span><a href="../../../aplication/institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a></span>
                 <span><a href="../../../aplication/actividad/index">Actividades</a></span>
-                <span><a href="../../../aplicationpago/index">Pagos</a></span>
+                <span><a href="../../../aplication/pago/index">Pagos</a></span>
                 <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
             </div>
             <div class="logo">
