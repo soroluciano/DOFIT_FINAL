@@ -1,0 +1,521 @@
+2016/02/23 01:02:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:02:17 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:02:18 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:05:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:05:33 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:05:33 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:06:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:06:39 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:06:40 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:06:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:08:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:08:25 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:08:26 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:09:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:09:05 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:09:05 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:09:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:11:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:11:26 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:11:27 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:12:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:12:23 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:12:23 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:13:27 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:27 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:39 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:13:39 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:13:55 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:13:55 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:14:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:14:40 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:14:40 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:32 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:149)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/fillProvincia
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (149)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:32 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:32 [error] [php] Trying to get property of non-object (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:176)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/fillLocalidad
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (176)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:39 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:40 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:40 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:55 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:15:55 [error] [php] Undefined variable: id (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php:319)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): PerfilSocialController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): PerfilSocialController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): PerfilSocialController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/perfilSocial/registrarMensaje
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/PerfilSocialController.php (319)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 01:18:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:19:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:24:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:26:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:41:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 01:54:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/js/jquery.min.map
+---
+2016/02/23 02:04:26 [error] [php] Undefined variable: img (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/ContactController.php:65)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): ContactController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): ContactController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): ContactController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/contact/getGaleria
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/ContactController.php (65)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 02:04:27 [error] [php] Undefined variable: img (/opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/ContactController.php:65)
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(286): ContactController->runAction()
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CController.php(265): ContactController->runActionWithFilters()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(282): ContactController->run()
+#3 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CWebApplication->run()
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/contact/getGaleria
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/protected/controllers/ContactController.php (65)
+in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php (13)
+2016/02/23 02:07:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "actividadalumno/ListadoActividades".' in /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/web/CWebApplication.php(141): CWebApplication->runController('actividadalumno...')
+#1 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /opt/lampp/htdocs/DOFIT_FINAL/DoFit/aplication/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/DOFIT_FINAL/DoFit/aplication/actividadalumno/ListadoActividades
+HTTP_REFERER=http://localhost/DOFIT_FINAL/DoFit/aplication/red/index
+---

@@ -1,3 +1,11 @@
+    $(function(){
+        $(".fancybox").fancybox();  
+      
+      
+    });
+
+
+
 
 
 function getStringIds(){
@@ -23,3 +31,23 @@ function getStringIds(){
       }
     });
 }
+   function getGaleria(id) {
+    
+    debugger;
+    
+      
+       $.ajax({
+            url: baseurl+'/contact/getGaleria',
+            type: 'post',
+            data: 'id='+id,
+            success:function(response){ 
+              $("#galeria").append(response);
+              document.getElementById('firstId').click(); 
+              $("#galeria").empty();
+            },
+            error: function(e){
+                $('#logger').html(e.responseText);
+            }
+        });
+
+   }

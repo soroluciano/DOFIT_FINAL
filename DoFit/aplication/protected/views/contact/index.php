@@ -69,7 +69,7 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 	
 
 	</div>
-	
+
 		<div class='propaganda-muro-3'>Publicite aqui</div>
 		
 <div id='friend-chat'></div>
