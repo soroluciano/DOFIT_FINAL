@@ -555,8 +555,9 @@ INSERT INTO DoFit.`Pago`(id_actividad, id_usuario, mes, anio, monto, fhcreacion,
                   VALUES(1           , 1         , 2  , 2015, 300.00, now()   , now()   , 'sysadmin'),
                         (1           , 2         , 2  , 2015, 300.00, now()   , now()   , 'sysadmin'),  						
                         (2           , 2         , 1  , 2015, 400.00, now()   , now()   , 'sysadmin'),
-                        (3           , 4         , 1  , 2015, 300.00, now()   , now()   , 'sysadmin');  
-
+                        (3           , 4         , 1  , 2015, 300.00, now()   , now()   , 'sysadmin'), 
+                        (3           , 2         , 1  , 2015, 300.00, now()   , now()   , 'sysadmin'),
+                        (4           , 2         , 1  , 2015, 400.00, now()   , now()   , 'sysadmin');						
 DELETE FROM DoFit.`Perfil_muro_profesor`;						
 
 INSERT INTO DoFit.`Perfil_muro_profesor`(posteo, id_actividad, fhcreacion, fhultmod, cusuario)
@@ -569,3 +570,7 @@ INSERT INTO DoFit.`Respuesta`(id_posteo, id_respuesta, respuesta, id_usuario, fh
                        VALUES(1        , 1          , 'Si en todos los horarios', 5 , now() , now() , 'sysadmin'),
                              (2        , 2          , '$300'                    , 6 , now() , now() , 'sysadmin');
                      
+					 
+					 
+					 
+					 
