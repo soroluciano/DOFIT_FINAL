@@ -108,7 +108,7 @@ $this->renderPartial('../menu/_menuInstitucion');
             $ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$idinstitucion));
             $profesores = ProfesorInstitucion::model()->findAllByAttributes(array('id_institucion'=>$idinstitucion,'id_estado'=>1));
             if($profesores !=null){
-                echo "<div style='color: #FDFCFE;'><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
+                echo "<div class='fuenteprof'><h3>Profesores inscriptos en $fichains->nombre </h3></div>";
                 echo "<br/>";
                 echo "<div class='table-responsive'>";
                 echo "<table id='lisprofesores' class='display' cellspacing='0' width='100%'>
@@ -282,11 +282,32 @@ $this->renderPartial('../menu/_menuInstitucion');
                 echo "</div>";
             }
             else{
-                echo "<div class='row'>
-                        <div class='.col-md-6 .col-md-offset-3'>
-                            <h2 class='text-center'>No hay profesores asociados a $ficins->nombre</h2>
+                echo "<div class='modal fade' tabindex='-1' role='dialog' id='sinprofesores' aria-labelledby='myModalLabel'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'> 
+						<div class='modal-header'> 
+						    <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
+                            <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                         </div>
-                    </div>";
+					        <div class='container'>
+                                <div class='col-md-8'> 
+                                    <br/>
+									<div class='form-group'>
+                                       <b>No hay profesores asociados a $ficins->nombre. </b>
+                                    </div>
+                                </div>
+                            </div>
+				    <div class='modal-footer'>     								
+                        <input type='button' value='Cerrar' id='cerrarmodalprofe' class='btn btn-primary'></input>
+                    </div>
+					</div>
+                </div>
+             </div>";
+			    ?>
+				<script type="text/javascript">
+				  $("#sinprofesores").modal('show');
+				</script>  
+			<?php 
             }
         }
         else {
@@ -340,6 +361,10 @@ $this->renderPartial('../menu/_menuInstitucion');
         $("#cerrarmodalsinact").click(function(){
             $("#erracti").modal('hide');
         });
+		
+		$("#cerrarmodalprofe").click(function(){
+		   location.href = "../institucion/home";
+		});   
     } );
 </script>
 <script type="text/javascript">
