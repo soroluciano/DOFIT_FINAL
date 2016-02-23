@@ -26,9 +26,9 @@
 																	  <span class='name'>".$ficha->nombre." ".$ficha->apellido."</span><br/>
 																	  <span class='glyphicon glyphicon-envelope' data-toggle='tooltip'> <a href='mailto:".$usuario->email."'>".$usuario->email."</a></span><br/>
 																	  <span class='glyphicon glyphicon-earphone' data-toggle='tooltip'> ".$ficha->celular."</span><br/>	  
-																	  <span class='glyphicon glyphicon-camera'   data-toggle='tooltip'> <a href=''>Galeria</a></span><br/>	  
+																	  <span class='glyphicon glyphicon-camera'   data-toggle='tooltip'><input type='button' onclick='getGaleria($usuario->id_usuario);' value='galeria'></span><br/>	  
 																	  
-																	  <!--<span class='glyphicon glyphicon-camera'   data-toggle='tooltip'> Mensaje privado</span><br/>-->
+																	  <!--<span class='glyphicon glyphicon-camera' data-toggle='tooltip'> Mensaje privado</span><br/>-->
 															  </div>
 												 </div>
 												 
@@ -38,12 +38,14 @@
 						
 								}
 						?>
+						
 
                 </ul>
+
             </div>
 
 	</div>
-
+		<div id="galeria"></div>
     <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
     
 </div>

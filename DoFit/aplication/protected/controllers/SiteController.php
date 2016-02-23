@@ -78,6 +78,11 @@ class SiteController extends Controller
       $this->render('error', $error);
     }
 
+    public function actionSelector()
+    {
+        $this->render('/site/Selector');
+    }
+
 
 
     public function actionLoginInstitucion()
