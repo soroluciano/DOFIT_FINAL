@@ -110,24 +110,7 @@
 								   </div>
 								  </div>
 					</div>					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+	
 				</div>
 
 				<div id="descripcion_personal"><p id='nombre'><?php echo $ficha->nombre." ".$ficha->apellido;?></p><p class="desc" onclick="addDescription();"><?php if($perfil->descripcion !=null ){echo $perfil->descripcion; }else{ echo "Cuentanos algo tuyo! Cuentale al mundo quien eres!<span class='glyphicon glyphicon-pencil'></span></p></div>"; } ?>

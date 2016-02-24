@@ -408,6 +408,27 @@ class PerfilSocialController extends Controller
             }
         }
     }
+	
+	public function actionAddInfoDesc(){
+		$mensaje = $_POST['mensaje'];	
+		$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+		$perfil->descripcion=$mensaje;
+		if($perfil->update()){
+			echo "saved";
+		}else{
+			echo "error";
+		}
+		
+	
       
+	}
+	
+	public function actionGetDesc(){
+		$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+		$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+		
+		echo "<div id='area-edit'><textarea  maxlength='185'></textarea><input type='button' class='btn btn-success btn-xs but'value='guardar'><input type='button' class='btn btn-primary btn-xs but'value='cancelar'></div>";
+	}
    
 }
