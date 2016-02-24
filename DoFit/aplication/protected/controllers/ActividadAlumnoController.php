@@ -172,5 +172,14 @@ class ActividadAlumnoController extends Controller
 
         }
     }
+	
+	public function actionConsultarPagos()
+	{
+	  $idusuario =  $id_usuario = Yii::app()->user->id;
+	  $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$idusuario));
+	   if($actividad_alumno != null){ 
+	      $this->render('Consultarpagos',array('actividades_alumno'=>$actividades_alumno));
+	    }
+	}
 }
 ?>

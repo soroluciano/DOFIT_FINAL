@@ -190,7 +190,7 @@
 					<h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
                 </div>
                 <div class='modal-body'>
-                 Se enviaron solicitudes a todas las instituciones de <b><p id='loca'></p></b><br/>
+                 Se enviaron solicitudes a todas las instituciones de <b><p id='loca'></p>.</b><br/>
                  Consulte la opción <b>"Estado de las instituciones"</b> para mayor información. 
 				</div>
                 <div class='modal-footer'>
@@ -221,7 +221,8 @@ $this->endWidget();?>
 <script type="text/javascript">
     function ConsultarInstituciones()
     {
-        $('#mostrargimnasios').empty();
+        $("#loca").empty();
+		$('#mostrargimnasios').empty();
         var localidad = $('#Localidad_id_localidad').val();
         var data = {'localidad':localidad};
         $.ajax({
