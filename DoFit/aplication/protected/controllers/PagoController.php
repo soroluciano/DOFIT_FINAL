@@ -226,6 +226,15 @@ class PagoController extends Controller
 
 
     }
+	
+	public function actionConsultarPagosAlumno()
+	{
+	  $idusuario = Yii::app()->user->id;
+	  $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$idusuario));
+	   if($actividades_alumno != null){ 
+	      $this->render('Consultarpagosalumno',array('actividades_alumno'=>$actividades_alumno));
+	    }
+	}
 
 }
 

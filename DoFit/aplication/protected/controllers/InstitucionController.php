@@ -276,7 +276,8 @@ class InstitucionController extends Controller
 	 public function actionModificardatosInstitucion()
     {
         $idins = Yii::app()->user->id;
-	    $model = $this->loadModel($idins);
+	    $guardar = 0;
+		$model = $this->loadModel($idins);
 		$ficha_institucion = new FichaInstitucion;
         $ficha_institucion = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$idins));
         $localidad = new Localidad;
@@ -289,13 +290,14 @@ class InstitucionController extends Controller
 			$ficha_institucion->attributes = $_POST['FichaInstitucion'];
 			if($model->save(false)){
                 if($ficha_institucion->save(false)){
-                    $this->redirect('../index');
+                    $guardar = 1;
+					//$this->redirect('../institucion/home');
                 }
             }
         }
 
         $this->render('Modificardatos',array(
-            'model'=>$model,'ficha_institucion'=>$ficha_institucion,'localidad'=>$localidad
+            'model'=>$model,'ficha_institucion'=>$ficha_institucion,'localidad'=>$localidad,'guardar'=>$guardar
         ));
     }
 }
