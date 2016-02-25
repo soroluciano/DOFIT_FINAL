@@ -431,4 +431,9 @@ class PerfilSocialController extends Controller
 		echo "<div id='area-edit'><textarea  maxlength='185'></textarea><input type='button' class='btn btn-success btn-xs but'value='guardar'><input type='button' class='btn btn-primary btn-xs but'value='cancelar'></div>";
 	}
    
+   
+   
+   
+   
+   
 }
