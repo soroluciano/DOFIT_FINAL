@@ -13,92 +13,20 @@
         -o-background-size: cover;
         background-size: cover;
     }
-	/*
-    Max width before this PARTICULAR table gets nasty
-    This query will take effect for any screen smaller than 760px
-    and also iPads specifically.
-    */
-    @media
-    only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px)  {
-
-        /* Force table to not be like tables anymore */
-        table, thead, tbody, th, td, tr {
-            display: block;
-        }
-
-        /* Hide table headers (but not display: none;, for accessibility) */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        tr { border: 1px solid #ccc; }
-
-        td {
-            /* Behave  like a "row" */
-            border: none;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            padding-left: 50%;
-        }
-
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            right: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: pre-wrap;
-        }
-
-        /*
-        Label the data
-        */
-        td:nth-of-type(1):before { content: "Deporte"; }
-        td:nth-of-type(2):before { content: "Días y horarios"; }
-        td:nth-of-type(3):before { content: "Profesor"; }
-        td:nth-of-type(4):before { content: "Estado"; }
-        td:nth-of-type(5):before { content: "Valor Mensual"; }
-        td:nth-of-type(6):before { content: "Mercado Pago"; }
-    }
-
-    /* Smartphones (portrait and landscape) ----------- */
-    @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px) {
-        body {
-            padding: 0;
-            margin: 0;
-            width: 320px; }
-    }
-
-    /* iPads (portrait and landscape) ----------- */
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-        body {
-            width: 495px;
-        }
-    }
 </style>
 <?php if(isset(Yii::app()->session['id_usuario'])){?>
 <?php if($actividades_alumno != NULL){  ?>
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="principal" aria-labelledby="myLargeModalLabel">
-    <?php $this->renderPartial('../menu/_menu');?>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modalpagos" aria-labelledby="myLargeModalLabel">
+    <?php  $this->renderPartial('../menu/_menu');?>
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                  <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
-				<h4 class="modal-title"><b>Pago realizados de 
+				<h4 class="modal-title"><b>Pagos realizados por 
                         <?php
-                        if(isset(Yii::app()->session['id_usuario'])){
-                            //Es un usuario logueado.
                             $Us = Usuario::model()->findByPk(Yii::app()->user->id);
-                            $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
+							$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
                             echo $ficha->nombre."&nbsp".$ficha->apellido;
-                        }
                         ?></b>
                 </h4>
             </div>
@@ -107,19 +35,42 @@
                     <div class="col-md-9">
                         <div class="form-group">
                             <br/>
-                            <h5><b>Deporte</b></h5>
-                            <select id="iddeporte" class="form-control" onchange="javascript:ConsultarActividades();">
+                            <h5><b>Instituci&oacute;n </b></h5>
+                            <select id="idactividad" class="form-control" onchange="javascript:MostrarPagosAlumno();">
                                 <?php
-                                echo "<option value='empty' class='form-control'>Seleccione un Deporte</option>";
+                                echo "<option value='empty' class='form-control'>Seleccione una instituci&oacute;n</option>";
                                 foreach($actividades_alumno as $act_alum){
-								    $act = Actividad::model()->findByAttributes(array('id_actividad'=>$act->id_actividad));
-									$dep = Deporte::model->findByAttributes(array('id_deporte'=>$act->id_deporte));
-                                    echo $dep->deporte;
-                                    echo "<option  value=".$act->id_actividad." name=".$act->id_actividad.">".$dep->deporte."</option>";
+								    $act = Actividad::model()->findByAttributes(array('id_actividad'=>$act_alum->id_actividad));
+									$ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$act->id_institucion));
+                                    echo "<option  value=".$act->id_institucion." name=".$act->id_institucion.">".$ficins->nombre."</option>";
                                 }
                                 ?>
                             </select>
-							<select id=
+							 <h5><b>A&ntilde;o</b></h5>
+							<select id='anio' class="form-control" onchange="javascript:MostrarPagosAlumno();">
+							    <option value='empty'>Seleccione un a&ntilde;o</option>
+								<option value='2013'>2013</option>
+                                <option value='2014'>2014</option>
+                                <option value='2015'>2015</option>
+                                <option value='2016'>2016</option>
+                                <option value='2017'>2017</option>
+                            </select>
+							 <h5><b>Mes</b></h5> 
+                            <select id='mes' class="form-control" onchange="javascript:MostrarPagosAlumno();">
+                                <option value='empty'>Seleccione un mes</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
+                                <option value='7'>7</option>
+                                <option value='8'>8</option>
+                                <option value='9'>9</option>
+                                <option value='10'>10</option>
+                                <option value='11'>11</option>
+                                <option value='12'>12</option>
+                            </select>								
                         </div>
                     </div>
                 </div>
@@ -151,38 +102,35 @@
             <script type="text/javascript">
                 $('#inserror').modal('show');
             </script>
-        <?php }
-        }
-        else
-        {
-            $this->redirect("../aplication/");
+       <?php 
+	        }
         }
         ?>
 </html>
-<script type="text/javascript">
-    $(document).ready(function() {
-		$('#principal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});   
-        $('#principal').modal('show');
-    })
-</script>
 
 <script type="text/javascript">
-    function ConsultarActividades(){
-        $('#mostraractividades').empty();
-        var idinstitucion = $('#idinstitucion').val();
-        var data = {'idinstitucion':idinstitucion};
-        $.ajax({
-            url: baseurl + '/actividadalumno/ConsultarActividades',
-            type: "POST",
-            data: data,
-            dataType: "html",
-            cache : false,
-            success : function(response){
-                $('#mostraractividades').append(response);
-            }
-        })
-    }
-</script>	
+   $(document).ready(function(){
+	  $("#modalpagos").modal('show');
+   });
+
+   function MostrarPagosAlumno()
+   {
+     var idactividad = $("#idactividad").val();
+     alert(idactividad);
+	 var mes = $("#mes").val();
+     var anio = $("#anio").val(); 
+	 if(idactividad != "empty" && mes != "empty" && anio != "empty"){
+		 var data = {'idactividad':idactividad, 'mes': mes, 'anio': anio};
+		 $.ajax({
+                  url: baseurl + '/pago/MostrarPagosAlumno',
+                  type: "POST",
+                  data: data,
+                  dataType: "html",
+                  cache : false,
+                  success : function(response){	
+                  }
+		        })
+         			
+        }
+   }		
+</script>
