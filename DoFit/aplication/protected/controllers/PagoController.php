@@ -40,6 +40,17 @@ class PagoController extends Controller
 
     }
 
+    public function actionVerificarQueExistanPagos()
+    {
+        $usuario = Yii::app()->user->id;
+        $list = Yii::app()->db->createCommand('select 1 from pago where id_actividad in (select id_actividad from actividad where id_institucion = '.$usuario.')')->queryAll();
+        if($list){
+            echo "ok";
+        }
+        else{
+            echo "error";
+        }
+    }
     public function actionListaPagos()
     {
         $fu = new FichaUsuario();

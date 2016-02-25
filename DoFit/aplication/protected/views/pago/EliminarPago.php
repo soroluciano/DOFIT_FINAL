@@ -8,6 +8,24 @@
     }
 </style>
 
+<!-- Modal Error -->
+<div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <h4 class='modal-title' id='myModalLabel'>¡Lo sentimos!</h4>
+            </div>
+            <div class='modal-body' id='ErrorModalTexto'>
+
+            </div>
+            <div class='modal-footer'>
+                <a href="index" class='btn btn-primary'>Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
     <?php  $this->renderPartial('../menu/_menuInstitucion');?>
     <br>
@@ -106,13 +124,33 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#principal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});
-		$('#principal').modal('show');
+        $.ajax({
+            url: baseurl + '/pago/VerificarQueExistanPagos',
+            type: "POST",
+            dataType: "html",
+            cache: false,
+            success: function(response) {
+                debugger;
+                if(response == "ok"){
+                    $('#Principal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    $('#principal').modal('show');
+                }
+                else{
+                    $('#ErrorModal').modal({
+                         backdrop: 'static',
+                         keyboard: false
+                    });
+                    $('#ErrorModalTexto').html("¡No hay pagos creados!");
+                    $('#ErrorModal').modal('show');
+                }
+            }
+        })
     })
 </script>
+
 
 <script type="text/javascript">
     function lista_pagos(){

@@ -190,11 +190,19 @@ $this->pageTitle=Yii::app()->name;
                 cache: false,
                 success: function (response) {
                     debugger;
-                    if(response == "ok"){
+                    if (response == "ok") {
+                        $('#Principal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
                         $('#principal').modal('show');
                     }
-                    else{
-                        if(response == "error_act"){
+                    else {
+                        if (response == "error_act") {
+                            $('#ErrorModal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
                             $('#ErrorModalTexto').html("¡No existen actividades en tu institución!");
                             $('#ErrorModal').modal('show');
                         }
@@ -211,7 +219,6 @@ $this->pageTitle=Yii::app()->name;
                 }
 
             })
-
         })
     </script>
 
