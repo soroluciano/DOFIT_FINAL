@@ -22,6 +22,24 @@ $this->pageTitle=Yii::app()->name;
     }
 </style>
 
+<!-- Modal Error -->
+<div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <h4 class='modal-title' id='myModalLabel'>¡Lo sentimos!</h4>
+            </div>
+            <div class='modal-body' id='ErrorModalTexto'>
+
+            </div>
+            <div class='modal-footer'>
+                <a href="index" class='btn btn-primary'>Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
     <?php $this->renderPartial('../menu/_menuInstitucion');?>
     <br>
@@ -129,11 +147,11 @@ $this->pageTitle=Yii::app()->name;
                                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                                         <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
                                     </div>
-                                    <div class='modal-body'>
+                                    <div class='modal-body' id='modal-error'>
                                         No se ha generado el pago debido a un error.
                                     </div>
                                     <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                                        <button type='button' class='btn btn-primary' onclick="Cerrar();">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -165,11 +183,42 @@ $this->pageTitle=Yii::app()->name;
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#principal').modal({
-               backdrop: 'static',
-               keyboard: false
-		    });
-			$('#principal').modal('show');
+            $.ajax({
+                url: baseurl + '/pago/VerificarExistencia',
+                type: "POST",
+                dataType: "html",
+                cache: false,
+                success: function (response) {
+                    debugger;
+                    if (response == "ok") {
+                        $('#Principal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                        $('#principal').modal('show');
+                    }
+                    else {
+                        if (response == "error_act") {
+                            $('#ErrorModal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                            $('#ErrorModalTexto').html("¡No existen actividades en tu institución!");
+                            $('#ErrorModal').modal('show');
+                        }
+                        else{
+                            $('#ErrorModal').modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                            $('#ErrorModalTexto').html("¡No existen alumnos inscriptos en tus actividades!");
+                            $('#ErrorModal').modal('show');
+                        }
+
+                    }
+                }
+
+            })
         })
     </script>
 
@@ -199,6 +248,14 @@ $this->pageTitle=Yii::app()->name;
         }
 
     </script>
+
+    <script type="text/javascript">
+        function Cerrar(){
+            $('#Error').modal('hide');
+        }
+
+    </script>
+
     <script type="text/javascript">
         function Crear(){
             var id_usuario = $('#FichaUsuario_id_usuario').val();
@@ -242,34 +299,34 @@ $this->pageTitle=Yii::app()->name;
                             else{
                                 if(monto <= 0 && monto != ""){
                                     $('#modal-error').html("¡El importe no puede ser cero o menor a cero!");
-                                    $('#error').modal('show');
+                                    $('#Error').modal('show');
                                 }
                                 else{
                                     if(monto == ""){
                                         $('#modal-error').html("¡Ingrese el importe!");
-                                        $('#error').modal('show');
+                                        $('#Error').modal('show');
                                     }
                                 }
                             }
                         }
                         else{
                             $('#modal-error').html("¡Seleccione el mes del pago!");
-                            $('#error').modal('show');
+                            $('#Error').modal('show');
                         }
                     }
                     else{
                         $('#modal-error').html("¡Seleccione el año del pago!");
-                        $('#error').modal('show');
+                        $('#Error').modal('show');
                     }
                 }
                 else{
                     $('#modal-error').html("¡Seleccione una actividad!");
-                    $('#error').modal('show');
+                    $('#Error').modal('show');
                 }
             }
             else{
-                $('#modal-error').html("¡Ingrese el usuario!");
-                $('#error').modal('show');
+                $('#modal-error').html("¡Ingrese el alumno!");
+                $('#Error').modal('show');
             }
         }
     </script>

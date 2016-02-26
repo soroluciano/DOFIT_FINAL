@@ -28,12 +28,15 @@ $this->renderPartial('../menu/_menuInstitucion');
             <h2><a href="../pago/index" class="btn btn-primary">Pagos</a></h2>
             <p>Gestioná los pagos de tus alumnos</a></p>
         </div>
-		<div class="col-lg-4">
-		</div>
         <div class="col-lg-4">
             <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/2.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2><a href="../actividad/index" class="btn btn-primary">Actividades</a></h2>
             <p>Gestioná las actividades de tu institución</p>
+        </div>
+        <div class="col-lg-4">
+            <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/2.jpg" alt="Generic placeholder image" width="140" height="140">
+            <h2><a href="institucion/ModificardatosInstitucion" class="btn btn-primary">Datos Personales</a></h2>
+            <p>Modificá tus datos personales</p>
         </div>
     </div>
 </div>

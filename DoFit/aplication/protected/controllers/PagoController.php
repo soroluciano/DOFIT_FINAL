@@ -21,6 +21,36 @@ class PagoController extends Controller
 
     }
 
+    public function actionVerificarExistencia()
+    {
+        $usuario = Yii::app()->user->id;
+        $actividad = Actividad::model()->findAll('id_institucion = :id_institucion',array(':id_institucion'=>$usuario));
+        if($actividad == null){
+            echo "error_act";
+        }
+        else{
+            $list = Yii::app()->db->createCommand('select 1 from dual where ((select count(*) from actividad where id_actividad in ( select id_actividad from actividad_alumno )and id_institucion = '.$usuario.' )= ( select count(*) from actividad where id_institucion = '.$usuario.') or ((select count(*) from actividad where id_actividad in ( select id_actividad from actividad_alumno )and id_institucion = '.$usuario.' ) > 0))')->queryAll();
+            if($list){
+                echo "ok";
+            }
+            else{
+                echo "error_alum";
+            }
+        }
+
+    }
+
+    public function actionVerificarQueExistanPagos()
+    {
+        $usuario = Yii::app()->user->id;
+        $list = Yii::app()->db->createCommand('select 1 from pago where id_actividad in (select id_actividad from actividad where id_institucion = '.$usuario.')')->queryAll();
+        if($list){
+            echo "ok";
+        }
+        else{
+            echo "error";
+        }
+    }
     public function actionListaPagos()
     {
         $fu = new FichaUsuario();
@@ -54,7 +84,7 @@ class PagoController extends Controller
                 if($ah->id_dia == 6){$dia = "Sabado";};
                 if($ah->id_dia == 7){$dia = "Domingo";};
 
-                $var = $var . '<b>Dia:</b>'.$dia.'&nbsp'.'<b>Horario:</b>'.str_pad($ah->hora,2,'0',STR_PAD_LEFT).':'.str_pad($ah->minutos,2,'0',STR_PAD_LEFT).'&nbsp';
+                $var = $var . '<b>Dia: </b>'.$dia.'&nbsp'.'<b>Horario: </b>'.str_pad($ah->hora,2,'0',STR_PAD_LEFT).':'.str_pad($ah->minutos,2,'0',STR_PAD_LEFT).'&nbsp';
             }
              $var = $var . '|' . $actividad->valor_actividad;
 			
@@ -232,9 +262,16 @@ class PagoController extends Controller
 	  $idusuario = Yii::app()->user->id;
 	  $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$idusuario));
 	   if($actividades_alumno != null){ 
-	      $this->render('Consultarpagosalumno',array('actividades_alumno'=>$actividades_alumno));
+		  $this->render('Consultarpagosalumno',array('actividades_alumno'=>$actividades_alumno));
 	    }
 	}
+	
+	public function actionMostrarPagosAlumno()
+	{
+	  $id_actividad = $_POST['idactividad'];
+	  $mes = $_POST['mes'];
+	  $anio = $_POST['anio'];
+	}  
 
 }
 
