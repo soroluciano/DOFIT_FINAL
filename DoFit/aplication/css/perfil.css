@@ -214,8 +214,10 @@ div#img-profile input.update {
     
 }
 
-p .desc{
-    
+p#desc{
+    width:95%;
+    height:50%;
+    word-wrap:break-word;
 }
  p.desc:hover{
      color:black;

@@ -427,8 +427,15 @@ class PerfilSocialController extends Controller
 	public function actionGetDesc(){
 		$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
 		$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-		
-		echo "<div id='area-edit'><textarea  maxlength='185'></textarea><input type='button' class='btn btn-success btn-xs but'value='guardar'><input type='button' class='btn btn-primary btn-xs but'value='cancelar'></div>";
+		//echo $perfil->descripcion;
+		//echo "<div id='area-edit'><textarea  maxlength='185'></textarea><input type='button' class='btn btn-success btn-xs but'value='guardar'><input type='button' class='btn btn-primary btn-xs but'value='cancelar'></div>";
+        echo "<p id='desc' onclick='addDescriptionEdit();'>";
+				 if($perfil->descripcion != null ){
+					echo $perfil->descripcion;
+				}else{
+					echo "Cuentanos algo tuyo! Cuentale al mundo quien eres!";
+				}
+		echo "<span class='glyphicon glyphicon-pencil'></span></p>";
 	}
    
    

@@ -154,6 +154,7 @@ ul.c-controls li a:hover {
 .name {
     font-size: 1.7em;
     font-weight: 700;
+    width:150px!important; 
 }
 
 .c-info {
@@ -168,7 +169,7 @@ ul.c-controls li a:hover {
 }
 .contacto-filter {
     width: 100%;
-    height: 550px;
+    height: 600px;
     margin-bottom: 10px;
     padding-left: 12px;
     background-color: white;
@@ -233,9 +234,36 @@ ul.c-controls li a:hover {
 }
 
 #data{
-    margin-top:40px;    
-    margin-left:30px;    
+    margin-top:27px;    
+    margin-left:80px;
+    width:370px;
 }
 #foto{
-    margin-top:20px;      
+    margin-top:20px;
+    float:left;
+    width:100%;
+}
+#foto img{
+    width:150px;
+    height:150px;
+    float:left; 
+}
+#datos{
+    float:left;
+    width: 250px;
+    padding-left:30px;
+    padding-top:5px;
+}
+#right{
+ float: left;
+ width: 450px;
+}
+#left{
+    float: left;
+    width:100px; 
+}
+#descrip_span{
+    width: 100px;
+    height:300px;
+    word-wrap:break-word;
 }

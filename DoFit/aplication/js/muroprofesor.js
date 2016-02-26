@@ -109,10 +109,11 @@
       }
       
     $('form').submit(function(){
+      debugger;
       $.ajax({
         url:  baseurl+'/muro/insertarComentarioProfesor',
         type: 'POST',
-        data: 'mensaje='+addVideo($('#input_mensaje').val())+'&id_actividad='+$('#id_actividad_selected').val(),
+        data: 'mensaje='+$('#input_mensaje').val()+'&id_actividad='+$('#id_actividad_selected').val(),
         success:function(response){
         alert( "Data Saved: " + response );
         window.$isNewMsg.value='true';

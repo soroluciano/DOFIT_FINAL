@@ -96,7 +96,7 @@ div.profile_img {
 
 
 div.profile_info{
-    width:auto;
+    width:200px;
     float:left;
     padding-top: 1%;
     margin-left:1px;
@@ -320,10 +320,9 @@ div.newposts{
 
 .alerta_new{
     background: #e74c3c;
-    width: 24px;
-    border-radius: 40%;
+    width: 5px;
+    border-radius: 100%;
     font-size: 24px;
-    line-height: 2;
     text-align: center;
     animation: notificationpulse 0.5s infinite;
     -webkit-animation: notificationpulse 0.5s infinite;
@@ -400,13 +399,14 @@ div.newposts{
 #secciones{
     width:51%;
     font-size: 90%;
-    padding-left:1%; 
+    padding-left:1%;
     height: 100%;
     float: left;
 }
 
 #secciones a{
     margin-right:1.2%;
+    padding-top:10px;
 }
 #secciones a span{
     margin-right:1%;
@@ -420,3 +420,13 @@ div.newposts{
   background-color:#777777 !important; 
   color:#f5f5f5 !important;
 }
+.input-group .form-control {
+
+    height: 30px !important;
+}
+#nap{
+    width:200px;
+    margin-right:10px;
+    font-weight: bold;
+}
+
