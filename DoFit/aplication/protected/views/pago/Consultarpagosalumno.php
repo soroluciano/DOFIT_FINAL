@@ -15,7 +15,7 @@
     }
 </style>
 <?php if(isset(Yii::app()->session['id_usuario'])){?>
-<?php if($actividades_alumno != NULL){  ?>
+<?php if($instituciones != NULL){  ?>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="modalpagos" aria-labelledby="myLargeModalLabel">
     <?php  $this->renderPartial('../menu/_menu');?>
     <div class="modal-dialog modal-lg">
@@ -36,14 +36,12 @@
                         <div class="form-group">
                             <br/>
                             <h5><b>Instituci&oacute;n </b></h5>
-                            <select id="idactividad" class="form-control" onchange="javascript:MostrarPagosAlumno();">
+                            <select id="idinstitucion" class="form-control" onchange="javascript:MostrarPagosAlumno();">
                                 <?php
-                                echo "<option value='empty' class='form-control'>Seleccione una instituci&oacute;n</option>";
-                                foreach($actividades_alumno as $act_alum){
-								    $act = Actividad::model()->findByAttributes(array('id_actividad'=>$act_alum->id_actividad));
-									$ficins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$act->id_institucion));
-                                    echo "<option  value=".$act->id_institucion." name=".$act->id_institucion.">".$ficins->nombre."</option>";
-                                }
+								echo "<option value='empty' class='form-control'>Seleccione una instituci&oacute;n</option>";
+                                foreach($instituciones as $ins){
+									echo "<option  value=".$ins['id_institucion']." name=".$ins['id_institucion'].">".$ins['nombre']."</option>";
+								}
                                 ?>
                             </select>
 							 <h5><b>A&ntilde;o</b></h5>
@@ -115,19 +113,19 @@
 
    function MostrarPagosAlumno()
    {
-     var idactividad = $("#idactividad").val();
-     alert(idactividad);
+     var idinstitucion = $("#idinstitucion").val();
 	 var mes = $("#mes").val();
      var anio = $("#anio").val(); 
-	 if(idactividad != "empty" && mes != "empty" && anio != "empty"){
-		 var data = {'idactividad':idactividad, 'mes': mes, 'anio': anio};
+	 if(idinstitucion != "empty" && mes != "empty" && anio != "empty"){
+		 var data = {'idinstitucion':idinstitucion, 'mes': mes, 'anio': anio};
 		 $.ajax({
                   url: baseurl + '/pago/MostrarPagosAlumno',
                   type: "POST",
                   data: data,
                   dataType: "html",
                   cache : false,
-                  success : function(response){	
+                  success : function(response){
+                    					  
                   }
 		        })
          			

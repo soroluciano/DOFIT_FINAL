@@ -229,19 +229,85 @@ class PagoController extends Controller
 	
 	public function actionConsultarPagosAlumno()
 	{
-	  $idusuario = Yii::app()->user->id;
-	  $actividades_alumno = ActividadAlumno::model()->findAllByAttributes(array('id_usuario'=>$idusuario));
-	   if($actividades_alumno != null){ 
-		  $this->render('Consultarpagosalumno',array('actividades_alumno'=>$actividades_alumno));
+	  $id_usuario = Yii::app()->user->id;
+	   if(isset(Yii::app()->session['id_usuario'])){
+	      $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' ))')->queryAll();
+	      if($instituciones != null){ 
+		     $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
+	        }
 	    }
 	}
 	
 	public function actionMostrarPagosAlumno()
 	{
-	  $id_actividad = $_POST['idactividad'];
+	  $id_institucion = $_POST['idinstitucion'];
 	  $mes = $_POST['mes'];
 	  $anio = $_POST['anio'];
-	}  
+	  $id_usuario = Yii::app()->user->id;
+	  $cantpago = 0;  
+	  // Busco todas las actividades que tenga esa institucion donde esta inscripto el alumno
+	  $actividad_alumno = Yii::app()->db->createCommand('SELECT * FROM actividad_alumno WHERE id_usuario = '.$id_usuario .' AND id_actividad IN(SELECT id_actividad FROM actividad where id_institucion = '.$id_institucion.')')->queryAll();
+        if($actividad_alumno != null){
+	        foreach($actividad_alumno as $act_alum){ 
+                echo "<table id='lispagos'  class='display' cellspacing='0' width='100%'>
+			          <thead>
+                      <th>Deporte</th><th>Días y Horarios</th><th>Importe</th><th>Mes</th><th>A&ntilde;o</th>
+				      </thead>
+					   <tbody>";   			
+			        $pago = Pago::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad'],'mes'=>$mes,'anio'=>$anio,'id_usuario'=>$id_usuario));
+	            if($pago != NULL){
+				    $cantpago++;
+                    $act = Actividad::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad']));
+				    $dep = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));
+					echo "<tr>
+                            <td id='deporte'>" .$dep->deporte . "</td>";
+                            $diashorarios = ActividadHorario::model()->findAllByAttributes(array('id_actividad'=>$act->id_actividad));
+						    echo "<td id='dias y horarios'>";
+                                  foreach($diashorarios as $diashor){
+					                   $dias = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+				                       $id_dia = $diashor->id_dia-1;
+					                   echo $dias[$id_dia]."&nbsp;".$diashor->hora .':'.($diashor->minutos == '0' ? '0'.$diashor->minutos : $diashor->minutos)."&nbsp&nbsp";
+				                    } 
+    					    echo "</td>";
+						    $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");	  
+                            echo "<td id= 'mes'>".$meses[$mes-1]."</td>";
+                            echo "<td id= 'anio'>".$anio."</td>";
+                    echo "</tr>";							
+				}  
+            } 
+			echo "</tbody>
+			      </table>";
+			echo "<script type='text/javascript'>
+                $('#lispagos').DataTable( {
+		            'language' : {
+			            'sProcessing':     'Procesando...',
+			            'sLengthMenu':     'Mostrar _MENU_ registros',
+			            'sZeroRecords':    'No se encontraron resultados',
+			            'sEmptyTable':     'Ningún dato disponible en esta tabla',
+			            'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+			            'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
+			            'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
+			            'sInfoPostFix':    '',
+			            'sSearch':         'Buscar:',
+			            'sUrl':            '',
+			            'sInfoThousands':  ',',
+			            'sLoadingRecords': 'Cargando...',
 
+			            'oPaginate': {
+				            'sFirst':    'Primero',
+				            'sLast':     'Ultimo',
+				            'sNext':     'Siguiente',
+				            'sPrevious': 'Anterior'
+			            },
+			                
+			            'oAria': {
+				            'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
+				            'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+			            }
+		            }
+	            } );
+            </script>";	  
+        }
+    }				
 }
 

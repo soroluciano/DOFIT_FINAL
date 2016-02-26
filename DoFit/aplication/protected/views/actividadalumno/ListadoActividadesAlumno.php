@@ -112,7 +112,6 @@
                                 <?php
                                 echo "<option value='empty' class='form-control'>Seleccione una instituci&oacute;n</option>";
                                 foreach($instituciones as $ins){
-                                    echo $ins['nombre'];
                                     echo "<option  value=".$ins['id_institucion']." name=".$ins['id_institucion'].">".$ins['nombre']."</option>";
                                 }
                                 ?>
