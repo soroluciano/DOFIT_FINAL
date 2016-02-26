@@ -24,9 +24,9 @@ class SendEmailService
         $mailer -> IsHTML (true);
         $mailer->IsSMTP();
         $mailer->Port='465';
-        $mailer->From = 'info@dofitproyect.esy.es';
-        $mailer->Username = 'info@dofitproyect.esy.es';
-        $mailer->Password = 'sL7BbUhaAx';
+        $mailer->From = 'programacionweb3@gmail.com';
+        $mailer->Username = 'programacionweb3@gmail.com';
+        $mailer->Password = 'Montoto123';
         $mailer->AddAddress($email_destino);
         $mailer->FromName = 'Dofit!';
         $mailer->CharSet = 'UTF-8';
