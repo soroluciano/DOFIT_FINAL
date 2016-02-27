@@ -13,11 +13,11 @@
         -o-background-size: cover;
         background-size: cover;
     }
-		/*
-    Max width before this PARTICULAR table gets nasty
-    This query will take effect for any screen smaller than 760px
-    and also iPads specifically.
-    */
+    /*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
     @media
     only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -72,6 +72,7 @@
             width: 495px;
         }
     }
+
 </style>
 <br/>
 <br/>
@@ -91,7 +92,7 @@ if(isset(Yii::app()->session['id_usuario'])){
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-					    <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
                         <h4 class='modal-title'>
                             <b>Actividades dictadas por
                                 <?php if(isset(Yii::app()->session['id_usuario'])){
@@ -161,7 +162,7 @@ if(isset(Yii::app()->session['id_usuario'])){
                 </div>
             </div>
         </div>
-		<div class="modal fade" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myModalLabel">
+        <div class="modal fade" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -178,11 +179,11 @@ if(isset(Yii::app()->session['id_usuario'])){
             </div>
         </div>
         <script type="text/javascript">
-			$('#principal').modal({
-               backdrop: 'static',
-               keyboard: false
-		    });
-            $("#principal").modal('show');			
+            $('#principal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#principal").modal('show');
         </script>
     <?php }
     else{?>
@@ -242,10 +243,10 @@ else
     function AlumnosInscriptos(idactividad)
     {
         $('#actividad').empty();
-		$('#institucion').empty();
-		$("#acti").empty();
-		$("#insti").empty();
-		$('#actaluminsc').empty();
+        $('#institucion').empty();
+        $("#acti").empty();
+        $("#insti").empty();
+        $('#actaluminsc').empty();
         var id_actividad = idactividad;
         var data = {'idactividad':id_actividad};
         $.ajax({
@@ -255,23 +256,23 @@ else
             dataType: "html",
             cache : false,
             success : function(response){
-				aluminscriptos = response.split("|");
-			    $("#actividad").css("display","inline");
-				$("#institucion").css("display","inline");
-				$("#actividad").append(aluminscriptos[1]);
-			    $("#institucion").append(aluminscriptos[2]);
+                aluminscriptos = response.split("|");
+                $("#actividad").css("display","inline");
+                $("#institucion").css("display","inline");
+                $("#actividad").append(aluminscriptos[1]);
+                $("#institucion").append(aluminscriptos[2]);
                 if(aluminscriptos[0] == "sinalumnos"){
-                   $("#acti").css("display","inline");
-				   $("#insti").css("display","inline");
-				   $("#acti").append(aluminscriptos[1]);
-			       $("#insti").append(aluminscriptos[2]);
-				   $("#sinalumnos").modal('show');
-				}
-				else{
-				   $('#actaluminsc').append(aluminscriptos[0]);
-				   $('#aluminsc').modal('show');
-				}   
-            } 
+                    $("#acti").css("display","inline");
+                    $("#insti").css("display","inline");
+                    $("#acti").append(aluminscriptos[1]);
+                    $("#insti").append(aluminscriptos[2]);
+                    $("#sinalumnos").modal('show');
+                }
+                else{
+                    $('#actaluminsc').append(aluminscriptos[0]);
+                    $('#aluminsc').modal('show');
+                }
+            }
         })
     }
 </script>
