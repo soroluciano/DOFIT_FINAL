@@ -1,6 +1,18 @@
 
 
 <?php
+	function getActividadDescription($id){
+		$result="";
+		$aid = (int)$id;
+		$resultSet = Yii::app()->db->createCommand('select d.deporte,f.nombre from actividad a inner join deporte d on a.id_deporte=d.id_deporte inner join ficha_institucion f on a.id_institucion=f.id_institucion where id_actividad='.$aid)->queryAll();
+			foreach($resultSet as $row) {	
+			$result = $row['nombre']." - ".$row['deporte'];
+			
+		}
+		
+		return $result;
+	}
+
     if ($resultSet != null) {
       foreach($resultSet as $row) {
           echo "
@@ -10,9 +22,12 @@
 
 	  <div class='panel-sized'>
         <div class='panel panel-white post panel-shadow' id='coment_n_".$row['id_posteo']."'>
-        
+        		<div id='actividad'>
+				  <span>".getActividadDescription($row['id_actividad'])."</span>
+				</div>
             <div class='post-heading'>
-              <div class='pull-left image'>
+
+		      <div class='pull-left image'>
               <img src='".Yii::app()->request->baseUrl."/uploads/".$row['fotoPerfil']."' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>
               </div>
               <div class='pull-left meta'>
@@ -21,6 +36,7 @@
                 </div>
                 <!--<h6 class='text-muted time'>1 minute ago</h6>-->
               </div>
+
 			  <div class='pull-left edicion e_size'>";
         if($usuario==$row["id_usuario"]){
           echo "<div class='dropdown'>
@@ -30,6 +46,8 @@
             <li><a href='javascript:indicateIdPost(".$row['id_posteo'].")' >Eliminar</a></li>
             </ul>
           </div>";
+		  
+		  
         }
 			 echo "
        </div>

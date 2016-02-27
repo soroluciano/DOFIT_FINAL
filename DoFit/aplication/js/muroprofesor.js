@@ -7,6 +7,10 @@
     });
   }).trigger( "change" );
   
+  
+  
+  
+  
   function showComents(idpost){
     $("#post-footer-"+idpost).removeAttr("style");
   }
@@ -71,9 +75,12 @@
     });
 
     }
-
+  
   
   $(function(){
+      
+      
+      
       window.$postValue={}
       window.$isNewMsg={}
       window.$sizeMsgs={}
