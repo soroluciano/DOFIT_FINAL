@@ -33,14 +33,16 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 
 //buscar todos los canales y grabarlos en  lista de memoria js
 $canal = Canal::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-if($canal==null){
-	$canal = new Canal();
-	$canal->id_usuario=$usuario->id_usuario;
-	//$nombre=md5($ficha->nombre);
-	//$nombre=md5("sasarasas");
-	$nombre=md5(strval($usuario->id_usuario)."".$ficha->nombre."".strval($ficha->id_ficha));
-	$canal->nombre=$nombre;
-	$canal->save();
+if($usuario->id_perfil==2){
+	if($canal==null){
+		$canal = new Canal();
+		$canal->id_usuario=$usuario->id_usuario;
+		//$nombre=md5($ficha->nombre);
+		//$nombre=md5("sasarasas");
+		$nombre=md5(strval($usuario->id_usuario)."".$ficha->nombre."".strval($ficha->id_ficha));
+		$canal->nombre=$nombre;
+		$canal->save();
+	}
 }
 
 
