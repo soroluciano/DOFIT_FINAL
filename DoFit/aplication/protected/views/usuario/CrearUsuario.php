@@ -9,7 +9,6 @@
 </style>
 
 
-
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="myModal" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -150,13 +149,15 @@
                     <div class="col-xs-6 col-sm-3">
                         <div class="form-group">
                             <?php echo $form->labelEx($localidad,'Provincia'); ?>
-                            <?php echo $form->dropDownList($localidad,'id_provincia',CHtml::listData(Provincia::model()->findAll(),'id_provincia','provincia'),
-                                array('ajax'=>array('type'=>'POST',
-                                    'url'=>CController::createUrl('Usuario/SeleccionarLocalidad'),
-                                    'update'=>'#'.CHtml::activeId($localidad,'id_localidad'),
-                                ),'prompt'=>'Seleccione tu Provincia','class'=>"form-control"));?>
+                            <div>
+                                <?php echo $form->dropDownList($localidad,'id_provincia',CHtml::listData(Provincia::model()->findAll(),'id_provincia','provincia'),
+                                    array('ajax'=>array('type'=>'POST',
+                                        'url'=>CController::createUrl('Usuario/SeleccionarLocalidad'),
+                                        'update'=>'#'.CHtml::activeId($localidad,'id_localidad'),
+                                    ),'prompt'=>'Seleccione tu Provincia','class'=>"form-control"));?>
+                            </div>
                             <div class="form-group has-error" id="err_prov_vacia">
-                                <label class="control-label" for="inputError" id="provincia">Seleccione una provincia.</label>
+                                <label class="control-label" for="inputError" id="provvacia">Seleccione una provincia.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -202,10 +203,10 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myModal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});
-		$('#myModal').modal('show');
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#myModal').modal('show');
         $('#err_mail_vacio').hide();
         $('#err_mail_exprreg').hide();
         $('#err_mail_dup').hide();
@@ -297,7 +298,6 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         var depto = $('#FichaUsuario_depto').val();
         var localidad = $('#Localidad_id_localidad').val();
         var provincia = $('#Localidad_id_provincia').val();
-
         /* valido el mail */
         if(CampoVacio(email)){
             $('#err_mail_vacio').show();

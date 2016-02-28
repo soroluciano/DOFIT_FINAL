@@ -43,7 +43,7 @@ class FichaInstitucion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, cuit, id_localidad, direccion, fhcreacion, cusuario', 'required','message'=>'Ingrese {attribute}'),
+			array('nombre, cuit, telfijo, direccion, coordenada_x, coordenada_y, acepta_mp,  fhcreacion, cusuario', 'required','message'=>'Ingrese {attribute}'),
 			array('id_institucion, cuit, id_localidad', 'numerical', 'integerOnly'=>true),
 			array('telfijo, celular', 'length', 'max'=>30),
 			array('nombre', 'length', 'max'=>200),
@@ -56,7 +56,7 @@ class FichaInstitucion extends CActiveRecord
 			array('fhultmod', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_ficha, id_institucion, nombre, cuit, telfijo, celular, id_localidad, direccion, piso, depto, coordenada_x, coordenada_y, acepta_mp, fhcreacion, fhultmod, cusuario', 'safe', 'on'=>'search'),
+			array('id_ficha, id_institucion, nombre, cuit, telfijo, celular, direccion, piso, depto, coordenada_x, coordenada_y, acepta_mp, fhcreacion, fhultmod, cusuario', 'safe', 'on'=>'search'),
 		);
 	}
 

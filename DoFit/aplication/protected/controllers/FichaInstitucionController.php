@@ -122,7 +122,7 @@ class FichaInstitucionController extends Controller
 	 */
 	public function actionIndex()
 	{
-		 $ficha_institucion =FichaInstitucion::model()->findAll();
+		$ficha_institucion =FichaInstitucion::model()->findAll();
 		$this->render('index',array(
 			'ficha_institucion'=>$ficha_institucion,
 		));
@@ -170,9 +170,10 @@ class FichaInstitucionController extends Controller
 			Yii::app()->end();
 		}
 	}
-	
+
 	public function actionGoogleMaps()
-	{ 
-	  $this->render('googlemaps');
+	{
+		$this->render('googlemaps');
 	}
+
 }

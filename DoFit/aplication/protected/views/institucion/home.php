@@ -35,7 +35,7 @@ $this->renderPartial('../menu/_menuInstitucion');
         </div>
         <div class="col-lg-4">
             <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/2.jpg" alt="Generic placeholder image" width="140" height="140">
-            <h2><a href="institucion/ModificardatosInstitucion" class="btn btn-primary">Datos Personales</a></h2>
+            <h2><a href="ModificardatosInstitucion" class="btn btn-primary">Datos Personales</a></h2>
             <p>Modificá tus datos personales</p>
         </div>
     </div>

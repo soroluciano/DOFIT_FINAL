@@ -17,9 +17,8 @@ if(!Yii::app()->user->isGuest){
         background-size: cover;
     }
 </style>
-
-<?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
-<div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+<?php $this->renderPartial('../menu/_menu');?>
+<div class="container marketing">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -403,10 +402,10 @@ if(!Yii::app()->user->isGuest){
 <script type="text/javascript">
     $(document).ready(function() {
         $('#principal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});
-		$('#principal').modal('show');
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#principal').modal('show');
     })
 </script>
 

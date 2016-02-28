@@ -1,19 +1,27 @@
 <html>
 <head>
 </head>
+<style type="text/css">
+    body {
+        background: url(../img/30.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
 <body>
-<div class="modal fade bs-example-modal-lg" tabindex="1" role="dialog" id="principal" aria-labelledby="myLargeModalLabel">
-    <?php $this->renderPartial('../menu/_menuInstitucion'); ?>
-    <div class="modal-dialog modal-lg">
+<?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+<div class="container marketing">
+    <div class="modal-dialog modal-lg" style="margin-top:90px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><b><?php echo "Modificar datos de&nbsp" . $ficha_institucion->nombre; ?></b></h4>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <br>
                     <div class="form">
-                        <?php $form=$this->beginWidget('CActiveForm', array('id'=>'InstitucionForm', 'enableAjaxValidation'=>true, 'enableClientValidation'=>false, 'clientOptions'=>array('validateOnSubmit'=>true,),));?>
+                        <?php $form=$this->beginWidget('CActiveForm', array('id'=>'InstitucionForm', 'enableAjaxValidation'=>false, 'enableClientValidation'=>true, 'clientOptions'=>array('validateOnSubmit'=>true,),));?>
                         <div class="col-md-8">
                             <div class="form-group">
                                 <?php echo $form->hiddenField($model,'password',array('type'=>"hidden",'class'=>"form-control",'placeholder'=>"Password"));?>
@@ -24,37 +32,52 @@
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'nombre'); ?>
                                 <?php echo $form->textField($ficha_institucion,'nombre',array('size'=>200,'maxlength'=>200,'class'=>"form-control",'placeholder'=>"Gimnasio")); ?>
-                                <?php echo $form->error($ficha_institucion,'nombre'); ?>
+                                <?php echo $form->error($ficha_institucion,'nombre',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'cuit'); ?>
                                 <?php echo $form->textField($ficha_institucion,'cuit',array('size'=>11,'maxlength'=>11,'class'=>"form-control",'placeholder'=>"Cuit")); ?>
-                                <?php echo $form->error($ficha_institucion,'cuit'); ?>
+                                <?php echo $form->error($ficha_institucion,'cuit',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'telfijo'); ?>
                                 <?php echo $form->textField($ficha_institucion,'telfijo',array('class'=>"form-control",'placeholder'=>"Telefono")); ?>
-                                <?php echo $form->error($ficha_institucion,'telfijo'); ?>
+                                <?php echo $form->error($ficha_institucion,'telfijo',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'celular'); ?>
                                 <?php echo $form->textField($ficha_institucion,'celular',array('class'=>"form-control",'placeholder'=>"Celular")); ?>
-                                <?php echo $form->error($ficha_institucion,'celular'); ?>
+                                <?php echo $form->error($ficha_institucion,'celular',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'direccion'); ?>
                                 <?php echo $form->textField($ficha_institucion,'direccion',array('class'=>"form-control",'placeholder'=>"Dirección")); ?>
-                                <?php echo $form->error($ficha_institucion,'direccion'); ?>
+                                <?php echo $form->error($ficha_institucion,'direccion',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'piso'); ?>
                                 <?php echo $form->textField($ficha_institucion,'piso',array('class'=>"form-control",'placeholder'=>"Piso")); ?>
-                                <?php echo $form->error($ficha_institucion,'piso'); ?>
+                                <?php echo $form->error($ficha_institucion,'piso',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'depto'); ?>
                                 <?php echo $form->textField($ficha_institucion,'depto',array('class'=>"form-control",'placeholder'=>"Departamento")); ?>
-                                <?php echo $form->error($ficha_institucion,'depto'); ?>
+                                <?php echo $form->error($ficha_institucion,'depto',array('class'=>'error_pw')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo $form->labelEx($ficha_institucion,'coordenada_x'); ?>
+                                <?php echo $form->textField($ficha_institucion,'coordenada_x',array('class'=>"form-control",'placeholder'=>"Coordenada x")); ?>
+                                <?php echo $form->error($ficha_institucion,'coordenada_x',array('class'=>'error_pw')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo $form->labelEx($ficha_institucion,'coordenada_y'); ?>
+                                <?php echo $form->textField($ficha_institucion,'coordenada_y',array('class'=>"form-control",'placeholder'=>"Coordenada y")); ?>
+                                <?php echo $form->error($ficha_institucion,'coordenada_y',array('class'=>'error_pw')); ?>
+                            </div>
+                            <div class="form-group">
+                                <?php echo $form->labelEx($ficha_institucion,'Acepta MP'); ?>
+                                <?php echo $form->dropDownList($ficha_institucion,'acepta_mp',array('empty'=>'Seleccione si Acepta MP','S'=>'Sí','N'=>'No'),array('class'=>"form-control",'id'=>'acepta_mp')); ?>
+                                <?php echo $form->error($ficha_institucion,'acepta_mp',array('class'=>'error_pw'));?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($localidad,'Provincia'); ?>
@@ -63,12 +86,11 @@
                                         'url'=>CController::createUrl('Usuario/SeleccionarLocalidad'),
                                         'update'=>'#'.CHtml::activeId($localidad,'id_localidad'),
                                     ),'prompt'=>'Seleccione una Provincia','class'=>"form-control"));?>
-                                <?php echo $form->error($localidad,'id_provincia'); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($localidad,'Localidad'); ?>
                                 <?php echo $form->dropDownList($localidad,'id_localidad',array('empty'=>"Selecciona tu localidad"),array('class'=>"form-control")); ?>
-                                <?php echo $form->error($localidad,'id_localidad'); ?>
+                                <?php echo $form->error($localidad,'id_localidad',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <br>
@@ -83,14 +105,6 @@
     </div>
 </div>
 <?php $this->endWidget(); ?>
-
-<script type="text/javascript">
-    $('#principal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-    $("#principal").modal('show');
-</script>
 
 
 <div class='modal fade'  id='modexito' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
@@ -112,6 +126,17 @@
 
 <body>
 </html>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#principal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        $("#principal").modal('show');
+    });
+</script>
 
 <?php
 if($guardar == 1){
