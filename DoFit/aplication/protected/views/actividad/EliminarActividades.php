@@ -11,11 +11,12 @@ if(!Yii::app()->user->isGuest){
 
 <style type="text/css">
     body {
-        background: url(../img/24.jpg) no-repeat center center fixed;
+        background: url(../img/37.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 </style>
 
@@ -25,10 +26,10 @@ if(!Yii::app()->user->isGuest){
     <br>
     <br>
     <br>
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-top:200px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Eliminar Actividad</h4>
+                <h4 class="modal-title"><b>Eliminar Actividad</b></h4>
             </div>
             <div class="container">
                 <div class="form">
@@ -138,8 +139,8 @@ if(!Yii::app()->user->isGuest){
                 cache: false,
                 success: function (response) {
                     if (response == "ok") {
-                        $("#actividades").find('option:selected').removeAttr("selected");
                         $('#Ok').modal('show');
+
 
                     }
                     else {

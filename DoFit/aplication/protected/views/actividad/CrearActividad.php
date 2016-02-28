@@ -10,19 +10,23 @@ if(!Yii::app()->user->isGuest){
 
 <style type="text/css">
     body {
-        background: url(../img/23.jpg) no-repeat center center fixed;
+        background: url(../img/25.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;
+        opacity: .9;
     }
 </style>
-<?php $this->renderPartial('../menu/_menu');?>
-<div class="container marketing">
+
+<div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+    <?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
+    <br>
+    <br>
+    <br>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Crear Actividad</h4>
+                <h4 class="modal-title"><b>Crear Actividad</b></h4>
             </div>
             <div class="container">
                 <div class="form">
@@ -31,9 +35,7 @@ if(!Yii::app()->user->isGuest){
                         <?php echo CHtml::beginForm('CrearActividad','post'); ?>
                         <br>
                         <div class="form-group">
-                            <?php
-                            echo $form->labelEx($deporte,'Deporte');
-                            $form->labelEx($deporte,'Deporte'); ?>
+                            <p><b>Deporte</b></p>
                             <?php echo $form->dropDownList($actividad,'id_deporte',CHtml::listData(Deporte::model()->findAll(),'id_deporte','deporte'),array('empty'=>'Seleccione el deporte','class'=>"form-control"));?>
                         </div>
                         <div class="form-group">
@@ -41,11 +43,11 @@ if(!Yii::app()->user->isGuest){
                             $criteria->condition = 'id_usuario IN (select id_usuario from profesor_institucion where id_institucion = :institucion )';
                             $criteria->params = array(':institucion' =>  Yii::app()->user->id );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
-                            <?php   echo $form->labelEx($ficha_usuario,'Profesor'); ?>
+                            <p><b>Profesor</b></p>
                             <?php   echo $form->dropDownList($actividad,'id_usuario',CHtml::listData(FichaUsuario:: model()->findAll($criteria),'id_usuario','nombre','apellido'),array('prompt'=>'Seleccione el profesor','class'=>"form-control"));?>
                         </div>
                         <div class="form-group">
-                            <?php   echo $form->labelEx($actividad,'Precio'); ?>
+                            <p><b>Costo de la actividad</b></p>
                             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                             <div class="input-group">
                                 <div class="input-group-addon">$</div>
