@@ -83,7 +83,7 @@ class ProfesorInstitucionController extends Controller
 		            }
 	            } );
               </script>";
-			echo "|tabla";  
+			echo "|tabla";
 		}
 
 		if($ficinstituciones == NULL)
@@ -331,6 +331,15 @@ class ProfesorInstitucionController extends Controller
                 <th>Nombre</th><th>Apellido</th><th>Dni</th><th>Email</th><th>Fecha Nacimiento</th><th>Tel&eacute;fono Fijo</th><th>Celular</th></thead>
             <tbody class='fuente'>";
 			foreach($actividadalumno as $actalum){
+				$diashorarios = ActividadHorario::model()->findAllByAttributes(array('id_actividad'=>$actalum->id_actividad));
+				$diho = array();
+				$cont = 0;
+				foreach($diashorarios as $diashor){
+					$dias = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+					$id_dia = $diashor->id_dia-1;
+					$diho[$cont] = $dias[$id_dia]."&nbsp;".$diashor->hora .':'.($diashor->minutos == '0' ? '0'.$diashor->minutos : $diashor->minutos)."&nbsp&nbsp";
+					$cont++;
+				}
 				$fichausuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$actalum->id_usuario));
 				$usuario = Usuario::model()->findByAttributes(array('id_usuario'=>$actalum->id_usuario));
 				echo "<tr>";
@@ -376,11 +385,17 @@ class ProfesorInstitucionController extends Controller
 		            }
 	            } );
             </script>";
-			echo "|$deporte->deporte|$fichainstitucion->nombre";
+			echo "|$deporte->deporte|$fichainstitucion->nombre|";
+			for($contador = 0; $contador < count($diho); $contador++){
+				echo "$diho[$contador]";
+			}
 		}
 		if($actividadalumno == null){
-			echo "sinalumnos|$deporte->deporte|$fichainstitucion->nombre";
-		}	
+			echo "sinalumnos|$deporte->deporte|$fichainstitucion->nombre|";
+			for($contador = 0; $contador < count($diho); $contador++){
+				echo "$diho[$contador]";
+			}
+		}
 	}
 
 	// Funcion para consultar si las instutuciones aceptaron o no la solicitud de adhesion

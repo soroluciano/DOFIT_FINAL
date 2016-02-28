@@ -19,11 +19,16 @@ $this->pageTitle=Yii::app()->name;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 </style>
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <?php $this->renderPartial('../menu/_menuInstitucion');?>
+    <br>
+    <br>
+    <br>
     <div class='modal-dialog' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
@@ -48,7 +53,7 @@ $this->pageTitle=Yii::app()->name;
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Crear pago</h4>
+                <h4 class="modal-title"><b>Crear pago</b></h4>
             </div>
             <div class="container">
                 <div class="form">
@@ -61,7 +66,7 @@ $this->pageTitle=Yii::app()->name;
                             $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN (select id_actividad from actividad where id_institucion = :institucion ))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id  );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
-                            <?php   echo $form->labelEx($ficha_usuario,'Alumno'); ?>
+                            <p><b>Alumno</b></p>
                             <?php   echo $form->dropDownList($ficha_usuario,'id_usuario',CHtml::listData(FichaUsuario:: model()->findAll($criteria),'id_usuario','nombre','apellido'),
                                 array('ajax'=>array('type'=>'POST',
                                     'url'=>CController::createUrl('Pago/SeleccionarActividad'),
@@ -70,7 +75,7 @@ $this->pageTitle=Yii::app()->name;
                             <?php   echo $form->error($ficha_usuario,'Alumno')?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->labelEx($actividad,'actividad'); ?>
+                            <p><b>Actividad</b></p>
                             <div>
                                 <?php echo $form->dropDownList($actividad,'id_actividad',
                                     array(''=>"Selecciona actividad"),
@@ -83,7 +88,7 @@ $this->pageTitle=Yii::app()->name;
                         </div>
                         <div class="form-group">
                             <?php $anio = date("Y"); ?>
-                            <?php echo $form->labelEx($pago,'Anio'); ?>
+                            <p><b>Año</b></p>
                             <?php echo $form->dropDownList($pago,'anio',array(
                                 ""=>"Seleccione el año",
                                 $anio-3=>$anio-3,
@@ -93,7 +98,7 @@ $this->pageTitle=Yii::app()->name;
                                 $anio+1=>$anio+1),array('class'=>"form-control",'name'=>'anio[]'));?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->labelEx($pago,'Mes'); ?>
+                            <p><b>Mes</b></p>
                             <?php echo $form->dropDownList($pago,'anio',array(
                                 ""=>"Seleccione el mes",
                                 "1"=>"Enero",
@@ -110,7 +115,7 @@ $this->pageTitle=Yii::app()->name;
                                 "12"=>"Diciembre",),array('class'=>"form-control",'name'=>'meses[]'));?>
                         </div>
                         <div class="form-group">
-                            <?php echo $form->labelEx($actividad,'Monto'); ?>
+                            <p><b>Precio de la actividad</b></p>
                             <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
                             <div class="monto"><b>$
                                     <p style="display:inline;" id="valoractividad"></p></b>
@@ -191,7 +196,7 @@ $this->pageTitle=Yii::app()->name;
                 success: function (response) {
                     debugger;
                     if (response == "ok") {
-                        $('#Principal').modal({
+                        $('#principal').modal({
                             backdrop: 'static',
                             keyboard: false
                         });

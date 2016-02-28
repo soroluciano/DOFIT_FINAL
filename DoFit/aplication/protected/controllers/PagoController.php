@@ -86,9 +86,9 @@ class PagoController extends Controller
 
                 $var = $var . '<b>Dia: </b>'.$dia.'&nbsp'.'<b>Horario: </b>'.str_pad($ah->hora,2,'0',STR_PAD_LEFT).':'.str_pad($ah->minutos,2,'0',STR_PAD_LEFT).'&nbsp';
             }
-             $var = $var . '|' . $actividad->valor_actividad;
-			
-			echo $var;
+            $var = $var . '|' . $actividad->valor_actividad;
+
+            echo $var;
 
         }
 
@@ -204,15 +204,15 @@ class PagoController extends Controller
 
         $id_usuario = $_POST['FichaUsuario']['id_usuario'];
         $id_institucion = Yii::app()->user->id;
-        $acti = ActividadAlumno::model()->findAll('id_usuario= :id_usuario', array(':id_usuario' => $id_usuario));   
-		echo CHtml::tag('option', array('value' => ''), 'Seleccione una actividad', true);
+        $acti = ActividadAlumno::model()->findAll('id_usuario= :id_usuario', array(':id_usuario' => $id_usuario));
+        echo CHtml::tag('option', array('value' => ''), 'Seleccione una actividad', true);
         foreach($acti as $act){
             if($acti != null){
                 $actividades = Actividad::model()->findAllByAttributes(array('id_institucion'=>$id_institucion,'id_actividad'=>$act->id_actividad));
                 //$actividadeselec = CHtml::listData($actividades, 'id_actividad', 'id_actividad');
                 foreach ($actividades as $act) {
-					$deporte = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));	
-					echo CHtml::tag('option', array('value' => $act->id_actividad), CHtml::encode($deporte->deporte), true);
+                    $deporte = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));
+                    echo CHtml::tag('option', array('value' => $act->id_actividad), CHtml::encode($deporte->deporte), true);
                 }
             }
         }
@@ -256,58 +256,64 @@ class PagoController extends Controller
 
 
     }
-	
-	public function actionConsultarPagosAlumno()
-	{
-	  $id_usuario = Yii::app()->user->id;
-	   if(isset(Yii::app()->session['id_usuario'])){
-	      $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' ))')->queryAll();
-	      if($instituciones != null){ 
-		     $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
-	        }
-	    }
-	}
-	
-	public function actionMostrarPagosAlumno()
-	{
-	  $id_institucion = $_POST['idinstitucion'];
-	  $mes = $_POST['mes'];
-	  $anio = $_POST['anio'];
-	  $id_usuario = Yii::app()->user->id;
-	  $cantpago = 0;  
-	  // Busco todas las actividades que tenga esa institucion donde esta inscripto el alumno
-	  $actividad_alumno = Yii::app()->db->createCommand('SELECT * FROM actividad_alumno WHERE id_usuario = '.$id_usuario .' AND id_actividad IN(SELECT id_actividad FROM actividad where id_institucion = '.$id_institucion.')')->queryAll();
-        if($actividad_alumno != null){
-	        foreach($actividad_alumno as $act_alum){ 
-                echo "<table id='lispagos'  class='display' cellspacing='0' width='100%'>
+
+    public function actionConsultarPagosAlumno()
+    {
+        $id_usuario = Yii::app()->user->id;
+        if(isset(Yii::app()->session['id_usuario'])){
+            $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' ))')->queryAll();
+            if($instituciones != null){
+                $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
+            }
+        }
+    }
+
+    public function actionMostrarPagosAlumno()
+    {
+        $id_institucion = $_POST['idinstitucion'];
+        $mes = $_POST['mes'];
+        $anio = $_POST['anio'];
+        $id_usuario = Yii::app()->user->id;
+        $cant_pago = 0;
+        // Busco todas las actividades que tenga esa institucion donde esta inscripto el alumno
+        $actividad_alumno = Yii::app()->db->createCommand('SELECT * FROM actividad_alumno WHERE id_usuario = '.$id_usuario .' AND id_actividad IN(SELECT id_actividad FROM actividad where id_institucion = '.$id_institucion.')')->queryAll();
+        foreach($actividad_alumno as $act_alum){
+            $pago = Pago::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad'],'mes'=>$mes,'anio'=>$anio,'id_usuario'=>$id_usuario));
+            if($pago != null){
+                $cant_pago++;
+            }
+        }
+        if($actividad_alumno != null && $cant_pago > 0){
+            echo "<table id='lispagos' class='display' cellspacing='0' width='100%'>
 			          <thead>
-                      <th>Deporte</th><th>Días y Horarios</th><th>Importe</th><th>Mes</th><th>A&ntilde;o</th>
+                      <th>Deporte</th><th>Días y Horarios</th><th>Monto</th><th>Mes</th><th>A&ntilde;o</th>
 				      </thead>
-					   <tbody>";   			
-			        $pago = Pago::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad'],'mes'=>$mes,'anio'=>$anio,'id_usuario'=>$id_usuario));
-	            if($pago != NULL){
-				    $cantpago++;
+					   <tbody>";
+            foreach($actividad_alumno as $act_alum){
+                $pago = Pago::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad'],'mes'=>$mes,'anio'=>$anio,'id_usuario'=>$id_usuario));
+                if($pago != NULL){
                     $act = Actividad::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad']));
-				    $dep = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));
-					echo "<tr>
+                    $dep = Deporte::model()->findByAttributes(array('id_deporte'=>$act->id_deporte));
+                    echo "<tr>
                             <td id='deporte'>" .$dep->deporte . "</td>";
-                            $diashorarios = ActividadHorario::model()->findAllByAttributes(array('id_actividad'=>$act->id_actividad));
-						    echo "<td id='dias y horarios'>";
-                                  foreach($diashorarios as $diashor){
-					                   $dias = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
-				                       $id_dia = $diashor->id_dia-1;
-					                   echo $dias[$id_dia]."&nbsp;".$diashor->hora .':'.($diashor->minutos == '0' ? '0'.$diashor->minutos : $diashor->minutos)."&nbsp&nbsp";
-				                    } 
-    					    echo "</td>";
-						    $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");	  
-                            echo "<td id= 'mes'>".$meses[$mes-1]."</td>";
-                            echo "<td id= 'anio'>".$anio."</td>";
-                    echo "</tr>";							
-				}  
-            } 
-			echo "</tbody>
+                    $diashorarios = ActividadHorario::model()->findAllByAttributes(array('id_actividad'=>$act->id_actividad));
+                    echo "<td id='dias y horarios'>";
+                    foreach($diashorarios as $diashor){
+                        $dias = array('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
+                        $id_dia = $diashor->id_dia-1;
+                        echo $dias[$id_dia]."&nbsp;".$diashor->hora .':'.($diashor->minutos == '0' ? '0'.$diashor->minutos : $diashor->minutos)."&nbsp&nbsp";
+                    }
+                    echo "</td>";
+                    echo "<td id='importe'>$ ".$pago->monto."</td>";
+                    $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                    echo "<td id= 'mes'>".$meses[$mes-1]."</td>";
+                    echo "<td id= 'anio'>".$anio."</td>";
+                    echo "</tr>";
+                }
+            }
+            echo "</tbody>
 			      </table>";
-			echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>
                 $('#lispagos').DataTable( {
 		            'language' : {
 			            'sProcessing':     'Procesando...',
@@ -336,8 +342,12 @@ class PagoController extends Controller
 			            }
 		            }
 	            } );
-            </script>";	  
+            </script>";
+
         }
-    }				
+        if($cant_pago == 0){
+            echo "errorpago";
+        }
+    }
 }
 

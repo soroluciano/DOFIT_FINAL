@@ -1,3 +1,10 @@
+<head>
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/datatable/css/dataTables.jqueryui.min.css"></link>
+    <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/datatable/css/dataTables.smoothness.css"></link>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/datatable/js/dataTables.jqueryui.min.js"></script>
+</head>
+
 <div class="navbar-wrapper">
     <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -44,49 +51,35 @@
 
 <div class="container">
     <?php
-        echo  "<div><h2>Gimnasios</h2></div>";
-        echo    "<table class='table table-hover'>
+    echo  "<div><h2>Gimnasios</h2></div>";
+    echo    "<table class='display' id='mostrargimnasios'  cellspacing='0' width='100%'>
                         <thead>
-                            <tr>
                                 <th>Id</th>
                                 <th>Email</th>
                                 <th>.</th>
-                                <th>.</th>
-                            </tr>
                         </thead>";
-        echo "<tbody>";
-                    if($institucion != null) {
-                        foreach ($institucion as $d) {
-                            echo "<tr>
+    echo "<tbody>";
+    if($institucion != null) {
+        foreach ($institucion as $d) {
+            echo "<tr>
                                     <td>$d->id_institucion</td>
                                     <td>$d->email</td>
-                                    <td><a href='../institucion/update/$d->id_institucion' class='btn btn-default'>Modificar<a/></td>
-                                  <tr>";
-                        }
-                    }
-                    else {
-                        echo "<td>No hay gimnasios creados aún</td>";
-                    }
-        echo "</tbody></table>";
+                                    <td><a href='../institucion/update/$d->id_institucion' class='btn btn-primary'>Modificar</a></td>
+								  </tr>";
+        }
+    }
+    else {
+        echo "<td>No hay gimnasios creados aún</td>";
+    }
+    echo "</tbody></table>";
     ?>
-    <a href="../institucion/create" class="btn btn-primary btn-lg">
+    <br/>
+    <a href="../institucion/create" class="btn btn-primary">
         Crear institución
     </a>
-    <br>
-    <br>
-    <br>
-    <div class="form-group">
-        <a href="../site/indexAdmin">Volver</a>
-    </div>
+    <a href="../site/indexAdmin" class="btn btn-primary">Volver</a>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
@@ -104,3 +97,36 @@
         </p>
     </div>
 </footer>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#mostrargimnasios').DataTable( {
+            'language' : {
+                'sProcessing':     'Procesando...',
+                'sLengthMenu':     'Mostrar _MENU_ registros',
+                'sZeroRecords':    'No se encontraron resultados',
+                'sEmptyTable':     'Ningún dato disponible en esta tabla',
+                'sInfo':           'Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros',
+                'sInfoEmpty':      'Mostrando registros del 0 al 0 de un total de 0 registros',
+                'sInfoFiltered':   '(filtrado de un total de _MAX_ registros)',
+                'sInfoPostFix':    '',
+                'sSearch':         'Buscar:',
+                'sUrl':            '',
+                'sInfoThousands':  ',',
+                'sLoadingRecords': 'Cargando...',
+
+                'oPaginate': {
+                    'sFirst':    'Primero',
+                    'sLast':     'Ultimo',
+                    'sNext':     'Siguiente',
+                    'sPrevious': 'Anterior'
+                },
+                'oAria': {
+                    'sSortAscending':  ': Activar para ordenar la columna de manera ascendente',
+                    'sSortDescending': ': Activar para ordenar la columna de manera descendente'
+                }
+            }
+        } );
+    });
+</script>

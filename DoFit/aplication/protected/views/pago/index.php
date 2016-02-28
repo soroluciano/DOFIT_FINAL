@@ -12,7 +12,10 @@ $this->renderPartial('../menu/_menuInstitucion');
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
+
+
 
 
 </style>
@@ -22,8 +25,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 <br>
 <br>
 <div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="modal-dialog modal-lg" style="margin-top:140px;">
+    <div class="modal-dialog modal-lg" class="modal-fade" style="margin-top:140px;">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
@@ -55,5 +57,6 @@ $this->renderPartial('../menu/_menuInstitucion');
             keyboard: false
         });
         $('#principal').modal('show');
+        $('#principal').fadeIn('slow');
     })
 </script>

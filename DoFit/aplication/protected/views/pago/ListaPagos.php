@@ -18,11 +18,16 @@ $this->pageTitle=Yii::app()->name;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 </style>
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+    <br>
+    <br>
+    <br>
     <div class='modal-dialog' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
@@ -47,7 +52,7 @@ $this->pageTitle=Yii::app()->name;
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Consultar pagos</h4>
+                <h4 class="modal-title"><b>Consultar Pagos</b></h4>
             </div>
             <div class="container">
                 <div class="form">
@@ -61,7 +66,7 @@ $this->pageTitle=Yii::app()->name;
                             $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
-                            <?php   echo $form->labelEx($ficha_usuario,'Alumno'); ?>
+                            <p><b>Alumno</b></p>
                             <?php   echo $form->dropDownList($ficha_usuario,'id_usuario',CHtml::listData(FichaUsuario:: model()->findAll($criteria),'id_usuario','nombre','apellido'),
                                 array('ajax'=>array('type'=>'POST',
                                     'url'=>CController::createUrl('Pago/SeleccionarAño'),
@@ -71,7 +76,7 @@ $this->pageTitle=Yii::app()->name;
                             <?php   echo $form->error($ficha_usuario,'Alumno')?>
                         </div>
                         <div class="form-group">
-                            <?php   echo $form->labelEx($pago,'Anio'); ?>
+                            <p><b>Año</b></p>
                             <?php   echo $form->dropDownList($pago,'anio',CHtml::listData(Pago:: model()->findAll(),'anio','anio'),
                                 array('ajax'=>array('type'=>'POST',
                                     'url'=>CController::createUrl('Pago/SeleccionarMes'),
@@ -81,7 +86,7 @@ $this->pageTitle=Yii::app()->name;
                             <?php   echo $form->error($pago,'anio')?>
                         </div>
                         <div class="form-group">
-                            <?php   echo $form->labelEx($pago,'mes'); ?>
+                            <p><b>Mes</b></p>
                             <?php   echo $form->dropDownList($pago,'mes',array(''=>'Seleccione el mes'),array("class"=>"form-control",'prompt'=>'Seleccione el mes',"onchange"=>"lista_pagos();"));?>
                             <?php   echo $form->error($pago,'mes')?>
                         </div>

@@ -13,11 +13,11 @@
         -o-background-size: cover;
         background-size: cover;
     }
-		/*
-    Max width before this PARTICULAR table gets nasty
-    This query will take effect for any screen smaller than 760px
-    and also iPads specifically.
-    */
+    /*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
     @media
     only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -72,6 +72,7 @@
             width: 495px;
         }
     }
+
 </style>
 <br/>
 <br/>
@@ -84,6 +85,7 @@ if(isset(Yii::app()->session['id_usuario'])){
     $ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$Us->id_usuario));
 }
 ?>
+
 <?php  if(isset(Yii::app()->session['id_usuario'])){ ?>
     <?php if($instituciones != NULL){  ?>
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="principal" aria-labelledby="myLargeModalLabel">
@@ -91,7 +93,7 @@ if(isset(Yii::app()->session['id_usuario'])){
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-					    <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/index">&times;</a></span></button>
                         <h4 class='modal-title'>
                             <b>Actividades dictadas por
                                 <?php if(isset(Yii::app()->session['id_usuario'])){
@@ -131,15 +133,15 @@ if(isset(Yii::app()->session['id_usuario'])){
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss='modal'  aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title"><b>Alumnos inscriptos en <p id="actividad"></p> en <p id="institucion"></p></b></h4>
+                        <button type="button" class="close" onclick="Javascript:Mostrarmodalactividades();"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"><b>Alumnos inscriptos en <p id="actividad"></p> <p id="diashorarios"></p>en <p id="institucion"></p></b></h4>
                     </div>
                     <div class='modal-body'>
                         <div id="actaluminsc">
                         </div>
                     </div>
                     <div class='modal-footer'>
-                        <button class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                        <button class='btn btn-primary' onclick="Javascript:Mostrarmodalactividades();">Cerrar</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +163,7 @@ if(isset(Yii::app()->session['id_usuario'])){
                 </div>
             </div>
         </div>
-		<div class="modal fade" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myModalLabel">
+        <div class="modal fade" tabindex="-1" role="dialog" id="sinalumnos" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -169,7 +171,7 @@ if(isset(Yii::app()->session['id_usuario'])){
                         <h4 class="modal-title"><b>¡Atención!</p></b></h4>
                     </div>
                     <div class='modal-body'>
-                        <h5><b>No hay alumnos inscriptos en <p id="acti"></p> en <p id="insti"></p></b></h5>
+                        <h5><b>No hay alumnos inscriptos en <p id="acti"></p> <p id="diashora"></p> en <p id="insti"></p></b></h5>
                     </div>
                     <div class='modal-footer'>
                         <button class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
@@ -178,11 +180,11 @@ if(isset(Yii::app()->session['id_usuario'])){
             </div>
         </div>
         <script type="text/javascript">
-			$('#principal').modal({
-               backdrop: 'static',
-               keyboard: false
-		    });
-            $("#principal").modal('show');			
+            $('#principal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#principal").modal('show');
         </script>
     <?php }
     else{?>
@@ -241,11 +243,14 @@ else
 <script type="text/javascript">
     function AlumnosInscriptos(idactividad)
     {
+        $("#principal").modal('hide');
         $('#actividad').empty();
-		$('#institucion').empty();
-		$("#acti").empty();
-		$("#insti").empty();
-		$('#actaluminsc').empty();
+        $('#institucion').empty();
+        $("#diashorarios").empty();
+        $("#acti").empty();
+        $("#insti").empty();
+        $("#diashora").empty();
+        $('#actaluminsc').empty();
         var id_actividad = idactividad;
         var data = {'idactividad':id_actividad};
         $.ajax({
@@ -255,24 +260,36 @@ else
             dataType: "html",
             cache : false,
             success : function(response){
-				aluminscriptos = response.split("|");
-			    $("#actividad").css("display","inline");
-				$("#institucion").css("display","inline");
-				$("#actividad").append(aluminscriptos[1]);
-			    $("#institucion").append(aluminscriptos[2]);
+                aluminscriptos = response.split("|");
+                $("#actividad").css("display","inline");
+                $("#institucion").css("display","inline");
+                $("#diashorarios").css("display","inline");
+                $("#actividad").append(aluminscriptos[1]);
+                $("#institucion").append(aluminscriptos[2]);
+                $("#diashorarios").append(aluminscriptos[3]);
                 if(aluminscriptos[0] == "sinalumnos"){
-                   $("#acti").css("display","inline");
-				   $("#insti").css("display","inline");
-				   $("#acti").append(aluminscriptos[1]);
-			       $("#insti").append(aluminscriptos[2]);
-				   $("#sinalumnos").modal('show');
-				}
-				else{
-				   $('#actaluminsc').append(aluminscriptos[0]);
-				   $('#aluminsc').modal('show');
-				}   
-            } 
+                    $("#acti").css("display","inline");
+                    $("#insti").css("display","inline");
+                    $("#diashora").css("display","inline");
+                    $("#acti").append(aluminscriptos[1]);
+                    $("#insti").append(aluminscriptos[2]);
+                    $("#diashora").append(aluminscriptos[3]);
+                    $("#sinalumnos").modal('show');
+                }
+                else{
+                    $('#actaluminsc').append(aluminscriptos[0]);
+                    $('#aluminsc').modal('show');
+                }
+            }
         })
     }
 </script>
-  
+
+<script type="text/javascript">
+    function Mostrarmodalactividades()
+    {
+        $("#aluminsc").modal('hide');
+        $("#principal").modal('show');
+    }
+</script>
+ 

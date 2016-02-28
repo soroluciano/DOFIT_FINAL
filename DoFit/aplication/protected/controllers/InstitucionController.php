@@ -83,19 +83,19 @@ class InstitucionController extends Controller
      */
     public function actionUpdate($id)
     {
-  
-		$model=$this->loadModel($id);
+
+        $model=$this->loadModel($id);
         $ficha_institucion = new FichaInstitucion;
         $ficha_institucion = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$id));
         $localidad = new Localidad;
         $localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha_institucion->id_localidad));
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-		if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
+        if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
         {
-			$model->attributes = $_POST['Institucion'];
-			$ficha_institucion->attributes = $_POST['FichaInstitucion'];
-			if($model->save(false)){
+            $model->attributes = $_POST['Institucion'];
+            $ficha_institucion->attributes = $_POST['FichaInstitucion'];
+            if($model->save(false)){
                 if($ficha_institucion->save(false)){
                     $this->redirect('../index');
                 }
@@ -155,7 +155,7 @@ class InstitucionController extends Controller
     {
 
         $idinstitucion = Yii::app()->user->id;
-		$pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
+        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
         $pi->delete();
         $this->redirect('../home');
     }
@@ -182,7 +182,7 @@ class InstitucionController extends Controller
     {
         $id = $_GET['usu'];
         $idactividad = $_GET['act'];
-		$al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
+        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
         $al->delete();
         $this->redirect('../../aplication/institucion/home');
     }
@@ -272,26 +272,28 @@ class InstitucionController extends Controller
         echo $provincia->provincia;
         echo "</center>";
     }
-	
-	 public function actionModificardatosInstitucion()
+
+    public function actionModificardatosInstitucion()
     {
         $idins = Yii::app()->user->id;
-	    $guardar = 0;
-		$model = $this->loadModel($idins);
-		$ficha_institucion = new FichaInstitucion;
+        $guardar = 0;
+        $model = $this->loadModel($idins);
+        $ficha_institucion = new FichaInstitucion;
         $ficha_institucion = FichaInstitucion::model()->find('id_institucion=:id_institucion',array(':id_institucion'=>$idins));
         $localidad = new Localidad;
         $localidad = Localidad::model()->find('id_localidad=:id_localidad',array(':id_localidad'=>$ficha_institucion->id_localidad));
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-		if(isset($_POST['Institucion'],$_POST['FichaInstitucion'],$_POST['Localidad']))
+        if(isset($_POST['FichaInstitucion'],$_POST['Localidad']))
         {
-			$model->attributes = $_POST['Institucion'];
-			$ficha_institucion->attributes = $_POST['FichaInstitucion'];
-			if($model->save(false)){
-                if($ficha_institucion->save(false)){
-                    $guardar = 1;
-					//$this->redirect('../institucion/home');
+            $model->attributes = $_POST['Institucion'];
+            $ficha_institucion->attributes = $_POST['FichaInstitucion'];
+            if($ficha_institucion->validate()){
+                if($model->save(false)){
+                    if($ficha_institucion->save(false)){
+                        $guardar = 1;
+                        //$this->redirect('../institucion/home');
+                    }
                 }
             }
         }

@@ -1,4 +1,3 @@
-<?php  $this->renderPartial('../menu/_menuInstitucion');?>
 
 <style type="text/css">
     body {
@@ -7,15 +6,16 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 </style>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="container marketing">
+
+<div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+    <?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
+    <br>
+    <br>
+    <br>
     <!-- Three columns of text below the carousel -->
     <div class="modal-dialog modal-lg" style="margin-top:140px;">
         <div class="modal-content">
