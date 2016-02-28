@@ -93,8 +93,9 @@ class ActividadController extends Controller
 
         if (isset($_POST['Actividad'])) {
             $model->attributes = $_POST['Actividad'];
-            if ($model->save())
+            if ($model->save()){
                 $this->redirect(array('view', 'id' => $model->id_actividad));
+            }
         }
 
         $this->render('update', array(

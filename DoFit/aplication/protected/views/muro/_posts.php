@@ -7,7 +7,7 @@
 		$resultSet = Yii::app()->db->createCommand('select d.deporte,f.nombre from actividad a inner join deporte d on a.id_deporte=d.id_deporte inner join ficha_institucion f on a.id_institucion=f.id_institucion where id_actividad='.$aid)->queryAll();
 			foreach($resultSet as $row) {	
 			$result = $row['nombre']." - ".$row['deporte'];
-			
+		
 		}
 		
 		return $result;
@@ -19,7 +19,7 @@
 		  <script>ocultarEdicionInicial();</script>
       
       <!--<div class='espacio-paneles size-panel'>-->
-
+		
 	  <div class='panel-sized'>
         <div class='panel panel-white post panel-shadow' id='coment_n_".$row['id_posteo']."'>
         		<div id='actividad'>

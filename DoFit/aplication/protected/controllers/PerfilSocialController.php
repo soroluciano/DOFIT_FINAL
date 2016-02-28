@@ -245,17 +245,10 @@ class PerfilSocialController extends Controller
           $dir = $fichaService->direccion($_POST['direccion']);
          
         }
-        if(empty($_POST['piso'])){
-          $pis = "Ingrese un valor";
-        }else{
-           $pis = $fichaService->piso($_POST['piso']);
-           
-        }
-        if(empty($_POST['depto'])){
-          $dep = "Ingrese un valor";
-        }else{
-           $dep = $fichaService->depto($_POST['depto']);
-        }
+   
+        $pis = $fichaService->piso($_POST['piso']);
+        $dep = $fichaService->depto($_POST['depto']);
+        
         $array="";
         $saved="";
         if($tel == "ok" && $cel=="ok" && $cont=="ok" && $telem=="ok" && $dir=="ok" && $pis=="ok" && $dep=="ok"){

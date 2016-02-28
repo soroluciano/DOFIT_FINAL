@@ -19,4 +19,5 @@
 			<a href='<?php echo Yii::app()->request->baseUrl;?>/contact/index' style="cursor:pointer;"><span class="glyphicon glyphicon-user" style="padding-right:2px;"></span>Contactos</a>
 			<a href='<?php echo Yii::app()->request->baseUrl;?>/galeria/index' style="cursor:pointer;"><span class="glyphicon glyphicon-picture" style="padding-right:2px;"></span>Imagenes</a>
 		    <span class="glyphicon glyphicon-globe" onclick="getMensajesFromBase();resetAlertas();" style="cursor:pointer;"></span><span onclick="getMensajesFromBase();resetAlertas();" style="cursor:pointer;" class="alerta_new" id="notificacion"></span> <a href='<?php echo Yii::app()->request->baseUrl;?>/red/index' style="cursor:pointer;">Notificaciones</a>	
+			<input type='hidden' id='canalselected'/>	
 </div>	<!-- fin cabecera perfil -->	

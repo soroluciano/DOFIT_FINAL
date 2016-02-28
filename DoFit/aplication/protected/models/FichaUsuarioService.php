@@ -103,21 +103,21 @@ class FichaUsuarioService
     }
     
     public function piso($val){
-        if(($this->sincaracteres($val))==1){
-            return "ok";
-        }else{
-            $this->sincaracteres($val);
+        if($val==""){
+            return "ok";    
         }
+            
+        
     }
     public function depto($val){
-        if(($this->sincaracteres($val))==1){
+        if($val==""){
+            return "ok";    
+        }else{
             if(($this->istext($val))==1){
                     return "ok";
             }else{
                 return $this->istext($val);
             }
-        }else{
-            return $this->sincaracteres($val);
         }
     }
     
