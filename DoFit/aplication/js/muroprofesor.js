@@ -2,8 +2,12 @@
   
   $(function(){
     $( "#sel1" ).change(function() {
-      var id = $(this).children(":selected").attr("id");
-      $("#id_actividad_selected").val(id);
+      debugger;
+      var idactividadsel = $(this).children(":selected").attr("id");
+      $("#id_actividad_selected").val(idactividadsel);   
+       getCanalSeleccionado(idactividadsel);
+       debugger;
+      //validar que cuando haya info en el campo se pueda ver el boton ,no antes para postear
     });
   }).trigger( "change" );
   
@@ -19,16 +23,17 @@
   
  
   function pushearMensaje(a){
+    debugger;
     var _a = a;
     var pusher = new Pusher('c48d59c4cb61c7183954');    
-    var canalnom = $('#canal').val();
+    var canalnom = $("#canalselected").val();
     var canal  = pusher.subscribe(canalnom);
     canal.bind(_a, function(respuesta){
     });
     
     $.post(baseurl+'/php/ajax.php', {
       msj : this._a,
-      canal : $('#canal').val(),
+      canal : $("#canalselected").val(),
       socket_id : pusher.connection.socket_id
       },function(respuesta){
           getMensajesFromBase();
@@ -59,7 +64,7 @@
   function insertarRespuesta(a) {  //insertar las respuestas en los comentarios
     var _a = a;
     var comment = $("#txt_post_"+_a).val();
-
+    debugger;
     $.ajax({
       url:  baseurl+'/muro/insertarRespuesta',
       type: 'POST',
@@ -76,11 +81,25 @@
 
     }
   
+  function getCanalSeleccionado(idActividad) {
+     $.ajax({
+      url:  baseurl+'/muro/getCanal',
+      type: 'POST',
+      async:false,
+      data: 'id_actividad='+idActividad,
+      success:function(response){
+        debugger;
+        var fil = response.replace(/(\r\n|\n|\r)/gm,"");
+        $("#canalselected").val(fil.substring(1));
+      },
+      error: function(e){
+        $('#logger').html(e.responseText);
+      }
+    });
+  }
   
-  $(function(){
-      
-      
-      
+  
+  $(function(){    
       window.$postValue={}
       window.$isNewMsg={}
       window.$sizeMsgs={}
@@ -88,7 +107,10 @@
       window.$actualSizeMsgs.value=4;
       window.$channels={}
       window.$alertas={}
-
+      window.$canalSelected={}
+    
+      hideAlert();
+    
       var pusher = new Pusher('c48d59c4cb61c7183954');    
 
       getQuantityPosts();
@@ -98,6 +120,7 @@
       var canales = new Array();
       if (window.$channels.length != 0) {
         for( $i=0; $i<window.$channels.length; $i++ ){
+          debugger;
             canalNom = window.$channels[$i].nombre;
             canales.push(pusher.subscribe(canalNom));
             
@@ -106,17 +129,13 @@
       
       for( $j=0; $j<canales.length; $j++ ){
         canales[$j].bind('nuevo_comentario', function(respuesta){
-          //validar si es mi id o el de otra persona
-          //alert("por canales");
-          //getMensajesFromBase();
-        
           getAlertas();
-        
         });
       }
       
     $('form').submit(function(){
       debugger;
+      $('#id_actividad_selected').val()
       $.ajax({
         url:  baseurl+'/muro/insertarComentarioProfesor',
         type: 'POST',
@@ -128,14 +147,14 @@
       error: function(e){
         $('#logger').html(e.responseText);
       }
-    });
-    
+    });   
     $.post(baseurl+'/php/ajax.php', {
       msj : $('#input_mensaje').val(),
-      canal : $('#canal').val(),
+      canal : $("#canalselected").val(),
       socket_id : pusher.connection.socket_id
     }
     ,function(respuesta){
+      
       getMensajesFromBase();
     });
       pusher.disconnect();
@@ -148,7 +167,6 @@
     $.ajax({
       url: baseurl+"/muro/mensajes",
       type: 'POST',
-      //data: 'size='+size,
       success:function(response){
           $('#comentarios').html(response);
       },
@@ -296,7 +314,6 @@
    }
    
   function ocultarEdicion(){
-    debugger;
     $(".div-ed-comment").hide();
     $(".edit-details-textarea").hide();
     $(".btn-ed-fin").hide();
@@ -311,7 +328,6 @@
   }
   
     function ocultarEdicionInicial(){
-      debugger;
       $(".div-ed-comment").hide();
       $(".edit-details-textarea").hide();
       $(".btn-ed-fin").hide();
@@ -346,6 +362,7 @@
       async:false,
       data: {},
       success:function(response){
+        debugger;
           window.$channels=response;  
       },
       error: function(e){
@@ -355,6 +372,7 @@
   }
   
   function getAlertas(){
+    debugger;
       var alertas = window.$alertas.value;
       if (alertas==null) {
         alertas = 1;
@@ -362,14 +380,25 @@
         alertas++;
       }
       window.$alertas.value=alertas;
-      //alert(alertas);
+      showAlert();
+      debugger;
       $("#notificacion").html(alertas);
   }
   
   function resetAlertas(){
     window.$alertas.value=0;
     $("#notificacion").html("");
+    hideAlert();
+    
   }
+  
+  function showAlert(){
+    $("#notificacion").show();
+  }
+  function hideAlert(){
+    $("#notificacion").hide();
+  }
+
 
    
     

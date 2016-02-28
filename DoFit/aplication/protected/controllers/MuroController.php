@@ -63,8 +63,9 @@ class MuroController extends Controller
 		{
 			$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
 			$fichaUsuario = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-			$canal = Canal::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
 			$actividad = $_POST['id_actividad'];
+			$canal = Canal::model()->find('id_actividad=:id_actividad',array(':id_actividad'=>$actividad));//cambiar el id usuario por id canal
+			
 			
 			$mensaje = $_POST['mensaje'];
 						
@@ -150,28 +151,38 @@ class MuroController extends Controller
 	
 	
 		public function actionGetCanales(){
-				$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
-				$resultSet = Yii::app()->db->createCommand("select distinct c.nombre from perfil_muro_profesor pmp inner join actividad ac on pmp.id_actividad=ac.id_actividad inner JOIN perfil_social ps on ps.id_usuario = ac.id_usuario inner join usuario usu on usu.id_usuario = ac.id_usuario left join actividad_alumno aa on ac.id_actividad=aa.id_actividad inner join ficha_usuario fu on fu.id_usuario= usu.id_usuario join canal c on pmp.id_canal=c.id_canal where usu.id_usuario =".$usuario->id_usuario." or aa.id_usuario=".$usuario->id_usuario)->queryAll();
-				
+				$usuario = Usuario::model()->findByPk(Yii::app()->user->id);	
+				$resultSet = Yii::app()->db->createCommand("select c.nombre from canal c join actividad a on c.id_actividad = a.id_actividad join actividad_alumno au on a.id_actividad = au.id_actividad join usuario u on au.id_usuario=u.id_usuario where au.id_usuario=".$usuario->id_usuario)->queryAll();				
 				echo CJSON::encode($resultSet);
 				Yii::app()->end();
 				
-		
 		}
 	
 	
 		public function actionGetCanal()
 		{
-				//$usuario = Usuario::model()->findByPk(Yii::app()->user->id);		
-				$canal = Canal::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-				echo $canal->nombre;
-		
+				$usuario = Usuario::model()->findByPk(Yii::app()->user->id);	
+				$perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+				$idActividad = $_POST['id_actividad'];
+				$actividad = Actividad::model()->find('id_actividad=:id_actividad',array(':id_actividad'=>$idActividad));
+				$canal = Canal::model()->find('id_actividad=:id_actividad',array(':id_actividad'=>$idActividad));
+				$nombre="";
+				if($canal==null){
+						$canal = new Canal();
+						$canal->id_actividad=$actividad->id_actividad;
+						$nombre=md5(strval($actividad->id_actividad)."".time()."");
+						$canal->nombre=$nombre;
+						$canal->save();
+				}else{
+						echo trim($canal->nombre," \t\n\r");
+				}
+				
 		}
 	
 		public function actionGetIdCanal()
 		{
 				$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
-				$canal = Canal::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
+				$canal = Canal::model()->find('id_actividad=:id_actividad',array(':id_actividad'=>$idActividad));
 				echo $canal->id_canal;
 			
 		}

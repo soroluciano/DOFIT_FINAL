@@ -218,6 +218,7 @@ p#desc{
     width:95%;
     height:50%;
     word-wrap:break-word;
+    cursor: pointer;
 }
  p.desc:hover{
      color:black;
