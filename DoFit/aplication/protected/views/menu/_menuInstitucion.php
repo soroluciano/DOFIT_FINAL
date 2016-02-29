@@ -191,12 +191,12 @@
         <div class="navbar-header">
             <div class="hamburgerMenu"><span></span></div>
             <div class="menu">
-                <span><a href="../institucion/home">Home</a></span>
-                <span><a href="../ProfesorInstitucion/ListadoProfesores">Listado de Profesores</a></span>
-                <span><a href="../institucion/ListadoAlumnosxInstitucion">Listado de Alumnos</a></span>
-				<span><a href="../actividad/index">Actividades</a></span>
-                <span><a href="../pago/index">Pagos</a></span>
-				 <span><a href="../institucion/ModificardatosInstitucion">Mis datos</a></span>
+                <a href="../institucion/home"><span>Home</span></a>
+                <a href="../ProfesorInstitucion/ListadoProfesores"><span>Listado de Profesores</span></a>
+                <a href="../institucion/ListadoAlumnosxInstitucion"><span>Listado de Alumnos</span></a>
+				<a href="../actividad/index"><span>Actividades</span></a>
+                <a href="../pago/index"><span>Pagos</span></a>
+				<a href="../institucion/ModificardatosInstitucion"><span>Mis datos</span></a>
                 <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
             </div>
             <div class="logo">

@@ -200,15 +200,15 @@
         <div class="navbar-header">
             <div class="hamburgerMenu"><span></span></div>
             <div class="menu">
-                <span><a href="../site/index">Home</a></span>
-                <span><a href="../actividad/InscripcionActividad">Inscribirme a Actividades</a></span>
-                <span><a href="../actividadalumno/ListadoActividades">Mis Actividades</a></span>
+                <a href="../site/index"><span>Home</span></a>
+                <a href="../actividad/InscripcionActividad"><span>Inscribirme a Actividades</span></a>
+                <a href="../actividadalumno/ListadoActividades"><span>Mis Actividades</span></a>
                 <?php if($usuario->id_perfil==2){ ?>
-                    <span><a href="../ProfesorInstitucion/Adhesiongimnasio">Asociarme a una Institución</a></span>
-                    <span><a href="../ProfesorInstitucion/ListadoActividades">Clases que dicto</a></span>
+                    <a href="../ProfesorInstitucion/Adhesiongimnasio"><span>Asociarme a una Institución</span></a>
+                    <a href="../ProfesorInstitucion/ListadoActividades"><span>Clases que dicto</span></a>
                 <?php } ?>
-                <span><a href="../red/">Mi red</a></span>
-                <span><?php echo CHtml::link('Salir', array('site/logout')); ?></span>
+                <a href="../red/"><span>Mi red</span></a>
+                <?php echo "<span>".CHtml::link('Salir', array('site/logout'))."</span>"; ?>
             </div>
             <div class="logo">
                 <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>
