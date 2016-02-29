@@ -6,10 +6,10 @@
  * The followings are the available columns in table 'canal':
  * @property integer $id_canal
  * @property string $nombre
- * @property integer $id_usuario
+ * @property integer $id_actividad
  *
  * The followings are the available model relations:
- * @property Usuario $idUsuario
+ * @property Actividad $idActividad
  */
 class Canal extends CActiveRecord
 {
@@ -29,12 +29,12 @@ class Canal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, id_usuario', 'required'),
-			array('id_usuario', 'numerical', 'integerOnly'=>true),
+			array('nombre, id_actividad', 'required'),
+			array('id_actividad', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>60),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_canal, nombre, id_usuario', 'safe', 'on'=>'search'),
+			array('id_canal, nombre, id_actividad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -46,7 +46,7 @@ class Canal extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idUsuario' => array(self::BELONGS_TO, 'Usuario', 'id_usuario'),
+			'idActividad' => array(self::BELONGS_TO, 'Actividad', 'id_actividad'),
 		);
 	}
 
@@ -58,7 +58,7 @@ class Canal extends CActiveRecord
 		return array(
 			'id_canal' => 'Id Canal',
 			'nombre' => 'Nombre',
-			'id_usuario' => 'Id Usuario',
+			'id_actividad' => 'Id Actividad',
 		);
 	}
 
@@ -82,7 +82,7 @@ class Canal extends CActiveRecord
 
 		$criteria->compare('id_canal',$this->id_canal);
 		$criteria->compare('nombre',$this->nombre,true);
-		$criteria->compare('id_usuario',$this->id_usuario);
+		$criteria->compare('id_actividad',$this->id_actividad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

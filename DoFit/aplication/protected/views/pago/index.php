@@ -1,9 +1,4 @@
-<?php
-/* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
-$this->renderPartial('../menu/_menuInstitucion');
-?>
 
 <style type="text/css">
     body {
@@ -12,6 +7,7 @@ $this->renderPartial('../menu/_menuInstitucion');
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 
 
@@ -22,8 +18,13 @@ $this->renderPartial('../menu/_menuInstitucion');
 <br>
 <br>
 <div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="modal-dialog modal-lg" style="margin-top:140px;">
+    <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
+        <?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
+        <br>
+        <br>
+        <br>
+        <!-- Three columns of text below the carousel -->
+        <div class="modal-dialog modal-lg" style="margin-top:140px;">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row">
@@ -55,5 +56,6 @@ $this->renderPartial('../menu/_menuInstitucion');
             keyboard: false
         });
         $('#principal').modal('show');
+        $('#principal').fadeIn('slow');
     })
 </script>

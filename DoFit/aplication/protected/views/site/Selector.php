@@ -13,16 +13,16 @@
                 <h1 class="cover-heading">Identificate, ¿quien sos?</h1>
                 <p class="lead">
                         <div class="form-group">
-                            <a href="site/login" class='btn btn-primary btn-block' id='boton'>Un alumno</a>
+                            <a href="login" class='btn btn-primary btn-block' id='boton'>Un alumno</a>
                         </div>
                         <div class="form-group">
-                            <a href="site/login" class='btn btn-primary btn-block' id='boton'>Un profesor</a>
+                            <a href="login" class='btn btn-primary btn-block' id='boton'>Un profesor</a>
                         </div>
                         <div class="form-group">
-                            <a href="site/logininstitucion" class='btn btn-primary btn-block' id='boton'>Un gimnasio</a>
+                            <a href="logininstitucion" class='btn btn-primary btn-block' id='boton'>Un gimnasio</a>
                         </div>
                         <div class="form-group">
-                            <a href="site/loginadmin" class='btn btn-primary btn-block' id='boton'>Un admin</a>
+                            <a href="loginadmin" class='btn btn-primary btn-block' id='boton'>Un admin</a>
                         </div>
                 </a></p>
             </div>

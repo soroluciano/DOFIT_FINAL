@@ -19,6 +19,7 @@ function getStringIds(){
 }
 
  function getContactos() {
+    debugger;
       $.ajax({
       url: baseurl+'/contact/getContactos',  
       type: 'POST',

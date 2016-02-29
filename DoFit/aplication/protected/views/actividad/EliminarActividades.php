@@ -11,13 +11,36 @@ if(!Yii::app()->user->isGuest){
 
 <style type="text/css">
     body {
-        background: url(../img/24.jpg) no-repeat center center fixed;
+        background: url(../img/26.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: .9;
     }
 </style>
+
+<!-- Modal Error -->
+<div class='modal fade' id='SinActividades' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
+    <br>
+    <br>
+    <br>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content' style="margin-top:200px;">
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                <h4 class='modal-title' id='myModalLabel'><b>¡Lo sentimos!</b></h4>
+            </div>
+            <div class='modal-body'>
+                ¡No existen actividades en tu institución!
+            </div>
+            <div class='modal-footer'>
+                <a href="index" class='btn btn-primary'>Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" tabindex="-1" role="dialog" id="principal" aria-labelledby="myModalLabel">
@@ -25,10 +48,10 @@ if(!Yii::app()->user->isGuest){
     <br>
     <br>
     <br>
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="margin-top:200px;">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Eliminar Actividad</h4>
+                <h4 class="modal-title"><b>Eliminar Actividad</b></h4>
             </div>
             <div class="container">
                 <div class="form">
@@ -81,7 +104,7 @@ if(!Yii::app()->user->isGuest){
 
 <!-- Modal OK -->
 <div class='modal fade' id='Ok' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <div class='modal-dialog' role='document'>
+    <div class='modal-dialog' role='document' style="margin-top:200px;">
         <div class='modal-content'>
             <div class='modal-header'>
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
@@ -99,7 +122,7 @@ if(!Yii::app()->user->isGuest){
 <!-- Modal Error -->
 <div class='modal fade' id='Error' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
     <div class='modal-dialog' role='document'>
-        <div class='modal-content'>
+        <div class='modal-content' style="margin-top:200px;">
             <div class='modal-header'>
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
                 <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
@@ -117,11 +140,29 @@ if(!Yii::app()->user->isGuest){
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#principal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});
-		$('#principal').modal('show');
+        $.ajax({
+            url: baseurl + '/actividad/VerificarExistencia',
+            type: "POST",
+            dataType: "html",
+            cache: false,
+            success: function (response) {
+                debugger;
+                if (response == "ok") {
+                    $('#principal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                    $('#principal').modal('show');
+                }
+                else{
+                    $('#SinActividades').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                    });
+                    $('#SinActividades').modal('show');
+                }
+            }
+        })
     })
 </script>
 
@@ -138,9 +179,8 @@ if(!Yii::app()->user->isGuest){
                 cache: false,
                 success: function (response) {
                     if (response == "ok") {
-                        $("#actividades").find('option:selected').removeAttr("selected");
                         $('#Ok').modal('show');
-
+                        location.reload();
                     }
                     else {
                         $('#Error').modal('show');

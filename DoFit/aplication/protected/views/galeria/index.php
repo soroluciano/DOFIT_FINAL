@@ -32,17 +32,6 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 
 
 //buscar todos los canales y grabarlos en  lista de memoria js
-$canal = Canal::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$usuario->id_usuario));
-if($canal==null){
-	$canal = new Canal();
-	$canal->id_usuario=$usuario->id_usuario;
-	//$nombre=md5($ficha->nombre);
-	//$nombre=md5("sasarasas");
-	$nombre=md5(strval($usuario->id_usuario)."".$ficha->nombre."".strval($ficha->id_ficha));
-	$canal->nombre=$nombre;
-	$canal->save();
-}
-
 
 function getActividades($id){
 				
@@ -97,9 +86,9 @@ function getActividades($id){
     <div class="row">
 		<?php $this->renderPartial('../menu/_cabecera',array('perfil'=>$perfil,'nombre'=>$nombre,'apellido'=>$apellido)); ?>
 	
-    
-		<input type="hidden" id="canal" value="<?php echo $canal->nombre;?>"/>
-		<input type="hidden" id="id_canal" value="<?php echo $canal->id_canal;?>"/>
+<!--    
+		<input type="hidden" id="canal" value="<?php //echo $canal->nombre;?>"/>
+		<input type="hidden" id="id_canal" value="<?php // echo $canal->id_canal;?>"/>-->
 		<input type="hidden" id="id_actividad_selected" value=""/>
 		
 		<div id="respuesta_ajax">
