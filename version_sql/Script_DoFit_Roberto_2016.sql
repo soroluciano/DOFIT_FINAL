@@ -571,6 +571,5 @@ INSERT INTO DoFit.`Respuesta`(id_posteo, id_respuesta, respuesta, id_usuario, fh
                              (2        , 2          , '$300'                    , 6 , now() , now() , 'sysadmin');
                      
 					 
-					 
-					 
+			 
 					 
