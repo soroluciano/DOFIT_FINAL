@@ -202,13 +202,15 @@
             <div class="menu">
                 <a href="../site/index"><span>Home</span></a>
                 <a href="../actividad/InscripcionActividad"><span>Inscribirme a Actividades</span></a>
-                <a href="../actividadalumno/ListadoActividades"><span>Mis Actividades</span></a>
-                <?php if($usuario->id_perfil==2){ ?>
+				<a href="../actividadalumno/ListadoActividades"><span>Mis Actividades</span></a>
+				<?php if($usuario->id_perfil==2){ ?>
                     <a href="../ProfesorInstitucion/Adhesiongimnasio"><span>Asociarme a una Institución</span></a>
                     <a href="../ProfesorInstitucion/ListadoActividades"><span>Clases que dicto</span></a>
+					<a href="../profesorinstitucion/ConsultarEstadosInstituciones"><span>Estado Instituciones</span></a>
                 <?php } ?>
+				<a href="../pago/Consultarpagosalumno"><span>Mis Pagos</span></a>
                 <a href="../red/"><span>Mi red</span></a>
-                <?php echo "<span>".CHtml::link('Salir', array('site/logout'))."</span>"; ?>
+				<?php echo "<span>".CHtml::link('Salir', array('site/logout'))."</span>"; ?>
             </div>
             <div class="logo">
                 <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>

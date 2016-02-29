@@ -7,11 +7,12 @@
 </head>
 <style type="text/css">
     body {
-        background: url(../img/27.jpg) no-repeat center center fixed;
+        background: url(../img/25.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+		opacity : 0.95;
     }
 	    /*
     Max width before this PARTICULAR table gets nasty
@@ -60,8 +61,8 @@
         */
         td:nth-of-type(1):before { content: "Nombre"; }
         td:nth-of-type(2):before { content: "Cuit"; }
-        td:nth-of-type(3):before { content: "Dirección"; }
-        td:nth-of-type(4):before { content: "Teléfono Fijo"; }
+        td:nth-of-type(3):before { content: "Direccion"; }
+        td:nth-of-type(4):before { content: "Telefono Fijo"; }
         td:nth-of-type(5):before { content: "Celular"; }
         td:nth-of-type(6):before { content: "Estado"; }
     }

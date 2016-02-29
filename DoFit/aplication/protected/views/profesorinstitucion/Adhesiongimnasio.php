@@ -60,7 +60,7 @@
         Label the data
         */
         td:nth-of-type(1):before { content: "Nombre"; }
-        td:nth-of-type(2):before { content: "Direcci&oacute;n"; }
+        td:nth-of-type(2):before { content: "Direccion"; }
         td:nth-of-type(3):before { content: "Tel. fijo"; }
         td:nth-of-type(4):before { content: "Celular"; }
         td:nth-of-type(5):before { content: "Valor mensual"; }
