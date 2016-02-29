@@ -288,6 +288,7 @@
                   </div>
                   <div class='modal-body'>
                    ¿Estas seguro que desea desafectar a $ficha_usuario->nombre $ficha_usuario->apellido de la actividad?
+				    (Se desafectar&aacute; de la actividad y se eliminar&aacute;n todos los pagos asociados).
                   </div>
                  <div class='modal-footer'>
                   <button type='button' class='btn btn-primary' id='si'>Si</button>

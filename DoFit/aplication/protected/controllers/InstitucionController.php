@@ -148,7 +148,7 @@ class InstitucionController extends Controller
         $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
         $pi->id_estado = 1;
         $pi->update();
-        $this->redirect('../home');
+        $this->redirect('../Solicitudespendientes');
     }
 
     public function actionCancelar($id)
@@ -157,7 +157,7 @@ class InstitucionController extends Controller
         $idinstitucion = Yii::app()->user->id;
         $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
         $pi->delete();
-        $this->redirect('../home');
+        $this->redirect('../Solicitudespendientes');
     }
 
     public function actionAceptarAlumno()
@@ -175,7 +175,7 @@ class InstitucionController extends Controller
         $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
         $al->id_estado = 1;
         $al->update();
-        $this->redirect('../../aplication/institucion/home');
+        $this->redirect('../../aplication/institucion/Solicitudespendientes');
     }
 
     public function actionCancelarAlumno()
@@ -184,14 +184,12 @@ class InstitucionController extends Controller
         $idactividad = $_GET['act'];
         $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
         $al->delete();
-        $this->redirect('../../aplication/institucion/home');
+        $this->redirect('../../aplication/institucion/Solicitudespendientes');
     }
 
     public function actionHome()
     {
-        $profesor_pen =ProfesorInstitucion::model()->findAll('id_estado = 0 and id_institucion = :id_institucion',array(':id_institucion'=>Yii::app()->user->id));
-        $actividades_pen = ActividadAlumno::model()->findAll('id_estado = 0 and id_actividad in (select id_actividad from actividad where id_institucion = :id_institucion)',array(':id_institucion'=>Yii::app()->user->id));
-        $this->render('home',array('profesor_pen'=>$profesor_pen,'actividades_pen'=>$actividades_pen));
+       $this->render('home');
     }
     /**
      * Manages all models.
@@ -327,5 +325,12 @@ class InstitucionController extends Controller
         if($ins->update()){
             echo "actualizado";
         }
+    }
+	
+	public function actionSolicitudesPendientes()
+	{
+       $profesor_pen =ProfesorInstitucion::model()->findAll('id_estado = 0 and id_institucion = :id_institucion',array(':id_institucion'=>Yii::app()->user->id));
+       $actividades_pen = ActividadAlumno::model()->findAll('id_estado = 0 and id_actividad in (select id_actividad from actividad where id_institucion = :id_institucion)',array(':id_institucion'=>Yii::app()->user->id));
+       $this->render('Solicitudespendientes',array('profesor_pen'=>$profesor_pen,'actividades_pen'=>$actividades_pen));		
     }
 }	

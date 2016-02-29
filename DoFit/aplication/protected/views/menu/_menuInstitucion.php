@@ -196,6 +196,7 @@
                 <a href="../institucion/ListadoAlumnosxInstitucion"><span>Listado de Alumnos</span></a>
 				<a href="../actividad/index"><span>Actividades</span></a>
                 <a href="../pago/index"><span>Pagos</span></a>
+				<a href="../institucion/SolicitudesPendientes"><span>Solicitudes pendientes</span></a>
 				<a href="../institucion/ModificardatosInstitucion"><span>Mis datos</span></a>
 				<a href="../institucion/Modificarpassword"><span>Modificar Contrase&ntilde;a</span></a>
                 <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
