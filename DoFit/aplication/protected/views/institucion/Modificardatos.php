@@ -65,16 +65,6 @@
                                 <?php echo $form->error($ficha_institucion,'depto',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
-                                <?php echo $form->labelEx($ficha_institucion,'coordenada_x'); ?>
-                                <?php echo $form->textField($ficha_institucion,'coordenada_x',array('class'=>"form-control",'placeholder'=>"Coordenada x")); ?>
-                                <?php echo $form->error($ficha_institucion,'coordenada_x',array('class'=>'error_pw')); ?>
-                            </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($ficha_institucion,'coordenada_y'); ?>
-                                <?php echo $form->textField($ficha_institucion,'coordenada_y',array('class'=>"form-control",'placeholder'=>"Coordenada y")); ?>
-                                <?php echo $form->error($ficha_institucion,'coordenada_y',array('class'=>'error_pw')); ?>
-                            </div>
-                            <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'Acepta MP'); ?>
                                 <?php echo $form->dropDownList($ficha_institucion,'acepta_mp',array('empty'=>'Seleccione si Acepta MP','S'=>'Sí','N'=>'No'),array('class'=>"form-control",'id'=>'acepta_mp')); ?>
                                 <?php echo $form->error($ficha_institucion,'acepta_mp',array('class'=>'error_pw'));?>

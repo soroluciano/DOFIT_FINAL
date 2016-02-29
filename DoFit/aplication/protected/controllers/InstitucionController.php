@@ -302,4 +302,30 @@ class InstitucionController extends Controller
             'model'=>$model,'ficha_institucion'=>$ficha_institucion,'localidad'=>$localidad,'guardar'=>$guardar
         ));
     }
-}
+
+    public function actionModificarpassword()
+    {
+        $this->render('Modificarpassword');
+    }
+
+    public function actionModificarpassword2()
+    {
+        $passactual = $_POST['pass'];
+        $idins = Yii::app()->user->id;
+        $ins = Institucion::model()->findByAttributes(array('id_institucion'=>$idins));
+        if($ins->password != md5($passactual)){
+            echo "errorpass";
+        }
+    }
+
+    public function actionModificarpassword3()
+    {
+        $recpass1 = $_POST['recpass1'];
+        $idins = Yii::app()->user->id;
+        $ins = Institucion::model()->findByAttributes(array('id_institucion'=>$idins));
+        $ins->password = md5($recpass1);
+        if($ins->update()){
+            echo "actualizado";
+        }
+    }
+}	
