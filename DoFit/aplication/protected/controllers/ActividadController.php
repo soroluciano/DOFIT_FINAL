@@ -141,6 +141,40 @@ class ActividadController extends Controller
         ));
     }
 
+    public function actionVerificarExistencia()
+    {
+        $usuario = Yii::app()->user->id;
+        $actividad = Actividad::model()->findAll('id_institucion = :id_institucion',array(':id_institucion'=>$usuario));
+        if($actividad == null){
+            echo "error";
+        }
+        else{
+            echo "ok";
+        }
+
+    }
+
+
+    public function actionVerificarDeporteProfesor()
+    {
+        $usuario = Yii::app()->user->id;
+        $deporte = Deporte::model()->findAll();
+        $profesor = ProfesorInstitucion::model()->findAll('id_institucion = :id_institucion',array(':id_institucion'=>$usuario));
+        if($deporte == null){
+            echo "error_deporte";
+        }
+        else{
+            if($profesor == null){
+                echo "error_prorfesor";
+            }
+            else{
+                echo "ok";
+            }
+        }
+
+    }
+
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
@@ -368,6 +402,7 @@ class ActividadController extends Controller
             Pago::model()->deleteAll("id_actividad='" . $_POST['actividad']."'");
             ActividadHorario::model()->deleteAll("id_actividad='" . $_POST['actividad']."'");
             ActividadAlumno::model()->deleteAll("id_actividad='" . $_POST['actividad']."'");
+            PerfilMuroProfesor::model()->deleteAll("id_actividad='" . $_POST['actividad']."'");
             Actividad::model()->deleteAll("id_actividad='" . $_POST['actividad']."'");
             echo "ok";
         }

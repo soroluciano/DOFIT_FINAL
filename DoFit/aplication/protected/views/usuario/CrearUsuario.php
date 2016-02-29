@@ -26,26 +26,26 @@
                             <?php echo $form->labelEx($model,'email',array('for'=>"exampleInputEmail1")); ?>
                             <?php echo $form->textField($model,'email',array('name'=>'email','class'=>"form-control",'placeholder'=>"Tu email",'id'=>"email",'size'=>60,'maxlength'=>60)); ?>
                             <div class="form-group has-error" id="err_mail_vacio">
-                                <label class="control-label" for="inputError" id="emailvacio">Ingrese un mail.</label>
+                                <label class="error_pw" for="inputError" id="emailvacio">Ingrese un mail.</label>
                             </div>
                             <div class="form-group has-error" id="err_mail_exprreg">
-                                <label class="control-label" for="inputError" id="mailexprreg">Ingrese una dirección de correo válida.</label>
+                                <label class="error_pw" for="inputError" id="mailexprreg">Ingrese una dirección de correo válida.</label>
                             </div>
                             <div class="form-group has-error" id="err_mail_dup">
-                                <label class="control-label" for="inputError" id="maildup">El mail ya se encuentra registrado.</label>
+                                <label class="error_pw" for="inputError" id="maildup">El mail ya se encuentra registrado.</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <?php echo $form->labelEx($model,'password'); ?>
                             <?php echo $form->passwordField($model,'password',array('id'=>'password','name'=>'password','class'=>"form-control",'placeholder'=>"Elegí una contraseña",'maxlength'=>15));?>
                             <div class="form-group has-error" id="err_pass_vacio">
-                                <label class="control-label" for="inputError" id="passvacio">Ingrese una contraseña.</label>
+                                <label class="error_pw" for="inputError" id="passvacio">Ingrese una contraseña.</label>
                             </div>
                             <div class="form-group has-error" id="err_pass_long">
-                                <label class="control-label" for="inputError" id="passvacio">La contraseña debe tener entre 6 y 15 carácteres.</label>
+                                <label class="error_pw" for="inputError" id="passvacio">La contraseña debe tener entre 6 y 15 carácteres.</label>
                             </div>
                             <div class="form-group has-error" id="err_pass_exprreg">
-                                <label class="control-label" for="inputError" id="passexpreg">La contraseña debe tener al menos una mayúscula y dos números.</label>
+                                <label class="error_pw" for="inputError" id="passexpreg">La contraseña debe tener al menos una mayúscula y dos números.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -54,7 +54,7 @@
                                 <?php echo $form->dropDownList($model,'id_perfil',CHtml::listData(Perfil::model()->findAll(),'id_perfil','perfil'),array('empty'=>'¿Sos alumno o profesor?','class'=>"form-control",'name'=>'id_perfil','id'=>'id_perfil'));?>
                             </div>
                             <div class="form-group has-error" id="err_perfil_vacio">
-                                <label class="control-label" for="inputError" id="perfilvacio">Seleccione un perfil.</label>
+                                <label class="error_pw" for="inputError" id="perfilvacio">Seleccione un perfil.</label>
                             </div>
 
                         </div>
@@ -62,27 +62,27 @@
                             <?php echo $form->labelEx($ficha_usuario,'nombre'); ?>
                             <?php echo $form->textField($ficha_usuario,'nombre',array('size'=>200,'maxlength'=>200,'class'=>"form-control",'placeholder'=>"Tu nombre")); ?>
                             <div class="form-group has-error" id="err_nombre_vacio">
-                                <label class="control-label" for="inputError" id="nombrevacio">Ingrese un nombre.</label>
+                                <label class="error_pw" for="inputError" id="nombrevacio">Ingrese un nombre.</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <?php echo $form->labelEx($ficha_usuario,'apellido'); ?>
                             <?php echo $form->textField($ficha_usuario,'apellido',array('size'=>200,'maxlength'=>200,'class'=>"form-control",'placeholder'=>"Tu apellido")); ?>
                             <div class="form-group has-error" id="err_apellido_vacio">
-                                <label class="control-label" for="inputError" id="apellidovacio">Ingrese un apellido.</label>
+                                <label class="error_pw" for="inputError" id="apellidovacio">Ingrese un apellido.</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <?php echo $form->labelEx($ficha_usuario,'dni'); ?>
                             <?php echo $form->textField($ficha_usuario,'dni',array('size'=>8,'maxlength'=>8,'class'=>"form-control",'placeholder'=>"Tu dni")); ?>
                             <div class="form-group has-error" id="err_dni_vacio">
-                                <label class="control-label" for="inputError" id="dnivacio">Ingrese un número de documento.</label>
+                                <label class="error_pw" for="inputError" id="dnivacio">Ingrese un número de documento.</label>
                             </div>
                             <div class="form-group has-error" id="err_dni_num">
-                                <label class="control-label" for="inputError" id="dninum">El dato debe ser númerico.</label>
+                                <label class="error_pw" for="inputError" id="dninum">El dato debe ser númerico.</label>
                             </div>
                             <div class="form-group has-error" id="err_dni_dupl">
-                                <label class="control-label" for="inputError" id="dnidupl">El dni ya se encuentra registrado.</label>
+                                <label class="error_pw" for="inputError" id="dnidupl">El dni ya se encuentra registrado.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,7 +91,7 @@
                                 <?php echo $form->dropDownList($ficha_usuario,'sexo',array('empty'=>'¿Mujer u Hombre?','M'=>'Masculino','F'=>'Femenino','O'=>'Otro'),array('class'=>"form-control",'id'=>'sexo')); ?>
                             </div>
                             <div class="form-group has-error" id="err_sexo_vacio">
-                                <label class="control-label" for="inputError" id="sexovacio">Seleccione un sexo.</label>
+                                <label class="error_pw" for="inputError" id="sexovacio">Seleccione un sexo.</label>
                             </div>
                         </div>
                     </div>
@@ -100,17 +100,17 @@
                             <?php echo $form->labelEx($ficha_usuario,'fechanac'); ?>
                             <?php echo $form->dateField($ficha_usuario,'fechanac',array('class'=>"form-control",'placeholder'=>"dd/mm/yyyy")); ?>
                             <div class="form-group has-error" id="err_fechanac_vacia">
-                                <label class="control-label" for="inputError" id="fecnac">Ingrese una fecha de nacimiento.</label>
+                                <label class="error_pw" for="inputError" id="fecnac">Ingrese una fecha de nacimiento.</label>
                             </div>
                             <div class="form-group has-error" id="err_fechanac_valida">
-                                <label class="control-label" for="inputError" id="fecnacvalid">Ingrese una fecha de nacimiento válida.</label>
+                                <label class="errow_pw" for="inputError" id="fecnacvalid">Ingrese una fecha de nacimiento válida.</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <?php echo $form->labelEx($ficha_usuario,'telfijo'); ?>
                             <?php echo $form->textField($ficha_usuario,'telfijo',array('class'=>"form-control",'placeholder'=>"Tu teléfono fijo")); ?>
                             <div class="form-group has-error" id="err_telfijo_num">
-                                <label class="control-label" for="inputError" id="telfijonum">El dato debe ser númerico.</label>
+                                <label class="error_pw" for="inputError" id="telfijonum">El dato debe ser númerico.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -121,14 +121,14 @@
                             <?php echo $form->labelEx($ficha_usuario,'telemer'); ?>
                             <?php echo $form->textField($ficha_usuario,'telemer',array('class'=>"form-control",'placeholder'=>"Teléfono del contacto por emergencia")); ?>
                             <div class="form-group has-error" id="err_telemer_num">
-                                <label class="control-label" for="inputError" id="telemernum">El dato debe ser númerico.</label>
+                                <label class="error_pw" for="inputError" id="telemernum">El dato debe ser númerico.</label>
                             </div>
                         </div>
                         <div class="form-group">
                             <?php echo $form->labelEx($ficha_usuario,'direccion'); ?>
                             <?php echo $form->textField($ficha_usuario,'direccion',array('class'=>"form-control",'placeholder'=>"Tu dirección")); ?>
                             <div class="form-group has-error" id="err_direccion_vacia">
-                                <label class="control-label" for="inputError" id="dirvacia">Ingrese una dirección.</label>
+                                <label class="error_pw" for="inputError" id="dirvacia">Ingrese una dirección.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -157,7 +157,7 @@
                                     ),'prompt'=>'Seleccione tu Provincia','class'=>"form-control"));?>
                             </div>
                             <div class="form-group has-error" id="err_prov_vacia">
-                                <label class="control-label" for="inputError" id="provvacia">Seleccione una provincia.</label>
+                                <label class="error_pw" for="inputError" id="provvacia">Seleccione una provincia.</label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -166,7 +166,7 @@
                                 <?php echo $form->dropDownList($localidad,'id_localidad',array('empty'=>"Selecciona tu localidad"),array('class'=>"form-control")); ?>
                             </div>
                             <div class="form-group has-error" id="err_loc_vacia">
-                                <label class="control-label" for="inputError" id="locvacia">Seleccione una localidad.</label>
+                                <label class="error_pw" for="inputError" id="locvacia">Seleccione una localidad.</label>
                             </div>
                         </div>
                     </div>
@@ -301,7 +301,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el mail */
         if(CampoVacio(email)){
             $('#err_mail_vacio').show();
-            $('#email').css("border-color","#a94442");
+            $('#email').css("border-color","#FF7C7C");
             val = 0;
             errmail = 1;
         }
@@ -310,7 +310,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         }
         if((!Validaremail(email)) && (!CampoVacio(email))){
             $('#err_mail_exprreg').show();
-            $('#email').css("border-color","#a94442");
+            $('#email').css("border-color","#FF7C7C");
             val = 0;
             errmail = 1;
         }
@@ -323,7 +323,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido la contraseña*/
         if(CampoVacio(password)){
             $('#err_pass_vacio').show();
-            $('#password').css("border-color","#a94442");
+            $('#password').css("border-color","#FF7C7C");
             val = 0;
             errpass = 1;
         }
@@ -332,7 +332,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         }
         if(validarexpregContraseña(password) == 1 && (!CampoVacio(password))){
             $('#err_pass_long').show();
-            $('#password').css("border-color","#a94442");
+            $('#password').css("border-color","#FF7C7C");
             val = 0;
             errpass = 1;
         }
@@ -341,7 +341,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         }
         if(validarexpregContraseña(password) == 2 && (!CampoVacio(password))){
             $('#err_pass_exprreg').show();
-            $('#password').css("border-color","#a94442");
+            $('#password').css("border-color","#FF7C7C");
             val = 0;
             errpass = 1;
         }
@@ -355,7 +355,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el perfil */
         if(CampoVacio(id_perfil)){
             $('#err_perfil_vacio').show();
-            $('#id_perfil').css("border-color","#a94442");
+            $('#id_perfil').css("border-color","#FF7C7C");
             val = 0;
         }
         else {
@@ -366,7 +366,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el nombre */
         if(CampoVacio(nombre)){
             $('#err_nombre_vacio').show();
-            $('#FichaUsuario_nombre').css("border-color","#a94442");
+            $('#FichaUsuario_nombre').css("border-color","#FF7C7C");
             val = 0;
         }
         else{
@@ -376,7 +376,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el apellido */
         if(CampoVacio(apellido)){
             $('#err_apellido_vacio').show();
-            $('#FichaUsuario_apellido').css("border-color","#a94442");
+            $('#FichaUsuario_apellido').css("border-color","#FF7C7C");
             val = 0;
         }
         else{
@@ -387,7 +387,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el dni */
         if(CampoVacio(dni)){
             $('#err_dni_vacio').show();
-            $('#FichaUsuario_dni').css("border-color","#a94442");
+            $('#FichaUsuario_dni').css("border-color","#FF7C7C");
             val = 0;
             errdni = 1;
         }
@@ -397,7 +397,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
 
         if((!CampoVacio(dni)) && isNaN(dni)){
             $('#err_dni_num').show();
-            $('#FichaUsuario_dni').css("border-color","#a94442");
+            $('#FichaUsuario_dni').css("border-color","#FF7C7C");
             val = 0;
             errdni = 1;
         }
@@ -411,7 +411,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el sexo */
         if(sexo == 'empty'){
             $('#err_sexo_vacio').show();
-            $('#sexo').css("border-color","#a94442");
+            $('#sexo').css("border-color","#FF7C7C");
             val = 0;
         }
         else {
@@ -422,7 +422,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido la fecha de nacimiento */
         if(CampoVacio(fechanac)){
             $('#err_fechanac_vacia').show();
-            $('#FichaUsuario_fechanac').css("border-color","#a94442");
+            $('#FichaUsuario_fechanac').css("border-color","#FF7C7C");
             val = 0;
             errfecnac = 1;
         }
@@ -431,7 +431,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         }
         if((validarfecha(fechanac) == false) && (!CampoVacio(fechanac))){
             $('#err_fechanac_valida').show();
-            $('#FichaUsuario_fechanac').css("border-color","#a94442");
+            $('#FichaUsuario_fechanac').css("border-color","#FF7C7C");
             val = 0;
             errfecnac = 1;
         }
@@ -445,7 +445,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el telefono fijo */
         if(isNaN(telfijo)){
             $('#err_telfijo_num').show();
-            $('#FichaUsuario_telfijo').css("border-color","#a94442");
+            $('#FichaUsuario_telfijo').css("border-color","#FF7C7C");
             val = 0;
         }
         else {
@@ -456,7 +456,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido el telefono de emergencia */
         if(isNaN(telemer)){
             $('#err_telemer_num').show();
-            $('#FichaUsuario_telemer').css("border-color","#a94442");
+            $('#FichaUsuario_telemer').css("border-color","#FF7C7C");
             val = 0;
         }
         else{
@@ -467,7 +467,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido la direccion */
         if(CampoVacio(direccion)){
             $('#err_direccion_vacia').show();
-            $('#FichaUsuario_direccion').css("border-color","#a94442");
+            $('#FichaUsuario_direccion').css("border-color","#FF7C7C");
             val = 0;
         }
         else {
@@ -478,7 +478,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
 
         if(CampoVacio(provincia)){
             $('#err_prov_vacia').show();
-            $('#Localidad_id_provincia').css("border-color","#a94442");
+            $('#Localidad_id_provincia').css("border-color","#FF7C7C");
             val = 0;
         }
         else{
@@ -489,7 +489,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
         /* valido la localidad */
         if(localidad == 'empty'){
             $('#err_loc_vacia').show();
-            $('#Localidad_id_localidad').css("border-color","#a94442");
+            $('#Localidad_id_localidad').css("border-color","#FF7C7C");
             val = 0;
         }
         else {
@@ -508,7 +508,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
                     res = response.split("/");
                     if(res[0] == "err_mail_dup"){
                         $('#err_mail_dup').show();
-                        $('#email').css("border-color","#a94442");
+                        $('#email').css("border-color","#FF7C7C");
                     }
                     else{
                         $('#err_mail_dup').hide();
@@ -516,7 +516,7 @@ echo"<div class='modal fade' id='mensajeregistrook' tabindex='-1' role='dialog' 
                     }
                     if(res[1] == "err_dni_dupl"){
                         $('#err_dni_dupl').show();
-                        $('#FichaUsuario_dni').css("border-color","#a94442");
+                        $('#FichaUsuario_dni').css("border-color","#FF7C7C");
                     }
                     else{
                         $('#err_dni_dupl').hide();

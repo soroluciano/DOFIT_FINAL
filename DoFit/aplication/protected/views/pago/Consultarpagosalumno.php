@@ -82,20 +82,22 @@
         </div>
         <?php
         }
-        else{
+        if($instituciones == NULL)
+        {
+            echo "holaaa";
             ?>
             <div class='modal fade' id='inserror' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
                 <div class='modal-dialog' role='document'>
                     <div class='modal-content'>
                         <div class='modal-header'>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="location.href='../site/index'";><span aria-hidden='true'>&times;</span></button>
-                            <h4 class='modal-title' id='myModalLabel'>¡Error!</h4>
+                            <h4 class='modal-title' id='myModalLabel'>&#161;Atenci&oacute;n!</h4>
                         </div>
                         <div class='modal-body'>
-                            No estas inscripto en ninguna institución por lo tanto no generaste ningún pago.
+                            No se registraron pagos en las instituciones donde est&aacute;s inscripto.
                         </div>
                         <div class='modal-footer'>
-                            <input type='button' class='btn btn-primary' id='cerrarmodalsi'>Cerrar</button>
+                            <input type='button' class='btn btn-primary' id='cerrarmodalsi' value="Atras"></button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +106,7 @@
                 $('#inserror').modal('show');
             </script>
             <?php
-        }
+
         }
         ?>
         <div class='modal fade' id='modalerrpago' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
@@ -112,10 +114,10 @@
                 <div class='modal-content'>
                     <div class='modal-header'>
                         <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-                        <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                        <h4 class='modal-title' id='myModalLabel'>&#161;Atenci&oacute;n!</h4>
                     </div>
                     <div class='modal-body'>
-                        No se registraron pagos en la instituci&oacute;n para el a&ntilde;o y mes seleccionados.
+                        No se registraron pagos en <p id="ins"></p> para el a&ntilde;o y mes seleccionados.
                     </div>
                     <div class='modal-footer'>
                         <input type='button' class='btn btn-primary' value="Cerrar" id='cerrarerrpagos'></button>
@@ -123,6 +125,7 @@
                 </div>
             </div>
         </div>
+        <?php } ?>
 </html>
 
 <script type="text/javascript">
@@ -136,13 +139,14 @@
             $("#modalerrpago").modal('hide');
         });
         $("#cerrarmodalsi").click(function(){
-            $("#inserror").modal('hide');
+            location.href = '../site/index';
         });
     });
 
     function MostrarPagosAlumno()
     {
         $("#mostrarpagos").empty();
+        $("#ins").empty();
         var idinstitucion = $("#idinstitucion").val();
         var mes = $("#mes").val();
         var anio = $("#anio").val();
@@ -155,11 +159,14 @@
                 dataType: "html",
                 cache : false,
                 success : function(response){
-                    if(response == "errorpago"){
+                    respuesta = response.split("|");
+                    if(respuesta[0] == "errorpago"){
+                        $("#ins").css("display","inline");
+                        $("#ins").append(respuesta[1]);
                         $("#modalerrpago").modal('show');
                     }
                     else{
-                        $("#mostrarpagos").append(response);
+                        $("#mostrarpagos").append(respuesta[0]);
                         $("#mostrarpagos").modal('show');
                     }
                 }

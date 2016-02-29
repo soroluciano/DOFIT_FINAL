@@ -8,6 +8,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+        opacity: 0.9;
     }
 </style>
 <body>
@@ -63,16 +64,6 @@
                                 <?php echo $form->labelEx($ficha_institucion,'depto'); ?>
                                 <?php echo $form->textField($ficha_institucion,'depto',array('class'=>"form-control",'placeholder'=>"Departamento")); ?>
                                 <?php echo $form->error($ficha_institucion,'depto',array('class'=>'error_pw')); ?>
-                            </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($ficha_institucion,'coordenada_x'); ?>
-                                <?php echo $form->textField($ficha_institucion,'coordenada_x',array('class'=>"form-control",'placeholder'=>"Coordenada x")); ?>
-                                <?php echo $form->error($ficha_institucion,'coordenada_x',array('class'=>'error_pw')); ?>
-                            </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($ficha_institucion,'coordenada_y'); ?>
-                                <?php echo $form->textField($ficha_institucion,'coordenada_y',array('class'=>"form-control",'placeholder'=>"Coordenada y")); ?>
-                                <?php echo $form->error($ficha_institucion,'coordenada_y',array('class'=>'error_pw')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($ficha_institucion,'Acepta MP'); ?>

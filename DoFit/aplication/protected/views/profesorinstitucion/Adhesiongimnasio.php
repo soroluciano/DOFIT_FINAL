@@ -13,8 +13,8 @@
         -o-background-size: cover;
         background-size: cover;
     }
-    
-	/*
+
+    /*
     Max width before this PARTICULAR table gets nasty
     This query will take effect for any screen smaller than 760px
     and also iPads specifically.
@@ -60,7 +60,7 @@
         Label the data
         */
         td:nth-of-type(1):before { content: "Nombre"; }
-        td:nth-of-type(2):before { content: "Dirección"; }
+        td:nth-of-type(2):before { content: "Direcci&oacute;n"; }
         td:nth-of-type(3):before { content: "Tel. fijo"; }
         td:nth-of-type(4):before { content: "Celular"; }
         td:nth-of-type(5):before { content: "Valor mensual"; }
@@ -83,7 +83,7 @@
             width: 495px;
         }
     }
-	
+
 </style>
 <?php if(isset(Yii::app()->session['id_usuario'])){?>
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="principal" aria-labelledby="myLargeModalLabel">
@@ -211,10 +211,10 @@ $this->endWidget();?>
 <script type="text/javascript">
     $(document).ready(function(){
         $('#principal').modal({
-           backdrop: 'static',
-           keyboard: false
-		});
-		$('#principal').modal('show');
+            backdrop: 'static',
+            keyboard: false
+        });
+        $('#principal').modal('show');
     });
 </script>
 
@@ -222,7 +222,7 @@ $this->endWidget();?>
     function ConsultarInstituciones()
     {
         $("#loca").empty();
-		$('#mostrargimnasios').empty();
+        $('#mostrargimnasios').empty();
         var localidad = $('#Localidad_id_localidad').val();
         var data = {'localidad':localidad};
         $.ajax({
@@ -232,14 +232,14 @@ $this->endWidget();?>
             dataType: "html",
             cache : false,
             success : function(response){
-				respuesta = response.split("|");				
-				if(respuesta[0] == "errorbusqueda"){
+                respuesta = response.split("|");
+                if(respuesta[0] == "errorbusqueda"){
                     $("#errorbusqueda").modal('show');
                 }
-				if(respuesta[0] == "solcompletas"){
-					$("#loca").append(respuesta[1]);
-					$("#loca").css('display','inline');
-					$("#solcompletas").modal('show');
+                if(respuesta[0] == "solcompletas"){
+                    $("#loca").append(respuesta[1]);
+                    $("#loca").css('display','inline');
+                    $("#solcompletas").modal('show');
                 }
                 if(respuesta[0] != "errorbusqueda" && respuesta[0] != "solcompletas"){
                     $('#mostrargimnasios').append(respuesta[0]);

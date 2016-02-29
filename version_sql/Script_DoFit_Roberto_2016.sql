@@ -1,4 +1,4 @@
---
+﻿--
 DROP DATABASE IF EXISTS `DoFit`;
 --
 
@@ -418,19 +418,19 @@ VALUES
 DELETE FROM DoFit.`Usuario`;
 
 INSERT INTO DoFit.`Usuario`(email                   , password       , id_perfil  , id_estado, fhcreacion, fhultmod, cusuario)
-                   VALUES('monti.rober9@gmail.com', MD5('Monto123'), 1          , 1       , now()    , now()   , 'sysadmin'),
-                         ('programacionweb3@gmail.com', MD5('Lorena23'), 1          , 1       , now()    , now()   , 'sysadmin'),
-                         ('dcastellini89@gmail.com'   , MD5('Castellini123'),1      , 1       , now()    , now()   , 'sysadmin'),
-                         ('romina@gmail.com'          , MD5('Romina123')    ,1      , 1       , now()    , now()   , 'sysadmin'),  
-                         ('vernacci_elizabeth@gmail.com', MD5('Oberto345'), 2     , 1       , now()    , now()   , 'sysadmin'),
-                         ('monto_rober@yahoo.com.ar'    , MD5('Bautista12') , 2      , 1     , now()    , now()   , 'sysadmin'),
-                         ('soro.luciano@gmail.com', MD5('Luciano34')       , 2       , 1      , now()    , now()  , 'sysadmin'),
-                         ('barbifranco23@gmail.com'  , MD5('Monto1987')   ,  1      , 0    , now()      , now()  , 'sysadmin'),
-                         ('jrodriguez@gmail.com'     , MD5('Jrodriguez12'), 1       , 1    , now()      , now()  , 'sysadmin'),
-                         ('laspinetta@gmail.com'       , MD5('Spinetta345'), 1        , 1    , now()      , now()  , 'sysadmin'),
-                         ('kperez@yahoo.com.ar'      , MD5('Karina123')  , 1        , 1    , now()      , now()  , 'sysadmin'),
-                         ('yjuarez@gmail.com'		 , MD5('Yazmin123')  , 1        , 1    , now()      , now()  , 'sysadmin'),      				 
-                         ('urodriguez@gmail.com'     , MD5('Urodriguez123'),1       , 1    , now()      , now()  , 'sysadmin');
+                   VALUES('alumno', MD5('123'), 1          , 1       , now()    , now()   , 'sysadmin'),
+                         ('programacionweb3@gmail.com', MD5('123'), 1          , 1       , now()    , now()   , 'sysadmin'),
+                         ('dcastellini89@gmail.com'   , MD5('123'),1      , 1       , now()    , now()   , 'sysadmin'),
+                         ('romina@gmail.com'          , MD5('123')    ,1      , 1       , now()    , now()   , 'sysadmin'),  
+                         ('vernacci_elizabeth@gmail.com', MD5('123'), 2     , 1       , now()    , now()   , 'sysadmin'),
+                         ('monto_rober@yahoo.com.ar'    , MD5('123') , 2      , 1     , now()    , now()   , 'sysadmin'),
+                         ('soro.luciano@gmail.com', MD5('123')       , 2       , 1      , now()    , now()  , 'sysadmin'),
+                         ('barbifranco23@gmail.com'  , MD5('123')   ,  1      , 0    , now()      , now()  , 'sysadmin'),
+                         ('jrodriguez@gmail.com'     , MD5('123'), 1       , 1    , now()      , now()  , 'sysadmin'),
+                         ('laspinetta@gmail.com'       , MD5('123'), 1        , 1    , now()      , now()  , 'sysadmin'),
+                         ('kperez@yahoo.com.ar'      , MD5('123')  , 1        , 1    , now()      , now()  , 'sysadmin'),
+                         ('yjuarez@gmail.com'		 , MD5('123')  , 1        , 1    , now()      , now()  , 'sysadmin'),      				 
+                         ('urodriguez@gmail.com'     , MD5('123'),1       , 1    , now()      , now()  , 'sysadmin');
 DELETE FROM DoFit.`ficha_usuario`;						 
 
 INSERT INTO DoFit.`ficha_usuario`(id_usuario, nombre    , apellido, dni, sexo, fechanac, telfijo, celular, conemer, telemer, id_localidad, direccion, piso, depto, fhcreacion, fhultmod, cusuario)
@@ -450,11 +450,11 @@ INSERT INTO DoFit.`ficha_usuario`(id_usuario, nombre    , apellido, dni, sexo, f
 DELETE FROM DoFit.`institucion`;	
 						   
 INSERT INTO DoFit.`institucion`(email               , password          , fhcreacion, fhultmod, cusuario)
-                       VALUES('megatlon@gmail.com', md5('Megatlon123'), now()     , now()   , 'sysadmin'),
-                             ('unlam@yahoo.com.ar'  , md5('Unlam678')   , now()     , now()   , 'sysadmin'),
-                             ('bocajuniors@gmail.com', md5('Boca345'), now()   , now()   , 'sysadmin'),
-                             ('losamigos@gmail.com', md5('Agatha123')  , now()   , now()   , 'sysadmin'),
-                             ('programacionweb3@gmail.com', md5('Lorena23'), now() , now() , 'sysadmin');
+                       VALUES('gym1', md5('123'), now()     , now()   , 'sysadmin'),
+                             ('gym2'  , md5('123')   , now()     , now()   , 'sysadmin'),
+                             ('gym3', md5('123'), now()   , now()   , 'sysadmin'),
+                             ('gym4', md5('123')  , now()   , now()   , 'sysadmin'),
+                             ('gym5', md5('123'), now() , now() , 'sysadmin');
 
 DELETE FROM DoFit.`ficha_institucion`;
 
@@ -571,6 +571,5 @@ INSERT INTO DoFit.`Respuesta`(id_posteo, id_respuesta, respuesta, id_usuario, fh
                              (2        , 2          , '$300'                    , 6 , now() , now() , 'sysadmin');
                      
 					 
-					 
-					 
+			 
 					 

@@ -261,10 +261,8 @@ class PagoController extends Controller
     {
         $id_usuario = Yii::app()->user->id;
         if(isset(Yii::app()->session['id_usuario'])){
-            $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_usuario ='.$id_usuario.' ))')->queryAll();
-            if($instituciones != null){
-                $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
-            }
+            $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_actividad IN (SELECT id_actividad FROM pago WHERE id_usuario = '.$id_usuario.' )))')->queryAll();
+            $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
         }
     }
 
@@ -273,6 +271,7 @@ class PagoController extends Controller
         $id_institucion = $_POST['idinstitucion'];
         $mes = $_POST['mes'];
         $anio = $_POST['anio'];
+        $fic_ins = FichaInstitucion::model()->findByAttributes(array('id_institucion'=>$id_institucion));
         $id_usuario = Yii::app()->user->id;
         $cant_pago = 0;
         // Busco todas las actividades que tenga esa institucion donde esta inscripto el alumno
@@ -283,7 +282,7 @@ class PagoController extends Controller
                 $cant_pago++;
             }
         }
-        if($actividad_alumno != null && $cant_pago > 0){
+        if($cant_pago > 0){
             echo "<table id='lispagos' class='display' cellspacing='0' width='100%'>
 			          <thead>
                       <th>Deporte</th><th>Días y Horarios</th><th>Monto</th><th>Mes</th><th>A&ntilde;o</th>
@@ -343,10 +342,11 @@ class PagoController extends Controller
 		            }
 	            } );
             </script>";
+            echo "|$fic_ins->nombre";
 
         }
         if($cant_pago == 0){
-            echo "errorpago";
+            echo "errorpago|$fic_ins->nombre";
         }
     }
 }
