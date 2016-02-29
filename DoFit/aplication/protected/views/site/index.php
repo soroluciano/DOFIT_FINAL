@@ -7,15 +7,25 @@
           echo "<input type='hidden' value='$Us->id_perfil' id='perfil'>";
 }?>
 
-<?php  $this->renderPartial('../menu/_menuInstitucion'); ?>
-<br>
-<br>
-<br>
+<style type="text/css">
+    body {
+        background: url(../img/38.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        opacity: .9;
+    }
+</style>
 
-<div class="container marketing">
-    <div class="modal" tabindex="-1" role="dialog" id="alumno" aria-labelledby="myModalLabel">
-        <!-- Three columns of text below the carousel -->
-        <div class="modal-dialog modal-lg" style="margin-top:100px;">
+
+<div class="modal fade" tabindex="-1"  id="alumno" aria-labelledby="myModalLabel">
+    <?php if($Us->id_perfil == 1){ $this->renderPartial('../menu/_menu'); } ?>
+    <br>
+    <br>
+    <br>
+    <div class="container marketing">
+        <div class="modal-dialog modal-lg" style="margin-top:180px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
@@ -39,10 +49,16 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div class="modal" tabindex="-1" role="dialog" id="profesor" aria-labelledby="myModalLabel">
-        <!-- Three columns of text below the carousel -->
-        <div class="modal-dialog modal-lg" style="margin-top:115px;" >
+
+<div class="modal" tabindex="-1" role="dialog" id="profesor" aria-labelledby="myModalLabel">
+    <?php if($Us->id_perfil == 2){ $this->renderPartial('../menu/_menu'); } ?>
+    <br>
+    <br>
+    <br>
+    <div class="container marketing">
+        <div class="modal-dialog modal-lg" style="margin-top:0px;" >
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">
