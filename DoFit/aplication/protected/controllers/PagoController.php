@@ -96,7 +96,7 @@ class PagoController extends Controller
 
     public function actionEliminar(){
         IF(isset($_POST['usuario']) && isset($_POST['anio']) && isset($_POST['mes']) && isset($_POST['id'])){
-            $pagos = Pago::model()->findByPk(array('id_actividad'=>126,'id_usuario' => $_POST['usuario'], 'anio' => $_POST['anio'], 'mes' => $_POST['mes']));
+            $pagos = Pago::model()->findByPk(array('id_actividad'=>$_POST['id'],'id_usuario' => $_POST['usuario'], 'anio' => $_POST['anio'], 'mes' => $_POST['mes']));
             if($pagos->delete()){
                 echo "ok";
             }
@@ -238,7 +238,6 @@ class PagoController extends Controller
 
     public function actionSeleccionarMes()
     {
-
         $id_usuario = $_POST['FichaUsuario']['id_usuario'];
         $anio = $_POST['Pago']['anio'];
         $criteria = new CDbCriteria;
@@ -260,10 +259,12 @@ class PagoController extends Controller
     public function actionConsultarPagosAlumno()
     {
         $id_usuario = Yii::app()->user->id;
-        if(isset(Yii::app()->session['id_usuario'])){
+		if(isset(Yii::app()->session['id_usuario'])){
             $instituciones = Yii::app()->db->createCommand('select id_institucion,nombre from ficha_institucion WHERE id_institucion IN(SELECT id_institucion from actividad where id_actividad IN(SELECT id_actividad from actividad_alumno WHERE id_actividad IN (SELECT id_actividad FROM pago WHERE id_usuario = '.$id_usuario.' )))')->queryAll();
-            $this->render('Consultarpagosalumno',array('instituciones'=>$instituciones));
-        }
+            $anio = Yii::app()->db->createCommand('select distinct anio from pago where id_usuario ='. $id_usuario)->queryAll();
+			$meses = Yii::app()->db->createCommand('select distinct mes from pago where id_usuario ='. $id_usuario)->queryAll();
+			$this->render('Consultarpagosalumno',array('instituciones'=>$instituciones,'anio'=>$anio,'meses'=>$meses));            					
+        }	
     }
 
     public function actionMostrarPagosAlumno()
@@ -276,7 +277,7 @@ class PagoController extends Controller
         $cant_pago = 0;
         // Busco todas las actividades que tenga esa institucion donde esta inscripto el alumno
         $actividad_alumno = Yii::app()->db->createCommand('SELECT * FROM actividad_alumno WHERE id_usuario = '.$id_usuario .' AND id_actividad IN(SELECT id_actividad FROM actividad where id_institucion = '.$id_institucion.')')->queryAll();
-        foreach($actividad_alumno as $act_alum){
+		foreach($actividad_alumno as $act_alum){
             $pago = Pago::model()->findByAttributes(array('id_actividad'=>$act_alum['id_actividad'],'mes'=>$mes,'anio'=>$anio,'id_usuario'=>$id_usuario));
             if($pago != null){
                 $cant_pago++;

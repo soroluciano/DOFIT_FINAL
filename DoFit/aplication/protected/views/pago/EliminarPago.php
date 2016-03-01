@@ -11,7 +11,6 @@
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php  $this->renderPartial('../menu/_menuInstitucion');?>
     <br>
     <br>
     <br>
@@ -94,7 +93,7 @@
                                         ¡Has eliminado el pago!
                                     </div>
                                     <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                                        <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -239,4 +238,8 @@
             }
         }
     }
+	
+	function Recargar(){
+	  location.reload();
+	}  
 </script>

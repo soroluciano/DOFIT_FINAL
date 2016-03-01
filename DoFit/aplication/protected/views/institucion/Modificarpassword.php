@@ -180,7 +180,6 @@ echo "<div class='modal fade'  id='mensajepassok' tabindex='-1' role='dialog' ar
 				data : data,
 				cache: false,
 				success: function (response) {
-					debugger;
 					if(response == "actualizado"){
 						$("#mensajepassok").modal('show');
 					}
@@ -209,7 +208,6 @@ echo "<div class='modal fade'  id='mensajepassok' tabindex='-1' role='dialog' ar
 	{
 		var data = {'pass':pass};
 		var errorpasstxt = "";
-		alert(errorpasstxt);
 		$.ajax({
 			url :  baseurl + '/institucion/Modificarpassword2',
 			type: "POST",
@@ -225,7 +223,6 @@ echo "<div class='modal fade'  id='mensajepassok' tabindex='-1' role='dialog' ar
 				console.log(e);
 			}
 		});
-		alert(errorpasstxt);
 		return errorpasstxt;
 	}
 </script>
