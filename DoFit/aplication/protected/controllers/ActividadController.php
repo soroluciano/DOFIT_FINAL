@@ -286,7 +286,7 @@ class ActividadController extends Controller
                         $locations = $locations . '["<center><b>' . $gim->nombre . '</center></b><br>' .
                             ' <b>►Dirección: </b>' . $gim->direccion . '<br>' .
                             ' <b>►Teléfono: </b>' . $gim->telfijo . '<br>' .
-                            '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>▲Actividades: </b><br><br>';
+                            '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>►Actividades: </b><br><br>';
 
                         $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion . " and actividad.id_usuario not in (". $id_usuario . ")and actividad.id_actividad not in (select id_actividad from actividad_alumno where id_usuario = ". $id_usuario .")";
                         $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
