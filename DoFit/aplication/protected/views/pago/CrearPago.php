@@ -25,7 +25,6 @@ $this->pageTitle=Yii::app()->name;
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php $this->renderPartial('../menu/_menuInstitucion');?>
     <br>
     <br>
     <br>
@@ -139,7 +138,7 @@ $this->pageTitle=Yii::app()->name;
                                         ¡Has generado el pago!
                                     </div>
                                     <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                                        <button type='button' class='btn btn-primary' onClick="Recargar();">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -336,3 +335,9 @@ $this->pageTitle=Yii::app()->name;
         }
     </script>
     
+<script type="text/javascript">
+  function Recargar()
+  {
+    location.reload();
+  }
+</script>  

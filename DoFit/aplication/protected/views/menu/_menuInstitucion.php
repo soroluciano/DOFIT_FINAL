@@ -114,7 +114,7 @@
         box-sizing: border-box;
         position: relative;
         right: -220px;
-        background: rgba(100, 100, 100, 0.7);
+        background: #080500;
         margin-bottom: 5px;
         -moz-border-radius: 2px;
         -webkit-border-radius: 2px;
@@ -140,7 +140,7 @@
         transition: all 0.6s ease;
     }
     .menu span:hover {
-        font-size: 1.5em;
+        font-size: 18px;
         background: #646464;
         color:white;
         cursor: pointer;
@@ -199,7 +199,7 @@
 				<a href="../institucion/SolicitudesPendientes"><span>Solicitudes pendientes</span></a>
 				<a href="../institucion/ModificardatosInstitucion"><span>Mis datos</span></a>
 				<a href="../institucion/Modificarpassword"><span>Modificar Contrase&ntilde;a</span></a>
-                <span><?php echo CHtml::link('Salir', array('site/LoginInstitucion')); ?></span>
+                <span><?php echo CHtml::link('Salir', array('site/logout')); ?></span>
             </div>
             <div class="logo">
                 <a href="../site/login"><img class="navbar-brand-img" src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo_blanco.png" alt="First slide"></a>

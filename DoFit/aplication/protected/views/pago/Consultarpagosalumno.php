@@ -48,27 +48,22 @@
                             <h5><b>A&ntilde;o</b></h5>
                             <select id='anio' class="form-control" onchange="javascript:MostrarPagosAlumno();">
                                 <option value='empty'>Seleccione un a&ntilde;o</option>
-                                <option value='2013'>2013</option>
-                                <option value='2014'>2014</option>
-                                <option value='2015'>2015</option>
-                                <option value='2016'>2016</option>
-                                <option value='2017'>2017</option>
-                            </select>
+                                <?php 
+                                foreach($anio as $an){
+                                    echo "<option value=".$an['anio']." name=".$an['anio'].">".$an['anio']."</option>";
+								}
+                               	?>	
+                            </select>								
                             <h5><b>Mes</b></h5>
                             <select id='mes' class="form-control" onchange="javascript:MostrarPagosAlumno();">
                                 <option value='empty'>Seleccione un mes</option>
-                                <option value='1'>Enero</option>
-                                <option value='2'>Febrero</option>
-                                <option value='3'>Marzo</option>
-                                <option value='4'>Abril</option>
-                                <option value='5'>Mayo</option>
-                                <option value='6'>Junio</option>
-                                <option value='7'>Julio</option>
-                                <option value='8'>Agosto</option>
-                                <option value='9'>Septiembre</option>
-                                <option value='10'>Octubre</option>
-                                <option value='11'>Noviembre</option>
-                                <option value='12'>Diciembre</option>
+                                <?php 
+								$arrmeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+								foreach($meses as $me){
+								    $mes = $me['mes']-1;
+								    echo "<option value=".$me['mes']." name=".$me['mes'].">".$arrmeses[$mes]."</option>";
+                                }
+                                ?>																   
                             </select>
                             <br/>
                             <div id="mostrarpagos"></div>
@@ -84,7 +79,6 @@
         }
         if($instituciones == NULL)
         {
-            echo "holaaa";
             ?>
             <div class='modal fade' id='inserror' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
                 <div class='modal-dialog' role='document'>
