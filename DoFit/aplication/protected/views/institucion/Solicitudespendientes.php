@@ -9,7 +9,7 @@
 <body>
 <style>
     body {
-        background: url(../img/25.jpg) no-repeat center center fixed;
+        background: url(../img/40.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

@@ -53,7 +53,7 @@ if(isset(Yii::app()->session['id_institucion'])){
                         </div>
                         <div class="col-lg-4">
                             <img class="img-circle" src="<?php echo Yii::app()->request->baseUrl; ?>/img/1.jpg" alt="Generic placeholder image" width="140" height="140">
-                            <h2><a href="../institucion/ListadoDeAlumnosxInstitucion" class="btn btn-primary">Tus alumnos</a></h2>
+                            <h2><a href="../institucion/ListadoAlumnosxInstitucion" class="btn btn-primary">Tus alumnos</a></h2>
                             <p>Consultá los alumnos asociados a tu gimnasio</a></p>
                         </div>
                         <div class="col-lg-4">
