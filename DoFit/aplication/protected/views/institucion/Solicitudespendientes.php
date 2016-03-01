@@ -35,8 +35,7 @@ $this->renderPartial('../menu/_menuInstitucion');
 	        <div class="modal-body">   
 	<?php
     if($profesor_pen != null){
-        $valaceprof = 0;
-		echo    "<table id='profegim' class='display' cellspacing='0' width='100%'>
+        echo    "<table id='profegim' class='display' cellspacing='0' width='100%'>
                         <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -68,10 +67,6 @@ $this->renderPartial('../menu/_menuInstitucion');
         }
         echo "</tbody>";
         echo "</table>";
-		echo $valaceprof;
-		if($valaceprof == 1){
-		    echo "$('#acepprof').modal('show')";
-		}	
     }
     else
     {
@@ -168,23 +163,7 @@ $this->renderPartial('../menu/_menuInstitucion');
     }
     ?>
 </body>
-</html>
-    <div class='modal fade' id='acepprof' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-                <div class='modal-dialog' role='document'>
-                    <div class='modal-content'>
-                        <div class='modal-header'>
-                            <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="location.href='../site/index'";><span aria-hidden='true'>&times;</span></button>
-                            <h4 class='modal-title' id='myModalLabel'></h4>
-                        </div>
-                        <div class='modal-body'>
-                            Se acepto al profesor correctamente.
-                        </div>
-                        <div class='modal-footer'>
-                            <button type='button' class='btn btn-primary' data-dismiss='modal' onclick="location.href='../site/index'";>Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-    </div>    
+</html>    
     <script type="text/javascript">
         $(document).ready(function() {
             $('#profegim').DataTable( {
