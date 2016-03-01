@@ -6,13 +6,14 @@
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
+        opacity: .9;
 	}
 
 </style>
 <body>
 <div class="modal fade" id="myModal">
 	<?php  $this->renderPartial('../menu/_menuInstitucion');?>
-	<div class="modal-dialog" style="margin-top:90px;">
+	<div class="modal-dialog" style="margin-top:190px;">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" aria-label="Close"><span aria-hidden="true"><a href="../site/login">&times;</a></span></button>
@@ -23,15 +24,15 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<div> Contrase&ntilde;a actual </div>
+								<div><b>Contrase&ntilde;a actual</b></div>
 								<input type="password" id="pass" name="pass" class="form-control" placeholder="Contraseña"></input>
 								<label class="error_pw" for="inputError" id="mensajeerror"></label>
 								<br/>
-								<div>Nueva Contrase&ntilde;a</div>
+								<div><b>Nueva Contrase&ntilde;a</b></div>
 								<input type="password" id="recpass1" name="recpass1" class="form-control" placeholder="Nueva Contraseña"></input>
 								<label class="error_pw" for="inputError" id="mensajeerror1"></label>
 								<br/>
-								<div>Confirmar nueva contrase&ntilde;a</div>
+								<div><b>Confirmar nueva contrase&ntilde;a</b></div>
 								<input type="password" id="recpass2" name="recpass2" class="form-control" placeholder="Confirmar nueva contraseña"></input>
 								<label class="error_pw" for="inputError" id="mensajeerror2"></label>
 								<br/>
