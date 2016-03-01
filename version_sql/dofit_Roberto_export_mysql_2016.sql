@@ -461,6 +461,7 @@ CREATE TABLE IF NOT EXISTS `perfil_muro_profesor` (
 `id_posteo` int(11) NOT NULL,
   `posteo` varchar(2000) NOT NULL,
   `id_actividad` int(11) NOT NULL,
+  `id_canal` int(11) NOT NULL,
   `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `fhultmod` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `cusuario` varchar(60) NOT NULL
