@@ -25,7 +25,7 @@
     <br>
     <br>
     <div class="container marketing">
-        <div class="modal-dialog modal-lg" style="margin-top:180px;">
+        <div class="modal-dialog modal-lg" style="margin-top:150px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row">

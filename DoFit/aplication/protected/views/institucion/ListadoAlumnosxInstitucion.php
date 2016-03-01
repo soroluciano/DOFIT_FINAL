@@ -216,16 +216,16 @@ $this->renderPartial('../menu/_menuInstitucion');
             if($cont_act_alum == 0){
                 echo"<div class='modal fade' tabindex='-1' role='dialog' id='sinalumnos' aria-labelledby='myModalLabel'>
                 <div class='modal-dialog'>
-                    <div class='modal-content'> 
+                    <div class='modal-content' style='margin-top:300px;'>
 						<div class='modal-header'> 
 						    <button type='button' class='close' data-dismiss='modal' aria-label='Close'></button>
-                            <h4 class='modal-title' id='myModalLabel'>¡Atención!</h4>
+                            <h4 class='modal-title' id='myModalLabel'><b>¡Atención!</b></h4>
                         </div>
 					        <div class='container'>
-                                <div class='col-md-8'> 
+                                <div class='col-md-8'>
                                     <br/>
 									<div class='form-group'>
-                                       <b>No hay alumnos inscriptos a $fichains->nombre</b>
+                                       No hay alumnos inscriptos a $fichains->nombre
                                     </div>
                                 </div>
                             </div>
