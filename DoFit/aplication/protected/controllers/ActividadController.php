@@ -278,7 +278,7 @@ class ActividadController extends Controller
                 if ($gim->acepta_mp == 'N') {
                     $gim->acepta_mp = 'No';
                 }
-                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ')  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . ')) > 0 ')->queryAll();
+                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ' and id_usuario not in ('.$id_usuario.'))  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . 'and id_usuario not in ('.$id_usuario.'))) > 0 ')->queryAll();
                 $flag = 0;
                 if ($list) {
                     $flag = 1;
