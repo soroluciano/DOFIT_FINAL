@@ -453,7 +453,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 
 <script type="text/javascript">
     function Mostraractividades(idusuario){
-        $('#titulosacti').empty();
+        $("#daterracti").empty();
+		$('#titulosacti').empty();
         $('#datosacti').empty();
         var idusuario = idusuario;
         var data = {"idusuario":idusuario};
