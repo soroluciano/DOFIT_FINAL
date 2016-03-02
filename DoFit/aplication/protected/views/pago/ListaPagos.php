@@ -24,7 +24,7 @@ $this->pageTitle=Yii::app()->name;
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+
     <br>
     <br>
     <br>
@@ -148,7 +148,7 @@ $this->pageTitle=Yii::app()->name;
             success: function(response) {
                 debugger;
                 if(response == "ok"){
-                    $('#Principal').modal({
+                    $('#principal').modal({
                         backdrop: 'static',
                         keyboard: false
                     });
