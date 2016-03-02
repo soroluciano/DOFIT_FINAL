@@ -301,7 +301,7 @@ class PagoController extends Controller
                     }
                     echo "</td>";
                     echo "<td id='importe'>$ ".$pago->monto."</td>";
-                    echo "<td><input type='button' id='factura' class='btn btn-primary' value='Ver Factura'></input>"; 
+                    echo "<td><input type='button' id='factura' class='btn btn-primary' value='Ver Factura' onclick='ver_factura($act->id_actividad, $id_usuario, $pago->mes, $pago->anio);'></input>"; 
                     echo "</tr>";
                 }
             }

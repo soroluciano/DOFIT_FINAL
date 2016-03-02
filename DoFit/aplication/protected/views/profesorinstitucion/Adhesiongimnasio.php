@@ -12,6 +12,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+		opacity : 0.96;
     }
 
     /*

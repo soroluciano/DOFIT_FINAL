@@ -14,7 +14,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
-        opacity: 0.9;
+        opacity: 0.95;
     }
 </style>	
 <?php 
@@ -385,5 +385,4 @@ function Cancelaralumno(idalumno, idactividad)
    location.reload();	 
  }
 </script> 
-
 

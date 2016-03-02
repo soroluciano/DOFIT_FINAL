@@ -12,6 +12,7 @@
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
+		opacity: 0.96;
     }
 </style>
 <?php if(isset(Yii::app()->session['id_usuario'])){?>
@@ -168,4 +169,21 @@
 
         }
     }
+	
+	function ver_factura(idactividad, idusuario, mes, anio) {
+        var id = idactividad;
+        var usuario = idusuario;
+        var anio = anio;
+        var mes = mes;
+        if (id != "") {
+            if(usuario != ""){
+                if(anio != ""){
+                    if(mes != "") {
+                        window.open("../pago/factura?idusuario="+usuario+"&idactividad="+id+"&anio="+anio+"&mes="+mes,'','width=1000, height=1000');
+                    }
+                }
+            }
+        }
+    }
+	
 </script>
