@@ -905,3 +905,168 @@ ADD CONSTRAINT `usuario_perfil_fk` FOREIGN KEY (`id_perfil`) REFERENCES `perfil`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-02-2016 a las 22:56:58
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.6.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `dofit`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `canal`
+--
+
+CREATE TABLE IF NOT EXISTS `canal` (
+ `id_canal` int(11) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `id_actividad` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `canal`
+--
+
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `canal`
+--
+ALTER TABLE `canal`
+ ADD PRIMARY KEY (`id_canal`), ADD UNIQUE KEY `id_actividad` (`id_actividad`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `canal`
+--
+ALTER TABLE `canal`
+MODIFY `id_canal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `canal`
+--
+ALTER TABLE `canal`
+ADD CONSTRAINT `canal_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.4.3
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 01-03-2016 a las 01:32:00
+-- Versión del servidor: 5.6.24
+-- Versión de PHP: 5.5.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `dofit`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE IF NOT EXISTS `imagen` (
+  `id_imagen` int(11) NOT NULL,
+  `nombre` varchar(100) DEFAULT NULL,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fhultmod` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `cusuario` varchar(60) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id_imagen`, `nombre`, `id_usuario`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+(11, 'eeeee.png', 5, '2016-01-27 15:00:58', '0000-00-00 00:00:00', 'pepe'),
+(12, 'image003.png', 5, '2016-01-27 15:07:38', '0000-00-00 00:00:00', 'pepe'),
+(13, 'image003.png', 5, '2016-01-27 15:09:28', '0000-00-00 00:00:00', 'pepe'),
+(14, 'image003.png', 5, '2016-01-27 15:11:36', '0000-00-00 00:00:00', 'pepe'),
+(15, 'eeeee.png', 5, '2016-01-27 15:13:59', '0000-00-00 00:00:00', 'pepe'),
+(16, 'eeeee.png', 5, '2016-01-27 15:22:57', '0000-00-00 00:00:00', 'pepe'),
+(17, 'eeeee.png', 5, '2016-01-27 15:23:10', '0000-00-00 00:00:00', 'pepe'),
+(18, 'eeeee.png', 5, '2016-01-27 15:26:56', '0000-00-00 00:00:00', 'pepe'),
+(19, 'eeeee.png', 5, '2016-01-28 20:41:55', '0000-00-00 00:00:00', 'pepe'),
+(20, 'c4e2b989-ba22-411c-9573-140fe5908cac.jpg', 3, '2016-02-23 00:22:39', '0000-00-00 00:00:00', 'pepe'),
+(21, 'sddefault.jpg', 3, '2016-02-23 00:42:11', '0000-00-00 00:00:00', 'pepe');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD PRIMARY KEY (`id_imagen`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

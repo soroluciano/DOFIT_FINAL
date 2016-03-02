@@ -24,7 +24,7 @@ $this->pageTitle=Yii::app()->name;
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+
     <br>
     <br>
     <br>
@@ -63,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
                         <div class="form-group">
                             <?php
                             $criteria = new CDbCriteria;
-                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ))';
+                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ) and id_usuario in (select id_usuario from pago where pago.id_actividad = id_actividad))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
                             <p><b>Alumno</b></p>
@@ -148,7 +148,7 @@ $this->pageTitle=Yii::app()->name;
             success: function(response) {
                 debugger;
                 if(response == "ok"){
-                    $('#Principal').modal({
+                    $('#principal').modal({
                         backdrop: 'static',
                         keyboard: false
                     });
@@ -184,7 +184,7 @@ $this->pageTitle=Yii::app()->name;
                         dataType: "json",
                         cache: false,
                         success: function (response) {
-                            var html = "<table class='table table-bordered'><thead><tr><th>Actividad</th><th>Año</th><th>Mes</th><th>Monto</th></thead><tbody>";
+                            var html = "<table class='table table-bordered'><thead><tr><th><b>Actividad</b></th><th><b>Año</b></th><th><b>Mes</b></th><th><b>Monto</b></th></thead><tbody>";
                             for (i = 0; i < response.length; i++) {
                                 html += "<tr><td>" + response[i].actividad + "</td><td>" + response[i].anio + "</td><td>" + response[i].mes + "</td><td>" + response[i].monto + "</td><td><button  onclick='ver_factura(this.value);' class='btn btn-primary' id='boton' value='" + response[i].id + "'>Ver factura </button></td><tr>";
                             }

@@ -1,8 +1,5 @@
 <style type="text/css">
 
-
-
-
     ol, ul {
         list-style: none;
     }
@@ -118,7 +115,7 @@
         box-sizing: border-box;
         position: relative;
         right: -220px;
-        background: rgba(100, 100, 100, 0.7);
+        background: #080500;
         margin-bottom: 5px;
         -moz-border-radius: 2px;
         -webkit-border-radius: 2px;
@@ -144,7 +141,7 @@
         transition: all 0.6s ease;
     }
     .menu span:hover {
-        font-size: 1.5em;
+        font-size: 18px;
         background: #646464;
         color:white;
         cursor: pointer;

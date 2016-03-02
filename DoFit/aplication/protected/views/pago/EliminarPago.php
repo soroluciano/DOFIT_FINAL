@@ -11,7 +11,6 @@
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php  $this->renderPartial('../menu/_menuInstitucion');?>
     <br>
     <br>
     <br>
@@ -50,7 +49,7 @@
                         <div class="form-group">
                             <?php
                             $criteria = new CDbCriteria;
-                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ))';
+                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ) and id_usuario in (select id_usuario from pago where pago.id_actividad = id_actividad))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
                             <p><b>Alumno</b></p>
@@ -94,7 +93,7 @@
                                         ¡Has eliminado el pago!
                                     </div>
                                     <div class='modal-footer'>
-                                        <button type='button' class='btn btn-primary' data-dismiss='modal'>Cerrar</button>
+                                        <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +173,7 @@
                         dataType: "json",
                         cache: false,
                         success: function (response) {
-                            var html = "<table class='table table-bordered'><thead><tr><th>Actividad</th><th>Año</th><th>Mes</th><th>Monto</th></thead><tbody>";
+                            var html = "<table class='table table-bordered'><thead><tr><th><b>Actividad</b></th><th><b>Año</b></th><th><b>Mes</b></th><th><b>Monto</b></th></thead><tbody>";
                             for (i = 0; i < response.length; i++) {
                                 html += "<tr><td>" + response[i].actividad + "</td><td>" + response[i].anio + "</td><td>" + response[i].mes + "</td><td>" + response[i].monto + "</td><td><button type='button'  onclick='eliminar_pago(this.value);' class='btn btn-primary' id='boton' value='" + response[i].id + "'>Eliminar </button></td><td><button  onclick='ver_factura(this.value);' class='btn btn-primary' id='boton' value='" + response[i].id + "'>Ver factura </button></td><tr>";
                             }
@@ -239,4 +238,7 @@
             }
         }
     }
+	function Recargar(){
+	  location.reload();
+	}  
 </script>

@@ -31,7 +31,7 @@ var DEFAULT_SETTINGS = {
     animateDropdown: true,
 
 	// Tokenization settings
-    tokenLimit: null,
+    tokenLimit: 2,
     tokenDelimiter: ",",
     preventDuplicates: false,
 
