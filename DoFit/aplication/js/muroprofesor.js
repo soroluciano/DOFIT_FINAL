@@ -73,12 +73,16 @@
            window.$isNewMsg.value='true';
            //alert( "Data Saved: " + response );
            getComentsByPost(_a);
+           cleanResp(_a);
       },
       error: function(e){
         $('#logger').html(e.responseText);
       }
     });
 
+    }
+    function cleanResp(_a) {
+        $("#txt_post_"+_a).val("");
     }
   
   function getCanalSeleccionado(idActividad) {

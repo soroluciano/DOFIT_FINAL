@@ -488,3 +488,8 @@ p.detalle{
     color: #333;  
     width:auto;
 }
+
+.siz{
+    padding-bottom:5px;
+    margin-bottom:5px; 
+}
