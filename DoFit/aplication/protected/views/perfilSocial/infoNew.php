@@ -151,8 +151,9 @@
 			  <div id="save-button"><input type='button' class="btn btn-success" value='guardar' onclick='validateData();' /></div>
 			  
 			  </form>
+			  	<div id="back-button"><a href='../red/index' class='btn btn-primary'>Volver</a></div>
 			</div>
-			<div id="back-button"><a href='../red/index' class='btn btn-primary'>Volver</a></div>
+		
 			
     </div>
 			

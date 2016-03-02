@@ -154,7 +154,21 @@ function getActividades($id){
 					</form>
 					
 		</div><!-- Status Upload  -->
-				<div class='propaganda-muro-profesor'>Publicite aqui</div>
+				<div class='propaganda-muro-profesor'>			
+					<!--<script language="Javascript" type="text/javascript" src="http://widgets.elpais.com/liga/wlaunch.html?c=azul&w=400&h=555"></script>-->
+	<!--<iframe scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:300px; height:340px;" src="http://www.vavel.com/widgets/widgetcolumnistas3"> </iframe>-->
+				
+				<object  width='400' height='500' id='flashWorldLeagues' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'>
+				<param name='movie' value='http://www.fifa.com/flash/widgets/worldmatchcentre/app.swf?leagueCode=arg&lang=s'/>
+				<param name='bgcolor' value='#ffffff'/>
+				<param name='quality' value='high'/>
+				<param name='wmode' value='transparent'/>
+				<param name='flashvars' value='lang=s&leagueCode=arg'>
+				<embed width='400' height='500' flashvars='lang=s&amp;leagueCode=arg' wmode='transparent' quality='high' bgcolor='#ffffff' name='flashWorldLeagues' id='flashWorldLeagues' src=http://www.fifa.com/flash/widgets/worldmatchcentre/app.swf?leagueCode=arg&lang=s type='application/x-shockwave-flash'/>
+				</object>
+
+
+				</div>
 			</div><!-- Widget Area -->
 
 		</div><!--fin contenedor espaciado -->

@@ -245,9 +245,18 @@ class PerfilSocialController extends Controller
           $dir = $fichaService->direccion($_POST['direccion']);
          
         }
-   
-        $pis = $fichaService->piso($_POST['piso']);
-        $dep = $fichaService->depto($_POST['depto']);
+		if(($_POST['piso']==null) || ($_POST['piso']=="")){
+			$pis = $fichaService->piso("");
+		}else{
+			 $pis = $fichaService->piso($_POST['piso']);
+		}
+		if(($_POST['depto']==null) || ($_POST['depto']==null)){
+			 $dep = $fichaService->depto("");
+		}else{
+			$dep = $fichaService->depto($_POST['depto']);
+		}
+       
+       
         
         $array="";
         $saved="";

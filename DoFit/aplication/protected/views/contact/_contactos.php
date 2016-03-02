@@ -11,11 +11,11 @@
 										$usuario = Usuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$cn['id_usuario']));  
 										$ficha = FichaUsuario::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$cn['id_usuario']));
 											
-											echo "<div id='left'>";
+											echo "<br><div id='left'>";
 												 echo "<div id='foto' class='col-xs-4 col-sm-3'>";
 													  //$imagen = Imagen::model()->find('id_usuario=id_usuario',array(':id_usuario'=>$cn['id_usuario']));
 													  $perfil = PerfilSocial::model()->find('id_usuario=:id_usuario',array(':id_usuario'=>$cn['id_usuario']));
-													  if($perfil->fotoperfil!=null){
+													  if(($perfil->fotoperfil != null) && ($perfil->fotoperfil != "profile_defect_picture.png")){
 															  echo "<img src='".Yii::app()->request->baseUrl."/uploads/".$perfil->fotoperfil."' onclick='getProfileFriend(".$cn['id_usuario'].")' class='img-circle' style='cursor:pointer' />";
 													  }else{
 															  echo "<img src='".Yii::app()->request->baseUrl."/images/profile_defect_picture.png' class='img-circle' style='cursor:pointer' />";

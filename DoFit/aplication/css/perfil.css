@@ -2,7 +2,11 @@
 /*estructura*/
 
 body {
-    background: #C2CAD6 !important;
+   background: url(../img/run.jpeg) no-repeat center center fixed !important;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #respuesta_ajax{

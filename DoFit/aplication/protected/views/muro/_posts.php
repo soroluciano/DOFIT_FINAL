@@ -26,10 +26,14 @@
 				  <span>".getActividadDescription($row['id_actividad'])."</span>
 				</div>
             <div class='post-heading'>
-
-		      <div class='pull-left image'>
-              <img src='".Yii::app()->request->baseUrl."/uploads/".$row['fotoPerfil']."' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>
-              </div>
+		      <div class='pull-left image'>";
+			  if(($row['fotoPerfil'] == null) || ($row['fotoPerfil'] == 'profile_defect_picture.png')){
+				echo "<img src='".Yii::app()->request->baseUrl."/images/profile_defect_picture.png' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>";
+			  }
+			  else{
+				echo "<img src='".Yii::app()->request->baseUrl."/uploads/".$row['fotoPerfil']."' class='img-thumbnail avatar' width='120px' height='120px' alt='user profile image'>";	
+			  }    
+		echo "</div>
               <div class='pull-left meta'>
                 <div class='title h5'>
                   <a href=''><b>".$row['nombre']." ".$row['apellido']."</b></a>
@@ -46,8 +50,6 @@
             <li><a href='javascript:indicateIdPost(".$row['id_posteo'].")' >Eliminar</a></li>
             </ul>
           </div>";
-		  
-		  
         }
 			 echo "
        </div>

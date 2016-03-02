@@ -15,9 +15,15 @@
 				
 			echo "
 			<li class='comment'>
-				<a class='pull-left' href='#'>
-				      <img src='".Yii::app()->request->baseUrl."/uploads/".$respuesta['fotoPerfil']."' class='avatar' alt='avatar'>
-				</a>
+				<a class='pull-left' href='#'>";
+					if(($respuesta['fotoPerfil']!=null)&&($respuesta['fotoPerfil']!="profile_defect_picture.png")){
+						echo "<img src='".Yii::app()->request->baseUrl."/uploads/".$respuesta['fotoPerfil']."' class='avatar' alt='avatar'>";
+				   }else{
+						echo "<img src='".Yii::app()->request->baseUrl."/images/profile_defect_picture.png' "."class='avatar' alt='avatar'>";
+				  }	
+				     
+					  
+			echo"</a>
 				<div class='comment-body'>
 					<div class='comment-heading'>
 						<h4 class='user'>".$respuesta['nombre']." ".$respuesta['apellido']."</h4>

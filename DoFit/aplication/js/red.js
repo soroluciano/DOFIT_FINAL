@@ -136,11 +136,11 @@
                 contentType: false,
                 processData: false,
                 beforeSend: function(){
-                    message = $("<span class='before'>Subiendo la imagen, por favor espere...</span>");
+                    message = "Subiendo la imagen, por favor espere...";
                     alert(message)        
                 },
                 success: function(data){
-                    message = $("<span class='success'>La imagen ha subido correctamente.</span>");
+                    message = "La imagen ha subido correctamente";
                     alert(message);
               
                     if(isImage(fileExtension))

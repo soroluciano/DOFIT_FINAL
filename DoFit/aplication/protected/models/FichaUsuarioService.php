@@ -105,18 +105,34 @@ class FichaUsuarioService
     public function piso($val){
         if($val==""){
             return "ok";    
+        }else{
+            if(($this->sincaracteres($val))==1){
+                    return "ok";
+                if(($this->minmax($val))==1){
+                    return "ok";
+                }else{
+                   return $this->minmax($val);
+                }
+            }else{
+                return $this->sincaracteres($val);
+            }
         }
-            
-        
     }
+       
+    
     public function depto($val){
         if($val==""){
             return "ok";    
         }else{
-            if(($this->istext($val))==1){
+            if(($this->sincaracteres($val))==1){
                     return "ok";
+                if(($this->minmax($val))==1){
+                    return "ok";
+                }else{
+                   return $this->minmax($val);
+                }
             }else{
-                return $this->istext($val);
+                return $this->sincaracteres($val);
             }
         }
     }

@@ -1,5 +1,7 @@
 body{
-    background-color:#e9e9e9;
+  /*  background-color:#e9e9e9;*/
+    font-family: 'Roboto', Helvetica, Arial, sans-serif !important;
+    color: #333;    
 }
 .well{
     width:100px;
@@ -347,7 +349,7 @@ div.newposts{
 #spacer{
   margin-bottom: 10px;
   width: 100%;
-  height: 15px;
+  height: 1px;
 }
 
 .modal.fade{
@@ -477,4 +479,12 @@ div.newposts{
      padding-right:3px;
      padding-top:5px;
      background-color: 
+}
+.glyphicon{
+ 
+}
+p.detalle{
+    font-family: 'Roboto', Helvetica, Arial, sans-serif !important;
+    color: #333;  
+    width:auto;
 }

@@ -71,7 +71,7 @@
       data: 'respuesta='+comment+'&id_posteo='+_a,
       success:function(response){
            window.$isNewMsg.value='true';
-           alert( "Data Saved: " + response );
+           //alert( "Data Saved: " + response );
            getComentsByPost(_a);
       },
       error: function(e){
@@ -141,8 +141,9 @@
         type: 'POST',
         data: 'mensaje='+$('#input_mensaje').val()+'&id_actividad='+$('#id_actividad_selected').val(),
         success:function(response){
-        alert( "Data Saved: " + response );
+        //alert( "Data Saved: " + response ); agregar reloj
         window.$isNewMsg.value='true';
+        cleanTextbox();
       },
       error: function(e){
         $('#logger').html(e.responseText);
@@ -234,13 +235,13 @@
   
   function updateComent(idposteo)
   {
-    alert($("#post-description-"+idposteo+" .edit-details-textarea").val());
+    //alert($("#post-description-"+idposteo+" .edit-details-textarea").val());
     $.ajax({
       url:  baseurl+'/muro/updateComentarioProfesor',
       type: 'POST',
       data: 'mensaje='+$("#post-description-"+idposteo+" .edit-details-textarea").val()+'&id_posteo='+idposteo,
       success:function(response){
-      alert( "Data Saved: " + response );
+      //alert( "Data Saved: " + response );
       pushearMensaje();
       window.$isNewMsg.value='true';
     },
@@ -265,7 +266,7 @@
         type: 'POST',
         data: 'id_posteo='+$idposteo,
         success:function(response){
-          alert( "Data deleted: " + response );
+          //alert( "Data deleted: " + response );
           window.$isNewMsg.value='true';
           pushearMensaje('deleted');
         },
@@ -388,8 +389,7 @@
   function resetAlertas(){
     window.$alertas.value=0;
     $("#notificacion").html("");
-    hideAlert();
-    
+    hideAlert(); 
   }
   
   function showAlert(){
@@ -397,6 +397,9 @@
   }
   function hideAlert(){
     $("#notificacion").hide();
+  }
+  function cleanTextbox() {
+    $("textarea").val("");
   }
 
 

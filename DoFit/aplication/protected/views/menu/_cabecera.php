@@ -1,5 +1,5 @@
 <div class="cabecera-perfil" style="margin-top:40px; font-size: large;">
-		<?php if($perfil->fotoperfil){ ?>
+		<?php if(($perfil->fotoperfil != null) && ($perfil->fotoperfil != "profile_defect_picture.png")){ ?>
 				<div class="profile_img">
 				<img src="<?php echo Yii::app()->request->baseUrl;echo "/uploads/".$perfil->fotoperfil; ?>" alt="Generic placeholder image" class="img-circle img-profile">
 				</div>

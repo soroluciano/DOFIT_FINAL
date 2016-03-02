@@ -25,6 +25,7 @@ function getStringIds(){
       type: 'POST',
       data: 'busqueda='+getStringIds(),
       success:function(response){
+        $('#respuesta_ajax').empty();
          $('#respuesta_ajax').html(response);          
       },
       error: function(e){

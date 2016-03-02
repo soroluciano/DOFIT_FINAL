@@ -65,12 +65,23 @@ $cs->registerScriptFile("http://js.pusherapp.com/1.9/pusher.min.js");
 			</div>
 		
     
-	<div id="respuesta_ajax"></div>
-	
-
+	<div id="respuesta_ajax">
+		<br><br><br><br>
+		<img src="<?php echo Yii::app()->request->baseUrl;echo "/images/perfilDummy.png"; ?>"/>
+	</div>
+		
 	</div>
 
-		<div class='propaganda-muro-3'>Publicite aqui</div>
+		<div class='propaganda-muro-3'>
+				<object  width='400' height='500' id='flashWorldLeagues' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'>
+				<param name='movie' value='http://www.fifa.com/flash/widgets/worldmatchcentre/app.swf?leagueCode=arg&lang=s'/>
+				<param name='bgcolor' value='#ffffff'/>
+				<param name='quality' value='high'/>
+				<param name='wmode' value='transparent'/>
+				<param name='flashvars' value='lang=s&leagueCode=arg'>
+				<embed width='400' height='500' flashvars='lang=s&amp;leagueCode=arg' wmode='transparent' quality='high' bgcolor='#ffffff' name='flashWorldLeagues' id='flashWorldLeagues' src=http://www.fifa.com/flash/widgets/worldmatchcentre/app.swf?leagueCode=arg&lang=s type='application/x-shockwave-flash'/>
+				</object>
+		</div>
 		
 <div id='friend-chat'></div>
 </div>

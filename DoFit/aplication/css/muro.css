@@ -1,6 +1,11 @@
 
 body{
-  background:#C2CAD6 !important;
+  /*background:#C2CAD6 !important;*/
+  background: url(../img/22.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 }
 

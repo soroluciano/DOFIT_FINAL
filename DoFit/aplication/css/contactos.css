@@ -1,3 +1,12 @@
+body{
+  background: url(../img/run2.jpg) no-repeat center center fixed !important;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 #content-contacts {
     width: 53%;
@@ -165,7 +174,7 @@ ul.c-controls li a:hover {
     width: 100% !important;
     margin-right: 90px !important;
     margin-top: 150px !important;
-    margin-left: 1px !important;
+    margin-left: 5px !important;
 }
 .contacto-filter {
     width: 100%;
