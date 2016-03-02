@@ -60,8 +60,8 @@ $this->renderPartial('../menu/_menuInstitucion');
                 echo "<td>$usuario->email</td>
                            <td>$p->telfijo</td>
                            <td>$p->celular</td>							 
-						   <td><a href='../institucion/aceptar/$p->id_usuario' class='btn btn-primary'>Aceptar</a></td>
-                           <td><a href='../institucion/cancelar/$p->id_usuario' class='btn btn-primary'>Cancelar</a></td>
+						   <td><input type='button' class='btn btn-primary' value='Aceptar' onclick='Aceptarprofesor($p->id_usuario);'></input></td>
+                           <td><input type='button' class='btn btn-primary' value='Cancelar' onclick='Cancelarprofesor($p->id_usuario);'></input></td>
                        </tr>";
             }
         }
@@ -137,8 +137,8 @@ $this->renderPartial('../menu/_menuInstitucion');
 					     <td>$t->telfijo</td>
 					     <td>$t->celular</td>
 					     <td>$var</td>
-                         <td><a href='../Institucion/AceptarAlumno?usu=$t->id_usuario&act=$a->id_actividad' class='btn btn-primary'>Aceptar</a></td>
-                         <td><a href='../Institucion/CancelarAlumno?usu=$t->id_usuario&act=$a->id_actividad' class='btn btn-primary'>Cancelar</a></td>
+                         <td><input type='button' class='btn btn-primary' value='Aceptar' onclick='Aceptaralumno($t->id_usuario,$a->id_actividad);'></input></td>
+                         <td><input type='button' class='btn btn-primary' value='Cancelar' onclick='Cancelaralumno($t->id_usuario,$a->id_actividad);'></input></td>
                       </tr>";
             }
         }
@@ -163,7 +163,7 @@ $this->renderPartial('../menu/_menuInstitucion');
     }
     ?>
 </body>
-</html>    
+</html>   
     <script type="text/javascript">
         $(document).ready(function() {
             $('#profegim').DataTable( {
@@ -226,3 +226,164 @@ $this->renderPartial('../menu/_menuInstitucion');
             } );
         } );
     </script>
+
+<!-- Modals !-->
+   <div class='modal fade' id='aceprof' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                    </div>
+                    <div class='modal-body'>
+                        <p id='profesor'></p> se adhiri&oacute; correctamente a <?php echo $fichains->nombre;?>.
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+   <div class='modal fade' id='canceprof' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                    </div>
+                    <div class='modal-body'>
+                        Se cancelo la solicitud de <p id='profesorcanc'></p> a <?php echo $fichains->nombre;?>.
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+   <div class='modal fade' id='acepalumn' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                    </div>
+                    <div class='modal-body'>
+                        <p id='alumno'></p> se inscribio correctamente a la actividad.
+                    </div>
+                    <div class='modal-footer'>
+                        <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='modal fade' id='cancalumn' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+               <div class='modal-header'>
+                    <h4 class='modal-title' id='myModalLabel'>¡Atenci&oacute;n!</h4>
+                </div>
+                    <div class='modal-body'>
+                        Se cancelo la inscripción de <p id='alumnocanc'></p> a la actividad.
+                    </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-primary' onclick="Recargar();">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>   	
+	
+<script type="text/javascript">
+ function Aceptarprofesor(idprofesor)
+ {
+	var idprofesor = idprofesor;
+	var data = {'idprofesor':idprofesor};
+        $.ajax({
+            url: baseurl + '/institucion/Aceptar',
+            type: "POST",
+            data: data,
+            dataType: "html",
+            cache : false,
+            success : function(response){
+                respuesta = response.split("|");
+				if(respuesta[0] == "ok"){
+				   $("#profesor").css('display','inline');
+				   $("#profesor").append(respuesta[1]);
+				   $("#aceprof").modal('show');
+                }  
+            }
+        })
+ }
+ 
+ function Cancelarprofesor(idprofesor)
+ {
+	var idprofesor = idprofesor;
+	var data = {'idprofesor':idprofesor};
+        $.ajax({
+            url: baseurl + '/institucion/Cancelar',
+            type: "POST",
+            data: data,
+            dataType: "html",
+            cache : false,
+            success : function(response){
+                respuesta = response.split("|");
+				if(respuesta[0] == "ok"){
+				   $("#profesorcanc").css('display','inline');
+				   $("#profesorcanc").append(respuesta[1]);
+				   $("#canceprof").modal('show');
+                }  
+            }
+        })
+ }
+</script> 
+
+<script type="text/javascript">
+function Aceptaralumno(idalumno, idactividad)
+{
+    var idalumno = idalumno;
+    var idactividad = idactividad;
+    var data = {'idalumno':idalumno,'idactividad': idactividad};
+        $.ajax({
+            url: baseurl + '/institucion/AceptarAlumno',
+            type: "POST",
+            data: data,
+            dataType: "html",
+            cache : false,
+            success : function(response){
+                respuesta = response.split("|");
+				if(respuesta[0] == "ok"){
+				   $("#alumno").css('display','inline');
+				   $("#alumno").append(respuesta[1]);
+				   $("#acepalumn").modal('show');
+                }  
+            }
+        })
+}
+
+function Cancelaralumno(idalumno, idactividad)
+{
+    var idalumno = idalumno;
+    var idactividad = idactividad;
+    var data = {'idalumno':idalumno,'idactividad': idactividad};
+        $.ajax({
+            url: baseurl + '/institucion/CancelarAlumno',
+            type: "POST",
+            data: data,
+            dataType: "html",
+            cache : false,
+            success : function(response){
+                respuesta = response.split("|");
+				if(respuesta[0] == "ok"){
+				   $("#alumnocanc").css('display','inline');
+				   $("#alumnocanc").append(respuesta[1]);
+				   $("#cancalumn").modal('show');
+                }  
+            }
+        })
+}		
+</script>		
+<script type="text/javascript">
+ function Recargar(){ 
+   location.reload();	 
+ }
+</script> 
+
+

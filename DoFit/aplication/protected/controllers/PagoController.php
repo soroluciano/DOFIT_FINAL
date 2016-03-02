@@ -282,7 +282,7 @@ class PagoController extends Controller
         if($cant_pago > 0){
             echo "<table id='lispagos' class='display' cellspacing='0' width='100%'>
 			          <thead>
-                      <th>Deporte</th><th>Días y Horarios</th><th>Monto</th><th>Mes</th><th>A&ntilde;o</th>
+                      <th>Deporte</th><th>Días y Horarios</th><th>Monto</th><th>Ver Factura</th>
 				      </thead>
 					   <tbody>";
             foreach($actividad_alumno as $act_alum){
@@ -301,9 +301,7 @@ class PagoController extends Controller
                     }
                     echo "</td>";
                     echo "<td id='importe'>$ ".$pago->monto."</td>";
-                    $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                    echo "<td id= 'mes'>".$meses[$mes-1]."</td>";
-                    echo "<td id= 'anio'>".$anio."</td>";
+                    echo "<td><input type='button' id='factura' class='btn btn-primary' value='Ver Factura'></input>"; 
                     echo "</tr>";
                 }
             }
