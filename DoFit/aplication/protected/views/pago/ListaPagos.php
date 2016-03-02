@@ -24,7 +24,7 @@ $this->pageTitle=Yii::app()->name;
 
 <!-- Modal Error -->
 <div class='modal fade' id='ErrorModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <?php $this->renderPartial('../menu/_menuInstitucion'); ?>
+
     <br>
     <br>
     <br>
@@ -63,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
                         <div class="form-group">
                             <?php
                             $criteria = new CDbCriteria;
-                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ))';
+                            $criteria->condition = 'id_usuario IN (select id_usuario from actividad_alumno where id_actividad IN ( select id_actividad from actividad where id_institucion = :institucion ) and id_usuario in (select id_usuario from pago where pago.id_actividad = id_actividad))';
                             $criteria->params = array(':institucion' => Yii::app()->user->id );
                             $usuario = FichaUsuario:: model()->findAll($criteria);?>
                             <p><b>Alumno</b></p>
@@ -148,7 +148,7 @@ $this->pageTitle=Yii::app()->name;
             success: function(response) {
                 debugger;
                 if(response == "ok"){
-                    $('#Principal').modal({
+                    $('#principal').modal({
                         backdrop: 'static',
                         keyboard: false
                     });
