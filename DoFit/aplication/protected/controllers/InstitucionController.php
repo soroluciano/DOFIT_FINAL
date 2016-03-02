@@ -134,9 +134,12 @@ class InstitucionController extends Controller
         ));
     }
 
-    public function actionAceptar($id)
+    public function actionAceptar()
     {
-        if(!isset(Yii::app()->session['id_institucion'])){
+        $id_profesor = $_POST['idprofesor'];
+		$ficha_usuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$id_profesor));
+		$nombreyapellido = $ficha_usuario->nombre . " ".$ficha_usuario->apellido;
+		if(!isset(Yii::app()->session['id_institucion'])){
             if (isset(Yii::app()->session['id_usuario'])) {
                 $this->redirect('../site/index');
             }
@@ -145,19 +148,23 @@ class InstitucionController extends Controller
             }
         }
         $idinstitucion = Yii::app()->user->id;
-        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
+        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id_profesor,':id_institucion'=>$idinstitucion));
         $pi->id_estado = 1;
-        $pi->update();
-        $this->redirect('../Solicitudespendientes');
+		if($pi->update()){
+			echo "ok|$nombreyapellido";
+		}	
     }
 
-    public function actionCancelar($id)
+    public function actionCancelar()
     {
-
+        $id_profesor = $_POST['idprofesor'];
+		$ficha_usuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$id_profesor));
+		$nombreyapellido = $ficha_usuario->nombre . " ".$ficha_usuario->apellido;
         $idinstitucion = Yii::app()->user->id;
-        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id,':id_institucion'=>$idinstitucion));
-        $pi->delete();
-        $this->redirect('../Solicitudespendientes');
+        $pi = ProfesorInstitucion::model()->find('id_usuario=:id_usuario and id_institucion=:id_institucion',array(':id_usuario'=>$id_profesor,':id_institucion'=>$idinstitucion));
+        if($pi->delete()){
+			echo "ok|$nombreyapellido";
+        }		
     }
 
     public function actionAceptarAlumno()
@@ -170,21 +177,29 @@ class InstitucionController extends Controller
                 $this->redirect('../site/LoginInstitucion');
             }
         }
-        $id = $_GET['usu'];
-        $idactividad = $_GET['act'];
-        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
+        $id_alumno = $_POST['idalumno'];
+        $ficha_usuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$id_alumno));
+		$nombreyapellido = $ficha_usuario->nombre . " ".$ficha_usuario->apellido;
+		$idactividad = $_POST['idactividad'];
+        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id_alumno,':id_actividad'=>$idactividad));
         $al->id_estado = 1;
-        $al->update();
-        $this->redirect('../../aplication/institucion/Solicitudespendientes');
+        if($al->update()){
+          echo "ok|$nombreyapellido";
+		}  
+		//$this->redirect('../../aplication/institucion/Solicitudespendientes');
     }
 
     public function actionCancelarAlumno()
     {
-        $id = $_GET['usu'];
-        $idactividad = $_GET['act'];
-        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id,':id_actividad'=>$idactividad));
-        $al->delete();
-        $this->redirect('../../aplication/institucion/Solicitudespendientes');
+        $id_alumno = $_POST['idalumno'];
+        $ficha_usuario = FichaUsuario::model()->findByAttributes(array('id_usuario'=>$id_alumno));
+		$nombreyapellido = $ficha_usuario->nombre . " ".$ficha_usuario->apellido;
+		$idactividad = $_POST['idactividad'];
+        $al = ActividadAlumno::model()->find('id_usuario=:id_usuario and id_actividad=:id_actividad',array(':id_usuario'=>$id_alumno,':id_actividad'=>$idactividad));
+        if($al->delete()){
+            echo "ok|$nombreyapellido";
+		}	
+		//$this->redirect('../../aplication/institucion/Solicitudespendientes');
     }
 
     public function actionHome()
