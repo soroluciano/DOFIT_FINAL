@@ -7,6 +7,34 @@
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
+--
+DROP DATABASE IF EXISTS `DoFit`;
+--
+
+CREATE DATABASE IF NOT EXISTS `DoFit`;
+--
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "-03:00";
+
+DROP TABLE IF EXISTS DoFit.`Admin`;
+DROP TABLE IF EXISTS DoFit.`Respuesta`;
+DROP TABLE IF EXISTS DoFit.`Perfil_Muro_Profesor`;
+DROP TABLE IF EXISTS DoFit.`Perfil_Social`;
+DROP TABLE IF EXISTS DoFit.`Pago`;
+DROP TABLE IF EXISTS DoFit.`Actividad_Alumno`;
+DROP TABLE IF EXISTS DoFit.`Actividad_Horario`;
+DROP TABLE IF EXISTS DoFit.`Actividad`;
+DROP TABLE IF EXISTS DoFit.`Profesor_Institucion`;
+DROP TABLE IF EXISTS DoFit.`Ficha_Institucion`;
+DROP TABLE IF EXISTS DoFit.`Ficha_Usuario`;
+DROP TABLE IF EXISTS DoFit.`Deporte`;
+DROP TABLE IF EXISTS DoFit.`Localidad`;
+DROP TABLE IF EXISTS DoFit.`Provincia`;
+DROP TABLE IF EXISTS DoFit.`Institucion`;
+DROP TABLE IF EXISTS DoFit.`Usuario`;
+DROP TABLE IF EXISTS DoFit.`Perfil`;
+DROP TABLE IF EXISTS DoFit.`Estado`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -26,7 +54,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `actividad`
 --
 
-CREATE TABLE IF NOT EXISTS `actividad` (
+CREATE TABLE IF NOT EXISTS DoFit.`actividad` (
 `id_actividad` int(11) NOT NULL,
   `id_deporte` int(11) NOT NULL,
   `id_institucion` int(11) NOT NULL,
@@ -41,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `actividad` (
 -- Volcado de datos para la tabla `actividad`
 --
 
-INSERT INTO `actividad` (`id_actividad`, `id_deporte`, `id_institucion`, `id_usuario`, `valor_actividad`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`actividad` (`id_actividad`, `id_deporte`, `id_institucion`, `id_usuario`, `valor_actividad`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 1, 3, 6, '300.00', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 1, 1, 6, '400.00', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (3, 3, 2, 5, '390.00', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -57,7 +85,7 @@ INSERT INTO `actividad` (`id_actividad`, `id_deporte`, `id_institucion`, `id_usu
 -- Estructura de tabla para la tabla `actividad_alumno`
 --
 
-CREATE TABLE IF NOT EXISTS `actividad_alumno` (
+CREATE TABLE IF NOT EXISTS DoFit.`actividad_alumno` (
   `id_actividad` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_estado` int(1) NOT NULL,
@@ -70,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `actividad_alumno` (
 -- Volcado de datos para la tabla `actividad_alumno`
 --
 
-INSERT INTO `actividad_alumno` (`id_actividad`, `id_usuario`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`actividad_alumno` (`id_actividad`, `id_usuario`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 2, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (1, 3, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 2, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -103,7 +131,7 @@ INSERT INTO `actividad_alumno` (`id_actividad`, `id_usuario`, `id_estado`, `fhcr
 -- Estructura de tabla para la tabla `actividad_horario`
 --
 
-CREATE TABLE IF NOT EXISTS `actividad_horario` (
+CREATE TABLE IF NOT EXISTS DoFit.`actividad_horario` (
   `id_actividad` int(11) NOT NULL,
   `id_dia` int(11) NOT NULL,
   `hora` int(11) NOT NULL,
@@ -117,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `actividad_horario` (
 -- Volcado de datos para la tabla `actividad_horario`
 --
 
-INSERT INTO `actividad_horario` (`id_actividad`, `id_dia`, `hora`, `minutos`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`actividad_horario` (`id_actividad`, `id_dia`, `hora`, `minutos`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 1, 20, 30, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (1, 4, 19, 0, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 5, 20, 0, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -138,7 +166,7 @@ INSERT INTO `actividad_horario` (`id_actividad`, `id_dia`, `hora`, `minutos`, `f
 -- Estructura de tabla para la tabla `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE IF NOT EXISTS DoFit.`admin` (
 `id_usuario` int(11) NOT NULL,
   `usuario` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
@@ -149,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`id_usuario`, `usuario`, `password`, `fhcreacion`) VALUES
+INSERT INTO DoFit.`admin` (`id_usuario`, `usuario`, `password`, `fhcreacion`) VALUES
 (1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', '2016-01-06 02:30:05');
 
 -- --------------------------------------------------------
@@ -158,7 +186,7 @@ INSERT INTO `admin` (`id_usuario`, `usuario`, `password`, `fhcreacion`) VALUES
 -- Estructura de tabla para la tabla `conversacion`
 --
 
-CREATE TABLE IF NOT EXISTS `conversacion` (
+CREATE TABLE IF NOT EXISTS DoFit.`conversacion` (
 `id_conversacion` int(11) NOT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `mensaje` varchar(45) DEFAULT NULL,
@@ -173,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `conversacion` (
 -- Estructura de tabla para la tabla `deporte`
 --
 
-CREATE TABLE IF NOT EXISTS `deporte` (
+CREATE TABLE IF NOT EXISTS DoFit.`deporte` (
 `id_deporte` int(11) NOT NULL,
   `deporte` varchar(60) NOT NULL,
   `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -185,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `deporte` (
 -- Volcado de datos para la tabla `deporte`
 --
 
-INSERT INTO `deporte` (`id_deporte`, `deporte`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`deporte` (`id_deporte`, `deporte`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'Fútbol', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (2, 'Basquet', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (3, 'Natación', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
@@ -217,7 +245,7 @@ INSERT INTO `deporte` (`id_deporte`, `deporte`, `fhcreacion`, `fhultmod`, `cusua
 -- Estructura de tabla para la tabla `estado`
 --
 
-CREATE TABLE IF NOT EXISTS `estado` (
+CREATE TABLE IF NOT EXISTS DoFit.`estado` (
   `id_estado` int(11) NOT NULL,
   `estado` varchar(60) NOT NULL,
   `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -229,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
 -- Volcado de datos para la tabla `estado`
 --
 
-INSERT INTO `estado` (`id_estado`, `estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`estado` (`id_estado`, `estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (0, 'En espera', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (1, 'Confirmado', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin');
 
@@ -239,7 +267,7 @@ INSERT INTO `estado` (`id_estado`, `estado`, `fhcreacion`, `fhultmod`, `cusuario
 -- Estructura de tabla para la tabla `ficha_institucion`
 --
 
-CREATE TABLE IF NOT EXISTS `ficha_institucion` (
+CREATE TABLE IF NOT EXISTS DoFit.`ficha_institucion` (
 `id_ficha` int(11) NOT NULL,
   `id_institucion` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
@@ -262,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `ficha_institucion` (
 -- Volcado de datos para la tabla `ficha_institucion`
 --
 
-INSERT INTO `ficha_institucion` (`id_ficha`, `id_institucion`, `nombre`, `cuit`, `telfijo`, `celular`, `id_localidad`, `direccion`, `piso`, `depto`, `coordenada_x`, `coordenada_y`, `acepta_mp`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`ficha_institucion` (`id_ficha`, `id_institucion`, `nombre`, `cuit`, `telfijo`, `celular`, `id_localidad`, `direccion`, `piso`, `depto`, `coordenada_x`, `coordenada_y`, `acepta_mp`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 1, 'Megatlon S.A.', 30210009941, '0810-666-6496', '1560203456', 7, 'Reconquista 335', 'PB', '', '-34.603930', '-58.372369', 'S', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 2, 'Universidad Nacional de La Matanza', 31345066691, '4480-8900', '1123905890', 5, 'Florencio Varela 1903', NULL, NULL, '-34.670580', '-58.562751', 'N', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (3, 3, 'Club Atletico Boca Juniors ', 30780910107, ' 5777-1200', '1543041212', 7, 'Del Valle Iberlucea', '', '', '-34.633399', '-58.365223', 'S', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -275,7 +303,7 @@ INSERT INTO `ficha_institucion` (`id_ficha`, `id_institucion`, `nombre`, `cuit`,
 -- Estructura de tabla para la tabla `ficha_usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `ficha_usuario` (
+CREATE TABLE IF NOT EXISTS DoFit.`ficha_usuario` (
 `id_ficha` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
@@ -300,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `ficha_usuario` (
 -- Volcado de datos para la tabla `ficha_usuario`
 --
 
-INSERT INTO `ficha_usuario` (`id_ficha`, `id_usuario`, `nombre`, `apellido`, `dni`, `sexo`, `fechanac`, `telfijo`, `celular`, `conemer`, `telemer`, `id_localidad`, `direccion`, `piso`, `depto`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`ficha_usuario` (`id_ficha`, `id_usuario`, `nombre`, `apellido`, `dni`, `sexo`, `fechanac`, `telfijo`, `celular`, `conemer`, `telemer`, `id_localidad`, `direccion`, `piso`, `depto`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 1, 'Roberto', 'Montoto', '32823932', 'M', '1987-01-10', '54374616', '1558204125', 'Mercedes Alderte', '46971769', 1, 'Coronel Arenas 1151', '', '', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 2, 'Rodolfo', 'Lopez', '28067980', 'M', '1980-02-26', '469692030', '1567803450', 'Lorena Paola', '45678909', 4, 'Alsina 360', '', '', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (3, 3, 'Damian', 'Castellini', '33405780', 'M', '1989-03-17', '56709809', '1545670980', 'Micaela Lopez', NULL, 4, 'Conesa 289', '2', 'B', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -321,7 +349,7 @@ INSERT INTO `ficha_usuario` (`id_ficha`, `id_usuario`, `nombre`, `apellido`, `dn
 -- Estructura de tabla para la tabla `institucion`
 --
 
-CREATE TABLE IF NOT EXISTS `institucion` (
+CREATE TABLE IF NOT EXISTS DoFit.`institucion` (
 `id_institucion` int(11) NOT NULL,
   `email` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
@@ -334,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `institucion` (
 -- Volcado de datos para la tabla `institucion`
 --
 
-INSERT INTO `institucion` (`id_institucion`, `email`, `password`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`institucion` (`id_institucion`, `email`, `password`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'megatlon@gmail.com', '97fb6f8e6f2b463b9a883811d99b0c2e', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (2, 'unlam@yahoo.com.ar', '03aa405cbce847401fa4b895b735c4cb', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (3, 'bocajuniors@gmail.com', '097ff5de9066f6bf0de1eae0355f2f73', '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -347,7 +375,7 @@ INSERT INTO `institucion` (`id_institucion`, `email`, `password`, `fhcreacion`, 
 -- Estructura de tabla para la tabla `localidad`
 --
 
-CREATE TABLE IF NOT EXISTS `localidad` (
+CREATE TABLE IF NOT EXISTS DoFit.`localidad` (
 `id_localidad` int(11) NOT NULL,
   `localidad` varchar(60) NOT NULL,
   `id_provincia` int(11) NOT NULL,
@@ -360,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `localidad` (
 -- Volcado de datos para la tabla `localidad`
 --
 
-INSERT INTO `localidad` (`id_localidad`, `localidad`, `id_provincia`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`localidad` (`id_localidad`, `localidad`, `id_provincia`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'Morón', 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (2, 'San Martin', 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (3, 'Avellaneda', 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
@@ -406,7 +434,7 @@ INSERT INTO `localidad` (`id_localidad`, `localidad`, `id_provincia`, `fhcreacio
 -- Estructura de tabla para la tabla `pago`
 --
 
-CREATE TABLE IF NOT EXISTS `pago` (
+CREATE TABLE IF NOT EXISTS DoFit.`pago` (
   `id_actividad` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `mes` int(11) NOT NULL,
@@ -421,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `pago` (
 -- Volcado de datos para la tabla `pago`
 --
 
-INSERT INTO `pago` (`id_actividad`, `id_usuario`, `mes`, `anio`, `monto`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`pago` (`id_actividad`, `id_usuario`, `mes`, `anio`, `monto`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 2, 2, 2015, '300.00', '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin'),
 (2, 2, 1, 2015, '400.00', '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin'),
 (3, 4, 1, 2015, '300.00', '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin');
@@ -432,7 +460,7 @@ INSERT INTO `pago` (`id_actividad`, `id_usuario`, `mes`, `anio`, `monto`, `fhcre
 -- Estructura de tabla para la tabla `perfil`
 --
 
-CREATE TABLE IF NOT EXISTS `perfil` (
+CREATE TABLE IF NOT EXISTS DoFit.`perfil` (
 `id_perfil` int(11) NOT NULL,
   `perfil` varchar(60) NOT NULL,
   `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -444,7 +472,7 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 -- Volcado de datos para la tabla `perfil`
 --
 
-INSERT INTO `perfil` (`id_perfil`, `perfil`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`perfil` (`id_perfil`, `perfil`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'Alumno', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (2, 'Profesor', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin');
 
@@ -454,7 +482,7 @@ INSERT INTO `perfil` (`id_perfil`, `perfil`, `fhcreacion`, `fhultmod`, `cusuario
 -- Estructura de tabla para la tabla `perfil_muro_profesor`
 --
 
-CREATE TABLE IF NOT EXISTS `perfil_muro_profesor` (
+CREATE TABLE IF NOT EXISTS DoFit.`perfil_muro_profesor` (
 `id_posteo` int(11) NOT NULL,
   `posteo` varchar(2000) NOT NULL,
   `id_actividad` int(11) NOT NULL,
@@ -468,7 +496,7 @@ CREATE TABLE IF NOT EXISTS `perfil_muro_profesor` (
 -- Volcado de datos para la tabla `perfil_muro_profesor`
 --
 
-INSERT INTO `perfil_muro_profesor` (`id_posteo`, `posteo`, `id_actividad`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`perfil_muro_profesor` (`id_posteo`, `posteo`, `id_actividad`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, '¿Hay clases de Natacion este martes?', 3, '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin'),
 (2, '¿Cuanto sale para practicar futbol los lunes por la noche?', 1, '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin');
 
@@ -478,7 +506,7 @@ INSERT INTO `perfil_muro_profesor` (`id_posteo`, `posteo`, `id_actividad`, `fhcr
 -- Estructura de tabla para la tabla `perfil_social`
 --
 
-CREATE TABLE IF NOT EXISTS `perfil_social` (
+CREATE TABLE IF NOT EXISTS DoFit.`perfil_social` (
   `id_usuario` int(11) NOT NULL,
   `fotoperfil` varchar(60) DEFAULT NULL,
   `foto1` varchar(60) DEFAULT NULL,
@@ -497,7 +525,7 @@ CREATE TABLE IF NOT EXISTS `perfil_social` (
 -- Volcado de datos para la tabla `perfil_social`
 --
 
-INSERT INTO `perfil_social` (`id_usuario`, `fotoperfil`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`, `foto6`, `descripcion`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`perfil_social` (`id_usuario`, `fotoperfil`, `foto1`, `foto2`, `foto3`, `foto4`, `foto5`, `foto6`, `descripcion`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, NULL, 'images.jpg', NULL, NULL, NULL, NULL, NULL, 'Futbolista argentino. Delantero en el F. C. Barcelona, de la Primera División de España, y en la Selección Argentina.', '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'usuprueba');
 
 -- --------------------------------------------------------
@@ -506,7 +534,7 @@ INSERT INTO `perfil_social` (`id_usuario`, `fotoperfil`, `foto1`, `foto2`, `foto
 -- Estructura de tabla para la tabla `profesor_institucion`
 --
 
-CREATE TABLE IF NOT EXISTS `profesor_institucion` (
+CREATE TABLE IF NOT EXISTS DoFit.`profesor_institucion` (
   `id_usuario` int(11) NOT NULL,
   `id_institucion` int(11) NOT NULL,
   `id_estado` int(1) NOT NULL,
@@ -519,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `profesor_institucion` (
 -- Volcado de datos para la tabla `profesor_institucion`
 --
 
-INSERT INTO `profesor_institucion` (`id_usuario`, `id_institucion`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`profesor_institucion` (`id_usuario`, `id_institucion`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (5, 1, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (5, 2, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
 (5, 4, 1, '2016-01-06 02:30:05', '2016-01-06 02:30:05', 'sysadmin'),
@@ -535,7 +563,7 @@ INSERT INTO `profesor_institucion` (`id_usuario`, `id_institucion`, `id_estado`,
 -- Estructura de tabla para la tabla `provincia`
 --
 
-CREATE TABLE IF NOT EXISTS `provincia` (
+CREATE TABLE IF NOT EXISTS DoFit.`provincia` (
 `id_provincia` int(11) NOT NULL,
   `provincia` varchar(60) NOT NULL,
   `fhcreacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -547,7 +575,7 @@ CREATE TABLE IF NOT EXISTS `provincia` (
 -- Volcado de datos para la tabla `provincia`
 --
 
-INSERT INTO `provincia` (`id_provincia`, `provincia`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`provincia` (`id_provincia`, `provincia`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'Buenos Aires', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (2, 'Catamarca', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (3, 'Chaco', '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
@@ -578,7 +606,7 @@ INSERT INTO `provincia` (`id_provincia`, `provincia`, `fhcreacion`, `fhultmod`, 
 -- Estructura de tabla para la tabla `respuesta`
 --
 
-CREATE TABLE IF NOT EXISTS `respuesta` (
+CREATE TABLE IF NOT EXISTS DoFit.`respuesta` (
   `id_posteo` int(11) NOT NULL,
   `id_respuesta` int(11) NOT NULL,
   `respuesta` varchar(2000) NOT NULL,
@@ -592,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `respuesta` (
 -- Volcado de datos para la tabla `respuesta`
 --
 
-INSERT INTO `respuesta` (`id_posteo`, `id_respuesta`, `respuesta`, `id_usuario`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`respuesta` (`id_posteo`, `id_respuesta`, `respuesta`, `id_usuario`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 1, 'Si en todos los horarios', 5, '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin'),
 (2, 2, '$300', 6, '2016-01-06 02:30:06', '2016-01-06 02:30:06', 'sysadmin');
 
@@ -602,7 +630,7 @@ INSERT INTO `respuesta` (`id_posteo`, `id_respuesta`, `respuesta`, `id_usuario`,
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE IF NOT EXISTS DoFit.`usuario` (
 `id_usuario` int(11) NOT NULL,
   `email` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
@@ -617,7 +645,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `id_perfil`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`usuario` (`id_usuario`, `email`, `password`, `id_perfil`, `id_estado`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (1, 'monti.rober9@gmail.com', 'c5e46bb5e85d2ba5e3637cf41402baf0', 1, 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (2, 'programacionweb3@gmail.com', '482b46a83934465207cab9c5ba39899a', 1, 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
 (3, 'dcastellini89@gmail.com', '27f7112562cd7c5683ba383257527897', 1, 1, '2016-01-06 02:30:04', '2016-01-06 02:30:04', 'sysadmin'),
@@ -639,115 +667,115 @@ INSERT INTO `usuario` (`id_usuario`, `email`, `password`, `id_perfil`, `id_estad
 --
 -- Indices de la tabla `actividad`
 --
-ALTER TABLE `actividad`
+ALTER TABLE DoFit.`actividad`
  ADD PRIMARY KEY (`id_actividad`), ADD KEY `actividad_profesor_institucion_fk` (`id_usuario`,`id_institucion`), ADD KEY `actividad_deporte_fk` (`id_deporte`);
 
 --
 -- Indices de la tabla `actividad_alumno`
 --
-ALTER TABLE `actividad_alumno`
+ALTER TABLE DoFit.`actividad_alumno`
  ADD PRIMARY KEY (`id_actividad`,`id_usuario`), ADD KEY `actividad_alumno_usuario_fk` (`id_usuario`), ADD KEY `actividad_ac_estado_fk` (`id_estado`);
 
 --
 -- Indices de la tabla `actividad_horario`
 --
-ALTER TABLE `actividad_horario`
+ALTER TABLE DoFit.`actividad_horario`
  ADD PRIMARY KEY (`id_actividad`,`id_dia`);
 
 --
 -- Indices de la tabla `admin`
 --
-ALTER TABLE `admin`
+ALTER TABLE DoFit.`admin`
  ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `usuario` (`usuario`);
 
 --
 -- Indices de la tabla `conversacion`
 --
-ALTER TABLE `conversacion`
+ALTER TABLE DoFit.`conversacion`
  ADD PRIMARY KEY (`id_conversacion`);
 
 --
 -- Indices de la tabla `deporte`
 --
-ALTER TABLE `deporte`
+ALTER TABLE DoFit.`deporte`
  ADD PRIMARY KEY (`id_deporte`);
 
 --
 -- Indices de la tabla `estado`
 --
-ALTER TABLE `estado`
+ALTER TABLE DoFit.`estado`
  ADD PRIMARY KEY (`id_estado`);
 
 --
 -- Indices de la tabla `ficha_institucion`
 --
-ALTER TABLE `ficha_institucion`
+ALTER TABLE DoFit.`ficha_institucion`
  ADD PRIMARY KEY (`id_ficha`), ADD UNIQUE KEY `cuit` (`cuit`), ADD UNIQUE KEY `id_institucion` (`id_institucion`), ADD KEY `ficha_institucion_localidad_fk` (`id_localidad`);
 
 --
 -- Indices de la tabla `ficha_usuario`
 --
-ALTER TABLE `ficha_usuario`
+ALTER TABLE DoFit.`ficha_usuario`
  ADD PRIMARY KEY (`id_ficha`), ADD UNIQUE KEY `dni` (`dni`), ADD UNIQUE KEY `id_usuario` (`id_usuario`), ADD KEY `ficha_localidad_fk` (`id_localidad`);
 
 --
 -- Indices de la tabla `institucion`
 --
-ALTER TABLE `institucion`
+ALTER TABLE DoFit.`institucion`
  ADD PRIMARY KEY (`id_institucion`), ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `localidad`
 --
-ALTER TABLE `localidad`
+ALTER TABLE DoFit.`localidad`
  ADD PRIMARY KEY (`id_localidad`), ADD KEY `localidad_provincia_fk` (`id_provincia`);
 
 --
 -- Indices de la tabla `pago`
 --
-ALTER TABLE `pago`
+ALTER TABLE DoFit.`pago`
  ADD PRIMARY KEY (`id_actividad`,`id_usuario`,`mes`,`anio`);
 
 --
 -- Indices de la tabla `perfil`
 --
-ALTER TABLE `perfil`
+ALTER TABLE DoFit.`perfil`
  ADD PRIMARY KEY (`id_perfil`);
 
 --
 -- Indices de la tabla `perfil_muro_profesor`
 --
-ALTER TABLE `perfil_muro_profesor`
+ALTER TABLE DoFit.`perfil_muro_profesor`
  ADD PRIMARY KEY (`id_posteo`), ADD KEY `perfil_muro_profesor_actividad_fk` (`id_actividad`);
 
 --
 -- Indices de la tabla `perfil_social`
 --
-ALTER TABLE `perfil_social`
+ALTER TABLE DoFit.`perfil_social`
  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- Indices de la tabla `profesor_institucion`
 --
-ALTER TABLE `profesor_institucion`
+ALTER TABLE DoFit.`profesor_institucion`
  ADD PRIMARY KEY (`id_usuario`,`id_institucion`), ADD KEY `profesor_institucion_institucion_fk` (`id_institucion`), ADD KEY `profesor_institucion_estado_fk` (`id_estado`);
 
 --
 -- Indices de la tabla `provincia`
 --
-ALTER TABLE `provincia`
+ALTER TABLE DoFit.`provincia`
  ADD PRIMARY KEY (`id_provincia`);
 
 --
 -- Indices de la tabla `respuesta`
 --
-ALTER TABLE `respuesta`
+ALTER TABLE DoFit.`respuesta`
  ADD PRIMARY KEY (`id_posteo`,`id_respuesta`), ADD KEY `respuesta_usuario_fk` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuario`
 --
-ALTER TABLE `usuario`
+ALTER TABLE DoFit.`usuario`
  ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `email` (`email`), ADD KEY `usuario_perfil_fk` (`id_perfil`), ADD KEY `usuario_estado_fk` (`id_estado`);
 
 --
@@ -757,62 +785,62 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de la tabla `actividad`
 --
-ALTER TABLE `actividad`
+ALTER TABLE DoFit.`actividad`
 MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `admin`
 --
-ALTER TABLE `admin`
+ALTER TABLE DoFit.`admin`
 MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `conversacion`
 --
-ALTER TABLE `conversacion`
+ALTER TABLE DoFit.`conversacion`
 MODIFY `id_conversacion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `deporte`
 --
-ALTER TABLE `deporte`
+ALTER TABLE DoFit.`deporte`
 MODIFY `id_deporte` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `ficha_institucion`
 --
-ALTER TABLE `ficha_institucion`
+ALTER TABLE DoFit.`ficha_institucion`
 MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `ficha_usuario`
 --
-ALTER TABLE `ficha_usuario`
+ALTER TABLE DoFit.`ficha_usuario`
 MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `institucion`
 --
-ALTER TABLE `institucion`
+ALTER TABLE DoFit.`institucion`
 MODIFY `id_institucion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `localidad`
 --
-ALTER TABLE `localidad`
+ALTER TABLE DoFit.`localidad`
 MODIFY `id_localidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
-ALTER TABLE `perfil`
+ALTER TABLE DoFit.`perfil`
 MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `perfil_muro_profesor`
 --
-ALTER TABLE `perfil_muro_profesor`
+ALTER TABLE DoFit.`perfil_muro_profesor`
 MODIFY `id_posteo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `provincia`
 --
-ALTER TABLE `provincia`
+ALTER TABLE DoFit.`provincia`
 MODIFY `id_provincia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
-ALTER TABLE `usuario`
+ALTER TABLE DoFit.`usuario`
 MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Restricciones para tablas volcadas
@@ -821,14 +849,14 @@ MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- Filtros para la tabla `actividad`
 --
-ALTER TABLE `actividad`
+ALTER TABLE DoFit.`actividad`
 ADD CONSTRAINT `actividad_deporte_fk` FOREIGN KEY (`id_deporte`) REFERENCES `deporte` (`id_deporte`),
 ADD CONSTRAINT `actividad_profesor_institucion_fk` FOREIGN KEY (`id_usuario`, `id_institucion`) REFERENCES `profesor_institucion` (`id_usuario`, `id_institucion`);
 
 --
 -- Filtros para la tabla `actividad_alumno`
 --
-ALTER TABLE `actividad_alumno`
+ALTER TABLE DoFit.`actividad_alumno`
 ADD CONSTRAINT `actividad_ac_estado_fk` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
 ADD CONSTRAINT `actividad_alumno_actividad_fk` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`),
 ADD CONSTRAINT `actividad_alumno_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
@@ -836,51 +864,51 @@ ADD CONSTRAINT `actividad_alumno_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENC
 --
 -- Filtros para la tabla `actividad_horario`
 --
-ALTER TABLE `actividad_horario`
+ALTER TABLE DoFit.`actividad_horario`
 ADD CONSTRAINT `actividad_horario_actividad_fk` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`);
 
 --
 -- Filtros para la tabla `ficha_institucion`
 --
-ALTER TABLE `ficha_institucion`
+ALTER TABLE DoFit.`ficha_institucion`
 ADD CONSTRAINT `ficha_institucion_institucion_fk` FOREIGN KEY (`id_institucion`) REFERENCES `institucion` (`id_institucion`),
 ADD CONSTRAINT `ficha_institucion_localidad_fk` FOREIGN KEY (`id_localidad`) REFERENCES `localidad` (`id_localidad`);
 
 --
 -- Filtros para la tabla `ficha_usuario`
 --
-ALTER TABLE `ficha_usuario`
+ALTER TABLE DoFit.`ficha_usuario`
 ADD CONSTRAINT `ficha_localidad_fk` FOREIGN KEY (`id_localidad`) REFERENCES `localidad` (`id_localidad`),
 ADD CONSTRAINT `ficha_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `localidad`
 --
-ALTER TABLE `localidad`
+ALTER TABLE DoFit.`localidad`
 ADD CONSTRAINT `localidad_provincia_fk` FOREIGN KEY (`id_provincia`) REFERENCES `provincia` (`id_provincia`);
 
 --
 -- Filtros para la tabla `pago`
 --
-ALTER TABLE `pago`
+ALTER TABLE DoFit.`pago`
 ADD CONSTRAINT `pago_actividad_alumno_fk` FOREIGN KEY (`id_actividad`, `id_usuario`) REFERENCES `actividad_alumno` (`id_actividad`, `id_usuario`);
 
 --
 -- Filtros para la tabla `perfil_muro_profesor`
 --
-ALTER TABLE `perfil_muro_profesor`
+ALTER TABLE DoFit.`perfil_muro_profesor`
 ADD CONSTRAINT `perfil_muro_profesor_actividad_fk` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`);
 
 --
 -- Filtros para la tabla `perfil_social`
 --
-ALTER TABLE `perfil_social`
+ALTER TABLE DoFit.`perfil_social`
 ADD CONSTRAINT `perfil_social_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `profesor_institucion`
 --
-ALTER TABLE `profesor_institucion`
+ALTER TABLE DoFit.`profesor_institucion`
 ADD CONSTRAINT `profesor_institucion_estado_fk` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
 ADD CONSTRAINT `profesor_institucion_institucion_fk` FOREIGN KEY (`id_institucion`) REFERENCES `institucion` (`id_institucion`),
 ADD CONSTRAINT `profesor_institucion_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
@@ -888,14 +916,14 @@ ADD CONSTRAINT `profesor_institucion_usuario_fk` FOREIGN KEY (`id_usuario`) REFE
 --
 -- Filtros para la tabla `respuesta`
 --
-ALTER TABLE `respuesta`
+ALTER TABLE DoFit.`respuesta`
 ADD CONSTRAINT `respuesta_perfil_muro_profesor_fk` FOREIGN KEY (`id_posteo`) REFERENCES `perfil_muro_profesor` (`id_posteo`),
 ADD CONSTRAINT `respuesta_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Filtros para la tabla `usuario`
 --
-ALTER TABLE `usuario`
+ALTER TABLE DoFit.`usuario`
 ADD CONSTRAINT `usuario_estado_fk` FOREIGN KEY (`id_estado`) REFERENCES `estado` (`id_estado`),
 ADD CONSTRAINT `usuario_perfil_fk` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`id_perfil`);
 
@@ -933,7 +961,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `canal`
 --
 
-CREATE TABLE IF NOT EXISTS `canal` (
+CREATE TABLE IF NOT EXISTS DoFit.`canal` (
  `id_canal` int(11) NOT NULL,
   `nombre` varchar(60) NOT NULL,
   `id_actividad` int(11) NOT NULL
@@ -951,7 +979,7 @@ CREATE TABLE IF NOT EXISTS `canal` (
 --
 -- Indices de la tabla `canal`
 --
-ALTER TABLE `canal`
+ALTER TABLE DoFit.`canal`
  ADD PRIMARY KEY (`id_canal`), ADD UNIQUE KEY `id_actividad` (`id_actividad`);
 
 --
@@ -961,7 +989,7 @@ ALTER TABLE `canal`
 --
 -- AUTO_INCREMENT de la tabla `canal`
 --
-ALTER TABLE `canal`
+ALTER TABLE DoFit.`canal`
 MODIFY `id_canal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Restricciones para tablas volcadas
@@ -970,7 +998,7 @@ MODIFY `id_canal` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Filtros para la tabla `canal`
 --
-ALTER TABLE `canal`
+ALTER TABLE DoFit.`canal`
 ADD CONSTRAINT `canal_ibfk_1` FOREIGN KEY (`id_actividad`) REFERENCES `actividad` (`id_actividad`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
@@ -1007,7 +1035,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `imagen`
 --
 
-CREATE TABLE IF NOT EXISTS `imagen` (
+CREATE TABLE IF NOT EXISTS DoFit.`imagen` (
   `id_imagen` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL,
@@ -1020,7 +1048,7 @@ CREATE TABLE IF NOT EXISTS `imagen` (
 -- Volcado de datos para la tabla `imagen`
 --
 
-INSERT INTO `imagen` (`id_imagen`, `nombre`, `id_usuario`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
+INSERT INTO DoFit.`imagen` (`id_imagen`, `nombre`, `id_usuario`, `fhcreacion`, `fhultmod`, `cusuario`) VALUES
 (11, 'eeeee.png', 5, '2016-01-27 15:00:58', '0000-00-00 00:00:00', 'pepe'),
 (12, 'image003.png', 5, '2016-01-27 15:07:38', '0000-00-00 00:00:00', 'pepe'),
 (13, 'image003.png', 5, '2016-01-27 15:09:28', '0000-00-00 00:00:00', 'pepe'),
@@ -1040,7 +1068,7 @@ INSERT INTO `imagen` (`id_imagen`, `nombre`, `id_usuario`, `fhcreacion`, `fhultm
 --
 -- Indices de la tabla `imagen`
 --
-ALTER TABLE `imagen`
+ALTER TABLE DoFit.`imagen`
   ADD PRIMARY KEY (`id_imagen`),
   ADD KEY `id_usuario` (`id_usuario`);
 
@@ -1051,7 +1079,7 @@ ALTER TABLE `imagen`
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
-ALTER TABLE `imagen`
+ALTER TABLE DoFit.`imagen`
   MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- Restricciones para tablas volcadas
@@ -1060,7 +1088,7 @@ ALTER TABLE `imagen`
 --
 -- Filtros para la tabla `imagen`
 --
-ALTER TABLE `imagen`
+ALTER TABLE DoFit.`imagen`
   ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
