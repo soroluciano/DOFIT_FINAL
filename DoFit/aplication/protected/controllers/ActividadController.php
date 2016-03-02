@@ -278,8 +278,7 @@ class ActividadController extends Controller
                 if ($gim->acepta_mp == 'N') {
                     $gim->acepta_mp = 'No';
                 }
-                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ')  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . '))) > 0 ')->queryAll();
-                $flag = 0;
+                $list = Yii::app()->db->createCommand('select 1 from dual where (select count(*) from actividad where actividad.id_institucion =' . $gim->id_institucion . ' and  id_deporte = ' . $_POST['deporte'] . ')  - (select count(*) from actividad_alumno where id_usuario = ' . $id_usuario . ' and id_actividad in (select id_actividad from actividad where id_institucion = ' . $gim->id_institucion . ' and id_deporte = ' . $_POST['deporte'] . ')) > 0 ')->queryAll();                $flag = 0;
                 if ($list) {
                     $flag = 1;
                     if ($locations == "") {
@@ -288,8 +287,7 @@ class ActividadController extends Controller
                             ' <b>►Teléfono: </b>' . $gim->telfijo . '<br>' .
                             '<b>►Mercado Pago: </b>' . $gim->acepta_mp . '<br><br><b>►Actividades: </b><br><br>';
 
-                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion . " and actividad.id_usuario not in (". $id_usuario . ")and actividad.id_actividad not in (select id_actividad from actividad_alumno where id_usuario = ". $id_usuario .")";
-                        $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
+                        $query = "select actividad.id_actividad, concat(ficha_usuario.nombre,' ',ficha_usuario.apellido) profesor, deporte.deporte from actividad, ficha_usuario, deporte where actividad.id_usuario = ficha_usuario.id_usuario and actividad.id_deporte = deporte.id_deporte and actividad.id_deporte = ". $_POST['deporte']." and actividad.id_institucion = " . $gim->id_institucion . " and actividad.id_usuario not in (". $id_usuario . ")and actividad.id_actividad not in (select id_actividad from actividad_alumno where id_usuario = ". $id_usuario .")";                        $listaActividades = Yii::app()->db->createCommand($query)->queryAll();
                         foreach ($listaActividades as $act) {
                             $query_horario = "select CASE id_dia WHEN 1 THEN 'Lu' WHEN 2 THEN 'Ma' WHEN 3 THEN 'Mi' WHEN 4 THEN 'Ju' WHEN 5 THEN 'Vi' WHEN 6 THEN 'Sa' WHEN 7 THEN 'Do' END dia,concat(lpad(hora,2,'0'),':',lpad(minutos,2,'0'))horario from actividad_horario where id_actividad = " . $act['id_actividad'];
                             $horario = Yii::app()->db->createCommand($query_horario)->queryAll();
