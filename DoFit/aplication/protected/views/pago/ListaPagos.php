@@ -184,7 +184,7 @@ $this->pageTitle=Yii::app()->name;
                         dataType: "json",
                         cache: false,
                         success: function (response) {
-                            var html = "<table class='table table-bordered'><thead><tr><th>Actividad</th><th>Año</th><th>Mes</th><th>Monto</th></thead><tbody>";
+                            var html = "<table class='table table-bordered'><thead><tr><th><b>Actividad</b></th><th><b>Año</b></th><th><b>Mes</b></th><th><b>Monto</b></th></thead><tbody>";
                             for (i = 0; i < response.length; i++) {
                                 html += "<tr><td>" + response[i].actividad + "</td><td>" + response[i].anio + "</td><td>" + response[i].mes + "</td><td>" + response[i].monto + "</td><td><button  onclick='ver_factura(this.value);' class='btn btn-primary' id='boton' value='" + response[i].id + "'>Ver factura </button></td><tr>";
                             }

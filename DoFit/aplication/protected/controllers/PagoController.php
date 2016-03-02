@@ -127,7 +127,7 @@ class PagoController extends Controller
                     if($ah->id_dia == 6){$dia = "Sabado";};
                     if($ah->id_dia == 7){$dia = "Domingo";};
 
-                    $horario = $horario . "Dia: ".$dia . " Horario: ".str_pad($ah->hora,2,'0',STR_PAD_LEFT).":" .str_pad($ah->minutos,2,'0',STR_PAD_LEFT);
+                    $horario = $horario . " <b>Dia:</b> ".$dia . " <b>Horario:</b> ".str_pad($ah->hora,2,'0',STR_PAD_LEFT).":" .str_pad($ah->minutos,2,'0',STR_PAD_LEFT).'<br>';
                 }
 
                 if($p->mes == 1){$mes = "Enero";}
@@ -145,7 +145,7 @@ class PagoController extends Controller
 
                 $result[] = array(
                     'usuario' => $p->id_usuario,
-                    'actividad' => 'Deporte: '.$deporte->deporte.' '.$horario,
+                    'actividad' => '<b>Deporte:</b>'.$deporte->deporte.'<br> '.$horario,
                     'anio' => $p->anio,
                     'mes' => $mes,
                     'monto' => "$".$p->monto,
