@@ -143,12 +143,12 @@ function getActividades($id){
 						<textarea placeholder="¿Qué estas pensando?" id="input_mensaje"></textarea>
 						<ul>
 <!--					<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>-->
-						<li><button id="btn-video" type="button" data-original-title="Video" data-toggle="modal" data-target="#uploadvideo"><i class="fa fa-video-camera"></i></button></li>
+					<!--	<li><button id="btn-video" type="button" data-original-title="Video" data-toggle="modal" data-target="#uploadvideo"><i class="fa fa-video-camera"></i></button></li>-->
 		<!--				<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>-->
-						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture" onclick="addImage()"><i class="fa fa-picture-o"></i></a></li>
+<!--						<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture" onclick="addImage()"><i class="fa fa-picture-o"></i></a></li>-->
 						</ul>
 
-						<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Publicar</button>
+						<button type="submit" class="btn btn-success green siz"><i class="fa fa-share"></i> Publicar</button>
 						<?php echo "<div class='col-xs-5 col-sm-5 col-lg-5 col-md-5' data-placement='bottom'>".getActividades($usuario->id_usuario)."</div>"; ?>
 					
 					</form>
