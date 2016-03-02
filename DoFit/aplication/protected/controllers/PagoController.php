@@ -12,13 +12,8 @@ class PagoController extends Controller
     }
 
     public function actionFactura(){
-        $Fpdf = Yii::app()->ePdf->mpdf();
-
-
-        //$mPDF1->WriteHTML($this->render('factura', array(), true));
-        //$mPDF1->Output();
-        //  $this->render('factura');
-        $Fpdf->AddPage();
+        $factura = new FacturaService();
+        $factura->GenerarFactura($_GET['idactividad'],$_GET['idusuario'],$_GET['anio'],$_GET['mes']);
 
     }
 
