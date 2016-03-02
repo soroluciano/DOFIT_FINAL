@@ -218,7 +218,7 @@ class PagoController extends Controller
     {
 
         $id_usuario = $_POST['FichaUsuario']['id_usuario'];
-        $pagos = Pago::model()->findAll('id_usuario= :id_usuario', array(':id_usuario' => $id_usuario));
+        $pagos = Pago::model()->findAll('id_usuario= :id_usuario and id_actividad in (select id_actividad from actividad where id_institucion = :id_institucion)', array(':id_usuario' => $id_usuario, ':id_institucion' => Yii::app()->user->id ));
         $pagos = CHtml::listData($pagos, 'anio', 'anio');
 
         echo CHtml::tag('option', array('value' => ''), 'Seleccione el año', true);
@@ -237,8 +237,8 @@ class PagoController extends Controller
         $id_usuario = $_POST['FichaUsuario']['id_usuario'];
         $anio = $_POST['Pago']['anio'];
         $criteria = new CDbCriteria;
-        $criteria->condition = 'id_usuario = :id_usuario and  anio = :anio';
-        $criteria->params = array(':id_usuario' => $id_usuario, ':anio'=> $anio);
+        $criteria->condition = 'id_usuario = :id_usuario and  anio = :anio and id_actividad in (select id_actividad from actividad where id_institucion = :id_institucion)';
+        $criteria->params = array(':id_usuario' => $id_usuario, ':anio'=> $anio, ':id_institucion' => Yii::app()->user->id);
         $pagos = Pago:: model()->findAll($criteria);
         $pagos = CHtml::listData($pagos, 'mes', 'mes');
 
